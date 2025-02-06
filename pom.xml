@@ -103,7 +103,7 @@
                     <sources>
                         <source>src/main/resources/schema</source>
                     </sources>
-                    <outputDirectory>${basedir}/src/main/java/com/example/vanillatransformer/xml</outputDirectory>
+                    <outputDirectory>${basedir}/src/main/java/xml</outputDirectory>
                     <clearOutputDir>false</clearOutputDir>
                 </configuration>
             </plugin>

@@ -37,6 +37,7 @@
         <xs:complexType>
             <xs:simpleContent>
                 <xs:extension base="xs:string"/>
+
             </xs:simpleContent>
         </xs:complexType>
     </xs:element>
