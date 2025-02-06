@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:camunda="http://camunda.org/schema/1.0/bpmn"
+           targetNamespace="http://camunda.org/schema/1.0/bpmn"
+           elementFormDefault="qualified">
+
+    <!-- Camunda properties extension -->
+    <xs:element name="properties">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="property" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:attribute name="id" type="xs:string" use="required"/>
+                        <xs:attribute name="name" type="xs:string" use="optional"/>
+                        <xs:attribute name="value" type="xs:string" use="optional"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Camunda execution listener extension -->
+    <xs:element name="executionListener">
+        <xs:complexType>
+            <xs:attribute name="event" type="xs:string" use="required"/>
+            <xs:attribute name="class" type="xs:string" use="optional"/>
+            <xs:attribute name="expression" type="xs:string" use="optional"/>
+            <xs:attribute name="delegateExpression" type="xs:string" use="optional"/>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Camunda task listener extension -->
+    <xs:element name="taskListener">
+        <xs:complexType>
+            <xs:attribute name="event" type="xs:string" use="required"/>
+            <xs:attribute name="class" type="xs:string" use="optional"/>
+            <xs:attribute name="expression" type="xs:string" use="optional"/>
+            <xs:attribute name="delegateExpression" type="xs:string" use="optional"/>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Camunda form fields -->
+    <xs:element name="formData">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="formField" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:attribute name="id" type="xs:string" use="required"/>
+                        <xs:attribute name="type" type="xs:string" use="optional"/>
+                        <xs:attribute name="label" type="xs:string" use="optional"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Camunda input and output parameters -->
+    <xs:element name="inputOutput">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="inputParameter" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:attribute name="name" type="xs:string" use="required"/>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="outputParameter" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:attribute name="name" type="xs:string" use="required"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Camunda failed job retry time cycle -->
+    <xs:element name="failedJobRetryTimeCycle">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string"/>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Camunda async attributes -->
+    <xs:attribute name="asyncBefore" type="xs:boolean"/>
+    <xs:attribute name="asyncAfter" type="xs:boolean"/>
+    <xs:attribute name="exclusive" type="xs:boolean"/>
+    <xs:attribute name="jobPriority" type="xs:string"/>
+
+</xs:schema>
