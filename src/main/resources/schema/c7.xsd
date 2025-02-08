@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:modeler="http://camunda.org/schema/modeler/1.0"
+           targetNamespace="http://camunda.org/schema/modeler/1.0"
+           elementFormDefault="qualified">
+
+    <xs:element name="modeler" type="modeler:ModelerType"/>
+
+    <xs:complexType name="ModelerType">
+        <xs:sequence>
+            <xs:element name="executionPlatform" type="xs:string"/>
+            <xs:element name="executionPlatformVersion" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:attribute name="executionPlatform"/>
+    <xs:attribute name="executionPlatformVersion"/>
+</xs:schema>

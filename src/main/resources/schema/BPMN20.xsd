@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema elementFormDefault="qualified" attributeFormDefault="unqualified"	
-	xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
-	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-	xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
-	targetNamespace="http://www.omg.org/spec/BPMN/20100524/MODEL">
+<xsd:schema elementFormDefault="qualified" attributeFormDefault="unqualified"
+			xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+			xmlns:modeler="http://camunda.org/schema/modeler/1.0"
+			targetNamespace="http://www.omg.org/spec/BPMN/20100524/MODEL">
 
 	<xsd:import namespace="http://www.omg.org/spec/BPMN/20100524/DI" schemaLocation="BPMNDI.xsd"/>
+	<xsd:import namespace="http://camunda.org/schema/modeler/1.0" schemaLocation="c7.xsd"/>
+	<xsd:import namespace="http://camunda.org/schema/zeebe/1.0" schemaLocation="c8.xsd"/>
+
 	<xsd:include schemaLocation="Semantic.xsd"/>
 
 	<xsd:element name="definitions" type="tDefinitions"/>
@@ -24,9 +28,11 @@
 		<xsd:attribute name="typeLanguage" type="xsd:anyURI" use="optional" default="http://www.w3.org/2001/XMLSchema"/>
 		<xsd:attribute name="exporter" type="xsd:string"/>
 		<xsd:attribute name="exporterVersion" type="xsd:string"/>
+		<xsd:attribute ref="modeler:executionPlatform"/>
+		<xsd:attribute ref="modeler:executionPlatformVersion"/>
 		<xsd:anyAttribute namespace="##other" processContents="lax"/>
 	</xsd:complexType>
-	
+
 	<xsd:element name="import" type="tImport"/>
 	<xsd:complexType name="tImport">
 		<xsd:attribute name="namespace" type="xsd:anyURI" use="required"/>

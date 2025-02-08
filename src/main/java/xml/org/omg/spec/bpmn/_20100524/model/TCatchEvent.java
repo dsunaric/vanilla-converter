@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der Eclipse Implementation of JAXB, v3.0.0 generiert 
 // Siehe https://eclipse-ee4j.github.io/jaxb-ri 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2025.02.06 um 01:59:32 PM CET 
+// Generiert: 2025.02.08 um 03:32:02 PM CET 
 //
 
 
@@ -178,16 +178,16 @@ public abstract class TCatchEvent
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link TErrorEventDefinition }{@code >}
-     * {@link JAXBElement }{@code <}{@link TLinkEventDefinition }{@code >}
      * {@link JAXBElement }{@code <}{@link TTerminateEventDefinition }{@code >}
-     * {@link JAXBElement }{@code <}{@link TConditionalEventDefinition }{@code >}
-     * {@link JAXBElement }{@code <}{@link TCancelEventDefinition }{@code >}
-     * {@link JAXBElement }{@code <}{@link TCompensateEventDefinition }{@code >}
-     * {@link JAXBElement }{@code <}{@link TMessageEventDefinition }{@code >}
-     * {@link JAXBElement }{@code <}{@link TSignalEventDefinition }{@code >}
      * {@link JAXBElement }{@code <}{@link TTimerEventDefinition }{@code >}
      * {@link JAXBElement }{@code <}{@link TEscalationEventDefinition }{@code >}
+     * {@link JAXBElement }{@code <}{@link TConditionalEventDefinition }{@code >}
+     * {@link JAXBElement }{@code <}{@link TLinkEventDefinition }{@code >}
+     * {@link JAXBElement }{@code <}{@link TCancelEventDefinition }{@code >}
+     * {@link JAXBElement }{@code <}{@link TCompensateEventDefinition }{@code >}
+     * {@link JAXBElement }{@code <}{@link TErrorEventDefinition }{@code >}
+     * {@link JAXBElement }{@code <}{@link TMessageEventDefinition }{@code >}
+     * {@link JAXBElement }{@code <}{@link TSignalEventDefinition }{@code >}
      * {@link JAXBElement }{@code <}{@link TEventDefinition }{@code >}
      * 
      * 

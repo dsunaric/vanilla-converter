@@ -5,7 +5,7 @@
 Diese Datei wurde mit der Eclipse Implementation of JAXB, v3.0.0 generiert 
 Siehe https://eclipse-ee4j.github.io/jaxb-ri 
 Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-Generiert: 2025.02.06 um 01:59:32 PM CET 
+Generiert: 2025.02.08 um 03:32:02 PM CET 
 
   -->
   <bindings scd="x-schema::tns" xmlns:tns="http://www.omg.org/spec/DD/20100524/DI">
@@ -41,55 +41,6 @@ Generiert: 2025.02.06 um 01:59:32 PM CET
     </bindings>
     <bindings scd="~tns:LabeledShape">
       <class ref="org.omg.spec.dd._20100524.di.LabeledShape"/>
-    </bindings>
-  </bindings>
-  <bindings scd="x-schema::tns" xmlns:tns="http://camunda.org/schema/1.0/bpmn">
-    <schemaBindings map="false">
-      <package name="org.camunda.schema._1_0.bpmn"/>
-    </schemaBindings>
-    <bindings scd="tns:properties">
-      <class ref="org.camunda.schema._1_0.bpmn.Properties"/>
-    </bindings>
-    <bindings scd="tns:formData">
-      <class ref="org.camunda.schema._1_0.bpmn.FormData"/>
-    </bindings>
-    <bindings scd="tns:inputOutput">
-      <class ref="org.camunda.schema._1_0.bpmn.InputOutput"/>
-    </bindings>
-    <bindings scd="tns:executionListener">
-      <class ref="org.camunda.schema._1_0.bpmn.ExecutionListener"/>
-    </bindings>
-    <bindings scd="tns:taskListener">
-      <class ref="org.camunda.schema._1_0.bpmn.TaskListener"/>
-    </bindings>
-    <bindings scd="tns:failedJobRetryTimeCycle">
-      <class ref="org.camunda.schema._1_0.bpmn.FailedJobRetryTimeCycle"/>
-    </bindings>
-  </bindings>
-  <bindings scd="x-schema::tns" xmlns:tns="http://camunda.org/schema/zeebe/1.0">
-    <schemaBindings map="false">
-      <package name="org.camunda.schema.zeebe._1"/>
-    </schemaBindings>
-    <bindings scd="tns:ioMapping">
-      <class ref="org.camunda.schema.zeebe._1.IoMapping"/>
-    </bindings>
-    <bindings scd="tns:taskDefinition">
-      <class ref="org.camunda.schema.zeebe._1.TaskDefinition"/>
-    </bindings>
-    <bindings scd="tns:retryCycle">
-      <class ref="org.camunda.schema.zeebe._1.RetryCycle"/>
-    </bindings>
-    <bindings scd="tns:message">
-      <class ref="org.camunda.schema.zeebe._1.Message"/>
-    </bindings>
-    <bindings scd="tns:subscription">
-      <class ref="org.camunda.schema.zeebe._1.Subscription"/>
-    </bindings>
-    <bindings scd="tns:calledElement">
-      <class ref="org.camunda.schema.zeebe._1.CalledElement"/>
-    </bindings>
-    <bindings scd="tns:loopCharacteristics">
-      <class ref="org.camunda.schema.zeebe._1.LoopCharacteristics"/>
     </bindings>
   </bindings>
   <bindings scd="x-schema::tns" xmlns:tns="http://www.omg.org/spec/BPMN/20100524/MODEL">
@@ -570,6 +521,22 @@ Generiert: 2025.02.06 um 01:59:32 PM CET
     </bindings>
     <bindings scd="~tns:Point">
       <class ref="org.omg.spec.dd._20100524.dc.Point"/>
+    </bindings>
+  </bindings>
+  <bindings scd="x-schema::tns" xmlns:tns="http://camunda.org/schema/modeler/1.0">
+    <schemaBindings map="false">
+      <package name="org.camunda.schema.modeler._1"/>
+    </schemaBindings>
+    <bindings scd="~tns:ModelerType">
+      <class ref="org.camunda.schema.modeler._1.Modeler"/>
+    </bindings>
+  </bindings>
+  <bindings scd="x-schema::tns" xmlns:tns="http://camunda.org/schema/zeebe/1.0">
+    <schemaBindings map="false">
+      <package name="org.camunda.schema.zeebe._1"/>
+    </schemaBindings>
+    <bindings scd="~tns:ZeebeType">
+      <class ref="org.camunda.schema.zeebe._1.Zeebe"/>
     </bindings>
   </bindings>
 </bindings>

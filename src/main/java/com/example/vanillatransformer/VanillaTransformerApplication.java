@@ -2,6 +2,7 @@ package com.example.vanillatransformer;
 
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
+import org.omg.spec.bpmn._20100524.model.Definitions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -41,12 +42,12 @@ public class VanillaTransformerApplication implements CommandLineRunner {
         }
 
         try {
-            JAXBContext context = JAXBContext.newInstance(org.omg.spec.bpmn._20100524.model.Definitions.class);
-            org.omg.spec.bpmn._20100524.model.Definitions d =
-                    (org.omg.spec.bpmn._20100524.model.Definitions) context.createUnmarshaller()
+            JAXBContext context = JAXBContext.newInstance(Definitions.class);
+            Definitions d =
+                    (Definitions) context.createUnmarshaller()
                            .unmarshal(new FileReader(filePath));
 
-            LOG.info("EXPORTER: {}", d.getExporterVersion());
+            LOG.info("EXPORTER: {}", d.getExecutionPlatformVersion());
         } catch (IOException e) {
             LOG.error("Error reading file: {}", filePath, e);
         } catch (JAXBException e) {

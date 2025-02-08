@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der Eclipse Implementation of JAXB, v3.0.0 generiert 
 // Siehe https://eclipse-ee4j.github.io/jaxb-ri 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2025.02.06 um 01:59:32 PM CET 
+// Generiert: 2025.02.08 um 03:32:02 PM CET 
 //
 
 
@@ -53,6 +53,8 @@ import org.omg.spec.bpmn._20100524.di.BPMNDiagram;
  *       &lt;attribute name="typeLanguage" type="{http://www.w3.org/2001/XMLSchema}anyURI" default="http://www.w3.org/2001/XMLSchema" /&gt;
  *       &lt;attribute name="exporter" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
  *       &lt;attribute name="exporterVersion" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *       &lt;attribute ref="{http://camunda.org/schema/modeler/1.0}executionPlatform"/&gt;
+ *       &lt;attribute ref="{http://camunda.org/schema/modeler/1.0}executionPlatformVersion"/&gt;
  *       &lt;anyAttribute processContents='lax' namespace='##other'/&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -105,6 +107,12 @@ public class Definitions
     protected String exporter;
     @XmlAttribute(name = "exporterVersion")
     protected String exporterVersion;
+    @XmlAttribute(name = "executionPlatform", namespace = "http://camunda.org/schema/modeler/1.0")
+    @XmlSchemaType(name = "anySimpleType")
+    protected String executionPlatform;
+    @XmlAttribute(name = "executionPlatformVersion", namespace = "http://camunda.org/schema/modeler/1.0")
+    @XmlSchemaType(name = "anySimpleType")
+    protected String executionPlatformVersion;
     @XmlAnyAttribute
     private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
@@ -184,40 +192,40 @@ public class Definitions
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
+     * {@link JAXBElement }{@code <}{@link TResource }{@code >}
      * {@link JAXBElement }{@code <}{@link TPartnerRole }{@code >}
+     * {@link JAXBElement }{@code <}{@link TSignal }{@code >}
+     * {@link JAXBElement }{@code <}{@link TInterface }{@code >}
+     * {@link JAXBElement }{@code <}{@link TError }{@code >}
      * {@link JAXBElement }{@code <}{@link TPartnerEntity }{@code >}
-     * {@link JAXBElement }{@code <}{@link TGlobalBusinessRuleTask }{@code >}
-     * {@link JAXBElement }{@code <}{@link TGlobalManualTask }{@code >}
-     * {@link JAXBElement }{@code <}{@link TGlobalScriptTask }{@code >}
-     * {@link JAXBElement }{@code <}{@link TProcess }{@code >}
-     * {@link JAXBElement }{@code <}{@link TErrorEventDefinition }{@code >}
-     * {@link JAXBElement }{@code <}{@link TLinkEventDefinition }{@code >}
      * {@link JAXBElement }{@code <}{@link TTerminateEventDefinition }{@code >}
-     * {@link JAXBElement }{@code <}{@link TConditionalEventDefinition }{@code >}
-     * {@link JAXBElement }{@code <}{@link TCancelEventDefinition }{@code >}
-     * {@link JAXBElement }{@code <}{@link TCompensateEventDefinition }{@code >}
-     * {@link JAXBElement }{@code <}{@link TMessageEventDefinition }{@code >}
-     * {@link JAXBElement }{@code <}{@link TSignalEventDefinition }{@code >}
      * {@link JAXBElement }{@code <}{@link TTimerEventDefinition }{@code >}
      * {@link JAXBElement }{@code <}{@link TEscalationEventDefinition }{@code >}
+     * {@link JAXBElement }{@code <}{@link TConditionalEventDefinition }{@code >}
+     * {@link JAXBElement }{@code <}{@link TLinkEventDefinition }{@code >}
+     * {@link JAXBElement }{@code <}{@link TCancelEventDefinition }{@code >}
+     * {@link JAXBElement }{@code <}{@link TCompensateEventDefinition }{@code >}
+     * {@link JAXBElement }{@code <}{@link TErrorEventDefinition }{@code >}
+     * {@link JAXBElement }{@code <}{@link TMessageEventDefinition }{@code >}
+     * {@link JAXBElement }{@code <}{@link TSignalEventDefinition }{@code >}
      * {@link JAXBElement }{@code <}{@link TEventDefinition }{@code >}
-     * {@link JAXBElement }{@code <}{@link TCategory }{@code >}
-     * {@link JAXBElement }{@code <}{@link TSignal }{@code >}
-     * {@link JAXBElement }{@code <}{@link TMessage }{@code >}
-     * {@link JAXBElement }{@code <}{@link TError }{@code >}
-     * {@link JAXBElement }{@code <}{@link TCorrelationProperty }{@code >}
-     * {@link JAXBElement }{@code <}{@link TEndPoint }{@code >}
-     * {@link JAXBElement }{@code <}{@link TDataStore }{@code >}
+     * {@link JAXBElement }{@code <}{@link TGlobalBusinessRuleTask }{@code >}
+     * {@link JAXBElement }{@code <}{@link TGlobalUserTask }{@code >}
      * {@link JAXBElement }{@code <}{@link TItemDefinition }{@code >}
+     * {@link JAXBElement }{@code <}{@link TCategory }{@code >}
+     * {@link JAXBElement }{@code <}{@link TDataStore }{@code >}
      * {@link JAXBElement }{@code <}{@link TGlobalChoreographyTask }{@code >}
      * {@link JAXBElement }{@code <}{@link TChoreography }{@code >}
      * {@link JAXBElement }{@code <}{@link TGlobalConversation }{@code >}
      * {@link JAXBElement }{@code <}{@link TCollaboration }{@code >}
-     * {@link JAXBElement }{@code <}{@link TGlobalTask }{@code >}
-     * {@link JAXBElement }{@code <}{@link TInterface }{@code >}
-     * {@link JAXBElement }{@code <}{@link TResource }{@code >}
+     * {@link JAXBElement }{@code <}{@link TMessage }{@code >}
+     * {@link JAXBElement }{@code <}{@link TEndPoint }{@code >}
      * {@link JAXBElement }{@code <}{@link TEscalation }{@code >}
-     * {@link JAXBElement }{@code <}{@link TGlobalUserTask }{@code >}
+     * {@link JAXBElement }{@code <}{@link TCorrelationProperty }{@code >}
+     * {@link JAXBElement }{@code <}{@link TGlobalManualTask }{@code >}
+     * {@link JAXBElement }{@code <}{@link TGlobalScriptTask }{@code >}
+     * {@link JAXBElement }{@code <}{@link TGlobalTask }{@code >}
+     * {@link JAXBElement }{@code <}{@link TProcess }{@code >}
      * {@link JAXBElement }{@code <}{@link TRootElement }{@code >}
      * 
      * 
@@ -461,6 +469,54 @@ public class Definitions
      */
     public void setExporterVersion(String value) {
         this.exporterVersion = value;
+    }
+
+    /**
+     * Ruft den Wert der executionPlatform-Eigenschaft ab.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getExecutionPlatform() {
+        return executionPlatform;
+    }
+
+    /**
+     * Legt den Wert der executionPlatform-Eigenschaft fest.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setExecutionPlatform(String value) {
+        this.executionPlatform = value;
+    }
+
+    /**
+     * Ruft den Wert der executionPlatformVersion-Eigenschaft ab.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getExecutionPlatformVersion() {
+        return executionPlatformVersion;
+    }
+
+    /**
+     * Legt den Wert der executionPlatformVersion-Eigenschaft fest.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setExecutionPlatformVersion(String value) {
+        this.executionPlatformVersion = value;
     }
 
     /**

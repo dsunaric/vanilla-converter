@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der Eclipse Implementation of JAXB, v3.0.0 generiert 
 // Siehe https://eclipse-ee4j.github.io/jaxb-ri 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2025.02.06 um 01:59:32 PM CET 
+// Generiert: 2025.02.08 um 03:32:02 PM CET 
 //
 
 
@@ -219,37 +219,37 @@ public class TProcess
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link TSendTask }{@code >}
-     * {@link JAXBElement }{@code <}{@link TEndEvent }{@code >}
-     * {@link JAXBElement }{@code <}{@link TCallActivity }{@code >}
-     * {@link JAXBElement }{@code <}{@link TDataObject }{@code >}
-     * {@link JAXBElement }{@code <}{@link TTask }{@code >}
-     * {@link JAXBElement }{@code <}{@link TManualTask }{@code >}
-     * {@link JAXBElement }{@code <}{@link TServiceTask }{@code >}
-     * {@link JAXBElement }{@code <}{@link TExclusiveGateway }{@code >}
-     * {@link JAXBElement }{@code <}{@link TImplicitThrowEvent }{@code >}
-     * {@link JAXBElement }{@code <}{@link TIntermediateCatchEvent }{@code >}
-     * {@link JAXBElement }{@code <}{@link TCallChoreography }{@code >}
-     * {@link JAXBElement }{@code <}{@link TEventBasedGateway }{@code >}
-     * {@link JAXBElement }{@code <}{@link TScriptTask }{@code >}
-     * {@link JAXBElement }{@code <}{@link TSubChoreography }{@code >}
-     * {@link JAXBElement }{@code <}{@link TUserTask }{@code >}
-     * {@link JAXBElement }{@code <}{@link TIntermediateThrowEvent }{@code >}
-     * {@link JAXBElement }{@code <}{@link TStartEvent }{@code >}
-     * {@link JAXBElement }{@code <}{@link TChoreographyTask }{@code >}
-     * {@link JAXBElement }{@code <}{@link TReceiveTask }{@code >}
-     * {@link JAXBElement }{@code <}{@link TDataObjectReference }{@code >}
      * {@link JAXBElement }{@code <}{@link TParallelGateway }{@code >}
-     * {@link JAXBElement }{@code <}{@link TBusinessRuleTask }{@code >}
-     * {@link JAXBElement }{@code <}{@link TAdHocSubProcess }{@code >}
-     * {@link JAXBElement }{@code <}{@link TDataStoreReference }{@code >}
      * {@link JAXBElement }{@code <}{@link TSequenceFlow }{@code >}
-     * {@link JAXBElement }{@code <}{@link TInclusiveGateway }{@code >}
-     * {@link JAXBElement }{@code <}{@link TTransaction }{@code >}
+     * {@link JAXBElement }{@code <}{@link TManualTask }{@code >}
+     * {@link JAXBElement }{@code <}{@link TCallChoreography }{@code >}
+     * {@link JAXBElement }{@code <}{@link TIntermediateCatchEvent }{@code >}
+     * {@link JAXBElement }{@code <}{@link TBoundaryEvent }{@code >}
+     * {@link JAXBElement }{@code <}{@link TScriptTask }{@code >}
+     * {@link JAXBElement }{@code <}{@link TCallActivity }{@code >}
+     * {@link JAXBElement }{@code <}{@link TReceiveTask }{@code >}
+     * {@link JAXBElement }{@code <}{@link TEvent }{@code >}
+     * {@link JAXBElement }{@code <}{@link TEndEvent }{@code >}
      * {@link JAXBElement }{@code <}{@link TSubProcess }{@code >}
      * {@link JAXBElement }{@code <}{@link TComplexGateway }{@code >}
-     * {@link JAXBElement }{@code <}{@link TBoundaryEvent }{@code >}
-     * {@link JAXBElement }{@code <}{@link TEvent }{@code >}
+     * {@link JAXBElement }{@code <}{@link TDataObjectReference }{@code >}
+     * {@link JAXBElement }{@code <}{@link TSubChoreography }{@code >}
+     * {@link JAXBElement }{@code <}{@link TAdHocSubProcess }{@code >}
+     * {@link JAXBElement }{@code <}{@link TSendTask }{@code >}
+     * {@link JAXBElement }{@code <}{@link TTask }{@code >}
+     * {@link JAXBElement }{@code <}{@link TStartEvent }{@code >}
+     * {@link JAXBElement }{@code <}{@link TExclusiveGateway }{@code >}
+     * {@link JAXBElement }{@code <}{@link TEventBasedGateway }{@code >}
+     * {@link JAXBElement }{@code <}{@link TTransaction }{@code >}
+     * {@link JAXBElement }{@code <}{@link TBusinessRuleTask }{@code >}
+     * {@link JAXBElement }{@code <}{@link TImplicitThrowEvent }{@code >}
+     * {@link JAXBElement }{@code <}{@link TInclusiveGateway }{@code >}
+     * {@link JAXBElement }{@code <}{@link TUserTask }{@code >}
+     * {@link JAXBElement }{@code <}{@link TDataStoreReference }{@code >}
+     * {@link JAXBElement }{@code <}{@link TIntermediateThrowEvent }{@code >}
+     * {@link JAXBElement }{@code <}{@link TServiceTask }{@code >}
+     * {@link JAXBElement }{@code <}{@link TDataObject }{@code >}
+     * {@link JAXBElement }{@code <}{@link TChoreographyTask }{@code >}
      * {@link JAXBElement }{@code <}{@link TFlowElement }{@code >}
      * 
      * 
@@ -280,8 +280,8 @@ public class TProcess
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link JAXBElement }{@code <}{@link TAssociation }{@code >}
-     * {@link JAXBElement }{@code <}{@link TGroup }{@code >}
      * {@link JAXBElement }{@code <}{@link TTextAnnotation }{@code >}
+     * {@link JAXBElement }{@code <}{@link TGroup }{@code >}
      * {@link JAXBElement }{@code <}{@link TArtifact }{@code >}
      * 
      * 
@@ -311,8 +311,8 @@ public class TProcess
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link THumanPerformer }{@code >}
      * {@link JAXBElement }{@code <}{@link TPotentialOwner }{@code >}
+     * {@link JAXBElement }{@code <}{@link THumanPerformer }{@code >}
      * {@link JAXBElement }{@code <}{@link TPerformer }{@code >}
      * {@link JAXBElement }{@code <}{@link TResourceRole }{@code >}
      * 
