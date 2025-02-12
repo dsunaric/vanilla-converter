@@ -5,538 +5,538 @@
 Diese Datei wurde mit der Eclipse Implementation of JAXB, v3.0.0 generiert 
 Siehe https://eclipse-ee4j.github.io/jaxb-ri 
 Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-Generiert: 2025.02.08 um 03:32:02 PM CET 
+Generiert: 2025.02.12 um 09:20:58 AM CET 
 
   -->
   <bindings scd="x-schema::tns" xmlns:tns="http://www.omg.org/spec/DD/20100524/DI">
     <schemaBindings map="false">
-      <package name="org.omg.spec.dd._20100524.di"/>
+      <package name="xml"/>
     </schemaBindings>
     <bindings scd="~tns:DiagramElement">
-      <class ref="org.omg.spec.dd._20100524.di.DiagramElement"/>
+      <class ref="xml.DiagramElement"/>
     </bindings>
     <bindings scd="~tns:Diagram">
-      <class ref="org.omg.spec.dd._20100524.di.Diagram"/>
+      <class ref="xml.Diagram"/>
     </bindings>
     <bindings scd="~tns:Plane">
-      <class ref="org.omg.spec.dd._20100524.di.Plane"/>
+      <class ref="xml.Plane"/>
     </bindings>
     <bindings scd="~tns:Node">
-      <class ref="org.omg.spec.dd._20100524.di.Node"/>
+      <class ref="xml.Node"/>
     </bindings>
     <bindings scd="~tns:Style">
-      <class ref="org.omg.spec.dd._20100524.di.Style"/>
+      <class ref="xml.Style"/>
     </bindings>
     <bindings scd="~tns:Label">
-      <class ref="org.omg.spec.dd._20100524.di.Label"/>
+      <class ref="xml.Label"/>
     </bindings>
     <bindings scd="~tns:Edge">
-      <class ref="org.omg.spec.dd._20100524.di.Edge"/>
+      <class ref="xml.Edge"/>
     </bindings>
     <bindings scd="~tns:Shape">
-      <class ref="org.omg.spec.dd._20100524.di.Shape"/>
+      <class ref="xml.Shape"/>
     </bindings>
     <bindings scd="~tns:LabeledEdge">
-      <class ref="org.omg.spec.dd._20100524.di.LabeledEdge"/>
+      <class ref="xml.LabeledEdge"/>
     </bindings>
     <bindings scd="~tns:LabeledShape">
-      <class ref="org.omg.spec.dd._20100524.di.LabeledShape"/>
+      <class ref="xml.LabeledShape"/>
     </bindings>
   </bindings>
   <bindings scd="x-schema::tns" xmlns:tns="http://www.omg.org/spec/BPMN/20100524/MODEL">
     <schemaBindings map="false">
-      <package name="org.omg.spec.bpmn._20100524.model"/>
+      <package name="xml"/>
     </schemaBindings>
     <bindings scd="~tns:tActivity">
-      <class ref="org.omg.spec.bpmn._20100524.model.TActivity"/>
+      <class ref="xml.TActivity"/>
     </bindings>
     <bindings scd="~tns:tAdHocSubProcess">
-      <class ref="org.omg.spec.bpmn._20100524.model.TAdHocSubProcess"/>
+      <class ref="xml.TAdHocSubProcess"/>
     </bindings>
     <bindings scd="~tns:tFlowElement">
-      <class ref="org.omg.spec.bpmn._20100524.model.TFlowElement"/>
+      <class ref="xml.TFlowElement"/>
     </bindings>
     <bindings scd="~tns:tArtifact">
-      <class ref="org.omg.spec.bpmn._20100524.model.TArtifact"/>
+      <class ref="xml.TArtifact"/>
     </bindings>
     <bindings scd="~tns:tAssignment">
-      <class ref="org.omg.spec.bpmn._20100524.model.Assignment"/>
+      <class ref="xml.Assignment"/>
     </bindings>
     <bindings scd="~tns:tBaseElement">
-      <class ref="org.omg.spec.bpmn._20100524.model.TBaseElement"/>
+      <class ref="xml.TBaseElement"/>
     </bindings>
     <bindings scd="~tns:tDocumentation">
-      <class ref="org.omg.spec.bpmn._20100524.model.Documentation"/>
+      <class ref="xml.Documentation"/>
     </bindings>
     <bindings scd="~tns:tExtensionElements">
-      <class ref="org.omg.spec.bpmn._20100524.model.ExtensionElements"/>
+      <class ref="xml.ExtensionElements"/>
     </bindings>
     <bindings scd="~tns:tExpression">
-      <class ref="org.omg.spec.bpmn._20100524.model.TExpression"/>
+      <class ref="xml.TExpression"/>
     </bindings>
     <bindings scd="~tns:tAssociation">
-      <class ref="org.omg.spec.bpmn._20100524.model.TAssociation"/>
+      <class ref="xml.TAssociation"/>
     </bindings>
     <bindings scd="~tns:tAuditing">
-      <class ref="org.omg.spec.bpmn._20100524.model.Auditing"/>
+      <class ref="xml.Auditing"/>
     </bindings>
     <bindings scd="~tns:tBaseElementWithMixedContent">
-      <class ref="org.omg.spec.bpmn._20100524.model.TBaseElementWithMixedContent"/>
+      <class ref="xml.TBaseElementWithMixedContent"/>
     </bindings>
     <bindings scd="~tns:tBoundaryEvent">
-      <class ref="org.omg.spec.bpmn._20100524.model.TBoundaryEvent"/>
+      <class ref="xml.TBoundaryEvent"/>
     </bindings>
     <bindings scd="~tns:tBusinessRuleTask">
-      <class ref="org.omg.spec.bpmn._20100524.model.TBusinessRuleTask"/>
+      <class ref="xml.TBusinessRuleTask"/>
     </bindings>
     <bindings scd="~tns:tCallableElement">
-      <class ref="org.omg.spec.bpmn._20100524.model.TCallableElement"/>
+      <class ref="xml.TCallableElement"/>
     </bindings>
     <bindings scd="~tns:tCallActivity">
-      <class ref="org.omg.spec.bpmn._20100524.model.TCallActivity"/>
+      <class ref="xml.TCallActivity"/>
     </bindings>
     <bindings scd="~tns:tCallChoreography">
-      <class ref="org.omg.spec.bpmn._20100524.model.TCallChoreography"/>
+      <class ref="xml.TCallChoreography"/>
     </bindings>
     <bindings scd="~tns:tCallConversation">
-      <class ref="org.omg.spec.bpmn._20100524.model.TCallConversation"/>
+      <class ref="xml.TCallConversation"/>
     </bindings>
     <bindings scd="~tns:tConversationNode">
-      <class ref="org.omg.spec.bpmn._20100524.model.TConversationNode"/>
+      <class ref="xml.TConversationNode"/>
     </bindings>
     <bindings scd="~tns:tCancelEventDefinition">
-      <class ref="org.omg.spec.bpmn._20100524.model.TCancelEventDefinition"/>
+      <class ref="xml.TCancelEventDefinition"/>
     </bindings>
     <bindings scd="~tns:tEventDefinition">
-      <class ref="org.omg.spec.bpmn._20100524.model.TEventDefinition"/>
+      <class ref="xml.TEventDefinition"/>
     </bindings>
     <bindings scd="~tns:tRootElement">
-      <class ref="org.omg.spec.bpmn._20100524.model.TRootElement"/>
+      <class ref="xml.TRootElement"/>
     </bindings>
     <bindings scd="~tns:tCatchEvent">
-      <class ref="org.omg.spec.bpmn._20100524.model.TCatchEvent"/>
+      <class ref="xml.TCatchEvent"/>
     </bindings>
     <bindings scd="~tns:tCategory">
-      <class ref="org.omg.spec.bpmn._20100524.model.TCategory"/>
+      <class ref="xml.TCategory"/>
     </bindings>
     <bindings scd="~tns:tCategoryValue">
-      <class ref="org.omg.spec.bpmn._20100524.model.CategoryValue"/>
+      <class ref="xml.CategoryValue"/>
     </bindings>
     <bindings scd="~tns:tChoreography">
-      <class ref="org.omg.spec.bpmn._20100524.model.TChoreography"/>
+      <class ref="xml.TChoreography"/>
     </bindings>
     <bindings scd="~tns:tCollaboration">
-      <class ref="org.omg.spec.bpmn._20100524.model.TCollaboration"/>
+      <class ref="xml.TCollaboration"/>
     </bindings>
     <bindings scd="~tns:tChoreographyActivity">
-      <class ref="org.omg.spec.bpmn._20100524.model.TChoreographyActivity"/>
+      <class ref="xml.TChoreographyActivity"/>
     </bindings>
     <bindings scd="~tns:tChoreographyTask">
-      <class ref="org.omg.spec.bpmn._20100524.model.TChoreographyTask"/>
+      <class ref="xml.TChoreographyTask"/>
     </bindings>
     <bindings scd="~tns:tCompensateEventDefinition">
-      <class ref="org.omg.spec.bpmn._20100524.model.TCompensateEventDefinition"/>
+      <class ref="xml.TCompensateEventDefinition"/>
     </bindings>
     <bindings scd="~tns:tComplexBehaviorDefinition">
-      <class ref="org.omg.spec.bpmn._20100524.model.ComplexBehaviorDefinition"/>
+      <class ref="xml.ComplexBehaviorDefinition"/>
     </bindings>
     <bindings scd="~tns:tFormalExpression">
-      <class ref="org.omg.spec.bpmn._20100524.model.TFormalExpression"/>
+      <class ref="xml.TFormalExpression"/>
     </bindings>
     <bindings scd="~tns:tImplicitThrowEvent">
-      <class ref="org.omg.spec.bpmn._20100524.model.TImplicitThrowEvent"/>
+      <class ref="xml.TImplicitThrowEvent"/>
     </bindings>
     <bindings scd="~tns:tComplexGateway">
-      <class ref="org.omg.spec.bpmn._20100524.model.TComplexGateway"/>
+      <class ref="xml.TComplexGateway"/>
     </bindings>
     <bindings scd="~tns:tConditionalEventDefinition">
-      <class ref="org.omg.spec.bpmn._20100524.model.TConditionalEventDefinition"/>
+      <class ref="xml.TConditionalEventDefinition"/>
     </bindings>
     <bindings scd="~tns:tConversation">
-      <class ref="org.omg.spec.bpmn._20100524.model.TConversation"/>
+      <class ref="xml.TConversation"/>
     </bindings>
     <bindings scd="~tns:tConversationAssociation">
-      <class ref="org.omg.spec.bpmn._20100524.model.ConversationAssociation"/>
+      <class ref="xml.ConversationAssociation"/>
     </bindings>
     <bindings scd="~tns:tConversationLink">
-      <class ref="org.omg.spec.bpmn._20100524.model.ConversationLink"/>
+      <class ref="xml.ConversationLink"/>
     </bindings>
     <bindings scd="~tns:tCorrelationKey">
-      <class ref="org.omg.spec.bpmn._20100524.model.CorrelationKey"/>
+      <class ref="xml.CorrelationKey"/>
     </bindings>
     <bindings scd="~tns:tCorrelationProperty">
-      <class ref="org.omg.spec.bpmn._20100524.model.TCorrelationProperty"/>
+      <class ref="xml.TCorrelationProperty"/>
     </bindings>
     <bindings scd="~tns:tCorrelationPropertyBinding">
-      <class ref="org.omg.spec.bpmn._20100524.model.CorrelationPropertyBinding"/>
+      <class ref="xml.CorrelationPropertyBinding"/>
     </bindings>
     <bindings scd="~tns:tCorrelationPropertyRetrievalExpression">
-      <class ref="org.omg.spec.bpmn._20100524.model.CorrelationPropertyRetrievalExpression"/>
+      <class ref="xml.CorrelationPropertyRetrievalExpression"/>
     </bindings>
     <bindings scd="~tns:tCorrelationSubscription">
-      <class ref="org.omg.spec.bpmn._20100524.model.CorrelationSubscription"/>
+      <class ref="xml.CorrelationSubscription"/>
     </bindings>
     <bindings scd="~tns:tDataAssociation">
-      <class ref="org.omg.spec.bpmn._20100524.model.TDataAssociation"/>
+      <class ref="xml.TDataAssociation"/>
     </bindings>
     <bindings scd="~tns:tDataInput">
-      <class ref="org.omg.spec.bpmn._20100524.model.DataInput"/>
+      <class ref="xml.DataInput"/>
     </bindings>
     <bindings scd="~tns:tDataState">
-      <class ref="org.omg.spec.bpmn._20100524.model.DataState"/>
+      <class ref="xml.DataState"/>
     </bindings>
     <bindings scd="~tns:tDataInputAssociation">
-      <class ref="org.omg.spec.bpmn._20100524.model.DataInputAssociation"/>
+      <class ref="xml.DataInputAssociation"/>
     </bindings>
     <bindings scd="~tns:tDataObject">
-      <class ref="org.omg.spec.bpmn._20100524.model.TDataObject"/>
+      <class ref="xml.TDataObject"/>
     </bindings>
     <bindings scd="~tns:tDataObjectReference">
-      <class ref="org.omg.spec.bpmn._20100524.model.TDataObjectReference"/>
+      <class ref="xml.TDataObjectReference"/>
     </bindings>
     <bindings scd="~tns:tDataOutput">
-      <class ref="org.omg.spec.bpmn._20100524.model.DataOutput"/>
+      <class ref="xml.DataOutput"/>
     </bindings>
     <bindings scd="~tns:tDataOutputAssociation">
-      <class ref="org.omg.spec.bpmn._20100524.model.DataOutputAssociation"/>
+      <class ref="xml.DataOutputAssociation"/>
     </bindings>
     <bindings scd="~tns:tDataStore">
-      <class ref="org.omg.spec.bpmn._20100524.model.TDataStore"/>
+      <class ref="xml.TDataStore"/>
     </bindings>
     <bindings scd="~tns:tDataStoreReference">
-      <class ref="org.omg.spec.bpmn._20100524.model.TDataStoreReference"/>
+      <class ref="xml.TDataStoreReference"/>
     </bindings>
     <bindings scd="~tns:tEndEvent">
-      <class ref="org.omg.spec.bpmn._20100524.model.TEndEvent"/>
+      <class ref="xml.TEndEvent"/>
     </bindings>
     <bindings scd="~tns:tEndPoint">
-      <class ref="org.omg.spec.bpmn._20100524.model.TEndPoint"/>
+      <class ref="xml.TEndPoint"/>
     </bindings>
     <bindings scd="~tns:tError">
-      <class ref="org.omg.spec.bpmn._20100524.model.TError"/>
+      <class ref="xml.TError"/>
     </bindings>
     <bindings scd="~tns:tErrorEventDefinition">
-      <class ref="org.omg.spec.bpmn._20100524.model.TErrorEventDefinition"/>
+      <class ref="xml.TErrorEventDefinition"/>
     </bindings>
     <bindings scd="~tns:tEscalation">
-      <class ref="org.omg.spec.bpmn._20100524.model.TEscalation"/>
+      <class ref="xml.TEscalation"/>
     </bindings>
     <bindings scd="~tns:tEscalationEventDefinition">
-      <class ref="org.omg.spec.bpmn._20100524.model.TEscalationEventDefinition"/>
+      <class ref="xml.TEscalationEventDefinition"/>
     </bindings>
     <bindings scd="~tns:tEvent">
-      <class ref="org.omg.spec.bpmn._20100524.model.TEvent"/>
+      <class ref="xml.TEvent"/>
     </bindings>
     <bindings scd="~tns:tEventBasedGateway">
-      <class ref="org.omg.spec.bpmn._20100524.model.TEventBasedGateway"/>
+      <class ref="xml.TEventBasedGateway"/>
     </bindings>
     <bindings scd="~tns:tExclusiveGateway">
-      <class ref="org.omg.spec.bpmn._20100524.model.TExclusiveGateway"/>
+      <class ref="xml.TExclusiveGateway"/>
     </bindings>
     <bindings scd="~tns:tExtension">
-      <class ref="org.omg.spec.bpmn._20100524.model.Extension"/>
+      <class ref="xml.Extension"/>
     </bindings>
     <bindings scd="~tns:tFlowNode">
-      <class ref="org.omg.spec.bpmn._20100524.model.TFlowNode"/>
+      <class ref="xml.TFlowNode"/>
     </bindings>
     <bindings scd="~tns:tGateway">
-      <class ref="org.omg.spec.bpmn._20100524.model.TGateway"/>
+      <class ref="xml.TGateway"/>
     </bindings>
     <bindings scd="~tns:tGlobalBusinessRuleTask">
-      <class ref="org.omg.spec.bpmn._20100524.model.TGlobalBusinessRuleTask"/>
+      <class ref="xml.TGlobalBusinessRuleTask"/>
     </bindings>
     <bindings scd="~tns:tGlobalChoreographyTask">
-      <class ref="org.omg.spec.bpmn._20100524.model.TGlobalChoreographyTask"/>
+      <class ref="xml.TGlobalChoreographyTask"/>
     </bindings>
     <bindings scd="~tns:tGlobalConversation">
-      <class ref="org.omg.spec.bpmn._20100524.model.TGlobalConversation"/>
+      <class ref="xml.TGlobalConversation"/>
     </bindings>
     <bindings scd="~tns:tGlobalManualTask">
-      <class ref="org.omg.spec.bpmn._20100524.model.TGlobalManualTask"/>
+      <class ref="xml.TGlobalManualTask"/>
     </bindings>
     <bindings scd="~tns:tGlobalScriptTask">
-      <class ref="org.omg.spec.bpmn._20100524.model.TGlobalScriptTask"/>
+      <class ref="xml.TGlobalScriptTask"/>
     </bindings>
     <bindings scd="~tns:tGlobalTask">
-      <class ref="org.omg.spec.bpmn._20100524.model.TGlobalTask"/>
+      <class ref="xml.TGlobalTask"/>
     </bindings>
     <bindings scd="~tns:tGlobalUserTask">
-      <class ref="org.omg.spec.bpmn._20100524.model.TGlobalUserTask"/>
+      <class ref="xml.TGlobalUserTask"/>
     </bindings>
     <bindings scd="~tns:tGroup">
-      <class ref="org.omg.spec.bpmn._20100524.model.TGroup"/>
+      <class ref="xml.TGroup"/>
     </bindings>
     <bindings scd="~tns:tHumanPerformer">
-      <class ref="org.omg.spec.bpmn._20100524.model.THumanPerformer"/>
+      <class ref="xml.THumanPerformer"/>
     </bindings>
     <bindings scd="~tns:tPerformer">
-      <class ref="org.omg.spec.bpmn._20100524.model.TPerformer"/>
+      <class ref="xml.TPerformer"/>
     </bindings>
     <bindings scd="~tns:tResourceRole">
-      <class ref="org.omg.spec.bpmn._20100524.model.TResourceRole"/>
+      <class ref="xml.TResourceRole"/>
     </bindings>
     <bindings scd="~tns:tInclusiveGateway">
-      <class ref="org.omg.spec.bpmn._20100524.model.TInclusiveGateway"/>
+      <class ref="xml.TInclusiveGateway"/>
     </bindings>
     <bindings scd="~tns:tInputSet">
-      <class ref="org.omg.spec.bpmn._20100524.model.InputSet"/>
+      <class ref="xml.InputSet"/>
     </bindings>
     <bindings scd="~tns:tInterface">
-      <class ref="org.omg.spec.bpmn._20100524.model.TInterface"/>
+      <class ref="xml.TInterface"/>
     </bindings>
     <bindings scd="~tns:tIntermediateCatchEvent">
-      <class ref="org.omg.spec.bpmn._20100524.model.TIntermediateCatchEvent"/>
+      <class ref="xml.TIntermediateCatchEvent"/>
     </bindings>
     <bindings scd="~tns:tIntermediateThrowEvent">
-      <class ref="org.omg.spec.bpmn._20100524.model.TIntermediateThrowEvent"/>
+      <class ref="xml.TIntermediateThrowEvent"/>
     </bindings>
     <bindings scd="~tns:tInputOutputBinding">
-      <class ref="org.omg.spec.bpmn._20100524.model.IoBinding"/>
+      <class ref="xml.IoBinding"/>
     </bindings>
     <bindings scd="~tns:tInputOutputSpecification">
-      <class ref="org.omg.spec.bpmn._20100524.model.IoSpecification"/>
+      <class ref="xml.IoSpecification"/>
     </bindings>
     <bindings scd="~tns:tOutputSet">
-      <class ref="org.omg.spec.bpmn._20100524.model.OutputSet"/>
+      <class ref="xml.OutputSet"/>
     </bindings>
     <bindings scd="~tns:tItemDefinition">
-      <class ref="org.omg.spec.bpmn._20100524.model.TItemDefinition"/>
+      <class ref="xml.TItemDefinition"/>
     </bindings>
     <bindings scd="~tns:tLane">
-      <class ref="org.omg.spec.bpmn._20100524.model.Lane"/>
+      <class ref="xml.Lane"/>
     </bindings>
     <bindings scd="~tns:tLaneSet">
-      <class ref="org.omg.spec.bpmn._20100524.model.LaneSet"/>
+      <class ref="xml.LaneSet"/>
     </bindings>
     <bindings scd="~tns:tLinkEventDefinition">
-      <class ref="org.omg.spec.bpmn._20100524.model.TLinkEventDefinition"/>
+      <class ref="xml.TLinkEventDefinition"/>
     </bindings>
     <bindings scd="~tns:tLoopCharacteristics">
-      <class ref="org.omg.spec.bpmn._20100524.model.TLoopCharacteristics"/>
+      <class ref="xml.TLoopCharacteristics"/>
     </bindings>
     <bindings scd="~tns:tManualTask">
-      <class ref="org.omg.spec.bpmn._20100524.model.TManualTask"/>
+      <class ref="xml.TManualTask"/>
     </bindings>
     <bindings scd="~tns:tMessage">
-      <class ref="org.omg.spec.bpmn._20100524.model.TMessage"/>
+      <class ref="xml.TMessage"/>
     </bindings>
     <bindings scd="~tns:tMessageEventDefinition">
-      <class ref="org.omg.spec.bpmn._20100524.model.TMessageEventDefinition"/>
+      <class ref="xml.TMessageEventDefinition"/>
     </bindings>
     <bindings scd="~tns:tMessageFlow">
-      <class ref="org.omg.spec.bpmn._20100524.model.MessageFlow"/>
+      <class ref="xml.MessageFlow"/>
     </bindings>
     <bindings scd="~tns:tMessageFlowAssociation">
-      <class ref="org.omg.spec.bpmn._20100524.model.MessageFlowAssociation"/>
+      <class ref="xml.MessageFlowAssociation"/>
     </bindings>
     <bindings scd="~tns:tMonitoring">
-      <class ref="org.omg.spec.bpmn._20100524.model.Monitoring"/>
+      <class ref="xml.Monitoring"/>
     </bindings>
     <bindings scd="~tns:tMultiInstanceLoopCharacteristics">
-      <class ref="org.omg.spec.bpmn._20100524.model.TMultiInstanceLoopCharacteristics"/>
+      <class ref="xml.TMultiInstanceLoopCharacteristics"/>
     </bindings>
     <bindings scd="~tns:tOperation">
-      <class ref="org.omg.spec.bpmn._20100524.model.Operation"/>
+      <class ref="xml.Operation"/>
     </bindings>
     <bindings scd="~tns:tParallelGateway">
-      <class ref="org.omg.spec.bpmn._20100524.model.TParallelGateway"/>
+      <class ref="xml.TParallelGateway"/>
     </bindings>
     <bindings scd="~tns:tParticipant">
-      <class ref="org.omg.spec.bpmn._20100524.model.Participant"/>
+      <class ref="xml.Participant"/>
     </bindings>
     <bindings scd="~tns:tParticipantMultiplicity">
-      <class ref="org.omg.spec.bpmn._20100524.model.ParticipantMultiplicity"/>
+      <class ref="xml.ParticipantMultiplicity"/>
     </bindings>
     <bindings scd="~tns:tParticipantAssociation">
-      <class ref="org.omg.spec.bpmn._20100524.model.ParticipantAssociation"/>
+      <class ref="xml.ParticipantAssociation"/>
     </bindings>
     <bindings scd="~tns:tPartnerEntity">
-      <class ref="org.omg.spec.bpmn._20100524.model.TPartnerEntity"/>
+      <class ref="xml.TPartnerEntity"/>
     </bindings>
     <bindings scd="~tns:tPartnerRole">
-      <class ref="org.omg.spec.bpmn._20100524.model.TPartnerRole"/>
+      <class ref="xml.TPartnerRole"/>
     </bindings>
     <bindings scd="~tns:tPotentialOwner">
-      <class ref="org.omg.spec.bpmn._20100524.model.TPotentialOwner"/>
+      <class ref="xml.TPotentialOwner"/>
     </bindings>
     <bindings scd="~tns:tProcess">
-      <class ref="org.omg.spec.bpmn._20100524.model.TProcess"/>
+      <class ref="xml.TProcess"/>
     </bindings>
     <bindings scd="~tns:tProperty">
-      <class ref="org.omg.spec.bpmn._20100524.model.Property"/>
+      <class ref="xml.Property"/>
     </bindings>
     <bindings scd="~tns:tReceiveTask">
-      <class ref="org.omg.spec.bpmn._20100524.model.TReceiveTask"/>
+      <class ref="xml.TReceiveTask"/>
     </bindings>
     <bindings scd="~tns:tRelationship">
-      <class ref="org.omg.spec.bpmn._20100524.model.Relationship"/>
+      <class ref="xml.Relationship"/>
     </bindings>
     <bindings scd="~tns:tRendering">
-      <class ref="org.omg.spec.bpmn._20100524.model.Rendering"/>
+      <class ref="xml.Rendering"/>
     </bindings>
     <bindings scd="~tns:tResource">
-      <class ref="org.omg.spec.bpmn._20100524.model.TResource"/>
+      <class ref="xml.TResource"/>
     </bindings>
     <bindings scd="~tns:tResourceAssignmentExpression">
-      <class ref="org.omg.spec.bpmn._20100524.model.ResourceAssignmentExpression"/>
+      <class ref="xml.ResourceAssignmentExpression"/>
     </bindings>
     <bindings scd="~tns:tResourceParameter">
-      <class ref="org.omg.spec.bpmn._20100524.model.ResourceParameter"/>
+      <class ref="xml.ResourceParameter"/>
     </bindings>
     <bindings scd="~tns:tResourceParameterBinding">
-      <class ref="org.omg.spec.bpmn._20100524.model.ResourceParameterBinding"/>
+      <class ref="xml.ResourceParameterBinding"/>
     </bindings>
     <bindings scd="~tns:tScriptTask">
-      <class ref="org.omg.spec.bpmn._20100524.model.TScriptTask"/>
+      <class ref="xml.TScriptTask"/>
     </bindings>
     <bindings scd="~tns:tScript">
-      <class ref="org.omg.spec.bpmn._20100524.model.Script"/>
+      <class ref="xml.Script"/>
     </bindings>
     <bindings scd="~tns:tSendTask">
-      <class ref="org.omg.spec.bpmn._20100524.model.TSendTask"/>
+      <class ref="xml.TSendTask"/>
     </bindings>
     <bindings scd="~tns:tSequenceFlow">
-      <class ref="org.omg.spec.bpmn._20100524.model.TSequenceFlow"/>
+      <class ref="xml.TSequenceFlow"/>
     </bindings>
     <bindings scd="~tns:tServiceTask">
-      <class ref="org.omg.spec.bpmn._20100524.model.TServiceTask"/>
+      <class ref="xml.TServiceTask"/>
     </bindings>
     <bindings scd="~tns:tSignal">
-      <class ref="org.omg.spec.bpmn._20100524.model.TSignal"/>
+      <class ref="xml.TSignal"/>
     </bindings>
     <bindings scd="~tns:tSignalEventDefinition">
-      <class ref="org.omg.spec.bpmn._20100524.model.TSignalEventDefinition"/>
+      <class ref="xml.TSignalEventDefinition"/>
     </bindings>
     <bindings scd="~tns:tStandardLoopCharacteristics">
-      <class ref="org.omg.spec.bpmn._20100524.model.TStandardLoopCharacteristics"/>
+      <class ref="xml.TStandardLoopCharacteristics"/>
     </bindings>
     <bindings scd="~tns:tStartEvent">
-      <class ref="org.omg.spec.bpmn._20100524.model.TStartEvent"/>
+      <class ref="xml.TStartEvent"/>
     </bindings>
     <bindings scd="~tns:tSubChoreography">
-      <class ref="org.omg.spec.bpmn._20100524.model.TSubChoreography"/>
+      <class ref="xml.TSubChoreography"/>
     </bindings>
     <bindings scd="~tns:tSubConversation">
-      <class ref="org.omg.spec.bpmn._20100524.model.TSubConversation"/>
+      <class ref="xml.TSubConversation"/>
     </bindings>
     <bindings scd="~tns:tSubProcess">
-      <class ref="org.omg.spec.bpmn._20100524.model.TSubProcess"/>
+      <class ref="xml.TSubProcess"/>
     </bindings>
     <bindings scd="~tns:tTask">
-      <class ref="org.omg.spec.bpmn._20100524.model.TTask"/>
+      <class ref="xml.TTask"/>
     </bindings>
     <bindings scd="~tns:tTerminateEventDefinition">
-      <class ref="org.omg.spec.bpmn._20100524.model.TTerminateEventDefinition"/>
+      <class ref="xml.TTerminateEventDefinition"/>
     </bindings>
     <bindings scd="~tns:tTextAnnotation">
-      <class ref="org.omg.spec.bpmn._20100524.model.TTextAnnotation"/>
+      <class ref="xml.TTextAnnotation"/>
     </bindings>
     <bindings scd="~tns:tText">
-      <class ref="org.omg.spec.bpmn._20100524.model.Text"/>
+      <class ref="xml.Text"/>
     </bindings>
     <bindings scd="~tns:tThrowEvent">
-      <class ref="org.omg.spec.bpmn._20100524.model.TThrowEvent"/>
+      <class ref="xml.TThrowEvent"/>
     </bindings>
     <bindings scd="~tns:tTimerEventDefinition">
-      <class ref="org.omg.spec.bpmn._20100524.model.TTimerEventDefinition"/>
+      <class ref="xml.TTimerEventDefinition"/>
     </bindings>
     <bindings scd="~tns:tTransaction">
-      <class ref="org.omg.spec.bpmn._20100524.model.TTransaction"/>
+      <class ref="xml.TTransaction"/>
     </bindings>
     <bindings scd="~tns:tUserTask">
-      <class ref="org.omg.spec.bpmn._20100524.model.TUserTask"/>
+      <class ref="xml.TUserTask"/>
     </bindings>
     <bindings scd="~tns:tDefinitions">
-      <class ref="org.omg.spec.bpmn._20100524.model.Definitions"/>
+      <class ref="xml.Definitions"/>
     </bindings>
     <bindings scd="~tns:tImport">
-      <class ref="org.omg.spec.bpmn._20100524.model.Import"/>
+      <class ref="xml.Import"/>
     </bindings>
     <bindings scd="~tns:tRelationshipDirection">
-      <typesafeEnumClass ref="org.omg.spec.bpmn._20100524.model.TRelationshipDirection"/>
+      <typesafeEnumClass ref="xml.TRelationshipDirection"/>
     </bindings>
     <bindings scd="~tns:tAdHocOrdering">
-      <typesafeEnumClass ref="org.omg.spec.bpmn._20100524.model.TAdHocOrdering"/>
+      <typesafeEnumClass ref="xml.TAdHocOrdering"/>
     </bindings>
     <bindings scd="~tns:tAssociationDirection">
-      <typesafeEnumClass ref="org.omg.spec.bpmn._20100524.model.TAssociationDirection"/>
+      <typesafeEnumClass ref="xml.TAssociationDirection"/>
     </bindings>
     <bindings scd="~tns:tChoreographyLoopType">
-      <typesafeEnumClass ref="org.omg.spec.bpmn._20100524.model.TChoreographyLoopType"/>
+      <typesafeEnumClass ref="xml.TChoreographyLoopType"/>
     </bindings>
     <bindings scd="~tns:tEventBasedGatewayType">
-      <typesafeEnumClass ref="org.omg.spec.bpmn._20100524.model.TEventBasedGatewayType"/>
+      <typesafeEnumClass ref="xml.TEventBasedGatewayType"/>
     </bindings>
     <bindings scd="~tns:tGatewayDirection">
-      <typesafeEnumClass ref="org.omg.spec.bpmn._20100524.model.TGatewayDirection"/>
+      <typesafeEnumClass ref="xml.TGatewayDirection"/>
     </bindings>
     <bindings scd="~tns:tItemKind">
-      <typesafeEnumClass ref="org.omg.spec.bpmn._20100524.model.TItemKind"/>
+      <typesafeEnumClass ref="xml.TItemKind"/>
     </bindings>
     <bindings scd="~tns:tMultiInstanceFlowCondition">
-      <typesafeEnumClass ref="org.omg.spec.bpmn._20100524.model.TMultiInstanceFlowCondition"/>
+      <typesafeEnumClass ref="xml.TMultiInstanceFlowCondition"/>
     </bindings>
     <bindings scd="~tns:tProcessType">
-      <typesafeEnumClass ref="org.omg.spec.bpmn._20100524.model.TProcessType"/>
+      <typesafeEnumClass ref="xml.TProcessType"/>
     </bindings>
   </bindings>
   <bindings scd="x-schema::tns" xmlns:tns="http://www.omg.org/spec/BPMN/20100524/DI">
     <schemaBindings map="false">
-      <package name="org.omg.spec.bpmn._20100524.di"/>
+      <package name="xml"/>
     </schemaBindings>
     <bindings scd="~tns:BPMNDiagram">
-      <class ref="org.omg.spec.bpmn._20100524.di.BPMNDiagram"/>
+      <class ref="xml.BPMNDiagram"/>
     </bindings>
     <bindings scd="~tns:BPMNPlane">
-      <class ref="org.omg.spec.bpmn._20100524.di.BPMNPlane"/>
+      <class ref="xml.BPMNPlane"/>
     </bindings>
     <bindings scd="~tns:BPMNLabelStyle">
-      <class ref="org.omg.spec.bpmn._20100524.di.BPMNLabelStyle"/>
+      <class ref="xml.BPMNLabelStyle"/>
     </bindings>
     <bindings scd="~tns:BPMNShape">
-      <class ref="org.omg.spec.bpmn._20100524.di.BPMNShape"/>
+      <class ref="xml.BPMNShape"/>
     </bindings>
     <bindings scd="~tns:BPMNLabel">
-      <class ref="org.omg.spec.bpmn._20100524.di.BPMNLabel"/>
+      <class ref="xml.BPMNLabel"/>
     </bindings>
     <bindings scd="~tns:BPMNEdge">
-      <class ref="org.omg.spec.bpmn._20100524.di.BPMNEdge"/>
+      <class ref="xml.BPMNEdge"/>
     </bindings>
     <bindings scd="~tns:ParticipantBandKind">
-      <typesafeEnumClass ref="org.omg.spec.bpmn._20100524.di.ParticipantBandKind"/>
+      <typesafeEnumClass ref="xml.ParticipantBandKind"/>
     </bindings>
     <bindings scd="~tns:MessageVisibleKind">
-      <typesafeEnumClass ref="org.omg.spec.bpmn._20100524.di.MessageVisibleKind"/>
+      <typesafeEnumClass ref="xml.MessageVisibleKind"/>
     </bindings>
   </bindings>
   <bindings scd="x-schema::tns" xmlns:tns="http://www.omg.org/spec/DD/20100524/DC">
     <schemaBindings map="false">
-      <package name="org.omg.spec.dd._20100524.dc"/>
+      <package name="xml"/>
     </schemaBindings>
     <bindings scd="~tns:Font">
-      <class ref="org.omg.spec.dd._20100524.dc.Font"/>
+      <class ref="xml.Font"/>
     </bindings>
     <bindings scd="~tns:Bounds">
-      <class ref="org.omg.spec.dd._20100524.dc.Bounds"/>
+      <class ref="xml.Bounds"/>
     </bindings>
     <bindings scd="~tns:Point">
-      <class ref="org.omg.spec.dd._20100524.dc.Point"/>
+      <class ref="xml.Point"/>
     </bindings>
   </bindings>
   <bindings scd="x-schema::tns" xmlns:tns="http://camunda.org/schema/modeler/1.0">
     <schemaBindings map="false">
-      <package name="org.camunda.schema.modeler._1"/>
+      <package name="xml"/>
     </schemaBindings>
     <bindings scd="~tns:ModelerType">
-      <class ref="org.camunda.schema.modeler._1.Modeler"/>
+      <class ref="xml.Modeler"/>
     </bindings>
   </bindings>
   <bindings scd="x-schema::tns" xmlns:tns="http://camunda.org/schema/zeebe/1.0">
     <schemaBindings map="false">
-      <package name="org.camunda.schema.zeebe._1"/>
+      <package name="xml"/>
     </schemaBindings>
     <bindings scd="~tns:ZeebeType">
-      <class ref="org.camunda.schema.zeebe._1.Zeebe"/>
+      <class ref="xml.Zeebe"/>
     </bindings>
   </bindings>
 </bindings>
