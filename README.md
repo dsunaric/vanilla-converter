@@ -20,9 +20,10 @@ The result of this project will be a CLI application that converts Camunda 7 mod
 The source code will be made available as an open-source project on GitHub.
 
 ## Mapping Table
-| Element            | Camunda 7                                      | Camunda 8 |
-|--------------------|------------------------------------------------|--------------|
-| <bpmn:definitions> | modeler:executionPlatform="Camunda Platform"   |modeler:executionPlatform="Camunda Cloud"|
-| <bpmn:definitions> | modeler:executionPlatformVersion="7.21.0"      |modeler:executionPlatformVersion="8.6.0"|
-| <bpmn:process>     | no mapping                                     |no mapping  |
-| <bpmn:serviceTask> | Attribute: camunda:delegateExpression="${exp}" |<bpmn:extensionElements><zeebe:taskDefinition type="exp" /></bpmn:extensionElements>  |
+| Element              | Camunda 7                                      | Camunda 8                                                                                        |
+|----------------------|------------------------------------------------|--------------------------------------------------------------------------------------------------|
+| \<bpmn:definitions\> | modeler:executionPlatform="Camunda Platform"   | modeler:executionPlatform="Camunda Cloud"                                                        |
+| \<bpmn:definitions\> | modeler:executionPlatformVersion="7.21.0"      | modeler:executionPlatformVersion="8.6.0"                                                         |
+| \<bpmn:process\>     | no mapping                                     | no mapping                                                                                       |
+| \<bpmn:serviceTask\> | Attribute: camunda:delegateExpression="${exp}" | \<bpmn:extensionElements\><br/><zeebe:taskDefinition type="exp" /><br/></bpmn:extensionElements> |
+|                      |                                                |                                                                                                  |
