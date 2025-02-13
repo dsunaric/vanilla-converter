@@ -23,6 +23,7 @@ public class DefinitionMapping implements Mapping<Definitions,Definitions> {
     private static Logger LOG = LoggerFactory.getLogger(DefinitionMapping.class);
     @Override
     public Definitions map(Definitions definitions) {
+        LOG.info("MAPPING: <bpmn:definitions>");
         LOG.info("MAPPING: Execution Plattform {} -> {}", definitions.getExecutionPlatform(), Camunda8Constants.MODELER_EXECUTIONPLATFORM);
         definitions.setExecutionPlatform(Camunda8Constants.MODELER_EXECUTIONPLATFORM);
         LOG.info("MAPPING: Execution Plattform Version {} -> {}", definitions.getExecutionPlatformVersion(), Camunda8Constants.MODELER_EXECUTIONPLATFORM_VERSION);

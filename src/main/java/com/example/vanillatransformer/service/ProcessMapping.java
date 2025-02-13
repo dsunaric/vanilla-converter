@@ -26,7 +26,7 @@ public class ProcessMapping implements Mapping<TProcess,TProcess> {
 
     @Override
     public TProcess map(TProcess tProcess) {
-        LOG.info("MAPPING: bpmn:process");
+        LOG.info("MAPPING: <bpmn:process>");
         List<TServiceTask> serviceTasks = extractServiceTasks(tProcess);
         for(var task : serviceTasks) {
             serviceTaskMapping.map(task);

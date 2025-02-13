@@ -26,7 +26,7 @@ public class ServiceTaskMapping implements Mapping<TServiceTask,TServiceTask> {
         ExtensionElements extensionElements = new ExtensionElements();
         var elements = extensionElements.getAnies();
 
-        //Create etentions element
+        //Create extention element
         //add taskdeifnition to extentionelement
         //remove camunda:delegateExpression="${exp}"
         return null;
