@@ -98,7 +98,7 @@
                     <sources>
                         <source>src/main/resources/schema</source>
                     </sources>
-                    <outputDirectory>${basedir}/src/main/java/xml</outputDirectory>
+                    <outputDirectory>${basedir}/src/main/java</outputDirectory>
                     <clearOutputDir>false</clearOutputDir>
                     <packageName>xml</packageName>
                 </configuration>
