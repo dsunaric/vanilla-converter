@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der Eclipse Implementation of JAXB, v3.0.0 generiert 
 // Siehe https://eclipse-ee4j.github.io/jaxb-ri 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2025.02.13 um 08:42:10 AM CET 
+// Generiert: 2025.03.12 um 09:13:58 PM CET 
 //
 
 
@@ -12,6 +12,7 @@ import java.io.Serializable;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -46,6 +47,7 @@ public class TTextAnnotation
 {
 
     private final static long serialVersionUID = -1L;
+    @XmlElementRef(name = "text", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = Text.class, required = false)
     protected Text text;
     @XmlAttribute(name = "textFormat")
     protected String textFormat;

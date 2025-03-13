@@ -2,15 +2,17 @@
 // Diese Datei wurde mit der Eclipse Implementation of JAXB, v3.0.0 generiert 
 // Siehe https://eclipse-ee4j.github.io/jaxb-ri 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2025.02.13 um 08:42:10 AM CET 
+// Generiert: 2025.03.12 um 09:13:58 PM CET 
 //
 
 
 package xml;
 
 import java.io.Serializable;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
 
@@ -25,9 +27,10 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="taskDefinition" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="taskDefinition" type="{http://camunda.org/schema/zeebe/1.0}TaskDefinition" minOccurs="0"/&gt;
  *         &lt;element name="input" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="output" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="subscription" type="{http://camunda.org/schema/zeebe/1.0}Subscription" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -40,7 +43,8 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "ZeebeType", namespace = "http://camunda.org/schema/zeebe/1.0", propOrder = {
     "taskDefinition",
     "input",
-    "output"
+    "output",
+    "subscription"
 })
 @XmlRootElement(name = "zeebe", namespace = "http://camunda.org/schema/zeebe/1.0")
 public class Zeebe
@@ -48,19 +52,24 @@ public class Zeebe
 {
 
     private final static long serialVersionUID = -1L;
-    protected String taskDefinition;
-    protected String input;
-    protected String output;
+    @XmlElementRef(name = "taskDefinition", namespace = "http://camunda.org/schema/zeebe/1.0", type = JAXBElement.class, required = false)
+    protected JAXBElement<TaskDefinition> taskDefinition;
+    @XmlElementRef(name = "input", namespace = "http://camunda.org/schema/zeebe/1.0", type = JAXBElement.class, required = false)
+    protected JAXBElement<String> input;
+    @XmlElementRef(name = "output", namespace = "http://camunda.org/schema/zeebe/1.0", type = JAXBElement.class, required = false)
+    protected JAXBElement<String> output;
+    @XmlElementRef(name = "subscription", namespace = "http://camunda.org/schema/zeebe/1.0", type = JAXBElement.class, required = false)
+    protected JAXBElement<Subscription> subscription;
 
     /**
      * Ruft den Wert der taskDefinition-Eigenschaft ab.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link JAXBElement }{@code <}{@link TaskDefinition }{@code >}
      *     
      */
-    public String getTaskDefinition() {
+    public JAXBElement<TaskDefinition> getTaskDefinition() {
         return taskDefinition;
     }
 
@@ -69,10 +78,10 @@ public class Zeebe
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link JAXBElement }{@code <}{@link TaskDefinition }{@code >}
      *     
      */
-    public void setTaskDefinition(String value) {
+    public void setTaskDefinition(JAXBElement<TaskDefinition> value) {
         this.taskDefinition = value;
     }
 
@@ -81,10 +90,10 @@ public class Zeebe
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public String getInput() {
+    public JAXBElement<String> getInput() {
         return input;
     }
 
@@ -93,10 +102,10 @@ public class Zeebe
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public void setInput(String value) {
+    public void setInput(JAXBElement<String> value) {
         this.input = value;
     }
 
@@ -105,10 +114,10 @@ public class Zeebe
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public String getOutput() {
+    public JAXBElement<String> getOutput() {
         return output;
     }
 
@@ -117,11 +126,35 @@ public class Zeebe
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public void setOutput(String value) {
+    public void setOutput(JAXBElement<String> value) {
         this.output = value;
+    }
+
+    /**
+     * Ruft den Wert der subscription-Eigenschaft ab.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link Subscription }{@code >}
+     *     
+     */
+    public JAXBElement<Subscription> getSubscription() {
+        return subscription;
+    }
+
+    /**
+     * Legt den Wert der subscription-Eigenschaft fest.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link Subscription }{@code >}
+     *     
+     */
+    public void setSubscription(JAXBElement<Subscription> value) {
+        this.subscription = value;
     }
 
 }

@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der Eclipse Implementation of JAXB, v3.0.0 generiert 
 // Siehe https://eclipse-ee4j.github.io/jaxb-ri 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2025.02.13 um 08:42:10 AM CET 
+// Generiert: 2025.03.12 um 09:13:58 PM CET 
 //
 
 
@@ -11,9 +11,10 @@ package xml;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
 import jakarta.xml.bind.annotation.XmlType;
 
@@ -51,8 +52,8 @@ public abstract class Edge
 {
 
     private final static long serialVersionUID = -1L;
-    @XmlElement(name = "waypoint", required = true)
-    protected List<Point> waypoints;
+    @XmlElementRef(name = "waypoint", namespace = "http://www.omg.org/spec/DD/20100524/DI", type = JAXBElement.class)
+    protected List<JAXBElement<Point>> waypoints;
 
     /**
      * Gets the value of the waypoints property.
@@ -72,13 +73,13 @@ public abstract class Edge
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Point }
+     * {@link JAXBElement }{@code <}{@link Point }{@code >}
      * 
      * 
      */
-    public List<Point> getWaypoints() {
+    public List<JAXBElement<Point>> getWaypoints() {
         if (waypoints == null) {
-            waypoints = new ArrayList<Point>();
+            waypoints = new ArrayList<JAXBElement<Point>>();
         }
         return this.waypoints;
     }

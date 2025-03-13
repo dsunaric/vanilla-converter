@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der Eclipse Implementation of JAXB, v3.0.0 generiert 
 // Siehe https://eclipse-ee4j.github.io/jaxb-ri 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2025.02.13 um 08:42:10 AM CET 
+// Generiert: 2025.03.12 um 09:13:58 PM CET 
 //
 
 
@@ -11,7 +11,7 @@ package xml;
 import java.io.Serializable;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
 import jakarta.xml.bind.annotation.XmlType;
 
@@ -49,7 +49,7 @@ public abstract class Shape
 {
 
     private final static long serialVersionUID = -1L;
-    @XmlElement(name = "Bounds", namespace = "http://www.omg.org/spec/DD/20100524/DC", required = true)
+    @XmlElementRef(name = "Bounds", namespace = "http://www.omg.org/spec/DD/20100524/DC", type = Bounds.class)
     protected Bounds bounds;
 
     /**

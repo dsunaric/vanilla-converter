@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der Eclipse Implementation of JAXB, v3.0.0 generiert 
 // Siehe https://eclipse-ee4j.github.io/jaxb-ri 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2025.02.13 um 08:42:10 AM CET 
+// Generiert: 2025.03.12 um 09:13:58 PM CET 
 //
 
 
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
 
@@ -50,9 +50,9 @@ public class BPMNDiagram
 {
 
     private final static long serialVersionUID = -1L;
-    @XmlElement(name = "BPMNPlane", required = true)
+    @XmlElementRef(name = "BPMNPlane", namespace = "http://www.omg.org/spec/BPMN/20100524/DI", type = BPMNPlane.class)
     protected BPMNPlane bpmnPlane;
-    @XmlElement(name = "BPMNLabelStyle")
+    @XmlElementRef(name = "BPMNLabelStyle", namespace = "http://www.omg.org/spec/BPMN/20100524/DI", type = BPMNLabelStyle.class, required = false)
     protected List<BPMNLabelStyle> bpmnLabelStyles;
 
     /**

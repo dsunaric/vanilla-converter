@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der Eclipse Implementation of JAXB, v3.0.0 generiert 
 // Siehe https://eclipse-ee4j.github.io/jaxb-ri 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2025.02.13 um 08:42:10 AM CET 
+// Generiert: 2025.03.12 um 09:13:58 PM CET 
 //
 
 
@@ -16,7 +16,6 @@ import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
-import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlIDREF;
 import jakarta.xml.bind.annotation.XmlSchemaType;
@@ -73,12 +72,13 @@ public abstract class TActivity
 {
 
     private final static long serialVersionUID = -1L;
+    @XmlElementRef(name = "ioSpecification", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = IoSpecification.class, required = false)
     protected IoSpecification ioSpecification;
-    @XmlElement(name = "property")
+    @XmlElementRef(name = "property", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = Property.class, required = false)
     protected List<Property> properties;
-    @XmlElement(name = "dataInputAssociation")
+    @XmlElementRef(name = "dataInputAssociation", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = DataInputAssociation.class, required = false)
     protected List<DataInputAssociation> dataInputAssociations;
-    @XmlElement(name = "dataOutputAssociation")
+    @XmlElementRef(name = "dataOutputAssociation", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = DataOutputAssociation.class, required = false)
     protected List<DataOutputAssociation> dataOutputAssociations;
     @XmlElementRef(name = "resourceRole", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = JAXBElement.class, required = false)
     protected List<JAXBElement<? extends TResourceRole>> resourceRoles;
@@ -224,8 +224,8 @@ public abstract class TActivity
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link THumanPerformer }{@code >}
      * {@link JAXBElement }{@code <}{@link TPotentialOwner }{@code >}
+     * {@link JAXBElement }{@code <}{@link THumanPerformer }{@code >}
      * {@link JAXBElement }{@code <}{@link TPerformer }{@code >}
      * {@link JAXBElement }{@code <}{@link TResourceRole }{@code >}
      * 
@@ -243,8 +243,8 @@ public abstract class TActivity
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link TStandardLoopCharacteristics }{@code >}
      *     {@link JAXBElement }{@code <}{@link TMultiInstanceLoopCharacteristics }{@code >}
+     *     {@link JAXBElement }{@code <}{@link TStandardLoopCharacteristics }{@code >}
      *     {@link JAXBElement }{@code <}{@link TLoopCharacteristics }{@code >}
      *     
      */
@@ -257,8 +257,8 @@ public abstract class TActivity
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link TStandardLoopCharacteristics }{@code >}
      *     {@link JAXBElement }{@code <}{@link TMultiInstanceLoopCharacteristics }{@code >}
+     *     {@link JAXBElement }{@code <}{@link TStandardLoopCharacteristics }{@code >}
      *     {@link JAXBElement }{@code <}{@link TLoopCharacteristics }{@code >}
      *     
      */

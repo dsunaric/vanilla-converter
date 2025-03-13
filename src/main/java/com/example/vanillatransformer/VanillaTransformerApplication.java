@@ -60,7 +60,7 @@ public class VanillaTransformerApplication implements CommandLineRunner {
             Marshaller mar = context.createMarshaller();
             mar.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
             mar.setProperty("org.glassfish.jaxb.namespacePrefixMapper", new CustomNamespacePrefixMapper());
-            mar.marshal(d, new File("./example.xml"));
+            mar.marshal(d, new File(filePath.replaceFirst("(\\.bpmn)$", "-transformed$1")));
         } catch (IOException e) {
             LOG.error("Error reading file: {}", filePath, e);
         } catch (JAXBException e) {

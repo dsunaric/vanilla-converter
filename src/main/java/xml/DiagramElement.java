@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der Eclipse Implementation of JAXB, v3.0.0 generiert 
 // Siehe https://eclipse-ee4j.github.io/jaxb-ri 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2025.02.13 um 08:42:10 AM CET 
+// Generiert: 2025.03.12 um 09:13:58 PM CET 
 //
 
 
@@ -14,11 +14,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.xml.namespace.QName;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAnyAttribute;
 import jakarta.xml.bind.annotation.XmlAnyElement;
 import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlID;
 import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
@@ -70,7 +72,8 @@ public abstract class DiagramElement implements Serializable
 {
 
     private final static long serialVersionUID = -1L;
-    protected DiagramElement.Extension extension;
+    @XmlElementRef(name = "extension", namespace = "http://www.omg.org/spec/DD/20100524/DI", type = JAXBElement.class, required = false)
+    protected JAXBElement<DiagramElement.Extension> extension;
     @XmlAttribute(name = "id")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlID
@@ -84,10 +87,10 @@ public abstract class DiagramElement implements Serializable
      * 
      * @return
      *     possible object is
-     *     {@link DiagramElement.Extension }
+     *     {@link JAXBElement }{@code <}{@link DiagramElement.Extension }{@code >}
      *     
      */
-    public DiagramElement.Extension getExtension() {
+    public JAXBElement<DiagramElement.Extension> getExtension() {
         return extension;
     }
 
@@ -96,10 +99,10 @@ public abstract class DiagramElement implements Serializable
      * 
      * @param value
      *     allowed object is
-     *     {@link DiagramElement.Extension }
+     *     {@link JAXBElement }{@code <}{@link DiagramElement.Extension }{@code >}
      *     
      */
-    public void setExtension(DiagramElement.Extension value) {
+    public void setExtension(JAXBElement<DiagramElement.Extension> value) {
         this.extension = value;
     }
 

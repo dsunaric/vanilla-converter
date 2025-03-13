@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der Eclipse Implementation of JAXB, v3.0.0 generiert 
 // Siehe https://eclipse-ee4j.github.io/jaxb-ri 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2025.02.13 um 08:42:10 AM CET 
+// Generiert: 2025.03.12 um 09:13:58 PM CET 
 //
 
 
@@ -138,7 +138,15 @@ public class ObjectFactory {
     private final static QName _LabeledEdge_QNAME = new QName("http://www.omg.org/spec/DD/20100524/DI", "LabeledEdge");
     private final static QName _Label_QNAME = new QName("http://www.omg.org/spec/DD/20100524/DI", "Label");
     private final static QName _LabeledShape_QNAME = new QName("http://www.omg.org/spec/DD/20100524/DI", "LabeledShape");
+    private final static QName _AssignmentFrom_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "from");
+    private final static QName _AssignmentTo_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "to");
+    private final static QName _ComplexBehaviorDefinitionCondition_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "condition");
+    private final static QName _CorrelationKeyCorrelationPropertyRef_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "correlationPropertyRef");
+    private final static QName _CorrelationPropertyBindingDataPath_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "dataPath");
+    private final static QName _CorrelationPropertyRetrievalExpressionMessagePath_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "messagePath");
     private final static QName _TDataAssociationSourceRef_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "sourceRef");
+    private final static QName _TDataAssociationTargetRef_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "targetRef");
+    private final static QName _TDataAssociationTransformation_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "transformation");
     private final static QName _InputSetDataInputRefs_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "dataInputRefs");
     private final static QName _InputSetOptionalInputRefs_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "optionalInputRefs");
     private final static QName _InputSetWhileExecutingInputRefs_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "whileExecutingInputRefs");
@@ -147,7 +155,57 @@ public class ObjectFactory {
     private final static QName _OutputSetOptionalOutputRefs_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "optionalOutputRefs");
     private final static QName _OutputSetWhileExecutingOutputRefs_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "whileExecutingOutputRefs");
     private final static QName _OutputSetInputSetRefs_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "inputSetRefs");
+    private final static QName _LanePartitionElement_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "partitionElement");
     private final static QName _LaneFlowNodeRef_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "flowNodeRef");
+    private final static QName _LaneChildLaneSet_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "childLaneSet");
+    private final static QName _OperationInMessageRef_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "inMessageRef");
+    private final static QName _OperationOutMessageRef_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "outMessageRef");
+    private final static QName _OperationErrorRef_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "errorRef");
+    private final static QName _ParticipantInterfaceRef_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "interfaceRef");
+    private final static QName _ParticipantEndPointRef_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "endPointRef");
+    private final static QName _ParticipantAssociationInnerParticipantRef_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "innerParticipantRef");
+    private final static QName _ParticipantAssociationOuterParticipantRef_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "outerParticipantRef");
+    private final static QName _RelationshipSource_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "source");
+    private final static QName _RelationshipTarget_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "target");
+    private final static QName _DiagramElementExtension_QNAME = new QName("http://www.omg.org/spec/DD/20100524/DI", "extension");
+    private final static QName _ModelerExecutionPlatform_QNAME = new QName("http://camunda.org/schema/modeler/1.0", "executionPlatform");
+    private final static QName _ModelerExecutionPlatformVersion_QNAME = new QName("http://camunda.org/schema/modeler/1.0", "executionPlatformVersion");
+    private final static QName _ModelerProperties_QNAME = new QName("http://camunda.org/schema/modeler/1.0", "properties");
+    private final static QName _ModelerListeners_QNAME = new QName("http://camunda.org/schema/modeler/1.0", "listeners");
+    private final static QName _ModelerInputOutput_QNAME = new QName("http://camunda.org/schema/modeler/1.0", "inputOutput");
+    private final static QName _ZeebeTaskDefinition_QNAME = new QName("http://camunda.org/schema/zeebe/1.0", "taskDefinition");
+    private final static QName _ZeebeInput_QNAME = new QName("http://camunda.org/schema/zeebe/1.0", "input");
+    private final static QName _ZeebeOutput_QNAME = new QName("http://camunda.org/schema/zeebe/1.0", "output");
+    private final static QName _ZeebeSubscription_QNAME = new QName("http://camunda.org/schema/zeebe/1.0", "subscription");
+    private final static QName _InputOutputTypeInputParameter_QNAME = new QName("http://camunda.org/schema/modeler/1.0", "inputParameter");
+    private final static QName _InputOutputTypeOutputParameter_QNAME = new QName("http://camunda.org/schema/modeler/1.0", "outputParameter");
+    private final static QName _ListenersTypeExecutionListener_QNAME = new QName("http://camunda.org/schema/modeler/1.0", "executionListener");
+    private final static QName _ListenersTypeTaskListener_QNAME = new QName("http://camunda.org/schema/modeler/1.0", "taskListener");
+    private final static QName _PropertiesTypeProperty_QNAME = new QName("http://camunda.org/schema/modeler/1.0", "property");
+    private final static QName _EdgeWaypoint_QNAME = new QName("http://www.omg.org/spec/DD/20100524/DI", "waypoint");
+    private final static QName _TFlowElementCategoryValueRef_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "categoryValueRef");
+    private final static QName _TFlowNodeIncoming_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "incoming");
+    private final static QName _TFlowNodeOutgoing_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "outgoing");
+    private final static QName _TTimerEventDefinitionTimeCycle_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "timeCycle");
+    private final static QName _TTimerEventDefinitionTimeDuration_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "timeDuration");
+    private final static QName _TTimerEventDefinitionTimeDate_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "timeDate");
+    private final static QName _TThrowEventEventDefinitionRef_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "eventDefinitionRef");
+    private final static QName _TConversationNodeParticipantRef_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "participantRef");
+    private final static QName _TConversationNodeMessageFlowRef_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "messageFlowRef");
+    private final static QName _TStandardLoopCharacteristicsLoopCondition_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "loopCondition");
+    private final static QName _TSequenceFlowConditionExpression_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "conditionExpression");
+    private final static QName _TCallableElementSupportedInterfaceRef_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "supportedInterfaceRef");
+    private final static QName _TProcessSupports_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "supports");
+    private final static QName _TResourceRoleResourceRef_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "resourceRef");
+    private final static QName _TMultiInstanceLoopCharacteristicsLoopCardinality_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "loopCardinality");
+    private final static QName _TMultiInstanceLoopCharacteristicsLoopDataInputRef_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "loopDataInputRef");
+    private final static QName _TMultiInstanceLoopCharacteristicsLoopDataOutputRef_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "loopDataOutputRef");
+    private final static QName _TMultiInstanceLoopCharacteristicsInputDataItem_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "inputDataItem");
+    private final static QName _TMultiInstanceLoopCharacteristicsOutputDataItem_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "outputDataItem");
+    private final static QName _TMultiInstanceLoopCharacteristicsCompletionCondition_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "completionCondition");
+    private final static QName _TMessageEventDefinitionOperationRef_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "operationRef");
+    private final static QName _TCollaborationChoreographyRef_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "choreographyRef");
+    private final static QName _TComplexGatewayActivationCondition_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "activationCondition");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: xml
@@ -1213,11 +1271,75 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link PropertiesType }
+     * 
+     */
+    public PropertiesType createPropertiesType() {
+        return new PropertiesType();
+    }
+
+    /**
+     * Create an instance of {@link ListenersType }
+     * 
+     */
+    public ListenersType createListenersType() {
+        return new ListenersType();
+    }
+
+    /**
+     * Create an instance of {@link InputOutputType }
+     * 
+     */
+    public InputOutputType createInputOutputType() {
+        return new InputOutputType();
+    }
+
+    /**
+     * Create an instance of {@link PropertyType }
+     * 
+     */
+    public PropertyType createPropertyType() {
+        return new PropertyType();
+    }
+
+    /**
+     * Create an instance of {@link ListenerType }
+     * 
+     */
+    public ListenerType createListenerType() {
+        return new ListenerType();
+    }
+
+    /**
+     * Create an instance of {@link ParameterType }
+     * 
+     */
+    public ParameterType createParameterType() {
+        return new ParameterType();
+    }
+
+    /**
      * Create an instance of {@link Zeebe }
      * 
      */
     public Zeebe createZeebe() {
         return new Zeebe();
+    }
+
+    /**
+     * Create an instance of {@link TaskDefinition }
+     * 
+     */
+    public TaskDefinition createTaskDefinition() {
+        return new TaskDefinition();
+    }
+
+    /**
+     * Create an instance of {@link Subscription }
+     * 
+     */
+    public Subscription createSubscription() {
+        return new Subscription();
     }
 
     /**
@@ -2599,6 +2721,97 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link TExpression }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link TExpression }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "from", scope = Assignment.class)
+    public JAXBElement<TExpression> createAssignmentFrom(TExpression value) {
+        return new JAXBElement<TExpression>(_AssignmentFrom_QNAME, TExpression.class, Assignment.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link TExpression }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link TExpression }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "to", scope = Assignment.class)
+    public JAXBElement<TExpression> createAssignmentTo(TExpression value) {
+        return new JAXBElement<TExpression>(_AssignmentTo_QNAME, TExpression.class, Assignment.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link TFormalExpression }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link TFormalExpression }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "condition", scope = ComplexBehaviorDefinition.class)
+    public JAXBElement<TFormalExpression> createComplexBehaviorDefinitionCondition(TFormalExpression value) {
+        return new JAXBElement<TFormalExpression>(_ComplexBehaviorDefinitionCondition_QNAME, TFormalExpression.class, ComplexBehaviorDefinition.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link TImplicitThrowEvent }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link TImplicitThrowEvent }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "event", scope = ComplexBehaviorDefinition.class)
+    public JAXBElement<TImplicitThrowEvent> createComplexBehaviorDefinitionEvent(TImplicitThrowEvent value) {
+        return new JAXBElement<TImplicitThrowEvent>(_Event_QNAME, TImplicitThrowEvent.class, ComplexBehaviorDefinition.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "correlationPropertyRef", scope = CorrelationKey.class)
+    public JAXBElement<QName> createCorrelationKeyCorrelationPropertyRef(QName value) {
+        return new JAXBElement<QName>(_CorrelationKeyCorrelationPropertyRef_QNAME, QName.class, CorrelationKey.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link TFormalExpression }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link TFormalExpression }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "dataPath", scope = CorrelationPropertyBinding.class)
+    public JAXBElement<TFormalExpression> createCorrelationPropertyBindingDataPath(TFormalExpression value) {
+        return new JAXBElement<TFormalExpression>(_CorrelationPropertyBindingDataPath_QNAME, TFormalExpression.class, CorrelationPropertyBinding.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link TFormalExpression }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link TFormalExpression }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "messagePath", scope = CorrelationPropertyRetrievalExpression.class)
+    public JAXBElement<TFormalExpression> createCorrelationPropertyRetrievalExpressionMessagePath(TFormalExpression value) {
+        return new JAXBElement<TFormalExpression>(_CorrelationPropertyRetrievalExpressionMessagePath_QNAME, TFormalExpression.class, CorrelationPropertyRetrievalExpression.class, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Object }{@code >}
      * 
      * @param value
@@ -2610,6 +2823,33 @@ public class ObjectFactory {
     @XmlIDREF
     public JAXBElement<Object> createTDataAssociationSourceRef(Object value) {
         return new JAXBElement<Object>(_TDataAssociationSourceRef_QNAME, Object.class, TDataAssociation.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Object }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link Object }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "targetRef", scope = TDataAssociation.class)
+    @XmlIDREF
+    public JAXBElement<Object> createTDataAssociationTargetRef(Object value) {
+        return new JAXBElement<Object>(_TDataAssociationTargetRef_QNAME, Object.class, TDataAssociation.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link TFormalExpression }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link TFormalExpression }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "transformation", scope = TDataAssociation.class)
+    public JAXBElement<TFormalExpression> createTDataAssociationTransformation(TFormalExpression value) {
+        return new JAXBElement<TFormalExpression>(_TDataAssociationTransformation_QNAME, TFormalExpression.class, TDataAssociation.class, value);
     }
 
     /**
@@ -2725,6 +2965,19 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link TBaseElement }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link TBaseElement }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "partitionElement", scope = Lane.class)
+    public JAXBElement<TBaseElement> createLanePartitionElement(TBaseElement value) {
+        return new JAXBElement<TBaseElement>(_LanePartitionElement_QNAME, TBaseElement.class, Lane.class, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Object }{@code >}
      * 
      * @param value
@@ -2736,6 +2989,760 @@ public class ObjectFactory {
     @XmlIDREF
     public JAXBElement<Object> createLaneFlowNodeRef(Object value) {
         return new JAXBElement<Object>(_LaneFlowNodeRef_QNAME, Object.class, Lane.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link LaneSet }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link LaneSet }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "childLaneSet", scope = Lane.class)
+    public JAXBElement<LaneSet> createLaneChildLaneSet(LaneSet value) {
+        return new JAXBElement<LaneSet>(_LaneChildLaneSet_QNAME, LaneSet.class, Lane.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "inMessageRef", scope = Operation.class)
+    public JAXBElement<QName> createOperationInMessageRef(QName value) {
+        return new JAXBElement<QName>(_OperationInMessageRef_QNAME, QName.class, Operation.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "outMessageRef", scope = Operation.class)
+    public JAXBElement<QName> createOperationOutMessageRef(QName value) {
+        return new JAXBElement<QName>(_OperationOutMessageRef_QNAME, QName.class, Operation.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "errorRef", scope = Operation.class)
+    public JAXBElement<QName> createOperationErrorRef(QName value) {
+        return new JAXBElement<QName>(_OperationErrorRef_QNAME, QName.class, Operation.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "interfaceRef", scope = Participant.class)
+    public JAXBElement<QName> createParticipantInterfaceRef(QName value) {
+        return new JAXBElement<QName>(_ParticipantInterfaceRef_QNAME, QName.class, Participant.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "endPointRef", scope = Participant.class)
+    public JAXBElement<QName> createParticipantEndPointRef(QName value) {
+        return new JAXBElement<QName>(_ParticipantEndPointRef_QNAME, QName.class, Participant.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "innerParticipantRef", scope = ParticipantAssociation.class)
+    public JAXBElement<QName> createParticipantAssociationInnerParticipantRef(QName value) {
+        return new JAXBElement<QName>(_ParticipantAssociationInnerParticipantRef_QNAME, QName.class, ParticipantAssociation.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "outerParticipantRef", scope = ParticipantAssociation.class)
+    public JAXBElement<QName> createParticipantAssociationOuterParticipantRef(QName value) {
+        return new JAXBElement<QName>(_ParticipantAssociationOuterParticipantRef_QNAME, QName.class, ParticipantAssociation.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "source", scope = Relationship.class)
+    public JAXBElement<QName> createRelationshipSource(QName value) {
+        return new JAXBElement<QName>(_RelationshipSource_QNAME, QName.class, Relationship.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "target", scope = Relationship.class)
+    public JAXBElement<QName> createRelationshipTarget(QName value) {
+        return new JAXBElement<QName>(_RelationshipTarget_QNAME, QName.class, Relationship.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DiagramElement.Extension }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link DiagramElement.Extension }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/DD/20100524/DI", name = "extension", scope = DiagramElement.class)
+    public JAXBElement<DiagramElement.Extension> createDiagramElementExtension(DiagramElement.Extension value) {
+        return new JAXBElement<DiagramElement.Extension>(_DiagramElementExtension_QNAME, DiagramElement.Extension.class, DiagramElement.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link String }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://camunda.org/schema/modeler/1.0", name = "executionPlatform", scope = Modeler.class)
+    public JAXBElement<String> createModelerExecutionPlatform(String value) {
+        return new JAXBElement<String>(_ModelerExecutionPlatform_QNAME, String.class, Modeler.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link String }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://camunda.org/schema/modeler/1.0", name = "executionPlatformVersion", scope = Modeler.class)
+    public JAXBElement<String> createModelerExecutionPlatformVersion(String value) {
+        return new JAXBElement<String>(_ModelerExecutionPlatformVersion_QNAME, String.class, Modeler.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link PropertiesType }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link PropertiesType }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://camunda.org/schema/modeler/1.0", name = "properties", scope = Modeler.class)
+    public JAXBElement<PropertiesType> createModelerProperties(PropertiesType value) {
+        return new JAXBElement<PropertiesType>(_ModelerProperties_QNAME, PropertiesType.class, Modeler.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ListenersType }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ListenersType }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://camunda.org/schema/modeler/1.0", name = "listeners", scope = Modeler.class)
+    public JAXBElement<ListenersType> createModelerListeners(ListenersType value) {
+        return new JAXBElement<ListenersType>(_ModelerListeners_QNAME, ListenersType.class, Modeler.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link InputOutputType }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link InputOutputType }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://camunda.org/schema/modeler/1.0", name = "inputOutput", scope = Modeler.class)
+    public JAXBElement<InputOutputType> createModelerInputOutput(InputOutputType value) {
+        return new JAXBElement<InputOutputType>(_ModelerInputOutput_QNAME, InputOutputType.class, Modeler.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link TaskDefinition }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link TaskDefinition }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://camunda.org/schema/zeebe/1.0", name = "taskDefinition", scope = Zeebe.class)
+    public JAXBElement<TaskDefinition> createZeebeTaskDefinition(TaskDefinition value) {
+        return new JAXBElement<TaskDefinition>(_ZeebeTaskDefinition_QNAME, TaskDefinition.class, Zeebe.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link String }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://camunda.org/schema/zeebe/1.0", name = "input", scope = Zeebe.class)
+    public JAXBElement<String> createZeebeInput(String value) {
+        return new JAXBElement<String>(_ZeebeInput_QNAME, String.class, Zeebe.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link String }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://camunda.org/schema/zeebe/1.0", name = "output", scope = Zeebe.class)
+    public JAXBElement<String> createZeebeOutput(String value) {
+        return new JAXBElement<String>(_ZeebeOutput_QNAME, String.class, Zeebe.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Subscription }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link Subscription }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://camunda.org/schema/zeebe/1.0", name = "subscription", scope = Zeebe.class)
+    public JAXBElement<Subscription> createZeebeSubscription(Subscription value) {
+        return new JAXBElement<Subscription>(_ZeebeSubscription_QNAME, Subscription.class, Zeebe.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ParameterType }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ParameterType }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://camunda.org/schema/modeler/1.0", name = "inputParameter", scope = InputOutputType.class)
+    public JAXBElement<ParameterType> createInputOutputTypeInputParameter(ParameterType value) {
+        return new JAXBElement<ParameterType>(_InputOutputTypeInputParameter_QNAME, ParameterType.class, InputOutputType.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ParameterType }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ParameterType }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://camunda.org/schema/modeler/1.0", name = "outputParameter", scope = InputOutputType.class)
+    public JAXBElement<ParameterType> createInputOutputTypeOutputParameter(ParameterType value) {
+        return new JAXBElement<ParameterType>(_InputOutputTypeOutputParameter_QNAME, ParameterType.class, InputOutputType.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ListenerType }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ListenerType }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://camunda.org/schema/modeler/1.0", name = "executionListener", scope = ListenersType.class)
+    public JAXBElement<ListenerType> createListenersTypeExecutionListener(ListenerType value) {
+        return new JAXBElement<ListenerType>(_ListenersTypeExecutionListener_QNAME, ListenerType.class, ListenersType.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ListenerType }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ListenerType }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://camunda.org/schema/modeler/1.0", name = "taskListener", scope = ListenersType.class)
+    public JAXBElement<ListenerType> createListenersTypeTaskListener(ListenerType value) {
+        return new JAXBElement<ListenerType>(_ListenersTypeTaskListener_QNAME, ListenerType.class, ListenersType.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link PropertyType }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link PropertyType }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://camunda.org/schema/modeler/1.0", name = "property", scope = PropertiesType.class)
+    public JAXBElement<PropertyType> createPropertiesTypeProperty(PropertyType value) {
+        return new JAXBElement<PropertyType>(_PropertiesTypeProperty_QNAME, PropertyType.class, PropertiesType.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Point }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link Point }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/DD/20100524/DI", name = "waypoint", scope = Edge.class)
+    public JAXBElement<Point> createEdgeWaypoint(Point value) {
+        return new JAXBElement<Point>(_EdgeWaypoint_QNAME, Point.class, Edge.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "categoryValueRef", scope = TFlowElement.class)
+    public JAXBElement<QName> createTFlowElementCategoryValueRef(QName value) {
+        return new JAXBElement<QName>(_TFlowElementCategoryValueRef_QNAME, QName.class, TFlowElement.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "incoming", scope = TFlowNode.class)
+    public JAXBElement<QName> createTFlowNodeIncoming(QName value) {
+        return new JAXBElement<QName>(_TFlowNodeIncoming_QNAME, QName.class, TFlowNode.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "outgoing", scope = TFlowNode.class)
+    public JAXBElement<QName> createTFlowNodeOutgoing(QName value) {
+        return new JAXBElement<QName>(_TFlowNodeOutgoing_QNAME, QName.class, TFlowNode.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link TExpression }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link TExpression }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "timeCycle", scope = TTimerEventDefinition.class)
+    public JAXBElement<TExpression> createTTimerEventDefinitionTimeCycle(TExpression value) {
+        return new JAXBElement<TExpression>(_TTimerEventDefinitionTimeCycle_QNAME, TExpression.class, TTimerEventDefinition.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link TExpression }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link TExpression }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "timeDuration", scope = TTimerEventDefinition.class)
+    public JAXBElement<TExpression> createTTimerEventDefinitionTimeDuration(TExpression value) {
+        return new JAXBElement<TExpression>(_TTimerEventDefinitionTimeDuration_QNAME, TExpression.class, TTimerEventDefinition.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link TExpression }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link TExpression }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "timeDate", scope = TTimerEventDefinition.class)
+    public JAXBElement<TExpression> createTTimerEventDefinitionTimeDate(TExpression value) {
+        return new JAXBElement<TExpression>(_TTimerEventDefinitionTimeDate_QNAME, TExpression.class, TTimerEventDefinition.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "eventDefinitionRef", scope = TThrowEvent.class)
+    public JAXBElement<QName> createTThrowEventEventDefinitionRef(QName value) {
+        return new JAXBElement<QName>(_TThrowEventEventDefinitionRef_QNAME, QName.class, TThrowEvent.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "participantRef", scope = TConversationNode.class)
+    public JAXBElement<QName> createTConversationNodeParticipantRef(QName value) {
+        return new JAXBElement<QName>(_TConversationNodeParticipantRef_QNAME, QName.class, TConversationNode.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "messageFlowRef", scope = TConversationNode.class)
+    public JAXBElement<QName> createTConversationNodeMessageFlowRef(QName value) {
+        return new JAXBElement<QName>(_TConversationNodeMessageFlowRef_QNAME, QName.class, TConversationNode.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "participantRef", scope = TChoreographyActivity.class)
+    public JAXBElement<QName> createTChoreographyActivityParticipantRef(QName value) {
+        return new JAXBElement<QName>(_TConversationNodeParticipantRef_QNAME, QName.class, TChoreographyActivity.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "eventDefinitionRef", scope = TCatchEvent.class)
+    public JAXBElement<QName> createTCatchEventEventDefinitionRef(QName value) {
+        return new JAXBElement<QName>(_TThrowEventEventDefinitionRef_QNAME, QName.class, TCatchEvent.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link TExpression }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link TExpression }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "loopCondition", scope = TStandardLoopCharacteristics.class)
+    public JAXBElement<TExpression> createTStandardLoopCharacteristicsLoopCondition(TExpression value) {
+        return new JAXBElement<TExpression>(_TStandardLoopCharacteristicsLoopCondition_QNAME, TExpression.class, TStandardLoopCharacteristics.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link TExpression }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link TExpression }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "conditionExpression", scope = TSequenceFlow.class)
+    public JAXBElement<TExpression> createTSequenceFlowConditionExpression(TExpression value) {
+        return new JAXBElement<TExpression>(_TSequenceFlowConditionExpression_QNAME, TExpression.class, TSequenceFlow.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "supportedInterfaceRef", scope = TCallableElement.class)
+    public JAXBElement<QName> createTCallableElementSupportedInterfaceRef(QName value) {
+        return new JAXBElement<QName>(_TCallableElementSupportedInterfaceRef_QNAME, QName.class, TCallableElement.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "supports", scope = TProcess.class)
+    public JAXBElement<QName> createTProcessSupports(QName value) {
+        return new JAXBElement<QName>(_TProcessSupports_QNAME, QName.class, TProcess.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "resourceRef", scope = TResourceRole.class)
+    public JAXBElement<QName> createTResourceRoleResourceRef(QName value) {
+        return new JAXBElement<QName>(_TResourceRoleResourceRef_QNAME, QName.class, TResourceRole.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "participantRef", scope = TPartnerRole.class)
+    public JAXBElement<QName> createTPartnerRoleParticipantRef(QName value) {
+        return new JAXBElement<QName>(_TConversationNodeParticipantRef_QNAME, QName.class, TPartnerRole.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "participantRef", scope = TPartnerEntity.class)
+    public JAXBElement<QName> createTPartnerEntityParticipantRef(QName value) {
+        return new JAXBElement<QName>(_TConversationNodeParticipantRef_QNAME, QName.class, TPartnerEntity.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link TExpression }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link TExpression }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "loopCardinality", scope = TMultiInstanceLoopCharacteristics.class)
+    public JAXBElement<TExpression> createTMultiInstanceLoopCharacteristicsLoopCardinality(TExpression value) {
+        return new JAXBElement<TExpression>(_TMultiInstanceLoopCharacteristicsLoopCardinality_QNAME, TExpression.class, TMultiInstanceLoopCharacteristics.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "loopDataInputRef", scope = TMultiInstanceLoopCharacteristics.class)
+    public JAXBElement<QName> createTMultiInstanceLoopCharacteristicsLoopDataInputRef(QName value) {
+        return new JAXBElement<QName>(_TMultiInstanceLoopCharacteristicsLoopDataInputRef_QNAME, QName.class, TMultiInstanceLoopCharacteristics.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "loopDataOutputRef", scope = TMultiInstanceLoopCharacteristics.class)
+    public JAXBElement<QName> createTMultiInstanceLoopCharacteristicsLoopDataOutputRef(QName value) {
+        return new JAXBElement<QName>(_TMultiInstanceLoopCharacteristicsLoopDataOutputRef_QNAME, QName.class, TMultiInstanceLoopCharacteristics.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DataInput }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link DataInput }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "inputDataItem", scope = TMultiInstanceLoopCharacteristics.class)
+    public JAXBElement<DataInput> createTMultiInstanceLoopCharacteristicsInputDataItem(DataInput value) {
+        return new JAXBElement<DataInput>(_TMultiInstanceLoopCharacteristicsInputDataItem_QNAME, DataInput.class, TMultiInstanceLoopCharacteristics.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DataOutput }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link DataOutput }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "outputDataItem", scope = TMultiInstanceLoopCharacteristics.class)
+    public JAXBElement<DataOutput> createTMultiInstanceLoopCharacteristicsOutputDataItem(DataOutput value) {
+        return new JAXBElement<DataOutput>(_TMultiInstanceLoopCharacteristicsOutputDataItem_QNAME, DataOutput.class, TMultiInstanceLoopCharacteristics.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link TExpression }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link TExpression }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "completionCondition", scope = TMultiInstanceLoopCharacteristics.class)
+    public JAXBElement<TExpression> createTMultiInstanceLoopCharacteristicsCompletionCondition(TExpression value) {
+        return new JAXBElement<TExpression>(_TMultiInstanceLoopCharacteristicsCompletionCondition_QNAME, TExpression.class, TMultiInstanceLoopCharacteristics.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "operationRef", scope = TMessageEventDefinition.class)
+    public JAXBElement<QName> createTMessageEventDefinitionOperationRef(QName value) {
+        return new JAXBElement<QName>(_TMessageEventDefinitionOperationRef_QNAME, QName.class, TMessageEventDefinition.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "source", scope = TLinkEventDefinition.class)
+    public JAXBElement<QName> createTLinkEventDefinitionSource(QName value) {
+        return new JAXBElement<QName>(_RelationshipSource_QNAME, QName.class, TLinkEventDefinition.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "target", scope = TLinkEventDefinition.class)
+    public JAXBElement<QName> createTLinkEventDefinitionTarget(QName value) {
+        return new JAXBElement<QName>(_RelationshipTarget_QNAME, QName.class, TLinkEventDefinition.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "choreographyRef", scope = TCollaboration.class)
+    public JAXBElement<QName> createTCollaborationChoreographyRef(QName value) {
+        return new JAXBElement<QName>(_TCollaborationChoreographyRef_QNAME, QName.class, TCollaboration.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link TExpression }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link TExpression }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "condition", scope = TConditionalEventDefinition.class)
+    public JAXBElement<TExpression> createTConditionalEventDefinitionCondition(TExpression value) {
+        return new JAXBElement<TExpression>(_ComplexBehaviorDefinitionCondition_QNAME, TExpression.class, TConditionalEventDefinition.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link TExpression }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link TExpression }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "activationCondition", scope = TComplexGateway.class)
+    public JAXBElement<TExpression> createTComplexGatewayActivationCondition(TExpression value) {
+        return new JAXBElement<TExpression>(_TComplexGatewayActivationCondition_QNAME, TExpression.class, TComplexGateway.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link QName }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "messageFlowRef", scope = TChoreographyTask.class)
+    public JAXBElement<QName> createTChoreographyTaskMessageFlowRef(QName value) {
+        return new JAXBElement<QName>(_TConversationNodeMessageFlowRef_QNAME, QName.class, TChoreographyTask.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link TExpression }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link TExpression }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", name = "completionCondition", scope = TAdHocSubProcess.class)
+    public JAXBElement<TExpression> createTAdHocSubProcessCompletionCondition(TExpression value) {
+        return new JAXBElement<TExpression>(_TMultiInstanceLoopCharacteristicsCompletionCondition_QNAME, TExpression.class, TAdHocSubProcess.class, value);
     }
 
 }

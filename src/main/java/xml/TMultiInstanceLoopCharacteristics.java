@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der Eclipse Implementation of JAXB, v3.0.0 generiert 
 // Siehe https://eclipse-ee4j.github.io/jaxb-ri 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2025.02.13 um 08:42:10 AM CET 
+// Generiert: 2025.03.12 um 09:13:58 PM CET 
 //
 
 
@@ -12,10 +12,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.namespace.QName;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
-import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -65,14 +66,20 @@ public class TMultiInstanceLoopCharacteristics
 {
 
     private final static long serialVersionUID = -1L;
-    protected TExpression loopCardinality;
-    protected QName loopDataInputRef;
-    protected QName loopDataOutputRef;
-    protected DataInput inputDataItem;
-    protected DataOutput outputDataItem;
-    @XmlElement(name = "complexBehaviorDefinition")
+    @XmlElementRef(name = "loopCardinality", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = JAXBElement.class, required = false)
+    protected JAXBElement<TExpression> loopCardinality;
+    @XmlElementRef(name = "loopDataInputRef", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = JAXBElement.class, required = false)
+    protected JAXBElement<QName> loopDataInputRef;
+    @XmlElementRef(name = "loopDataOutputRef", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = JAXBElement.class, required = false)
+    protected JAXBElement<QName> loopDataOutputRef;
+    @XmlElementRef(name = "inputDataItem", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = JAXBElement.class, required = false)
+    protected JAXBElement<DataInput> inputDataItem;
+    @XmlElementRef(name = "outputDataItem", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = JAXBElement.class, required = false)
+    protected JAXBElement<DataOutput> outputDataItem;
+    @XmlElementRef(name = "complexBehaviorDefinition", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = ComplexBehaviorDefinition.class, required = false)
     protected List<ComplexBehaviorDefinition> complexBehaviorDefinitions;
-    protected TExpression completionCondition;
+    @XmlElementRef(name = "completionCondition", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = JAXBElement.class, required = false)
+    protected JAXBElement<TExpression> completionCondition;
     @XmlAttribute(name = "isSequential")
     protected Boolean isSequential;
     @XmlAttribute(name = "behavior")
@@ -87,10 +94,10 @@ public class TMultiInstanceLoopCharacteristics
      * 
      * @return
      *     possible object is
-     *     {@link TExpression }
+     *     {@link JAXBElement }{@code <}{@link TExpression }{@code >}
      *     
      */
-    public TExpression getLoopCardinality() {
+    public JAXBElement<TExpression> getLoopCardinality() {
         return loopCardinality;
     }
 
@@ -99,10 +106,10 @@ public class TMultiInstanceLoopCharacteristics
      * 
      * @param value
      *     allowed object is
-     *     {@link TExpression }
+     *     {@link JAXBElement }{@code <}{@link TExpression }{@code >}
      *     
      */
-    public void setLoopCardinality(TExpression value) {
+    public void setLoopCardinality(JAXBElement<TExpression> value) {
         this.loopCardinality = value;
     }
 
@@ -111,10 +118,10 @@ public class TMultiInstanceLoopCharacteristics
      * 
      * @return
      *     possible object is
-     *     {@link QName }
+     *     {@link JAXBElement }{@code <}{@link QName }{@code >}
      *     
      */
-    public QName getLoopDataInputRef() {
+    public JAXBElement<QName> getLoopDataInputRef() {
         return loopDataInputRef;
     }
 
@@ -123,10 +130,10 @@ public class TMultiInstanceLoopCharacteristics
      * 
      * @param value
      *     allowed object is
-     *     {@link QName }
+     *     {@link JAXBElement }{@code <}{@link QName }{@code >}
      *     
      */
-    public void setLoopDataInputRef(QName value) {
+    public void setLoopDataInputRef(JAXBElement<QName> value) {
         this.loopDataInputRef = value;
     }
 
@@ -135,10 +142,10 @@ public class TMultiInstanceLoopCharacteristics
      * 
      * @return
      *     possible object is
-     *     {@link QName }
+     *     {@link JAXBElement }{@code <}{@link QName }{@code >}
      *     
      */
-    public QName getLoopDataOutputRef() {
+    public JAXBElement<QName> getLoopDataOutputRef() {
         return loopDataOutputRef;
     }
 
@@ -147,10 +154,10 @@ public class TMultiInstanceLoopCharacteristics
      * 
      * @param value
      *     allowed object is
-     *     {@link QName }
+     *     {@link JAXBElement }{@code <}{@link QName }{@code >}
      *     
      */
-    public void setLoopDataOutputRef(QName value) {
+    public void setLoopDataOutputRef(JAXBElement<QName> value) {
         this.loopDataOutputRef = value;
     }
 
@@ -159,10 +166,10 @@ public class TMultiInstanceLoopCharacteristics
      * 
      * @return
      *     possible object is
-     *     {@link DataInput }
+     *     {@link JAXBElement }{@code <}{@link DataInput }{@code >}
      *     
      */
-    public DataInput getInputDataItem() {
+    public JAXBElement<DataInput> getInputDataItem() {
         return inputDataItem;
     }
 
@@ -171,10 +178,10 @@ public class TMultiInstanceLoopCharacteristics
      * 
      * @param value
      *     allowed object is
-     *     {@link DataInput }
+     *     {@link JAXBElement }{@code <}{@link DataInput }{@code >}
      *     
      */
-    public void setInputDataItem(DataInput value) {
+    public void setInputDataItem(JAXBElement<DataInput> value) {
         this.inputDataItem = value;
     }
 
@@ -183,10 +190,10 @@ public class TMultiInstanceLoopCharacteristics
      * 
      * @return
      *     possible object is
-     *     {@link DataOutput }
+     *     {@link JAXBElement }{@code <}{@link DataOutput }{@code >}
      *     
      */
-    public DataOutput getOutputDataItem() {
+    public JAXBElement<DataOutput> getOutputDataItem() {
         return outputDataItem;
     }
 
@@ -195,10 +202,10 @@ public class TMultiInstanceLoopCharacteristics
      * 
      * @param value
      *     allowed object is
-     *     {@link DataOutput }
+     *     {@link JAXBElement }{@code <}{@link DataOutput }{@code >}
      *     
      */
-    public void setOutputDataItem(DataOutput value) {
+    public void setOutputDataItem(JAXBElement<DataOutput> value) {
         this.outputDataItem = value;
     }
 
@@ -236,10 +243,10 @@ public class TMultiInstanceLoopCharacteristics
      * 
      * @return
      *     possible object is
-     *     {@link TExpression }
+     *     {@link JAXBElement }{@code <}{@link TExpression }{@code >}
      *     
      */
-    public TExpression getCompletionCondition() {
+    public JAXBElement<TExpression> getCompletionCondition() {
         return completionCondition;
     }
 
@@ -248,10 +255,10 @@ public class TMultiInstanceLoopCharacteristics
      * 
      * @param value
      *     allowed object is
-     *     {@link TExpression }
+     *     {@link JAXBElement }{@code <}{@link TExpression }{@code >}
      *     
      */
-    public void setCompletionCondition(TExpression value) {
+    public void setCompletionCondition(JAXBElement<TExpression> value) {
         this.completionCondition = value;
     }
 

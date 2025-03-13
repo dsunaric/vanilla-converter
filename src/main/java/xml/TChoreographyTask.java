@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der Eclipse Implementation of JAXB, v3.0.0 generiert 
 // Siehe https://eclipse-ee4j.github.io/jaxb-ri 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2025.02.13 um 08:42:10 AM CET 
+// Generiert: 2025.03.12 um 09:13:58 PM CET 
 //
 
 
@@ -12,9 +12,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.namespace.QName;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -48,8 +49,8 @@ public class TChoreographyTask
 {
 
     private final static long serialVersionUID = -1L;
-    @XmlElement(name = "messageFlowRef", required = true)
-    protected List<QName> messageFlowReves;
+    @XmlElementRef(name = "messageFlowRef", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = JAXBElement.class)
+    protected List<JAXBElement<QName>> messageFlowReves;
 
     /**
      * Gets the value of the messageFlowReves property.
@@ -69,13 +70,13 @@ public class TChoreographyTask
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link QName }
+     * {@link JAXBElement }{@code <}{@link QName }{@code >}
      * 
      * 
      */
-    public List<QName> getMessageFlowReves() {
+    public List<JAXBElement<QName>> getMessageFlowReves() {
         if (messageFlowReves == null) {
-            messageFlowReves = new ArrayList<QName>();
+            messageFlowReves = new ArrayList<JAXBElement<QName>>();
         }
         return this.messageFlowReves;
     }

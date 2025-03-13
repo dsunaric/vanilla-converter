@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der Eclipse Implementation of JAXB, v3.0.0 generiert 
 // Siehe https://eclipse-ee4j.github.io/jaxb-ri 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2025.02.13 um 08:42:10 AM CET 
+// Generiert: 2025.03.12 um 09:13:58 PM CET 
 //
 
 
@@ -58,10 +58,12 @@ public class Lane
 {
 
     private final static long serialVersionUID = -1L;
-    protected TBaseElement partitionElement;
+    @XmlElementRef(name = "partitionElement", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = JAXBElement.class, required = false)
+    protected JAXBElement<TBaseElement> partitionElement;
     @XmlElementRef(name = "flowNodeRef", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = JAXBElement.class, required = false)
     protected List<JAXBElement<Object>> flowNodeReves;
-    protected LaneSet childLaneSet;
+    @XmlElementRef(name = "childLaneSet", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = JAXBElement.class, required = false)
+    protected JAXBElement<LaneSet> childLaneSet;
     @XmlAttribute(name = "name")
     protected String name;
     @XmlAttribute(name = "partitionElementRef")
@@ -72,10 +74,10 @@ public class Lane
      * 
      * @return
      *     possible object is
-     *     {@link TBaseElement }
+     *     {@link JAXBElement }{@code <}{@link TBaseElement }{@code >}
      *     
      */
-    public TBaseElement getPartitionElement() {
+    public JAXBElement<TBaseElement> getPartitionElement() {
         return partitionElement;
     }
 
@@ -84,10 +86,10 @@ public class Lane
      * 
      * @param value
      *     allowed object is
-     *     {@link TBaseElement }
+     *     {@link JAXBElement }{@code <}{@link TBaseElement }{@code >}
      *     
      */
-    public void setPartitionElement(TBaseElement value) {
+    public void setPartitionElement(JAXBElement<TBaseElement> value) {
         this.partitionElement = value;
     }
 
@@ -125,10 +127,10 @@ public class Lane
      * 
      * @return
      *     possible object is
-     *     {@link LaneSet }
+     *     {@link JAXBElement }{@code <}{@link LaneSet }{@code >}
      *     
      */
-    public LaneSet getChildLaneSet() {
+    public JAXBElement<LaneSet> getChildLaneSet() {
         return childLaneSet;
     }
 
@@ -137,10 +139,10 @@ public class Lane
      * 
      * @param value
      *     allowed object is
-     *     {@link LaneSet }
+     *     {@link JAXBElement }{@code <}{@link LaneSet }{@code >}
      *     
      */
-    public void setChildLaneSet(LaneSet value) {
+    public void setChildLaneSet(JAXBElement<LaneSet> value) {
         this.childLaneSet = value;
     }
 

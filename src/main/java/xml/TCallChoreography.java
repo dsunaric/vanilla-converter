@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der Eclipse Implementation of JAXB, v3.0.0 generiert 
 // Siehe https://eclipse-ee4j.github.io/jaxb-ri 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2025.02.13 um 08:42:10 AM CET 
+// Generiert: 2025.03.12 um 09:13:58 PM CET 
 //
 
 
@@ -15,7 +15,7 @@ import javax.xml.namespace.QName;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
-import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -50,7 +50,7 @@ public class TCallChoreography
 {
 
     private final static long serialVersionUID = -1L;
-    @XmlElement(name = "participantAssociation")
+    @XmlElementRef(name = "participantAssociation", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = ParticipantAssociation.class, required = false)
     protected List<ParticipantAssociation> participantAssociations;
     @XmlAttribute(name = "calledChoreographyRef")
     protected QName calledChoreographyRef;

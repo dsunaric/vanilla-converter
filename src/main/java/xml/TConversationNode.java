@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der Eclipse Implementation of JAXB, v3.0.0 generiert 
 // Siehe https://eclipse-ee4j.github.io/jaxb-ri 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2025.02.13 um 08:42:10 AM CET 
+// Generiert: 2025.03.12 um 09:13:58 PM CET 
 //
 
 
@@ -12,10 +12,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.namespace.QName;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
-import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
 import jakarta.xml.bind.annotation.XmlType;
 
@@ -60,11 +61,11 @@ public abstract class TConversationNode
 {
 
     private final static long serialVersionUID = -1L;
-    @XmlElement(name = "participantRef")
-    protected List<QName> participantReves;
-    @XmlElement(name = "messageFlowRef")
-    protected List<QName> messageFlowReves;
-    @XmlElement(name = "correlationKey")
+    @XmlElementRef(name = "participantRef", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = JAXBElement.class, required = false)
+    protected List<JAXBElement<QName>> participantReves;
+    @XmlElementRef(name = "messageFlowRef", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = JAXBElement.class, required = false)
+    protected List<JAXBElement<QName>> messageFlowReves;
+    @XmlElementRef(name = "correlationKey", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = CorrelationKey.class, required = false)
     protected List<CorrelationKey> correlationKeies;
     @XmlAttribute(name = "name")
     protected String name;
@@ -87,13 +88,13 @@ public abstract class TConversationNode
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link QName }
+     * {@link JAXBElement }{@code <}{@link QName }{@code >}
      * 
      * 
      */
-    public List<QName> getParticipantReves() {
+    public List<JAXBElement<QName>> getParticipantReves() {
         if (participantReves == null) {
-            participantReves = new ArrayList<QName>();
+            participantReves = new ArrayList<JAXBElement<QName>>();
         }
         return this.participantReves;
     }
@@ -116,13 +117,13 @@ public abstract class TConversationNode
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link QName }
+     * {@link JAXBElement }{@code <}{@link QName }{@code >}
      * 
      * 
      */
-    public List<QName> getMessageFlowReves() {
+    public List<JAXBElement<QName>> getMessageFlowReves() {
         if (messageFlowReves == null) {
-            messageFlowReves = new ArrayList<QName>();
+            messageFlowReves = new ArrayList<JAXBElement<QName>>();
         }
         return this.messageFlowReves;
     }

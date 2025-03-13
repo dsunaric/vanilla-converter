@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der Eclipse Implementation of JAXB, v3.0.0 generiert 
 // Siehe https://eclipse-ee4j.github.io/jaxb-ri 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2025.02.13 um 08:42:10 AM CET 
+// Generiert: 2025.03.12 um 09:13:58 PM CET 
 //
 
 
@@ -14,10 +14,7 @@ import java.util.List;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlElementRef;
-import jakarta.xml.bind.annotation.XmlIDREF;
-import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
 import jakarta.xml.bind.annotation.XmlType;
 
@@ -64,12 +61,11 @@ public class TDataAssociation
     private final static long serialVersionUID = -1L;
     @XmlElementRef(name = "sourceRef", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = JAXBElement.class, required = false)
     protected List<JAXBElement<Object>> sourceReves;
-    @XmlElement(required = true)
-    @XmlIDREF
-    @XmlSchemaType(name = "IDREF")
-    protected Object targetRef;
-    protected TFormalExpression transformation;
-    @XmlElement(name = "assignment")
+    @XmlElementRef(name = "targetRef", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = JAXBElement.class)
+    protected JAXBElement<Object> targetRef;
+    @XmlElementRef(name = "transformation", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = JAXBElement.class, required = false)
+    protected JAXBElement<TFormalExpression> transformation;
+    @XmlElementRef(name = "assignment", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = Assignment.class, required = false)
     protected List<Assignment> assignments;
 
     /**
@@ -106,10 +102,10 @@ public class TDataAssociation
      * 
      * @return
      *     possible object is
-     *     {@link Object }
+     *     {@link JAXBElement }{@code <}{@link Object }{@code >}
      *     
      */
-    public Object getTargetRef() {
+    public JAXBElement<Object> getTargetRef() {
         return targetRef;
     }
 
@@ -118,10 +114,10 @@ public class TDataAssociation
      * 
      * @param value
      *     allowed object is
-     *     {@link Object }
+     *     {@link JAXBElement }{@code <}{@link Object }{@code >}
      *     
      */
-    public void setTargetRef(Object value) {
+    public void setTargetRef(JAXBElement<Object> value) {
         this.targetRef = value;
     }
 
@@ -130,10 +126,10 @@ public class TDataAssociation
      * 
      * @return
      *     possible object is
-     *     {@link TFormalExpression }
+     *     {@link JAXBElement }{@code <}{@link TFormalExpression }{@code >}
      *     
      */
-    public TFormalExpression getTransformation() {
+    public JAXBElement<TFormalExpression> getTransformation() {
         return transformation;
     }
 
@@ -142,10 +138,10 @@ public class TDataAssociation
      * 
      * @param value
      *     allowed object is
-     *     {@link TFormalExpression }
+     *     {@link JAXBElement }{@code <}{@link TFormalExpression }{@code >}
      *     
      */
-    public void setTransformation(TFormalExpression value) {
+    public void setTransformation(JAXBElement<TFormalExpression> value) {
         this.transformation = value;
     }
 

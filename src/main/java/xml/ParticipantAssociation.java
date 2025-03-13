@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der Eclipse Implementation of JAXB, v3.0.0 generiert 
 // Siehe https://eclipse-ee4j.github.io/jaxb-ri 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2025.02.13 um 08:42:10 AM CET 
+// Generiert: 2025.03.12 um 09:13:58 PM CET 
 //
 
 
@@ -10,9 +10,10 @@ package xml;
 
 import java.io.Serializable;
 import javax.xml.namespace.QName;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
 
@@ -50,20 +51,20 @@ public class ParticipantAssociation
 {
 
     private final static long serialVersionUID = -1L;
-    @XmlElement(required = true)
-    protected QName innerParticipantRef;
-    @XmlElement(required = true)
-    protected QName outerParticipantRef;
+    @XmlElementRef(name = "innerParticipantRef", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = JAXBElement.class)
+    protected JAXBElement<QName> innerParticipantRef;
+    @XmlElementRef(name = "outerParticipantRef", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = JAXBElement.class)
+    protected JAXBElement<QName> outerParticipantRef;
 
     /**
      * Ruft den Wert der innerParticipantRef-Eigenschaft ab.
      * 
      * @return
      *     possible object is
-     *     {@link QName }
+     *     {@link JAXBElement }{@code <}{@link QName }{@code >}
      *     
      */
-    public QName getInnerParticipantRef() {
+    public JAXBElement<QName> getInnerParticipantRef() {
         return innerParticipantRef;
     }
 
@@ -72,10 +73,10 @@ public class ParticipantAssociation
      * 
      * @param value
      *     allowed object is
-     *     {@link QName }
+     *     {@link JAXBElement }{@code <}{@link QName }{@code >}
      *     
      */
-    public void setInnerParticipantRef(QName value) {
+    public void setInnerParticipantRef(JAXBElement<QName> value) {
         this.innerParticipantRef = value;
     }
 
@@ -84,10 +85,10 @@ public class ParticipantAssociation
      * 
      * @return
      *     possible object is
-     *     {@link QName }
+     *     {@link JAXBElement }{@code <}{@link QName }{@code >}
      *     
      */
-    public QName getOuterParticipantRef() {
+    public JAXBElement<QName> getOuterParticipantRef() {
         return outerParticipantRef;
     }
 
@@ -96,10 +97,10 @@ public class ParticipantAssociation
      * 
      * @param value
      *     allowed object is
-     *     {@link QName }
+     *     {@link JAXBElement }{@code <}{@link QName }{@code >}
      *     
      */
-    public void setOuterParticipantRef(QName value) {
+    public void setOuterParticipantRef(JAXBElement<QName> value) {
         this.outerParticipantRef = value;
     }
 

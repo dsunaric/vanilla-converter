@@ -2,15 +2,17 @@
 // Diese Datei wurde mit der Eclipse Implementation of JAXB, v3.0.0 generiert 
 // Siehe https://eclipse-ee4j.github.io/jaxb-ri 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2025.02.13 um 08:42:10 AM CET 
+// Generiert: 2025.03.12 um 09:13:58 PM CET 
 //
 
 
 package xml;
 
 import java.io.Serializable;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -48,19 +50,22 @@ public class TTimerEventDefinition
 {
 
     private final static long serialVersionUID = -1L;
-    protected TExpression timeCycle;
-    protected TExpression timeDuration;
-    protected TExpression timeDate;
+    @XmlElementRef(name = "timeCycle", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = JAXBElement.class, required = false)
+    protected JAXBElement<TExpression> timeCycle;
+    @XmlElementRef(name = "timeDuration", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = JAXBElement.class, required = false)
+    protected JAXBElement<TExpression> timeDuration;
+    @XmlElementRef(name = "timeDate", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = JAXBElement.class, required = false)
+    protected JAXBElement<TExpression> timeDate;
 
     /**
      * Ruft den Wert der timeCycle-Eigenschaft ab.
      * 
      * @return
      *     possible object is
-     *     {@link TExpression }
+     *     {@link JAXBElement }{@code <}{@link TExpression }{@code >}
      *     
      */
-    public TExpression getTimeCycle() {
+    public JAXBElement<TExpression> getTimeCycle() {
         return timeCycle;
     }
 
@@ -69,10 +74,10 @@ public class TTimerEventDefinition
      * 
      * @param value
      *     allowed object is
-     *     {@link TExpression }
+     *     {@link JAXBElement }{@code <}{@link TExpression }{@code >}
      *     
      */
-    public void setTimeCycle(TExpression value) {
+    public void setTimeCycle(JAXBElement<TExpression> value) {
         this.timeCycle = value;
     }
 
@@ -81,10 +86,10 @@ public class TTimerEventDefinition
      * 
      * @return
      *     possible object is
-     *     {@link TExpression }
+     *     {@link JAXBElement }{@code <}{@link TExpression }{@code >}
      *     
      */
-    public TExpression getTimeDuration() {
+    public JAXBElement<TExpression> getTimeDuration() {
         return timeDuration;
     }
 
@@ -93,10 +98,10 @@ public class TTimerEventDefinition
      * 
      * @param value
      *     allowed object is
-     *     {@link TExpression }
+     *     {@link JAXBElement }{@code <}{@link TExpression }{@code >}
      *     
      */
-    public void setTimeDuration(TExpression value) {
+    public void setTimeDuration(JAXBElement<TExpression> value) {
         this.timeDuration = value;
     }
 
@@ -105,10 +110,10 @@ public class TTimerEventDefinition
      * 
      * @return
      *     possible object is
-     *     {@link TExpression }
+     *     {@link JAXBElement }{@code <}{@link TExpression }{@code >}
      *     
      */
-    public TExpression getTimeDate() {
+    public JAXBElement<TExpression> getTimeDate() {
         return timeDate;
     }
 
@@ -117,10 +122,10 @@ public class TTimerEventDefinition
      * 
      * @param value
      *     allowed object is
-     *     {@link TExpression }
+     *     {@link JAXBElement }{@code <}{@link TExpression }{@code >}
      *     
      */
-    public void setTimeDate(TExpression value) {
+    public void setTimeDate(JAXBElement<TExpression> value) {
         this.timeDate = value;
     }
 

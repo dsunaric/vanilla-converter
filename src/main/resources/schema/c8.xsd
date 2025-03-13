@@ -7,9 +7,24 @@
 
     <xs:complexType name="ZeebeType">
         <xs:sequence>
-            <xs:element name="taskDefinition" type="xs:string" minOccurs="0"/>
+            <xs:element name="taskDefinition" type="zeebe:TaskDefinition" minOccurs="0"/>
             <xs:element name="input" type="xs:string" minOccurs="0"/>
             <xs:element name="output" type="xs:string" minOccurs="0"/>
+            <xs:element name="subscription" type="zeebe:Subscription" minOccurs="0"/>
         </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="taskDefinition" type="zeebe:TaskDefinition"/>
+
+    <xs:complexType name="TaskDefinition">
+        <xs:attribute name="type" type="xs:string" use="required"/>
+        <xs:attribute name="retries" type="xs:integer" use="required"/>
+    </xs:complexType>
+
+
+    <xs:element name="subscription" type="zeebe:Subscription"/>
+
+    <xs:complexType name="Subscription">
+        <xs:attribute name="correlationKey" type="xs:string" use="required"/>
     </xs:complexType>
 </xs:schema>

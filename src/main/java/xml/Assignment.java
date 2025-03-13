@@ -2,16 +2,17 @@
 // Diese Datei wurde mit der Eclipse Implementation of JAXB, v3.0.0 generiert 
 // Siehe https://eclipse-ee4j.github.io/jaxb-ri 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2025.02.13 um 08:42:10 AM CET 
+// Generiert: 2025.03.12 um 09:13:58 PM CET 
 //
 
 
 package xml;
 
 import java.io.Serializable;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
 
@@ -49,20 +50,20 @@ public class Assignment
 {
 
     private final static long serialVersionUID = -1L;
-    @XmlElement(required = true)
-    protected TExpression from;
-    @XmlElement(required = true)
-    protected TExpression to;
+    @XmlElementRef(name = "from", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = JAXBElement.class)
+    protected JAXBElement<TExpression> from;
+    @XmlElementRef(name = "to", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = JAXBElement.class)
+    protected JAXBElement<TExpression> to;
 
     /**
      * Ruft den Wert der from-Eigenschaft ab.
      * 
      * @return
      *     possible object is
-     *     {@link TExpression }
+     *     {@link JAXBElement }{@code <}{@link TExpression }{@code >}
      *     
      */
-    public TExpression getFrom() {
+    public JAXBElement<TExpression> getFrom() {
         return from;
     }
 
@@ -71,10 +72,10 @@ public class Assignment
      * 
      * @param value
      *     allowed object is
-     *     {@link TExpression }
+     *     {@link JAXBElement }{@code <}{@link TExpression }{@code >}
      *     
      */
-    public void setFrom(TExpression value) {
+    public void setFrom(JAXBElement<TExpression> value) {
         this.from = value;
     }
 
@@ -83,10 +84,10 @@ public class Assignment
      * 
      * @return
      *     possible object is
-     *     {@link TExpression }
+     *     {@link JAXBElement }{@code <}{@link TExpression }{@code >}
      *     
      */
-    public TExpression getTo() {
+    public JAXBElement<TExpression> getTo() {
         return to;
     }
 
@@ -95,10 +96,10 @@ public class Assignment
      * 
      * @param value
      *     allowed object is
-     *     {@link TExpression }
+     *     {@link JAXBElement }{@code <}{@link TExpression }{@code >}
      *     
      */
-    public void setTo(TExpression value) {
+    public void setTo(JAXBElement<TExpression> value) {
         this.to = value;
     }
 

@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der Eclipse Implementation of JAXB, v3.0.0 generiert 
 // Siehe https://eclipse-ee4j.github.io/jaxb-ri 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2025.02.13 um 08:42:10 AM CET 
+// Generiert: 2025.03.12 um 09:13:58 PM CET 
 //
 
 
@@ -10,10 +10,11 @@ package xml;
 
 import java.io.Serializable;
 import javax.xml.namespace.QName;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
-import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
 
@@ -50,8 +51,8 @@ public class CorrelationPropertyBinding
 {
 
     private final static long serialVersionUID = -1L;
-    @XmlElement(required = true)
-    protected TFormalExpression dataPath;
+    @XmlElementRef(name = "dataPath", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = JAXBElement.class)
+    protected JAXBElement<TFormalExpression> dataPath;
     @XmlAttribute(name = "correlationPropertyRef", required = true)
     protected QName correlationPropertyRef;
 
@@ -60,10 +61,10 @@ public class CorrelationPropertyBinding
      * 
      * @return
      *     possible object is
-     *     {@link TFormalExpression }
+     *     {@link JAXBElement }{@code <}{@link TFormalExpression }{@code >}
      *     
      */
-    public TFormalExpression getDataPath() {
+    public JAXBElement<TFormalExpression> getDataPath() {
         return dataPath;
     }
 
@@ -72,10 +73,10 @@ public class CorrelationPropertyBinding
      * 
      * @param value
      *     allowed object is
-     *     {@link TFormalExpression }
+     *     {@link JAXBElement }{@code <}{@link TFormalExpression }{@code >}
      *     
      */
-    public void setDataPath(TFormalExpression value) {
+    public void setDataPath(JAXBElement<TFormalExpression> value) {
         this.dataPath = value;
     }
 

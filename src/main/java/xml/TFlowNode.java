@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der Eclipse Implementation of JAXB, v3.0.0 generiert 
 // Siehe https://eclipse-ee4j.github.io/jaxb-ri 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2025.02.13 um 08:42:10 AM CET 
+// Generiert: 2025.03.12 um 09:13:58 PM CET 
 //
 
 
@@ -12,9 +12,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.namespace.QName;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
 import jakarta.xml.bind.annotation.XmlType;
 
@@ -57,10 +58,10 @@ public abstract class TFlowNode
 {
 
     private final static long serialVersionUID = -1L;
-    @XmlElement(name = "incoming")
-    protected List<QName> incomings;
-    @XmlElement(name = "outgoing")
-    protected List<QName> outgoings;
+    @XmlElementRef(name = "incoming", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = JAXBElement.class, required = false)
+    protected List<JAXBElement<QName>> incomings;
+    @XmlElementRef(name = "outgoing", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = JAXBElement.class, required = false)
+    protected List<JAXBElement<QName>> outgoings;
 
     /**
      * Gets the value of the incomings property.
@@ -80,13 +81,13 @@ public abstract class TFlowNode
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link QName }
+     * {@link JAXBElement }{@code <}{@link QName }{@code >}
      * 
      * 
      */
-    public List<QName> getIncomings() {
+    public List<JAXBElement<QName>> getIncomings() {
         if (incomings == null) {
-            incomings = new ArrayList<QName>();
+            incomings = new ArrayList<JAXBElement<QName>>();
         }
         return this.incomings;
     }
@@ -109,13 +110,13 @@ public abstract class TFlowNode
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link QName }
+     * {@link JAXBElement }{@code <}{@link QName }{@code >}
      * 
      * 
      */
-    public List<QName> getOutgoings() {
+    public List<JAXBElement<QName>> getOutgoings() {
         if (outgoings == null) {
-            outgoings = new ArrayList<QName>();
+            outgoings = new ArrayList<JAXBElement<QName>>();
         }
         return this.outgoings;
     }

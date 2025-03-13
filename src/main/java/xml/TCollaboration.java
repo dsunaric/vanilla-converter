@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der Eclipse Implementation of JAXB, v3.0.0 generiert 
 // Siehe https://eclipse-ee4j.github.io/jaxb-ri 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2025.02.13 um 08:42:10 AM CET 
+// Generiert: 2025.03.12 um 09:13:58 PM CET 
 //
 
 
@@ -16,7 +16,6 @@ import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
-import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
 import jakarta.xml.bind.annotation.XmlType;
@@ -76,25 +75,25 @@ public class TCollaboration
 {
 
     private final static long serialVersionUID = -1L;
-    @XmlElement(name = "participant")
+    @XmlElementRef(name = "participant", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = Participant.class, required = false)
     protected List<Participant> participants;
-    @XmlElement(name = "messageFlow")
+    @XmlElementRef(name = "messageFlow", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = MessageFlow.class, required = false)
     protected List<MessageFlow> messageFlows;
     @XmlElementRef(name = "artifact", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = JAXBElement.class, required = false)
     protected List<JAXBElement<? extends TArtifact>> artifacts;
     @XmlElementRef(name = "conversationNode", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = JAXBElement.class, required = false)
     protected List<JAXBElement<? extends TConversationNode>> conversationNodes;
-    @XmlElement(name = "conversationAssociation")
+    @XmlElementRef(name = "conversationAssociation", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = ConversationAssociation.class, required = false)
     protected List<ConversationAssociation> conversationAssociations;
-    @XmlElement(name = "participantAssociation")
+    @XmlElementRef(name = "participantAssociation", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = ParticipantAssociation.class, required = false)
     protected List<ParticipantAssociation> participantAssociations;
-    @XmlElement(name = "messageFlowAssociation")
+    @XmlElementRef(name = "messageFlowAssociation", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = MessageFlowAssociation.class, required = false)
     protected List<MessageFlowAssociation> messageFlowAssociations;
-    @XmlElement(name = "correlationKey")
+    @XmlElementRef(name = "correlationKey", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = CorrelationKey.class, required = false)
     protected List<CorrelationKey> correlationKeies;
-    @XmlElement(name = "choreographyRef")
-    protected List<QName> choreographyReves;
-    @XmlElement(name = "conversationLink")
+    @XmlElementRef(name = "choreographyRef", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = JAXBElement.class, required = false)
+    protected List<JAXBElement<QName>> choreographyReves;
+    @XmlElementRef(name = "conversationLink", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = ConversationLink.class, required = false)
     protected List<ConversationLink> conversationLinks;
     @XmlAttribute(name = "name")
     protected String name;
@@ -177,9 +176,9 @@ public class TCollaboration
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link TGroup }{@code >}
      * {@link JAXBElement }{@code <}{@link TTextAnnotation }{@code >}
      * {@link JAXBElement }{@code <}{@link TAssociation }{@code >}
+     * {@link JAXBElement }{@code <}{@link TGroup }{@code >}
      * {@link JAXBElement }{@code <}{@link TArtifact }{@code >}
      * 
      * 
@@ -210,8 +209,8 @@ public class TCollaboration
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link JAXBElement }{@code <}{@link TConversation }{@code >}
-     * {@link JAXBElement }{@code <}{@link TCallConversation }{@code >}
      * {@link JAXBElement }{@code <}{@link TSubConversation }{@code >}
+     * {@link JAXBElement }{@code <}{@link TCallConversation }{@code >}
      * {@link JAXBElement }{@code <}{@link TConversationNode }{@code >}
      * 
      * 
@@ -357,13 +356,13 @@ public class TCollaboration
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link QName }
+     * {@link JAXBElement }{@code <}{@link QName }{@code >}
      * 
      * 
      */
-    public List<QName> getChoreographyReves() {
+    public List<JAXBElement<QName>> getChoreographyReves() {
         if (choreographyReves == null) {
-            choreographyReves = new ArrayList<QName>();
+            choreographyReves = new ArrayList<JAXBElement<QName>>();
         }
         return this.choreographyReves;
     }

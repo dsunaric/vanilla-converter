@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der Eclipse Implementation of JAXB, v3.0.0 generiert 
 // Siehe https://eclipse-ee4j.github.io/jaxb-ri 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2025.02.13 um 08:42:10 AM CET 
+// Generiert: 2025.03.12 um 09:13:58 PM CET 
 //
 
 
@@ -15,7 +15,6 @@ import javax.xml.namespace.QName;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
 import jakarta.xml.bind.annotation.XmlType;
@@ -64,15 +63,16 @@ public abstract class TThrowEvent
 {
 
     private final static long serialVersionUID = -1L;
-    @XmlElement(name = "dataInput")
+    @XmlElementRef(name = "dataInput", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = DataInput.class, required = false)
     protected List<DataInput> dataInputs;
-    @XmlElement(name = "dataInputAssociation")
+    @XmlElementRef(name = "dataInputAssociation", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = DataInputAssociation.class, required = false)
     protected List<DataInputAssociation> dataInputAssociations;
+    @XmlElementRef(name = "inputSet", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = InputSet.class, required = false)
     protected InputSet inputSet;
     @XmlElementRef(name = "eventDefinition", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = JAXBElement.class, required = false)
     protected List<JAXBElement<? extends TEventDefinition>> eventDefinitions;
-    @XmlElement(name = "eventDefinitionRef")
-    protected List<QName> eventDefinitionReves;
+    @XmlElementRef(name = "eventDefinitionRef", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = JAXBElement.class, required = false)
+    protected List<JAXBElement<QName>> eventDefinitionReves;
 
     /**
      * Gets the value of the dataInputs property.
@@ -174,16 +174,16 @@ public abstract class TThrowEvent
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link TEscalationEventDefinition }{@code >}
-     * {@link JAXBElement }{@code <}{@link TSignalEventDefinition }{@code >}
-     * {@link JAXBElement }{@code <}{@link TTerminateEventDefinition }{@code >}
      * {@link JAXBElement }{@code <}{@link TConditionalEventDefinition }{@code >}
-     * {@link JAXBElement }{@code <}{@link TCancelEventDefinition }{@code >}
-     * {@link JAXBElement }{@code <}{@link TMessageEventDefinition }{@code >}
-     * {@link JAXBElement }{@code <}{@link TCompensateEventDefinition }{@code >}
-     * {@link JAXBElement }{@code <}{@link TErrorEventDefinition }{@code >}
-     * {@link JAXBElement }{@code <}{@link TTimerEventDefinition }{@code >}
+     * {@link JAXBElement }{@code <}{@link TEscalationEventDefinition }{@code >}
      * {@link JAXBElement }{@code <}{@link TLinkEventDefinition }{@code >}
+     * {@link JAXBElement }{@code <}{@link TCompensateEventDefinition }{@code >}
+     * {@link JAXBElement }{@code <}{@link TSignalEventDefinition }{@code >}
+     * {@link JAXBElement }{@code <}{@link TMessageEventDefinition }{@code >}
+     * {@link JAXBElement }{@code <}{@link TErrorEventDefinition }{@code >}
+     * {@link JAXBElement }{@code <}{@link TCancelEventDefinition }{@code >}
+     * {@link JAXBElement }{@code <}{@link TTimerEventDefinition }{@code >}
+     * {@link JAXBElement }{@code <}{@link TTerminateEventDefinition }{@code >}
      * {@link JAXBElement }{@code <}{@link TEventDefinition }{@code >}
      * 
      * 
@@ -213,13 +213,13 @@ public abstract class TThrowEvent
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link QName }
+     * {@link JAXBElement }{@code <}{@link QName }{@code >}
      * 
      * 
      */
-    public List<QName> getEventDefinitionReves() {
+    public List<JAXBElement<QName>> getEventDefinitionReves() {
         if (eventDefinitionReves == null) {
-            eventDefinitionReves = new ArrayList<QName>();
+            eventDefinitionReves = new ArrayList<JAXBElement<QName>>();
         }
         return this.eventDefinitionReves;
     }

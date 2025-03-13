@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der Eclipse Implementation of JAXB, v3.0.0 generiert 
 // Siehe https://eclipse-ee4j.github.io/jaxb-ri 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2025.02.13 um 08:42:10 AM CET 
+// Generiert: 2025.03.12 um 09:13:58 PM CET 
 //
 
 
@@ -12,10 +12,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.namespace.QName;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
-import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
 
@@ -57,10 +58,11 @@ public class Participant
 {
 
     private final static long serialVersionUID = -1L;
-    @XmlElement(name = "interfaceRef")
-    protected List<QName> interfaceReves;
-    @XmlElement(name = "endPointRef")
-    protected List<QName> endPointReves;
+    @XmlElementRef(name = "interfaceRef", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = JAXBElement.class, required = false)
+    protected List<JAXBElement<QName>> interfaceReves;
+    @XmlElementRef(name = "endPointRef", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = JAXBElement.class, required = false)
+    protected List<JAXBElement<QName>> endPointReves;
+    @XmlElementRef(name = "participantMultiplicity", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = ParticipantMultiplicity.class, required = false)
     protected ParticipantMultiplicity participantMultiplicity;
     @XmlAttribute(name = "name")
     protected String name;
@@ -85,13 +87,13 @@ public class Participant
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link QName }
+     * {@link JAXBElement }{@code <}{@link QName }{@code >}
      * 
      * 
      */
-    public List<QName> getInterfaceReves() {
+    public List<JAXBElement<QName>> getInterfaceReves() {
         if (interfaceReves == null) {
-            interfaceReves = new ArrayList<QName>();
+            interfaceReves = new ArrayList<JAXBElement<QName>>();
         }
         return this.interfaceReves;
     }
@@ -114,13 +116,13 @@ public class Participant
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link QName }
+     * {@link JAXBElement }{@code <}{@link QName }{@code >}
      * 
      * 
      */
-    public List<QName> getEndPointReves() {
+    public List<JAXBElement<QName>> getEndPointReves() {
         if (endPointReves == null) {
-            endPointReves = new ArrayList<QName>();
+            endPointReves = new ArrayList<JAXBElement<QName>>();
         }
         return this.endPointReves;
     }

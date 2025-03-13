@@ -2,16 +2,17 @@
 // Diese Datei wurde mit der Eclipse Implementation of JAXB, v3.0.0 generiert 
 // Siehe https://eclipse-ee4j.github.io/jaxb-ri 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2025.02.13 um 08:42:10 AM CET 
+// Generiert: 2025.03.12 um 09:13:58 PM CET 
 //
 
 
 package xml;
 
 import java.io.Serializable;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
 
@@ -49,19 +50,20 @@ public class ComplexBehaviorDefinition
 {
 
     private final static long serialVersionUID = -1L;
-    @XmlElement(required = true)
-    protected TFormalExpression condition;
-    protected TImplicitThrowEvent event;
+    @XmlElementRef(name = "condition", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = JAXBElement.class)
+    protected JAXBElement<TFormalExpression> condition;
+    @XmlElementRef(name = "event", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = JAXBElement.class, required = false)
+    protected JAXBElement<TImplicitThrowEvent> event;
 
     /**
      * Ruft den Wert der condition-Eigenschaft ab.
      * 
      * @return
      *     possible object is
-     *     {@link TFormalExpression }
+     *     {@link JAXBElement }{@code <}{@link TFormalExpression }{@code >}
      *     
      */
-    public TFormalExpression getCondition() {
+    public JAXBElement<TFormalExpression> getCondition() {
         return condition;
     }
 
@@ -70,10 +72,10 @@ public class ComplexBehaviorDefinition
      * 
      * @param value
      *     allowed object is
-     *     {@link TFormalExpression }
+     *     {@link JAXBElement }{@code <}{@link TFormalExpression }{@code >}
      *     
      */
-    public void setCondition(TFormalExpression value) {
+    public void setCondition(JAXBElement<TFormalExpression> value) {
         this.condition = value;
     }
 
@@ -82,10 +84,10 @@ public class ComplexBehaviorDefinition
      * 
      * @return
      *     possible object is
-     *     {@link TImplicitThrowEvent }
+     *     {@link JAXBElement }{@code <}{@link TImplicitThrowEvent }{@code >}
      *     
      */
-    public TImplicitThrowEvent getEvent() {
+    public JAXBElement<TImplicitThrowEvent> getEvent() {
         return event;
     }
 
@@ -94,10 +96,10 @@ public class ComplexBehaviorDefinition
      * 
      * @param value
      *     allowed object is
-     *     {@link TImplicitThrowEvent }
+     *     {@link JAXBElement }{@code <}{@link TImplicitThrowEvent }{@code >}
      *     
      */
-    public void setEvent(TImplicitThrowEvent value) {
+    public void setEvent(JAXBElement<TImplicitThrowEvent> value) {
         this.event = value;
     }
 

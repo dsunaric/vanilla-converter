@@ -4,14 +4,59 @@
            targetNamespace="http://camunda.org/schema/modeler/1.0"
            elementFormDefault="qualified">
 
+    <!-- Root modeler element -->
     <xs:element name="modeler" type="modeler:ModelerType"/>
 
+    <!-- Complex type for modeler -->
     <xs:complexType name="ModelerType">
         <xs:sequence>
             <xs:element name="executionPlatform" type="xs:string"/>
             <xs:element name="executionPlatformVersion" type="xs:string"/>
+            <xs:element name="properties" type="modeler:PropertiesType" minOccurs="0"/>
+            <xs:element name="listeners" type="modeler:ListenersType" minOccurs="0"/>
+            <xs:element name="inputOutput" type="modeler:InputOutputType" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
-    <xs:attribute name="executionPlatform"/>
-    <xs:attribute name="executionPlatformVersion"/>
+
+    <!-- Attributes -->
+    <xs:attribute name="executionPlatform" type="xs:string"/>
+    <xs:attribute name="executionPlatformVersion" type="xs:string"/>
+
+    <!-- Properties -->
+    <xs:complexType name="PropertiesType">
+        <xs:sequence>
+            <xs:element name="property" type="modeler:PropertyType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PropertyType">
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="value" type="xs:string"/>
+    </xs:complexType>
+
+    <!-- Listeners -->
+    <xs:complexType name="ListenersType">
+        <xs:sequence>
+            <xs:element name="executionListener" type="modeler:ListenerType" maxOccurs="unbounded"/>
+            <xs:element name="taskListener" type="modeler:ListenerType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ListenerType">
+        <xs:attribute name="event" type="xs:string" use="required"/>
+        <xs:attribute name="class" type="xs:string"/>
+        <xs:attribute name="expression" type="xs:string"/>
+    </xs:complexType>
+
+    <!-- Input/Output Mapping -->
+    <xs:complexType name="InputOutputType">
+        <xs:sequence>
+            <xs:element name="inputParameter" type="modeler:ParameterType" maxOccurs="unbounded"/>
+            <xs:element name="outputParameter" type="modeler:ParameterType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ParameterType">
+        <xs:attribute name="name" type="xs:string" use="required"/>
+    </xs:complexType>
 </xs:schema>

@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der Eclipse Implementation of JAXB, v3.0.0 generiert 
 // Siehe https://eclipse-ee4j.github.io/jaxb-ri 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2025.02.13 um 08:42:10 AM CET 
+// Generiert: 2025.03.12 um 09:13:58 PM CET 
 //
 
 
@@ -12,10 +12,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.namespace.QName;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
-import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -52,9 +53,10 @@ public class TLinkEventDefinition
 {
 
     private final static long serialVersionUID = -1L;
-    @XmlElement(name = "source")
-    protected List<QName> sources;
-    protected QName target;
+    @XmlElementRef(name = "source", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = JAXBElement.class, required = false)
+    protected List<JAXBElement<QName>> sources;
+    @XmlElementRef(name = "target", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = JAXBElement.class, required = false)
+    protected JAXBElement<QName> target;
     @XmlAttribute(name = "name", required = true)
     protected String name;
 
@@ -76,13 +78,13 @@ public class TLinkEventDefinition
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link QName }
+     * {@link JAXBElement }{@code <}{@link QName }{@code >}
      * 
      * 
      */
-    public List<QName> getSources() {
+    public List<JAXBElement<QName>> getSources() {
         if (sources == null) {
-            sources = new ArrayList<QName>();
+            sources = new ArrayList<JAXBElement<QName>>();
         }
         return this.sources;
     }
@@ -92,10 +94,10 @@ public class TLinkEventDefinition
      * 
      * @return
      *     possible object is
-     *     {@link QName }
+     *     {@link JAXBElement }{@code <}{@link QName }{@code >}
      *     
      */
-    public QName getTarget() {
+    public JAXBElement<QName> getTarget() {
         return target;
     }
 
@@ -104,10 +106,10 @@ public class TLinkEventDefinition
      * 
      * @param value
      *     allowed object is
-     *     {@link QName }
+     *     {@link JAXBElement }{@code <}{@link QName }{@code >}
      *     
      */
-    public void setTarget(QName value) {
+    public void setTarget(JAXBElement<QName> value) {
         this.target = value;
     }
 

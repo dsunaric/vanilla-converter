@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der Eclipse Implementation of JAXB, v3.0.0 generiert 
 // Siehe https://eclipse-ee4j.github.io/jaxb-ri 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2025.02.13 um 08:42:10 AM CET 
+// Generiert: 2025.03.12 um 09:13:58 PM CET 
 //
 
 
@@ -12,10 +12,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.namespace.QName;
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
-import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
 import jakarta.xml.bind.annotation.XmlType;
 
@@ -60,9 +61,11 @@ public class TResourceRole
 {
 
     private final static long serialVersionUID = -1L;
+    @XmlElementRef(name = "resourceAssignmentExpression", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = ResourceAssignmentExpression.class, required = false)
     protected ResourceAssignmentExpression resourceAssignmentExpression;
-    protected QName resourceRef;
-    @XmlElement(name = "resourceParameterBinding")
+    @XmlElementRef(name = "resourceRef", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = JAXBElement.class, required = false)
+    protected JAXBElement<QName> resourceRef;
+    @XmlElementRef(name = "resourceParameterBinding", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL", type = ResourceParameterBinding.class, required = false)
     protected List<ResourceParameterBinding> resourceParameterBindings;
     @XmlAttribute(name = "name")
     protected String name;
@@ -96,10 +99,10 @@ public class TResourceRole
      * 
      * @return
      *     possible object is
-     *     {@link QName }
+     *     {@link JAXBElement }{@code <}{@link QName }{@code >}
      *     
      */
-    public QName getResourceRef() {
+    public JAXBElement<QName> getResourceRef() {
         return resourceRef;
     }
 
@@ -108,10 +111,10 @@ public class TResourceRole
      * 
      * @param value
      *     allowed object is
-     *     {@link QName }
+     *     {@link JAXBElement }{@code <}{@link QName }{@code >}
      *     
      */
-    public void setResourceRef(QName value) {
+    public void setResourceRef(JAXBElement<QName> value) {
         this.resourceRef = value;
     }
 
