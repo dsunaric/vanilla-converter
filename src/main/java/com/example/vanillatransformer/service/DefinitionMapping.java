@@ -9,10 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import xml.Definitions;
-import xml.TMessage;
-import xml.TProcess;
-import xml.TReceiveTask;
+import xml.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,10 +20,16 @@ import java.util.stream.Collectors;
 public class DefinitionMapping implements Mapping<Definitions,Definitions> {
 
     @Autowired
-    private ProcessMapping processMapping;
+    private RootProcessMapping processMapping;
 
     @Autowired
     private MessageMapping messageMapping;
+
+    @Autowired
+    private ErrorMapping errorMapping;
+
+    @Autowired
+    private SignalMapping signalMapping;
 
     private static Logger LOG = LoggerFactory.getLogger(DefinitionMapping.class);
     @Override
@@ -38,9 +41,19 @@ public class DefinitionMapping implements Mapping<Definitions,Definitions> {
         definitions.setExecutionPlatformVersion(Camunda8Constants.MODELER_EXECUTIONPLATFORM_VERSION);
         processMapping.map(getProcess(definitions));
 
-        List<TMessage> messages = getMessages(definitions);
+        List<TMessage> messages = extractElementsWithType(definitions, TMessage.class);
         for(var message : messages) {
             messageMapping.map(message);
+        }
+
+        List<TError> errors = extractElementsWithType(definitions, TError.class);
+        for(var error : errors) {
+            errorMapping.map(error);
+        }
+
+        List<TSignal> signals = extractElementsWithType(definitions, TSignal.class);
+        for(var signal : signals) {
+            signalMapping.map(signal);
         }
 
         return definitions;
@@ -54,12 +67,14 @@ public class DefinitionMapping implements Mapping<Definitions,Definitions> {
                 .orElseThrow(() -> new BPMNParseException("Cannot find expected <bpmn:process> child element"));
     }
 
-    private List<TMessage> getMessages(Definitions definitions){
-        return  definitions.getRootElements().stream().filter(
-                element -> element.getDeclaredType().equals(TMessage.class))
-                .map(element -> (TMessage) element.getValue())
+
+    private <T> List<T> extractElementsWithType(Definitions definitions, Class<T> taskType) {
+        return definitions.getRootElements().stream().filter(
+                        element -> element.getDeclaredType().equals(taskType))
+                .map(element -> taskType.cast(element.getValue()))
                 .collect(Collectors.toList());
     }
+
 
 
 }

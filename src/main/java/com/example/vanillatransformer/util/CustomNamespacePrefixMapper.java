@@ -9,6 +9,12 @@ public class CustomNamespacePrefixMapper extends NamespacePrefixMapper {
         if ("http://camunda.org/schema/modeler/1.0".equals(namespaceUri)) {
             return "modeler";
         }
+        if ("http://camunda.org/schema/1.0/bpmn".equals(namespaceUri)) {
+            return "camunda";
+        }
+        if ("http://www.w3.org/2001/XMLSchema-instance".equals(namespaceUri)) {
+            return "xsi";
+        }
         if ("http://www.omg.org/spec/BPMN/20100524/MODEL".equals(namespaceUri)) {
             return "bpmn";
         }

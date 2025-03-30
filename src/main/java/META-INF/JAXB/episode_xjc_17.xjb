@@ -1,0 +1,570 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bindings version="3.0" xmlns="https://jakarta.ee/xml/ns/jaxb">
+  <!--
+
+Diese Datei wurde mit der Eclipse Implementation of JAXB, v3.0.0 generiert 
+Siehe https://eclipse-ee4j.github.io/jaxb-ri 
+Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
+Generiert: 2025.03.29 um 05:43:14 PM CET 
+
+  -->
+  <bindings scd="x-schema::tns" xmlns:tns="http://www.omg.org/spec/DD/20100524/DI">
+    <schemaBindings map="false">
+      <package name="xml"/>
+    </schemaBindings>
+    <bindings scd="~tns:DiagramElement">
+      <class ref="xml.DiagramElement"/>
+    </bindings>
+    <bindings scd="~tns:Diagram">
+      <class ref="xml.Diagram"/>
+    </bindings>
+    <bindings scd="~tns:Plane">
+      <class ref="xml.Plane"/>
+    </bindings>
+    <bindings scd="~tns:Node">
+      <class ref="xml.Node"/>
+    </bindings>
+    <bindings scd="~tns:Style">
+      <class ref="xml.Style"/>
+    </bindings>
+    <bindings scd="~tns:Label">
+      <class ref="xml.Label"/>
+    </bindings>
+    <bindings scd="~tns:Edge">
+      <class ref="xml.Edge"/>
+    </bindings>
+    <bindings scd="~tns:Shape">
+      <class ref="xml.Shape"/>
+    </bindings>
+    <bindings scd="~tns:LabeledEdge">
+      <class ref="xml.LabeledEdge"/>
+    </bindings>
+    <bindings scd="~tns:LabeledShape">
+      <class ref="xml.LabeledShape"/>
+    </bindings>
+  </bindings>
+  <bindings scd="x-schema::tns" xmlns:tns="http://www.omg.org/spec/BPMN/20100524/MODEL">
+    <schemaBindings map="false">
+      <package name="xml"/>
+    </schemaBindings>
+    <bindings scd="~tns:tActivity">
+      <class ref="xml.TActivity"/>
+    </bindings>
+    <bindings scd="~tns:tAdHocSubProcess">
+      <class ref="xml.TAdHocSubProcess"/>
+    </bindings>
+    <bindings scd="~tns:tFlowElement">
+      <class ref="xml.TFlowElement"/>
+    </bindings>
+    <bindings scd="~tns:tArtifact">
+      <class ref="xml.TArtifact"/>
+    </bindings>
+    <bindings scd="~tns:tAssignment">
+      <class ref="xml.Assignment"/>
+    </bindings>
+    <bindings scd="~tns:tBaseElement">
+      <class ref="xml.TBaseElement"/>
+    </bindings>
+    <bindings scd="~tns:tDocumentation">
+      <class ref="xml.Documentation"/>
+    </bindings>
+    <bindings scd="~tns:tExtensionElements">
+      <class ref="xml.ExtensionElements"/>
+    </bindings>
+    <bindings scd="~tns:tExpression">
+      <class ref="xml.TExpression"/>
+    </bindings>
+    <bindings scd="~tns:tAssociation">
+      <class ref="xml.TAssociation"/>
+    </bindings>
+    <bindings scd="~tns:tAuditing">
+      <class ref="xml.Auditing"/>
+    </bindings>
+    <bindings scd="~tns:tBaseElementWithMixedContent">
+      <class ref="xml.TBaseElementWithMixedContent"/>
+    </bindings>
+    <bindings scd="~tns:tBoundaryEvent">
+      <class ref="xml.TBoundaryEvent"/>
+    </bindings>
+    <bindings scd="~tns:tBusinessRuleTask">
+      <class ref="xml.TBusinessRuleTask"/>
+    </bindings>
+    <bindings scd="~tns:tCallableElement">
+      <class ref="xml.TCallableElement"/>
+    </bindings>
+    <bindings scd="~tns:tCallActivity">
+      <class ref="xml.TCallActivity"/>
+    </bindings>
+    <bindings scd="~tns:tCallChoreography">
+      <class ref="xml.TCallChoreography"/>
+    </bindings>
+    <bindings scd="~tns:tCallConversation">
+      <class ref="xml.TCallConversation"/>
+    </bindings>
+    <bindings scd="~tns:tConversationNode">
+      <class ref="xml.TConversationNode"/>
+    </bindings>
+    <bindings scd="~tns:tCancelEventDefinition">
+      <class ref="xml.TCancelEventDefinition"/>
+    </bindings>
+    <bindings scd="~tns:tEventDefinition">
+      <class ref="xml.TEventDefinition"/>
+    </bindings>
+    <bindings scd="~tns:tRootElement">
+      <class ref="xml.TRootElement"/>
+    </bindings>
+    <bindings scd="~tns:tCatchEvent">
+      <class ref="xml.TCatchEvent"/>
+    </bindings>
+    <bindings scd="~tns:tCategory">
+      <class ref="xml.TCategory"/>
+    </bindings>
+    <bindings scd="~tns:tCategoryValue">
+      <class ref="xml.CategoryValue"/>
+    </bindings>
+    <bindings scd="~tns:tChoreography">
+      <class ref="xml.TChoreography"/>
+    </bindings>
+    <bindings scd="~tns:tCollaboration">
+      <class ref="xml.TCollaboration"/>
+    </bindings>
+    <bindings scd="~tns:tChoreographyActivity">
+      <class ref="xml.TChoreographyActivity"/>
+    </bindings>
+    <bindings scd="~tns:tChoreographyTask">
+      <class ref="xml.TChoreographyTask"/>
+    </bindings>
+    <bindings scd="~tns:tCompensateEventDefinition">
+      <class ref="xml.TCompensateEventDefinition"/>
+    </bindings>
+    <bindings scd="~tns:tComplexBehaviorDefinition">
+      <class ref="xml.ComplexBehaviorDefinition"/>
+    </bindings>
+    <bindings scd="~tns:tFormalExpression">
+      <class ref="xml.TFormalExpression"/>
+    </bindings>
+    <bindings scd="~tns:tImplicitThrowEvent">
+      <class ref="xml.TImplicitThrowEvent"/>
+    </bindings>
+    <bindings scd="~tns:tComplexGateway">
+      <class ref="xml.TComplexGateway"/>
+    </bindings>
+    <bindings scd="~tns:tConditionalEventDefinition">
+      <class ref="xml.TConditionalEventDefinition"/>
+    </bindings>
+    <bindings scd="~tns:tConversation">
+      <class ref="xml.TConversation"/>
+    </bindings>
+    <bindings scd="~tns:tConversationAssociation">
+      <class ref="xml.ConversationAssociation"/>
+    </bindings>
+    <bindings scd="~tns:tConversationLink">
+      <class ref="xml.ConversationLink"/>
+    </bindings>
+    <bindings scd="~tns:tCorrelationKey">
+      <class ref="xml.CorrelationKey"/>
+    </bindings>
+    <bindings scd="~tns:tCorrelationProperty">
+      <class ref="xml.TCorrelationProperty"/>
+    </bindings>
+    <bindings scd="~tns:tCorrelationPropertyBinding">
+      <class ref="xml.CorrelationPropertyBinding"/>
+    </bindings>
+    <bindings scd="~tns:tCorrelationPropertyRetrievalExpression">
+      <class ref="xml.CorrelationPropertyRetrievalExpression"/>
+    </bindings>
+    <bindings scd="~tns:tCorrelationSubscription">
+      <class ref="xml.CorrelationSubscription"/>
+    </bindings>
+    <bindings scd="~tns:tDataAssociation">
+      <class ref="xml.TDataAssociation"/>
+    </bindings>
+    <bindings scd="~tns:tDataInput">
+      <class ref="xml.DataInput"/>
+    </bindings>
+    <bindings scd="~tns:tDataState">
+      <class ref="xml.DataState"/>
+    </bindings>
+    <bindings scd="~tns:tDataInputAssociation">
+      <class ref="xml.DataInputAssociation"/>
+    </bindings>
+    <bindings scd="~tns:tDataObject">
+      <class ref="xml.TDataObject"/>
+    </bindings>
+    <bindings scd="~tns:tDataObjectReference">
+      <class ref="xml.TDataObjectReference"/>
+    </bindings>
+    <bindings scd="~tns:tDataOutput">
+      <class ref="xml.DataOutput"/>
+    </bindings>
+    <bindings scd="~tns:tDataOutputAssociation">
+      <class ref="xml.DataOutputAssociation"/>
+    </bindings>
+    <bindings scd="~tns:tDataStore">
+      <class ref="xml.TDataStore"/>
+    </bindings>
+    <bindings scd="~tns:tDataStoreReference">
+      <class ref="xml.TDataStoreReference"/>
+    </bindings>
+    <bindings scd="~tns:tEndEvent">
+      <class ref="xml.TEndEvent"/>
+    </bindings>
+    <bindings scd="~tns:tEndPoint">
+      <class ref="xml.TEndPoint"/>
+    </bindings>
+    <bindings scd="~tns:tError">
+      <class ref="xml.TError"/>
+    </bindings>
+    <bindings scd="~tns:tErrorEventDefinition">
+      <class ref="xml.TErrorEventDefinition"/>
+    </bindings>
+    <bindings scd="~tns:tEscalation">
+      <class ref="xml.TEscalation"/>
+    </bindings>
+    <bindings scd="~tns:tEscalationEventDefinition">
+      <class ref="xml.TEscalationEventDefinition"/>
+    </bindings>
+    <bindings scd="~tns:tEvent">
+      <class ref="xml.TEvent"/>
+    </bindings>
+    <bindings scd="~tns:tEventBasedGateway">
+      <class ref="xml.TEventBasedGateway"/>
+    </bindings>
+    <bindings scd="~tns:tExclusiveGateway">
+      <class ref="xml.TExclusiveGateway"/>
+    </bindings>
+    <bindings scd="~tns:tExtension">
+      <class ref="xml.Extension"/>
+    </bindings>
+    <bindings scd="~tns:tFlowNode">
+      <class ref="xml.TFlowNode"/>
+    </bindings>
+    <bindings scd="~tns:tGateway">
+      <class ref="xml.TGateway"/>
+    </bindings>
+    <bindings scd="~tns:tGlobalBusinessRuleTask">
+      <class ref="xml.TGlobalBusinessRuleTask"/>
+    </bindings>
+    <bindings scd="~tns:tGlobalChoreographyTask">
+      <class ref="xml.TGlobalChoreographyTask"/>
+    </bindings>
+    <bindings scd="~tns:tGlobalConversation">
+      <class ref="xml.TGlobalConversation"/>
+    </bindings>
+    <bindings scd="~tns:tGlobalManualTask">
+      <class ref="xml.TGlobalManualTask"/>
+    </bindings>
+    <bindings scd="~tns:tGlobalScriptTask">
+      <class ref="xml.TGlobalScriptTask"/>
+    </bindings>
+    <bindings scd="~tns:tGlobalTask">
+      <class ref="xml.TGlobalTask"/>
+    </bindings>
+    <bindings scd="~tns:tGlobalUserTask">
+      <class ref="xml.TGlobalUserTask"/>
+    </bindings>
+    <bindings scd="~tns:tGroup">
+      <class ref="xml.TGroup"/>
+    </bindings>
+    <bindings scd="~tns:tHumanPerformer">
+      <class ref="xml.THumanPerformer"/>
+    </bindings>
+    <bindings scd="~tns:tPerformer">
+      <class ref="xml.TPerformer"/>
+    </bindings>
+    <bindings scd="~tns:tResourceRole">
+      <class ref="xml.TResourceRole"/>
+    </bindings>
+    <bindings scd="~tns:tInclusiveGateway">
+      <class ref="xml.TInclusiveGateway"/>
+    </bindings>
+    <bindings scd="~tns:tInputSet">
+      <class ref="xml.InputSet"/>
+    </bindings>
+    <bindings scd="~tns:tInterface">
+      <class ref="xml.TInterface"/>
+    </bindings>
+    <bindings scd="~tns:tIntermediateCatchEvent">
+      <class ref="xml.TIntermediateCatchEvent"/>
+    </bindings>
+    <bindings scd="~tns:tIntermediateThrowEvent">
+      <class ref="xml.TIntermediateThrowEvent"/>
+    </bindings>
+    <bindings scd="~tns:tInputOutputBinding">
+      <class ref="xml.IoBinding"/>
+    </bindings>
+    <bindings scd="~tns:tInputOutputSpecification">
+      <class ref="xml.IoSpecification"/>
+    </bindings>
+    <bindings scd="~tns:tOutputSet">
+      <class ref="xml.OutputSet"/>
+    </bindings>
+    <bindings scd="~tns:tItemDefinition">
+      <class ref="xml.TItemDefinition"/>
+    </bindings>
+    <bindings scd="~tns:tLane">
+      <class ref="xml.Lane"/>
+    </bindings>
+    <bindings scd="~tns:tLaneSet">
+      <class ref="xml.LaneSet"/>
+    </bindings>
+    <bindings scd="~tns:tLinkEventDefinition">
+      <class ref="xml.TLinkEventDefinition"/>
+    </bindings>
+    <bindings scd="~tns:tLoopCharacteristics">
+      <class ref="xml.TLoopCharacteristics"/>
+    </bindings>
+    <bindings scd="~tns:tManualTask">
+      <class ref="xml.TManualTask"/>
+    </bindings>
+    <bindings scd="~tns:tMessage">
+      <class ref="xml.TMessage"/>
+    </bindings>
+    <bindings scd="~tns:tMessageEventDefinition">
+      <class ref="xml.TMessageEventDefinition"/>
+    </bindings>
+    <bindings scd="~tns:tMessageFlow">
+      <class ref="xml.MessageFlow"/>
+    </bindings>
+    <bindings scd="~tns:tMessageFlowAssociation">
+      <class ref="xml.MessageFlowAssociation"/>
+    </bindings>
+    <bindings scd="~tns:tMonitoring">
+      <class ref="xml.Monitoring"/>
+    </bindings>
+    <bindings scd="~tns:tMultiInstanceLoopCharacteristics">
+      <class ref="xml.TMultiInstanceLoopCharacteristics"/>
+    </bindings>
+    <bindings scd="~tns:tOperation">
+      <class ref="xml.Operation"/>
+    </bindings>
+    <bindings scd="~tns:tParallelGateway">
+      <class ref="xml.TParallelGateway"/>
+    </bindings>
+    <bindings scd="~tns:tParticipant">
+      <class ref="xml.Participant"/>
+    </bindings>
+    <bindings scd="~tns:tParticipantMultiplicity">
+      <class ref="xml.ParticipantMultiplicity"/>
+    </bindings>
+    <bindings scd="~tns:tParticipantAssociation">
+      <class ref="xml.ParticipantAssociation"/>
+    </bindings>
+    <bindings scd="~tns:tPartnerEntity">
+      <class ref="xml.TPartnerEntity"/>
+    </bindings>
+    <bindings scd="~tns:tPartnerRole">
+      <class ref="xml.TPartnerRole"/>
+    </bindings>
+    <bindings scd="~tns:tPotentialOwner">
+      <class ref="xml.TPotentialOwner"/>
+    </bindings>
+    <bindings scd="~tns:tProcess">
+      <class ref="xml.TProcess"/>
+    </bindings>
+    <bindings scd="~tns:tProperty">
+      <class ref="xml.Property"/>
+    </bindings>
+    <bindings scd="~tns:tReceiveTask">
+      <class ref="xml.TReceiveTask"/>
+    </bindings>
+    <bindings scd="~tns:tRelationship">
+      <class ref="xml.Relationship"/>
+    </bindings>
+    <bindings scd="~tns:tRendering">
+      <class ref="xml.Rendering"/>
+    </bindings>
+    <bindings scd="~tns:tResource">
+      <class ref="xml.TResource"/>
+    </bindings>
+    <bindings scd="~tns:tResourceAssignmentExpression">
+      <class ref="xml.ResourceAssignmentExpression"/>
+    </bindings>
+    <bindings scd="~tns:tResourceParameter">
+      <class ref="xml.ResourceParameter"/>
+    </bindings>
+    <bindings scd="~tns:tResourceParameterBinding">
+      <class ref="xml.ResourceParameterBinding"/>
+    </bindings>
+    <bindings scd="~tns:tScriptTask">
+      <class ref="xml.TScriptTask"/>
+    </bindings>
+    <bindings scd="~tns:tScript">
+      <class ref="xml.Script"/>
+    </bindings>
+    <bindings scd="~tns:tSendTask">
+      <class ref="xml.TSendTask"/>
+    </bindings>
+    <bindings scd="~tns:tSequenceFlow">
+      <class ref="xml.TSequenceFlow"/>
+    </bindings>
+    <bindings scd="~tns:tServiceTask">
+      <class ref="xml.TServiceTask"/>
+    </bindings>
+    <bindings scd="~tns:tSignal">
+      <class ref="xml.TSignal"/>
+    </bindings>
+    <bindings scd="~tns:tSignalEventDefinition">
+      <class ref="xml.TSignalEventDefinition"/>
+    </bindings>
+    <bindings scd="~tns:tStandardLoopCharacteristics">
+      <class ref="xml.TStandardLoopCharacteristics"/>
+    </bindings>
+    <bindings scd="~tns:tStartEvent">
+      <class ref="xml.TStartEvent"/>
+    </bindings>
+    <bindings scd="~tns:tSubChoreography">
+      <class ref="xml.TSubChoreography"/>
+    </bindings>
+    <bindings scd="~tns:tSubConversation">
+      <class ref="xml.TSubConversation"/>
+    </bindings>
+    <bindings scd="~tns:tSubProcess">
+      <class ref="xml.TSubProcess"/>
+    </bindings>
+    <bindings scd="~tns:tTask">
+      <class ref="xml.TTask"/>
+    </bindings>
+    <bindings scd="~tns:tTerminateEventDefinition">
+      <class ref="xml.TTerminateEventDefinition"/>
+    </bindings>
+    <bindings scd="~tns:tTextAnnotation">
+      <class ref="xml.TTextAnnotation"/>
+    </bindings>
+    <bindings scd="~tns:tText">
+      <class ref="xml.Text"/>
+    </bindings>
+    <bindings scd="~tns:tThrowEvent">
+      <class ref="xml.TThrowEvent"/>
+    </bindings>
+    <bindings scd="~tns:tTimerEventDefinition">
+      <class ref="xml.TTimerEventDefinition"/>
+    </bindings>
+    <bindings scd="~tns:tTransaction">
+      <class ref="xml.TTransaction"/>
+    </bindings>
+    <bindings scd="~tns:tUserTask">
+      <class ref="xml.TUserTask"/>
+    </bindings>
+    <bindings scd="~tns:tDefinitions">
+      <class ref="xml.Definitions"/>
+    </bindings>
+    <bindings scd="~tns:tImport">
+      <class ref="xml.Import"/>
+    </bindings>
+    <bindings scd="~tns:tRelationshipDirection">
+      <typesafeEnumClass ref="xml.TRelationshipDirection"/>
+    </bindings>
+    <bindings scd="~tns:tAdHocOrdering">
+      <typesafeEnumClass ref="xml.TAdHocOrdering"/>
+    </bindings>
+    <bindings scd="~tns:tAssociationDirection">
+      <typesafeEnumClass ref="xml.TAssociationDirection"/>
+    </bindings>
+    <bindings scd="~tns:tChoreographyLoopType">
+      <typesafeEnumClass ref="xml.TChoreographyLoopType"/>
+    </bindings>
+    <bindings scd="~tns:tEventBasedGatewayType">
+      <typesafeEnumClass ref="xml.TEventBasedGatewayType"/>
+    </bindings>
+    <bindings scd="~tns:tGatewayDirection">
+      <typesafeEnumClass ref="xml.TGatewayDirection"/>
+    </bindings>
+    <bindings scd="~tns:tItemKind">
+      <typesafeEnumClass ref="xml.TItemKind"/>
+    </bindings>
+    <bindings scd="~tns:tMultiInstanceFlowCondition">
+      <typesafeEnumClass ref="xml.TMultiInstanceFlowCondition"/>
+    </bindings>
+    <bindings scd="~tns:tProcessType">
+      <typesafeEnumClass ref="xml.TProcessType"/>
+    </bindings>
+  </bindings>
+  <bindings scd="x-schema::tns" xmlns:tns="http://www.omg.org/spec/BPMN/20100524/DI">
+    <schemaBindings map="false">
+      <package name="xml"/>
+    </schemaBindings>
+    <bindings scd="~tns:BPMNDiagram">
+      <class ref="xml.BPMNDiagram"/>
+    </bindings>
+    <bindings scd="~tns:BPMNPlane">
+      <class ref="xml.BPMNPlane"/>
+    </bindings>
+    <bindings scd="~tns:BPMNLabelStyle">
+      <class ref="xml.BPMNLabelStyle"/>
+    </bindings>
+    <bindings scd="~tns:BPMNShape">
+      <class ref="xml.BPMNShape"/>
+    </bindings>
+    <bindings scd="~tns:BPMNLabel">
+      <class ref="xml.BPMNLabel"/>
+    </bindings>
+    <bindings scd="~tns:BPMNEdge">
+      <class ref="xml.BPMNEdge"/>
+    </bindings>
+    <bindings scd="~tns:ParticipantBandKind">
+      <typesafeEnumClass ref="xml.ParticipantBandKind"/>
+    </bindings>
+    <bindings scd="~tns:MessageVisibleKind">
+      <typesafeEnumClass ref="xml.MessageVisibleKind"/>
+    </bindings>
+  </bindings>
+  <bindings scd="x-schema::tns" xmlns:tns="http://www.omg.org/spec/DD/20100524/DC">
+    <schemaBindings map="false">
+      <package name="xml"/>
+    </schemaBindings>
+    <bindings scd="~tns:Font">
+      <class ref="xml.Font"/>
+    </bindings>
+    <bindings scd="~tns:Bounds">
+      <class ref="xml.Bounds"/>
+    </bindings>
+    <bindings scd="~tns:Point">
+      <class ref="xml.Point"/>
+    </bindings>
+  </bindings>
+  <bindings scd="x-schema::tns" xmlns:tns="http://camunda.org/schema/modeler/1.0">
+    <schemaBindings map="false">
+      <package name="xml"/>
+    </schemaBindings>
+    <bindings scd="~tns:ModelerType">
+      <class ref="xml.Modeler"/>
+    </bindings>
+    <bindings scd="~tns:PropertiesType">
+      <class ref="xml.PropertiesType"/>
+    </bindings>
+    <bindings scd="~tns:ListenersType">
+      <class ref="xml.ListenersType"/>
+    </bindings>
+    <bindings scd="~tns:InputOutputType">
+      <class ref="xml.InputOutputType"/>
+    </bindings>
+    <bindings scd="~tns:PropertyType">
+      <class ref="xml.PropertyType"/>
+    </bindings>
+    <bindings scd="~tns:ListenerType">
+      <class ref="xml.ListenerType"/>
+    </bindings>
+    <bindings scd="~tns:ParameterType">
+      <class ref="xml.ParameterType"/>
+    </bindings>
+  </bindings>
+  <bindings scd="x-schema::tns" xmlns:tns="http://camunda.org/schema/zeebe/1.0">
+    <schemaBindings map="false">
+      <package name="xml"/>
+    </schemaBindings>
+    <bindings scd="~tns:ZeebeType">
+      <class ref="xml.Zeebe"/>
+    </bindings>
+    <bindings scd="~tns:TaskDefinition">
+      <class ref="xml.TaskDefinition"/>
+    </bindings>
+    <bindings scd="~tns:Subscription">
+      <class ref="xml.Subscription"/>
+    </bindings>
+    <bindings scd="~tns:CalledDecision">
+      <class ref="xml.CalledDecision"/>
+    </bindings>
+  </bindings>
+</bindings>
+

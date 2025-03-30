@@ -1,16 +1,23 @@
 package com.example.vanillatransformer.service.abstractmappings;
 
+import com.example.vanillatransformer.service.CalledDecisionMapping;
 import lombok.Getter;
 import lombok.Setter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+import xml.TBaseElement;
 
 @Setter
 @Getter
 @Component
-public class NoMapping<A> implements Mapping<A,A> {
+public class NoMapping implements Mapping<TBaseElement,TBaseElement> {
 
+
+    private static Logger LOG = LoggerFactory.getLogger(NoMapping.class);
     @Override
-    public A map(A a) {
+    public TBaseElement map(TBaseElement a) {
+        LOG.info("NO MAPPING NEEDED: for element with id={}",a.getId() );
         return a;
     }
 }

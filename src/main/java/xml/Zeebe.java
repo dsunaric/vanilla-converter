@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der Eclipse Implementation of JAXB, v3.0.0 generiert 
 // Siehe https://eclipse-ee4j.github.io/jaxb-ri 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2025.03.12 um 09:13:58 PM CET 
+// Generiert: 2025.03.30 um 02:12:50 PM CEST 
 //
 
 
@@ -31,6 +31,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         &lt;element name="input" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="output" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="subscription" type="{http://camunda.org/schema/zeebe/1.0}Subscription" minOccurs="0"/&gt;
+ *         &lt;element name="calledDecision" type="{http://camunda.org/schema/zeebe/1.0}CalledDecision" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -44,7 +45,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "taskDefinition",
     "input",
     "output",
-    "subscription"
+    "subscription",
+    "calledDecision"
 })
 @XmlRootElement(name = "zeebe", namespace = "http://camunda.org/schema/zeebe/1.0")
 public class Zeebe
@@ -60,6 +62,8 @@ public class Zeebe
     protected JAXBElement<String> output;
     @XmlElementRef(name = "subscription", namespace = "http://camunda.org/schema/zeebe/1.0", type = JAXBElement.class, required = false)
     protected JAXBElement<Subscription> subscription;
+    @XmlElementRef(name = "calledDecision", namespace = "http://camunda.org/schema/zeebe/1.0", type = JAXBElement.class, required = false)
+    protected JAXBElement<CalledDecision> calledDecision;
 
     /**
      * Ruft den Wert der taskDefinition-Eigenschaft ab.
@@ -155,6 +159,30 @@ public class Zeebe
      */
     public void setSubscription(JAXBElement<Subscription> value) {
         this.subscription = value;
+    }
+
+    /**
+     * Ruft den Wert der calledDecision-Eigenschaft ab.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link CalledDecision }{@code >}
+     *     
+     */
+    public JAXBElement<CalledDecision> getCalledDecision() {
+        return calledDecision;
+    }
+
+    /**
+     * Legt den Wert der calledDecision-Eigenschaft fest.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link CalledDecision }{@code >}
+     *     
+     */
+    public void setCalledDecision(JAXBElement<CalledDecision> value) {
+        this.calledDecision = value;
     }
 
 }

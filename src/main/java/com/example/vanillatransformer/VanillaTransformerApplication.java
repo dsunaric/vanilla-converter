@@ -66,7 +66,7 @@ public class VanillaTransformerApplication implements CommandLineRunner {
         } catch (JAXBException e) {
             throw new RuntimeException(e);
         }
+        System.exit(0);
+
     }
-
-
 }

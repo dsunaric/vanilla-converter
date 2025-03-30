@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der Eclipse Implementation of JAXB, v3.0.0 generiert 
 // Siehe https://eclipse-ee4j.github.io/jaxb-ri 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2025.03.12 um 09:13:58 PM CET 
+// Generiert: 2025.03.30 um 02:12:50 PM CEST 
 //
 
 
@@ -76,8 +76,8 @@ public class TGlobalTask
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link TPotentialOwner }{@code >}
      * {@link JAXBElement }{@code <}{@link THumanPerformer }{@code >}
+     * {@link JAXBElement }{@code <}{@link TPotentialOwner }{@code >}
      * {@link JAXBElement }{@code <}{@link TPerformer }{@code >}
      * {@link JAXBElement }{@code <}{@link TResourceRole }{@code >}
      * 

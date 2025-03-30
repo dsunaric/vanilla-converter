@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der Eclipse Implementation of JAXB, v3.0.0 generiert 
 // Siehe https://eclipse-ee4j.github.io/jaxb-ri 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2025.03.12 um 09:13:58 PM CET 
+// Generiert: 2025.03.30 um 02:12:50 PM CEST 
 //
 
 
@@ -177,6 +177,7 @@ public class ObjectFactory {
     private final static QName _ZeebeInput_QNAME = new QName("http://camunda.org/schema/zeebe/1.0", "input");
     private final static QName _ZeebeOutput_QNAME = new QName("http://camunda.org/schema/zeebe/1.0", "output");
     private final static QName _ZeebeSubscription_QNAME = new QName("http://camunda.org/schema/zeebe/1.0", "subscription");
+    private final static QName _ZeebeCalledDecision_QNAME = new QName("http://camunda.org/schema/zeebe/1.0", "calledDecision");
     private final static QName _InputOutputTypeInputParameter_QNAME = new QName("http://camunda.org/schema/modeler/1.0", "inputParameter");
     private final static QName _InputOutputTypeOutputParameter_QNAME = new QName("http://camunda.org/schema/modeler/1.0", "outputParameter");
     private final static QName _ListenersTypeExecutionListener_QNAME = new QName("http://camunda.org/schema/modeler/1.0", "executionListener");
@@ -1340,6 +1341,14 @@ public class ObjectFactory {
      */
     public Subscription createSubscription() {
         return new Subscription();
+    }
+
+    /**
+     * Create an instance of {@link CalledDecision }
+     * 
+     */
+    public CalledDecision createCalledDecision() {
+        return new CalledDecision();
     }
 
     /**
@@ -3249,6 +3258,19 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://camunda.org/schema/zeebe/1.0", name = "subscription", scope = Zeebe.class)
     public JAXBElement<Subscription> createZeebeSubscription(Subscription value) {
         return new JAXBElement<Subscription>(_ZeebeSubscription_QNAME, Subscription.class, Zeebe.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CalledDecision }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link CalledDecision }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://camunda.org/schema/zeebe/1.0", name = "calledDecision", scope = Zeebe.class)
+    public JAXBElement<CalledDecision> createZeebeCalledDecision(CalledDecision value) {
+        return new JAXBElement<CalledDecision>(_ZeebeCalledDecision_QNAME, CalledDecision.class, Zeebe.class, value);
     }
 
     /**

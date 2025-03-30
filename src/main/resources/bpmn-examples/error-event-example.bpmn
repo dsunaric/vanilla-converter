@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_14q3ok2" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.31.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.22.0">
+  <bpmn:process id="Process_1ip6kem" isExecutable="true">
+    <bpmn:startEvent id="Event_1c70527">
+      <bpmn:outgoing>Flow_0j3pbyi</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_0j3pbyi" sourceRef="Event_1c70527" targetRef="Event_1jklu7j" />
+    <bpmn:endEvent id="Event_1jklu7j">
+      <bpmn:incoming>Flow_0j3pbyi</bpmn:incoming>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_1vyfmxs" errorRef="Error_1juaxir" />
+    </bpmn:endEvent>
+  </bpmn:process>
+  <bpmn:error id="Error_1juaxir" name="Error_3fdsro8" errorCode="TEST" camunda:errorMessage="msg" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1ip6kem">
+      <bpmndi:BPMNShape id="Event_1c70527_di" bpmnElement="Event_1c70527">
+        <dc:Bounds x="152" y="82" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0ndocy8_di" bpmnElement="Event_1jklu7j">
+        <dc:Bounds x="272" y="82" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0j3pbyi_di" bpmnElement="Flow_0j3pbyi">
+        <di:waypoint x="188" y="100" />
+        <di:waypoint x="272" y="100" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -9,9 +9,22 @@ public class Camunda7Constants {
     public static QName CAMUNDA_DELEGATE_EXPRESSION = new QName("http://camunda.org/schema/1.0/bpmn",
             "delegateExpression","camunda");
 
+
+
+    public static QName CAMUNDA_DECISION_REF = new QName("http://camunda.org/schema/1.0/bpmn",
+            "decisionRef","camunda");
+
+
+    public static QName CAMUNDA_RESULT_VARIABLE = new QName("http://camunda.org/schema/1.0/bpmn",
+            "resultVariable","camunda");
+
     public static QName CAMUNDA_EXPRESSION = new QName("http://camunda.org/schema/1.0/bpmn",
             "expression","camunda");
 
     public static QName CAMUNDA_CLASS = new QName("http://camunda.org/schema/1.0/bpmn",
             "class","camunda");
+
+
+    public static QName CAMUNDA_ERROR_MESSAGE = new QName("http://camunda.org/schema/1.0/bpmn",
+            "errorMessage","camunda");
 }

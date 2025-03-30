@@ -5,12 +5,14 @@
 
     <xs:element name="zeebe" type="zeebe:ZeebeType"/>
 
+
     <xs:complexType name="ZeebeType">
         <xs:sequence>
             <xs:element name="taskDefinition" type="zeebe:TaskDefinition" minOccurs="0"/>
             <xs:element name="input" type="xs:string" minOccurs="0"/>
             <xs:element name="output" type="xs:string" minOccurs="0"/>
             <xs:element name="subscription" type="zeebe:Subscription" minOccurs="0"/>
+            <xs:element name="calledDecision" type="zeebe:CalledDecision" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -26,5 +28,12 @@
 
     <xs:complexType name="Subscription">
         <xs:attribute name="correlationKey" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:element name="calledDecision" type="zeebe:CalledDecision"/>
+
+    <xs:complexType name="CalledDecision">
+        <xs:attribute name="decisionId" type="xs:string" use="required"/>
+        <xs:attribute name="resultVariable" type="xs:string" use="required"/>
     </xs:complexType>
 </xs:schema>

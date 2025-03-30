@@ -49,9 +49,7 @@ public class ServiceTaskLikeMapping implements Mapping<TTask,TTask> {
             JAXBContext context = JAXBContext.newInstance(TaskDefinition.class);
             DOMResult res = new DOMResult();
             Marshaller marshaller = context.createMarshaller();
-            // Use custom prefix mapper
             marshaller.setProperty("org.glassfish.jaxb.namespacePrefixMapper", new CustomNamespacePrefixMapper());
-
             marshaller.marshal(taskDefinitionMapping.map(serviceTaskDefinition, serviceTaskDefinitionType), res);
             Element elt = ((Document)res.getNode()).getDocumentElement();
             elements.add(elt);
@@ -76,6 +74,10 @@ public class ServiceTaskLikeMapping implements Mapping<TTask,TTask> {
 
         if(tServiceTaskLike.getOtherAttributes().containsKey(Camunda7Constants.CAMUNDA_EXPRESSION)){
             return Camunda7Constants.CAMUNDA_EXPRESSION;
+        }
+
+        if(tServiceTaskLike.getOtherAttributes().containsKey(Camunda7Constants.CAMUNDA_DECISION_REF)){
+            return Camunda7Constants.CAMUNDA_DECISION_REF;
         }
 
         throw new BPMNParseException("no task definition found");

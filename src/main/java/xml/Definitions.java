@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der Eclipse Implementation of JAXB, v3.0.0 generiert 
 // Siehe https://eclipse-ee4j.github.io/jaxb-ri 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2025.03.12 um 09:13:58 PM CET 
+// Generiert: 2025.03.30 um 02:12:50 PM CEST 
 //
 
 
@@ -188,40 +188,40 @@ public class Definitions
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link TGlobalBusinessRuleTask }{@code >}
-     * {@link JAXBElement }{@code <}{@link TGlobalManualTask }{@code >}
      * {@link JAXBElement }{@code <}{@link TInterface }{@code >}
-     * {@link JAXBElement }{@code <}{@link TDataStore }{@code >}
-     * {@link JAXBElement }{@code <}{@link TCategory }{@code >}
-     * {@link JAXBElement }{@code <}{@link TSignal }{@code >}
+     * {@link JAXBElement }{@code <}{@link TGlobalManualTask }{@code >}
      * {@link JAXBElement }{@code <}{@link TMessage }{@code >}
-     * {@link JAXBElement }{@code <}{@link TResource }{@code >}
+     * {@link JAXBElement }{@code <}{@link TGlobalUserTask }{@code >}
+     * {@link JAXBElement }{@code <}{@link TSignal }{@code >}
+     * {@link JAXBElement }{@code <}{@link TEndPoint }{@code >}
+     * {@link JAXBElement }{@code <}{@link TGlobalConversation }{@code >}
      * {@link JAXBElement }{@code <}{@link TGlobalChoreographyTask }{@code >}
      * {@link JAXBElement }{@code <}{@link TChoreography }{@code >}
-     * {@link JAXBElement }{@code <}{@link TGlobalConversation }{@code >}
      * {@link JAXBElement }{@code <}{@link TCollaboration }{@code >}
-     * {@link JAXBElement }{@code <}{@link TConditionalEventDefinition }{@code >}
-     * {@link JAXBElement }{@code <}{@link TEscalationEventDefinition }{@code >}
-     * {@link JAXBElement }{@code <}{@link TLinkEventDefinition }{@code >}
-     * {@link JAXBElement }{@code <}{@link TCompensateEventDefinition }{@code >}
-     * {@link JAXBElement }{@code <}{@link TSignalEventDefinition }{@code >}
-     * {@link JAXBElement }{@code <}{@link TMessageEventDefinition }{@code >}
-     * {@link JAXBElement }{@code <}{@link TErrorEventDefinition }{@code >}
-     * {@link JAXBElement }{@code <}{@link TCancelEventDefinition }{@code >}
-     * {@link JAXBElement }{@code <}{@link TTimerEventDefinition }{@code >}
-     * {@link JAXBElement }{@code <}{@link TTerminateEventDefinition }{@code >}
-     * {@link JAXBElement }{@code <}{@link TEventDefinition }{@code >}
-     * {@link JAXBElement }{@code <}{@link TGlobalTask }{@code >}
-     * {@link JAXBElement }{@code <}{@link TItemDefinition }{@code >}
-     * {@link JAXBElement }{@code <}{@link TGlobalScriptTask }{@code >}
-     * {@link JAXBElement }{@code <}{@link TEndPoint }{@code >}
-     * {@link JAXBElement }{@code <}{@link TGlobalUserTask }{@code >}
-     * {@link JAXBElement }{@code <}{@link TProcess }{@code >}
-     * {@link JAXBElement }{@code <}{@link TPartnerEntity }{@code >}
-     * {@link JAXBElement }{@code <}{@link TError }{@code >}
-     * {@link JAXBElement }{@code <}{@link TCorrelationProperty }{@code >}
-     * {@link JAXBElement }{@code <}{@link TEscalation }{@code >}
      * {@link JAXBElement }{@code <}{@link TPartnerRole }{@code >}
+     * {@link JAXBElement }{@code <}{@link TCorrelationProperty }{@code >}
+     * {@link JAXBElement }{@code <}{@link TDataStore }{@code >}
+     * {@link JAXBElement }{@code <}{@link TError }{@code >}
+     * {@link JAXBElement }{@code <}{@link TGlobalTask }{@code >}
+     * {@link JAXBElement }{@code <}{@link TGlobalScriptTask }{@code >}
+     * {@link JAXBElement }{@code <}{@link TItemDefinition }{@code >}
+     * {@link JAXBElement }{@code <}{@link TEscalation }{@code >}
+     * {@link JAXBElement }{@code <}{@link TCategory }{@code >}
+     * {@link JAXBElement }{@code <}{@link TGlobalBusinessRuleTask }{@code >}
+     * {@link JAXBElement }{@code <}{@link TPartnerEntity }{@code >}
+     * {@link JAXBElement }{@code <}{@link TProcess }{@code >}
+     * {@link JAXBElement }{@code <}{@link TSignalEventDefinition }{@code >}
+     * {@link JAXBElement }{@code <}{@link TTimerEventDefinition }{@code >}
+     * {@link JAXBElement }{@code <}{@link TCancelEventDefinition }{@code >}
+     * {@link JAXBElement }{@code <}{@link TMessageEventDefinition }{@code >}
+     * {@link JAXBElement }{@code <}{@link TConditionalEventDefinition }{@code >}
+     * {@link JAXBElement }{@code <}{@link TErrorEventDefinition }{@code >}
+     * {@link JAXBElement }{@code <}{@link TLinkEventDefinition }{@code >}
+     * {@link JAXBElement }{@code <}{@link TTerminateEventDefinition }{@code >}
+     * {@link JAXBElement }{@code <}{@link TEscalationEventDefinition }{@code >}
+     * {@link JAXBElement }{@code <}{@link TCompensateEventDefinition }{@code >}
+     * {@link JAXBElement }{@code <}{@link TEventDefinition }{@code >}
+     * {@link JAXBElement }{@code <}{@link TResource }{@code >}
      * {@link JAXBElement }{@code <}{@link TRootElement }{@code >}
      * 
      * 

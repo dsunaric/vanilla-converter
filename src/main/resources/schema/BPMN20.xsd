@@ -40,4 +40,6 @@
 		<xsd:attribute name="importType" type="xsd:anyURI" use="required"/>
 	</xsd:complexType>
 
+
+
 </xsd:schema>
