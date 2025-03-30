@@ -52,7 +52,7 @@ The source code will be made available as an open-source project on GitHub.
 | Multi Instance Sequential          | ✅   |
 | Ad-Hoc                             | ❌   |
 | Compensation                       | ❌   |
-| Loop                               | ❌*  |
+| Loop                               | ❎  |
 
 ### Subprocess
 
@@ -61,9 +61,32 @@ The source code will be made available as an open-source project on GitHub.
 | Embedded Subprocess                | ✅   |
 | Call activity                      | ❌   |
 | Event subprocess                   | ✅   |
-| Transaction Subprocess             | ❌*   |
+| Transaction Subprocess             | ❎   |
 
-* **Not yet supported by Camunda 8**
+### Events
+
+|Type | Start       |  |  | Intermediate |  |  |  | End |  
+|----|----|----|----|----|----|----|----|----|  
+|                | Normal       | Event Sub Process | Event Sub Process Non-interrupt | Catch  | Boundary | Boundary Non-interrupt | Throw  | Normal |  
+| **None**           | ✅           | -                 |  -                            | -     |  -     | -                    | -     | ✅       |  
+| **Message**        | ❌           | ❌                | ❌                           | ❌     | ❌       | ❌               | ❌     |-      |  
+| **Timer**          | ✅           | ✅                | ✅                           | ✅     | ✅       | ✅               | -     |-      |  
+| **Conditional**    | ❎          | ❎               | ❎                          | ❎    | ❎      | ❎               |-      | -       |  
+| **Link**           |  -            | -                |  -                             | ❌     | -        | -               | ❌      |-        |  
+| **Signal**         | ✅           | ✅                | ✅                           | ✅     | ✅       | ✅               | ✅     | ✅     |  
+| **Error**          | -             | ✅                | -                              | -     |  ✅        | -               | -       | ✅     |  
+| **Escalation**     | -             | ❌                | ❌                           | -       | ❌       | ❌               | ❌     | ❌     |  
+| **Termination**    | -             | -                  | -                           |   -     |  -        | -                   | -       | ✅     |  
+| **Compensation**   |-              | ❎               | -                              | -    | ❌         | -               | -       | ❌     |  
+| **Cancel**         |-              | -                |   -                            | -    |  ❎        |   -                | -      | ❎    |  
+| **Multiple**       | ❎          | ❎               | ❎                          | ❎    | ❎      | ❎               | ❎    | ❎    |  
+| **Multiple Parallel** | ❎        | ❎               | ❎                          | ❎    | ❎      | ❎              | ❎    | ❎    |  
+
+✅ → Done 
+
+❌ → To Do 
+
+❎ →  Not Supported Yet by Camunda 8
 
 ## Mapping Table
 | Element              | Camunda 7                                      | Camunda 8                                                                                        |
