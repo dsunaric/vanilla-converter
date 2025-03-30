@@ -22,16 +22,22 @@ The source code will be made available as an open-source project on GitHub.
 ## Supported Elements
 
 ### Tasks
-| Service Task                       | ✅   |
-| Send Task                          | ✅   |
-| User task                          | ❌   |
-| Business Rule Task                 | ✅   |
-| Script task                        | ❌   |
-| Receive Task                       | ✅   |
-| Manual task                        | ✅   |
-| Task markers                       | ❌   |
+
+| Element              | Supported |
+|------------------------|-----------|
+| Service Task          | ✅        |
+| Send Task            | ✅        |
+| User Task            | ❌        |
+| Business Rule Task   | ✅        |
+| Script Task         | ❌        |
+| Receive Task        | ✅        |
+| Manual Task         | ✅        |
+| Task Markers        | ❌        |
 
 ### Gateways
+
+| Element              | Supported |
+|------------------------|-----------|
 | Exclusive GW                       | ✅   |
 | Conditional / default sequence flows | ✅   |
 | Parallel GW                        | ✅   |
@@ -39,6 +45,9 @@ The source code will be made available as an open-source project on GitHub.
 | Event based GW                     | ❌   |
 
 ### Task Markers
+
+| Element              | Supported |
+|------------------------|-----------|
 | Multi Instance Parallel            | ✅   |
 | Multi Instance Sequential          | ✅   |
 | Ad-Hoc                             | ❌   |
@@ -46,6 +55,9 @@ The source code will be made available as an open-source project on GitHub.
 | Loop                               | ❌*  |
 
 ### Subprocess
+
+| Element              | Supported |
+|------------------------|-----------|
 | Embedded Subprocess                | ✅   |
 | Call activity                      | ❌   |
 | Event subprocess                   | ✅   |
