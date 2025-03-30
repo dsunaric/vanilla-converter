@@ -19,6 +19,36 @@ The result of this project will be a CLI application that converts Camunda 7 mod
 
 The source code will be made available as an open-source project on GitHub.
 
+## Supported Elements
+| Tasks                              | Impl. |
+|------------------------------------|-------|
+| Service Task                       | ✅   |
+| Send Task                          | ✅   |
+| User task                          | ❌   |
+| Business Rule Task                 | ✅   |
+| Script task                        | ❌   |
+| Receive Task                       | ✅   |
+| Manual task                        | ✅   |
+| Task markers                       | ❌   |
+| **Gateways**                        |       |
+| Exclusive GW                       | ✅   |
+| Conditional / default sequence flows | ✅   |
+| Parallel GW                        | ✅   |
+| Inclusive GW                       | ✅   |
+| Event based GW                     | ❌   |
+| **Task Markers**                    |       |
+| Multi Instance Parallel            | ✅   |
+| Multi Instance Sequential          | ✅   |
+| Ad-Hoc                             | ❌   |
+| Compensation                       | ❌   |
+| Loop                               |       |
+| **Subprocess**                      |       |
+| Embedded Subprocess                | ✅   |
+| Call activity                      | ❌   |
+| Event subprocess                   | ✅   |
+| Transaction Subprocess             |       |
+
+
 ## Mapping Table
 | Element              | Camunda 7                                      | Camunda 8                                                                                        |
 |----------------------|------------------------------------------------|--------------------------------------------------------------------------------------------------|
