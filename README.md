@@ -119,7 +119,7 @@ The transformed file will be saved with the same name as the original BPMN file 
 ### Example Output:
 
 For an input file `process.bpmn`, the transformed file will be saved as `process-transformed.bpmn`.
-see under [examples](resources/bpmn-exmaples) for mapping examples
+See [examples](https://github.com/dsunaric/vanilla-converter/tree/main/src/main/resources/bpmn-examples) for mapping examples
 
 ### Logging
 
