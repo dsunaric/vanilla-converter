@@ -88,6 +88,43 @@ The source code will be made available as an open-source project on GitHub.
 
 ❎ →  Not Supported Yet by Camunda 8
 
+## Usage
+
+This application transforms BPMN files by mapping their contents using custom logic. To use the application, follow these steps:
+
+### Requirements
+TODO
+
+### Running the Application
+To run the application, pass the path to a BPMN file as a command-line argument.
+
+#### Example Usage:
+
+1. **From the command line:**
+```
+java -jar vanilla-transfomer.jar /path/to/your/file.bpmn
+```
+
+This will read the BPMN file from the specified path, transform it, and save the transformed file in the same location with a `-transformed` suffix.
+
+2. **If the file path is missing or invalid:**
+The application will log an error message and exit.
+
+#### Parameters:
+
+- **filePath** (required): The path to the BPMN file you want to transform.
+
+The transformed file will be saved with the same name as the original BPMN file but with the `-transformed` suffix added to the filename.
+
+### Example Output:
+
+For an input file `process.bpmn`, the transformed file will be saved as `process-transformed.bpmn`.
+see under [examples](resources/bpmn-exmaples) for mapping examples
+
+### Logging
+
+Logs are generated to track the process. Look out for any error messages or transformation details in the console output.
+
 ## Mapping Table
 | Element              | Camunda 7                                      | Camunda 8                                                                                        |
 |----------------------|------------------------------------------------|--------------------------------------------------------------------------------------------------|
