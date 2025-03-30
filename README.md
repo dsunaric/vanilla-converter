@@ -20,8 +20,8 @@ The result of this project will be a CLI application that converts Camunda 7 mod
 The source code will be made available as an open-source project on GitHub.
 
 ## Supported Elements
-| Tasks                              | Impl. |
-|------------------------------------|-------|
+
+### Tasks
 | Service Task                       | ✅   |
 | Send Task                          | ✅   |
 | User task                          | ❌   |
@@ -30,24 +30,28 @@ The source code will be made available as an open-source project on GitHub.
 | Receive Task                       | ✅   |
 | Manual task                        | ✅   |
 | Task markers                       | ❌   |
-| **Gateways**                        |       |
+
+### Gateways
 | Exclusive GW                       | ✅   |
 | Conditional / default sequence flows | ✅   |
 | Parallel GW                        | ✅   |
 | Inclusive GW                       | ✅   |
 | Event based GW                     | ❌   |
-| **Task Markers**                    |       |
+
+### Task Markers
 | Multi Instance Parallel            | ✅   |
 | Multi Instance Sequential          | ✅   |
 | Ad-Hoc                             | ❌   |
 | Compensation                       | ❌   |
-| Loop                               |       |
-| **Subprocess**                      |       |
+| Loop                               | ❌*  |
+
+### Subprocess
 | Embedded Subprocess                | ✅   |
 | Call activity                      | ❌   |
 | Event subprocess                   | ✅   |
-| Transaction Subprocess             |       |
+| Transaction Subprocess             | ❌*   |
 
+* **Not yet supported by Camunda 8**
 
 ## Mapping Table
 | Element              | Camunda 7                                      | Camunda 8                                                                                        |
