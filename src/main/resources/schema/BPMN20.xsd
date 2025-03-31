@@ -3,10 +3,12 @@
 			xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
 			xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 			xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+			xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
 			xmlns:modeler="http://camunda.org/schema/modeler/1.0"
 			targetNamespace="http://www.omg.org/spec/BPMN/20100524/MODEL">
 
 	<xsd:import namespace="http://www.omg.org/spec/BPMN/20100524/DI" schemaLocation="BPMNDI.xsd"/>
+	<xsd:import namespace="http://www.omg.org/spec/DD/20100524/DI" schemaLocation="DI.xsd"/>
 	<xsd:import namespace="http://camunda.org/schema/modeler/1.0" schemaLocation="c7.xsd"/>
 	<xsd:import namespace="http://camunda.org/schema/zeebe/1.0" schemaLocation="c8.xsd"/>
 
