@@ -12,7 +12,7 @@ The objective of this project is to develop a CLI application that automates the
 
 ## Timeline
 - **Project Start:** November 1, 2024
-- **Project Completion:** End of February 2025
+- **Project Completion:** End of March 2025
 
 ## Expected Outcome
 The result of this project will be a CLI application that converts Camunda 7 models into Camunda 8 models. After project completion, the software will be integrated into VanillaBP to enhance it as a comprehensive tool for migrating from Camunda 7 to Camunda 8.
@@ -119,7 +119,7 @@ The transformed file will be saved with the same name as the original BPMN file 
 ### Example Output:
 
 For an input file `process.bpmn`, the transformed file will be saved as `process-transformed.bpmn`.
-see under [examples](resources/bpmn-exmaples) for mapping examples
+See [examples](https://github.com/dsunaric/vanilla-converter/tree/main/src/main/resources/bpmn-examples) for mapping examples
 
 ### Logging
 
