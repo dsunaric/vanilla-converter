@@ -1,52 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0xxrapq" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.31.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.21.0">
   <bpmn:process id="Process_0n1rndr" name="Service Task" isExecutable="true">
-    <bpmn:startEvent id="Event_02id3ly" name="start">
+    <bpmn:startEvent id="Start-Event" name="start">
       <bpmn:outgoing>Flow_0srd7ke</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:sequenceFlow id="Flow_0srd7ke" sourceRef="Event_02id3ly" targetRef="Task1" />
-    <bpmn:serviceTask id="Task1" name="Expression" camunda:expression="${expression}">
+    <bpmn:sequenceFlow id="Flow_0srd7ke" sourceRef="Start-Event" targetRef="Service-Task-1" />
+    <bpmn:serviceTask id="Service-Task-1" name="Expression" camunda:expression="${SomeExpression}">
       <bpmn:incoming>Flow_0srd7ke</bpmn:incoming>
       <bpmn:outgoing>Flow_1yhnoz9</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:sequenceFlow id="Flow_1yhnoz9" sourceRef="Task1" targetRef="Activity_1bolaua" />
-    <bpmn:sequenceFlow id="Flow_1iflsk5" sourceRef="Activity_1bolaua" targetRef="Activity_0tktgpb" />
-    <bpmn:endEvent id="Event_0a8da9g" name="end">
+    <bpmn:sequenceFlow id="Flow_1yhnoz9" sourceRef="Service-Task-1" targetRef="Service-Task-2" />
+    <bpmn:sequenceFlow id="Flow_1iflsk5" sourceRef="Service-Task-2" targetRef="Service-Task-3" />
+    <bpmn:endEvent id="End-Event" name="end">
       <bpmn:incoming>Flow_06jacvd</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:serviceTask id="Activity_1bolaua" name="Delegate Expression" camunda:delegateExpression="${delegateExpression}">
+    <bpmn:serviceTask id="Service-Task-2" name="Delegate Expression" camunda:delegateExpression="${SomeDelegateExpression}">
       <bpmn:incoming>Flow_1yhnoz9</bpmn:incoming>
       <bpmn:outgoing>Flow_1iflsk5</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:serviceTask id="Activity_0tktgpb" name="Class" camunda:class="org.camunda.bpm.MyJavaDelegate">
+    <bpmn:serviceTask id="Service-Task-3" name="Class" camunda:class="org.camunda.bpm.MyJavaDelegate">
       <bpmn:incoming>Flow_1iflsk5</bpmn:incoming>
       <bpmn:outgoing>Flow_06jacvd</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:sequenceFlow id="Flow_06jacvd" sourceRef="Activity_0tktgpb" targetRef="Event_0a8da9g" />
+    <bpmn:sequenceFlow id="Flow_06jacvd" sourceRef="Service-Task-3" targetRef="End-Event" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_0n1rndr">
-      <bpmndi:BPMNShape id="Event_02id3ly_di" bpmnElement="Event_02id3ly">
+      <bpmndi:BPMNShape id="Event_02id3ly_di" bpmnElement="Start-Event">
         <dc:Bounds x="152" y="102" width="36" height="36" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="159" y="145" width="23" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1chl4pf_di" bpmnElement="Task1">
+      <bpmndi:BPMNShape id="Activity_1chl4pf_di" bpmnElement="Service-Task-1">
         <dc:Bounds x="270" y="80" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1acg472_di" bpmnElement="Activity_1bolaua">
-        <dc:Bounds x="460" y="80" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1s9afyd_di" bpmnElement="Activity_0tktgpb">
-        <dc:Bounds x="650" y="80" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_0a8da9g_di" bpmnElement="Event_0a8da9g">
+      <bpmndi:BPMNShape id="Event_0a8da9g_di" bpmnElement="End-Event">
         <dc:Bounds x="852" y="102" width="36" height="36" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="861" y="145" width="19" height="14" />
         </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1acg472_di" bpmnElement="Service-Task-2">
+        <dc:Bounds x="460" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1s9afyd_di" bpmnElement="Service-Task-3">
+        <dc:Bounds x="650" y="80" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_0srd7ke_di" bpmnElement="Flow_0srd7ke">
         <di:waypoint x="188" y="120" />
