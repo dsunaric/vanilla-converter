@@ -19,7 +19,6 @@ The original [Camunda 7 Ride process](https://github.com/Phactum/taxiride-bluepr
 
 - **Start Events:** 2
 - **End Events:** 11 - 8 None End Events, 3 Message End Events
-- **User Tasks:** 0
 - **Service Tasks:** 6
 - **User Tasks:** 1
 - **Boundary Events:** 5 - 1 non-Interrupting, 4 interrupting

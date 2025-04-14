@@ -19,6 +19,13 @@ The result of this project will be a CLI application that converts Camunda 7 mod
 
 The source code will be made available as an open-source project on GitHub.
 
+## Open Issues
+
+- [ ] Outgoing Flows from Inclusive Gateways need to have a true-condition in C8 but none in C7
+- [ ] Mapping for Process-Id in Call Activities
+- [ ] Mapping for Message Catch Events equivalent to Receive Tasks
+- [ ] Mapping for Message Throw Events equivalent to Send Tasks
+
 ## Supported Elements
 
 ### Tasks
@@ -75,9 +82,9 @@ The source code will be made available as an open-source project on GitHub.
 | **Link**           |  -            | -                |  -                             | ❌     | -        | -               | ❌      |-        |  
 | **Signal**         | ✅           | ✅                | ✅                           | ✅     | ✅       | ✅               | ✅     | ✅     |  
 | **Error**          | -             | ✅                | -                              | -     |  ✅        | -               | -       | ✅     |  
-| **Escalation**     | -             | ❌                | ❌                           | -       | ❌       | ❌               | ❌     | ❌     |  
+| **Escalation**     | -             | ✅                | ✅                           | -       | ✅       | ✅              | ✅     | ✅     |  
 | **Termination**    | -             | -                  | -                           |   -     |  -        | -                   | -       | ✅     |  
-| **Compensation**   |-              | ❎               | -                              | -    | ❌         | -               | -       | ❌     |  
+| **Compensation**   |-              | ❎               | -                              | -    | ✅         | -               | -       | ✅     |  
 | **Cancel**         |-              | -                |   -                            | -    |  ❎        |   -                | -      | ❎    |  
 | **Multiple**       | ❎          | ❎               | ❎                          | ❎    | ❎      | ❎               | ❎    | ❎    |  
 | **Multiple Parallel** | ❎        | ❎               | ❎                          | ❎    | ❎      | ❎              | ❎    | ❎    |  
