@@ -20,6 +20,6 @@ public class ExpressionMapping implements Mapping<String,String> {
     public String map(String expression) {
         LOG.info("MAPPING: camunda:expression {} into FEEL Expression Language",expression);
 
-        return expression.replaceAll("^\\$\\{(.+)}$", "$1");
+        return expression.replaceAll("[#$]\\{([^}]+)}", "$1");
     }
 }

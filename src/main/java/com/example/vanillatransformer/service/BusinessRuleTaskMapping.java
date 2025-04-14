@@ -72,7 +72,7 @@ public class BusinessRuleTaskMapping implements Mapping<TTask,TTask> {
         removeAttributeMapping.map(businessRuleTask, Camunda7Constants.CAMUNDA_DECISION_REF);
         businessRuleTask.setExtensionElements(extensionElements);
 
-        LOG.info("TODO: adapt zeebe:taskDefinition type for Task with id={} to select correct JobWorker",businessRuleTask.getId());
+        LOG.info("TODO (OPTIONAL): adapt zeebe:taskDefinition type for Task with id={} to select correct JobWorker",businessRuleTask.getId());
         return businessRuleTask;
     }
 

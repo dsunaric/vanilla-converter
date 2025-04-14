@@ -28,6 +28,19 @@ public class SubProcessMapping implements Mapping<TSubProcess,TSubProcess> {
     private SequenceFlowMapping sequenceFlowMapping;
 
     @Autowired
+    private LoopCharacteristicsMapping loopCharacteristicsMapping;
+
+    @Autowired
+    private EventMapping eventMapping;
+
+    @Autowired
+    private CallActivityMapping callActivityMapping;
+
+    @Autowired
+    private GatewayMapping gatewayMapping;
+
+
+    @Autowired
     private NoMapping noMapping;
 
     private static Logger LOG = LoggerFactory.getLogger(SubProcessMapping.class);
@@ -35,6 +48,11 @@ public class SubProcessMapping implements Mapping<TSubProcess,TSubProcess> {
     @Override
     public TSubProcess map(TSubProcess tSubProcess) {
         LOG.info("MAPPING: <bpmn:subProcess> with id {}", tSubProcess.getId());
+
+        List<TGateway> gateways = extractElementsWithType(tSubProcess, TGateway.class);
+        for(var gateway : gateways) {
+            gatewayMapping.map(gateway);
+        }
 
         List<TServiceTask> serviceTasks = extractElementsWithType(tSubProcess, TServiceTask.class);
         for(var task : serviceTasks) {
@@ -58,13 +76,29 @@ public class SubProcessMapping implements Mapping<TSubProcess,TSubProcess> {
 
         List<TEvent> events = extractElementsWithType(tSubProcess, TEvent.class);
         for(var event : events) {
-            noMapping.map(event);
+            eventMapping.map(event);
         }
+
+        List<TCallActivity> callActivities = extractElementsWithType(tSubProcess, TCallActivity.class);
+        for(var callActivity : callActivities) {
+            callActivityMapping.map(callActivity);
+        }
+
+        List<TLoopCharacteristics> loopCharacteristics = extractElementsWithType(tSubProcess, TLoopCharacteristics.class);
+        if(tSubProcess.getLoopCharacteristics() != null) {
+            loopCharacteristics.add(tSubProcess.getLoopCharacteristics().getValue());
+        }
+        for(var loopCharacteristic : loopCharacteristics) {
+            loopCharacteristicsMapping.map(loopCharacteristic);
+        }
+
 
         List<TSubProcess> subProcesses = extractElementsWithType(tSubProcess, TSubProcess.class);
         for(var subProcess : subProcesses) {
             map(subProcess);
         }
+
+
 
         return tSubProcess;
     }

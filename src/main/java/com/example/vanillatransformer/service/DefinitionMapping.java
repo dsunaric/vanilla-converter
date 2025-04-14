@@ -39,7 +39,12 @@ public class DefinitionMapping implements Mapping<Definitions,Definitions> {
         definitions.setExecutionPlatform(Camunda8Constants.MODELER_EXECUTIONPLATFORM);
         LOG.info("MAPPING: Execution Plattform Version {} -> {}", definitions.getExecutionPlatformVersion(), Camunda8Constants.MODELER_EXECUTIONPLATFORM_VERSION);
         definitions.setExecutionPlatformVersion(Camunda8Constants.MODELER_EXECUTIONPLATFORM_VERSION);
-        processMapping.map(getProcess(definitions));
+
+        List<TProcess> processes = extractElementsWithType(definitions, TProcess.class);
+        for(var process : processes) {
+            processMapping.map(process);
+        }
+
 
         List<TMessage> messages = extractElementsWithType(definitions, TMessage.class);
         for(var message : messages) {

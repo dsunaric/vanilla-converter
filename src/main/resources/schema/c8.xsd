@@ -36,4 +36,11 @@
         <xs:attribute name="decisionId" type="xs:string" use="required"/>
         <xs:attribute name="resultVariable" type="xs:string" use="required"/>
     </xs:complexType>
+
+    <xs:element name="loopCharacteristics" type="zeebe:LoopCharacteristics"/>
+
+    <xs:complexType name="LoopCharacteristics">
+        <xs:attribute name="inputCollection" type="xs:string" use="required"/>
+        <xs:attribute name="inputElement" type="xs:string" use="required"/>
+    </xs:complexType>
 </xs:schema>

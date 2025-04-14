@@ -16,10 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import xml.ExtensionElements;
-import xml.TServiceTask;
-import xml.TTask;
-import xml.TaskDefinition;
+import xml.*;
 
 import javax.xml.namespace.QName;
 import javax.xml.transform.dom.DOMResult;
@@ -33,6 +30,9 @@ public class ServiceTaskLikeMapping implements Mapping<TTask,TTask> {
     private TaskDefinitionMapping taskDefinitionMapping;
 
     @Autowired
+    private LoopCharacteristicsMapping loopCharacteristicsMapping;
+
+    @Autowired
     private RemoveAttributeMapping removeAttributeMapping;
 
     private static Logger LOG = LoggerFactory.getLogger(ServiceTaskLikeMapping.class);
@@ -43,7 +43,15 @@ public class ServiceTaskLikeMapping implements Mapping<TTask,TTask> {
         ExtensionElements extensionElements = new ExtensionElements();
         var elements = extensionElements.getAnies();
 
+        if(((TActivity)tServiceTaskLike).getLoopCharacteristics() != null){
+            loopCharacteristicsMapping.map(((TActivity)tServiceTaskLike).getLoopCharacteristics().getValue());
+        }
+
         QName serviceTaskDefinitionType = getServiceTaskDefinitionType(tServiceTaskLike);
+        if(serviceTaskDefinitionType == null){
+            LOG.info("TODO: no task definition found for ServiceTaskLike Task with id={} - No mapping performed",tServiceTaskLike.getId());
+            return tServiceTaskLike;
+        }
         String serviceTaskDefinition = tServiceTaskLike.getOtherAttributes().get(serviceTaskDefinitionType);
         try {
             JAXBContext context = JAXBContext.newInstance(TaskDefinition.class);
@@ -59,7 +67,7 @@ public class ServiceTaskLikeMapping implements Mapping<TTask,TTask> {
         removeAttributeMapping.map(tServiceTaskLike, Camunda7Constants.CAMUNDA_DELEGATE_EXPRESSION);
         tServiceTaskLike.setExtensionElements(extensionElements);
 
-        LOG.info("TODO: adapt zeebe:taskDefinition type for Task with id={} to select correct JobWorker",tServiceTaskLike.getId());
+        LOG.info("TODO (OPTIONAL): adapt zeebe:taskDefinition type for Task with id={} to select correct JobWorker",tServiceTaskLike.getId());
         return tServiceTaskLike;
     }
 
@@ -76,11 +84,16 @@ public class ServiceTaskLikeMapping implements Mapping<TTask,TTask> {
             return Camunda7Constants.CAMUNDA_EXPRESSION;
         }
 
+        if(tServiceTaskLike.getOtherAttributes().containsKey(Camunda7Constants.CAMUNDA_TOPIC)){
+            return Camunda7Constants.CAMUNDA_TOPIC;
+        }
+
         if(tServiceTaskLike.getOtherAttributes().containsKey(Camunda7Constants.CAMUNDA_DECISION_REF)){
             return Camunda7Constants.CAMUNDA_DECISION_REF;
         }
-
-        throw new BPMNParseException("no task definition found");
+        return null;
     }
+
+
 
 }

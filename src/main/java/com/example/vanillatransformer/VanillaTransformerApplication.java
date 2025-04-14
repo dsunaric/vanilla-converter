@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.stream.Stream;
 
 @SpringBootApplication
 public class VanillaTransformerApplication implements CommandLineRunner {
@@ -33,8 +34,58 @@ public class VanillaTransformerApplication implements CommandLineRunner {
         SpringApplication.run(VanillaTransformerApplication.class, args);
     }
 
+
     @Override
     public void run(String... args) {
+
+        if (args.length == 0) {
+            LOG.error("No folder path provided. Please pass a folder path as an argument.");
+            return;
+        }
+
+        String folderPath = args[0];
+        Path dirPath = Paths.get(folderPath);
+
+        if (!Files.exists(dirPath) || !Files.isDirectory(dirPath)) {
+            LOG.error("Provided path is not a valid directory: {}", folderPath);
+            return;
+        }
+
+        try {
+            JAXBContext context = JAXBContext.newInstance(Definitions.class);
+            Marshaller mar = context.createMarshaller();
+            mar.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+            mar.setProperty("org.glassfish.jaxb.namespacePrefixMapper", new CustomNamespacePrefixMapper());
+
+            try (Stream<Path> fileStream = Files.list(dirPath)) {
+                fileStream
+                        .filter(path -> path.toString().endsWith(".bpmn")
+                                && !path.toString().endsWith("transformed.bpmn")
+                                && !path.toString().endsWith("expected.bpmn"))
+                        .forEach(path -> {
+                            LOG.info("PROCESSING FILE: {}", path);
+                            try {
+                                Definitions d = (Definitions) context.createUnmarshaller()
+                                        .unmarshal(new FileReader(path.toFile()));
+                                Definitions c8 = definitionMapping.map(d); // still used?
+
+                                String outputFileName = path.toString().replaceFirst("(\\.bpmn)$", "-transformed$1");
+                                mar.marshal(d, new File(outputFileName));
+                                LOG.info("FINISHED PROCESSING FILE: {}", path);
+                                LOG.info("TRANSFORMED FILE WROTTEN TO: {}", outputFileName);
+                            } catch (IOException | JAXBException e) {
+                                LOG.error("Failed to process file: {}", path, e);
+                            }
+                        });
+            }
+        } catch (JAXBException | IOException e) {
+            LOG.error("Error during processing", e);
+        }
+
+        System.exit(0);
+    }
+
+    public void run1(String... args) {
         LOG.info("EXECUTING : command line runner");
 
         if (args.length == 0) {
@@ -69,4 +120,6 @@ public class VanillaTransformerApplication implements CommandLineRunner {
         System.exit(0);
 
     }
+
+
 }

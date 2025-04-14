@@ -34,7 +34,7 @@ public class TaskDefinitionMapping implements Mapping<String,TaskDefinition> {
         TaskDefinition taskDefinition = new TaskDefinition();
         taskDefinition.setType(expressionMapping.map(delegateExpression));
 
-        LOG.info("OPTIONAL TODO: set retries=?? in zeebe:taskDefinition Element");
+        LOG.info("TODO (OPTIONAL): set retries=?? in zeebe:taskDefinition Element");
         return taskDefinition;
     }
 
@@ -44,12 +44,18 @@ public class TaskDefinitionMapping implements Mapping<String,TaskDefinition> {
             return map(expression);
         }
 
+        if(type.equals(Camunda7Constants.CAMUNDA_TOPIC)){
+            LOG.info("MAPPING: camunda:topic {} into zeebe:taskDefinition",expression);
+            LOG.info("TODO: define jobworker {} ", expression);
+            return map(expression);
+        }
+
         if(type.equals(Camunda7Constants.CAMUNDA_EXPRESSION)){
             LOG.info("MAPPING: camunda:expression {} into zeebe:taskDefinition",expression);
             TaskDefinition taskDefinition = new TaskDefinition();
             String feelExpression = expressionMapping.map(expression);
             taskDefinition.setType(feelExpression.replaceAll(".*\\.(\\w+)\\(.*", "$1"));
-            LOG.info("OPTIONAL TODO: set retries=?? in zeebe:taskDefinition Element");
+            LOG.info("TODO (OPTIONAL): set retries=?? in zeebe:taskDefinition Element");
             return taskDefinition;
         }
 
@@ -57,7 +63,7 @@ public class TaskDefinitionMapping implements Mapping<String,TaskDefinition> {
             LOG.info("MAPPING: camunda:class {} into zeebe:taskDefinition",expression);
             TaskDefinition taskDefinition = new TaskDefinition();
             taskDefinition.setType(expression.replaceAll(".+\\.(\\w+)$", "$1"));
-            LOG.info("OPTIONAL TODO: set retries=?? in zeebe:taskDefinition Element");
+            LOG.info("TODO (OPTIONAL): set retries=?? in zeebe:taskDefinition Element");
             return taskDefinition;
         }
 

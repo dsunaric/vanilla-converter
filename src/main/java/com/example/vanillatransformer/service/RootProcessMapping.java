@@ -31,6 +31,9 @@ public class RootProcessMapping implements Mapping<TProcess,TProcess> {
     private EventMapping eventMapping;
 
     @Autowired
+    private CallActivityMapping callActivityMapping;
+
+    @Autowired
     private SubProcessMapping subProcessMapping;
 
     @Autowired
@@ -70,6 +73,11 @@ public class RootProcessMapping implements Mapping<TProcess,TProcess> {
         List<TEvent> events = extractElementsWithType(tProcess, TEvent.class);
         for(var event : events) {
             eventMapping.map(event);
+        }
+
+        List<TCallActivity> callActivities = extractElementsWithType(tProcess, TCallActivity.class);
+        for(var callActivity : callActivities) {
+            callActivityMapping.map(callActivity);
         }
 
         List<TSubProcess> subProcesses = extractElementsWithType(tProcess, TSubProcess.class);
