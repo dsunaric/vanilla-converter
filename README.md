@@ -26,6 +26,12 @@ The source code will be made available as an open-source project on GitHub.
 - [ ] Mapping for Message Catch Events equivalent to Receive Tasks
 - [ ] Mapping for Message Throw Events equivalent to Send Tasks
 
+## Examples 
+
+- [Taxiride Blueprint](src/main/resources/examples/taxiride-blueprint): A qualitative Analysis using the the converter on the [TaxiRide Blueprint Project](https://github.com/phactum/taxiride-blueprint) 
+- [Vodafone case study](src/main/resources/examples/casestudy-vodafone): A quantitive performance analysis using the converter on an existing camunda 7 project 
+- [BPMN Examples](src/main/resources/examples/bpmn-examples) : Some BPMN example Mappings 
+
 ## Supported Elements
 
 ### Tasks
