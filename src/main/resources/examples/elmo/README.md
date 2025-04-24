@@ -50,13 +50,25 @@ The [Vanilla Converter](https://github.com/dsunaric/vanilla-converter) was used 
 
 Transformation logs for each domain are available below:
 
-- [Passenger Service](/processes/passenger-service/transformation.log)
-- [Car Sharing](/processes/car-sharing/transformation.log)
-- [Members](/processes/members/transformation.log)
+- [Passenger Service](/src/main/resources/examples/elmo/processes/passenger-service/transformation.log)
+- [Car Sharing](/src/main/resources/examples/elmo/processes/car-sharing/transformation.log)
+- [Members](/src/main/resources/examples/elmo/processes/members/transformation.log)
 
 ### Mapping
-
-
+| Camunda 7 Process                                                                                                | Transformed Camunda 8 Model                                                                                        | BPMN Errors | BPMN Warnings | TODOs in logfile after conversion | Actual needed Manual TODOs after conversion |
+|------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|-------------|---------------|-----------------------------------|---------------------------------------------|
+| [car-in-use.bpmn](/src/main/resources/examples/elmo/processes/car-sharing/car-in-use.bpmn)                       | [car-in-use-transformed.bpmn](/src/main/resources/examples/elmo/processes/car-sharing/car-in-use-transformed.bpmn) | 0           | 0             | 0                                 | 0                                           |
+| [reservation-lifecycle.bpmn](/src/main/resources/examples/elmo/processes/car-sharing/reservation-lifecycle.bpmn) | [reservation-lifecycle-transformed.bpmn](/src/main/resources/examples/elmo/processes/car-sharing/reservation-lifecycle-transformed.bpmn)  | 0           | 0             | 0                                 | 0                                           |
+| [car-in-use.bpmn](/src/main/resources/examples/elmo/processes/car-sharing/car-in-use.bpmn)                       | [car-in-use.bpmn](/src/main/resources/examples/elmo/processes/car-sharing/car-in-use.bpmn)                         | 0           | 0             | 0                                 | 0                                           |
+| [car-in-use.bpmn](/src/main/resources/examples/elmo/processes/car-sharing/car-in-use.bpmn)                       | [car-in-use.bpmn](/src/main/resources/examples/elmo/processes/car-sharing/car-in-use.bpmn)                         | 0           | 0             | 0                                 | 0                                           |
+| [car-in-use.bpmn](/src/main/resources/examples/elmo/processes/car-sharing/car-in-use.bpmn)                       | [car-in-use.bpmn](/src/main/resources/examples/elmo/processes/car-sharing/car-in-use.bpmn)                         | 0           | 0             | 0                                 | 0                                           |
+| [car-in-use.bpmn](/src/main/resources/examples/elmo/processes/car-sharing/car-in-use.bpmn)                       | [car-in-use.bpmn](/src/main/resources/examples/elmo/processes/car-sharing/car-in-use.bpmn)                         | 0           | 0             | 0                                 | 0                                           |
+| [car-in-use.bpmn](/src/main/resources/examples/elmo/processes/car-sharing/car-in-use.bpmn)                       | [car-in-use.bpmn](/src/main/resources/examples/elmo/processes/car-sharing/car-in-use.bpmn)                         | 0           | 0             | 0                                 | 0                                           |
+| [car-in-use.bpmn](/src/main/resources/examples/elmo/processes/car-sharing/car-in-use.bpmn)                       | [car-in-use.bpmn](/src/main/resources/examples/elmo/processes/car-sharing/car-in-use.bpmn)                         | 0           | 0             | 0                                 | 0                                           |
+| [car-in-use.bpmn](/src/main/resources/examples/elmo/processes/car-sharing/car-in-use.bpmn)                       | [car-in-use.bpmn](/src/main/resources/examples/elmo/processes/car-sharing/car-in-use.bpmn)                         | 0           | 0             | 0                                 | 0                                           |
+| [car-in-use.bpmn](/src/main/resources/examples/elmo/processes/car-sharing/car-in-use.bpmn)                       | [car-in-use.bpmn](/src/main/resources/examples/elmo/processes/car-sharing/car-in-use.bpmn)                         | 0           | 0             | 0                                 | 0                                           |
+| [car-in-use.bpmn](/src/main/resources/examples/elmo/processes/car-sharing/car-in-use.bpmn)                       |                                                                                                                    |             |               |                                   |                                             |
+|                                                                                                                  |                                                                                                                    |             |               |                                   |                                             |
 
 
 ### ⚠️ Not Yet Mapped / Limitations
