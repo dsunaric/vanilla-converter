@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" id="Definitions_1o3wfgr" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.7.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.6.0">
+    <bpmn:process isExecutable="true" name="Passenger Service" id="PassengerService">
+        <bpmn:startEvent name="passenger service started" id="Event_1uqxv6v">
+            <bpmn:outgoing xmlns="">Flow_14rqne4</bpmn:outgoing>
+        </bpmn:startEvent>
+        <bpmn:intermediateCatchEvent id="PassenderService_EndOfShift">
+            <bpmn:incoming xmlns="">Flow_0rxm3ia</bpmn:incoming>
+            <bpmn:outgoing xmlns="">Flow_0p19yj0</bpmn:outgoing>
+            <bpmn:timerEventDefinition id="TimerEventDefinition_079dyzs">
+                <bpmn:timeDate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="bpmn:tFormalExpression">=endsAtDate</bpmn:timeDate>
+            </bpmn:timerEventDefinition>
+        </bpmn:intermediateCatchEvent>
+        <bpmn:endEvent name="passenger service ended" id="Event_1u136pf">
+            <bpmn:incoming xmlns="">Flow_0qj9mm6</bpmn:incoming>
+        </bpmn:endEvent>
+        <bpmn:sequenceFlow sourceRef="Event_1uqxv6v" targetRef="Event_10nx96x" name="end time of shift" id="Flow_14rqne4"/>
+        <bpmn:sequenceFlow sourceRef="PassenderService_EndOfShift" targetRef="Event_0x9mhmg" id="Flow_0p19yj0"/>
+        <bpmn:sequenceFlow sourceRef="Event_10nx96x" targetRef="PassenderService_EndOfShift" id="Flow_0rxm3ia"/>
+        <bpmn:intermediateThrowEvent name="shift in progress" id="Event_10nx96x">
+            <bpmn:incoming xmlns="">Flow_14rqne4</bpmn:incoming>
+            <bpmn:outgoing xmlns="">Flow_0rxm3ia</bpmn:outgoing>
+            <bpmn:messageEventDefinition xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="MessageEventDefinition_0n84upo" camunda:expression="${shiftInProgress}"/>
+        </bpmn:intermediateThrowEvent>
+        <bpmn:intermediateThrowEvent name="shift done" id="Event_0x9mhmg">
+            <bpmn:incoming xmlns="">Flow_0p19yj0</bpmn:incoming>
+            <bpmn:outgoing xmlns="">Flow_0qj9mm6</bpmn:outgoing>
+            <bpmn:messageEventDefinition xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="MessageEventDefinition_0jl72h2" camunda:expression="${shiftDone}"/>
+        </bpmn:intermediateThrowEvent>
+        <bpmn:sequenceFlow sourceRef="Event_0x9mhmg" targetRef="Event_1u136pf" id="Flow_0qj9mm6"/>
+    </bpmn:process>
+    <bpmn:message name="ShiftCancelled" id="Message_0tm4seo">
+        <bpmn:extensionElements>
+            <zeebe:subscription correlationKey="AddCorrelationKey"/>
+        </bpmn:extensionElements>
+    </bpmn:message>
+    <bpmn:error name="ShiftCancelled" errorCode="ShiftCancelled" id="Error_1dqjcwb"/>
+    <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+        <bpmndi:BPMNPlane xmlns="" bpmnElement="PassengerService" id="BPMNPlane_1">
+            <bpmndi:BPMNShape bpmnElement="Event_1uqxv6v" id="Event_1uqxv6v_di">
+                <dc:Bounds x="182.0" y="92.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="156.0" y="135.0" width="90.0" height="27.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="PassenderService_EndOfShift" id="Event_11u0iz0_di">
+                <dc:Bounds x="422.0" y="92.0" width="36.0" height="36.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Event_10nx96x" id="Event_0cev4om_di">
+                <dc:Bounds x="302.0" y="92.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="281.0" y="135.0" width="79.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Event_0x9mhmg" id="BPMNShape_1hw3lt1">
+                <dc:Bounds x="542.0" y="92.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="537.0" y="135.0" width="48.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Event_1u136pf" id="Event_1u136pf_di">
+                <dc:Bounds x="662.0" y="92.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="646.0" y="135.0" width="69.0" height="27.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="Flow_14rqne4" id="Flow_14rqne4_di">
+                <di:waypoint x="218.0" y="110.0"/>
+                <di:waypoint x="302.0" y="110.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="392.99999999999994" y="133.0" width="78.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_0p19yj0" id="Flow_0p19yj0_di">
+                <di:waypoint x="458.0" y="110.0"/>
+                <di:waypoint x="542.0" y="110.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_0rxm3ia" id="Flow_0rxm3ia_di">
+                <di:waypoint x="338.0" y="110.0"/>
+                <di:waypoint x="422.0" y="110.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_0qj9mm6" id="Flow_0qj9mm6_di">
+                <di:waypoint x="578.0" y="110.0"/>
+                <di:waypoint x="662.0" y="110.0"/>
+            </bpmndi:BPMNEdge>
+        </bpmndi:BPMNPlane>
+    </bpmndi:BPMNDiagram>
+</bpmn:definitions>

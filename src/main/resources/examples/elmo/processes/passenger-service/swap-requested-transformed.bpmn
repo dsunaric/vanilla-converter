@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" id="Definitions_0uzp8rh" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.14.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.6.0">
+    <bpmn:process isExecutable="true" id="ShiftSwapOfDriverRequested">
+        <bpmn:startEvent name="swap of driver requested" id="StartEvent_1">
+            <bpmn:outgoing xmlns="">Flow_0ccz3lb</bpmn:outgoing>
+        </bpmn:startEvent>
+        <bpmn:sequenceFlow sourceRef="StartEvent_1" targetRef="Activity_0lya6zy" id="Flow_0ccz3lb"/>
+        <bpmn:sendTask xmlns:camunda="http://camunda.org/schema/1.0/bpmn" name="inform current driver about request" id="Activity_0lya6zy" camunda:expression="${informDriverAboutRequestForSwap}">
+            <bpmn:extensionElements>
+                <zeebe:taskDefinition type="informDriverAboutRequestForSwap"/>
+            </bpmn:extensionElements>
+            <bpmn:incoming xmlns="">Flow_0ccz3lb</bpmn:incoming>
+            <bpmn:outgoing xmlns="">Flow_1l7q3pk</bpmn:outgoing>
+        </bpmn:sendTask>
+        <bpmn:sequenceFlow sourceRef="Activity_0lya6zy" targetRef="Gateway_0ujmhva" id="Flow_1l7q3pk"/>
+        <bpmn:eventBasedGateway id="Gateway_0ujmhva">
+            <bpmn:incoming xmlns="">Flow_1l7q3pk</bpmn:incoming>
+            <bpmn:outgoing xmlns="">Flow_1ea8cbq</bpmn:outgoing>
+            <bpmn:outgoing xmlns="">Flow_1klnzvw</bpmn:outgoing>
+            <bpmn:outgoing xmlns="">Flow_07lsdxs</bpmn:outgoing>
+            <bpmn:outgoing xmlns="">Flow_1jq3lnl</bpmn:outgoing>
+            <bpmn:outgoing xmlns="">Flow_1inppso</bpmn:outgoing>
+        </bpmn:eventBasedGateway>
+        <bpmn:intermediateCatchEvent name="swap confirmed" id="Event_1kh27c7">
+            <bpmn:incoming xmlns="">Flow_1ea8cbq</bpmn:incoming>
+            <bpmn:outgoing xmlns="">Flow_0syo8yc</bpmn:outgoing>
+            <bpmn:messageEventDefinition xmlns="" messageRef="Message_2on357h" id="MessageEventDefinition_17yov90"/>
+        </bpmn:intermediateCatchEvent>
+        <bpmn:sequenceFlow sourceRef="Gateway_0ujmhva" targetRef="Event_1kh27c7" id="Flow_1ea8cbq"/>
+        <bpmn:sequenceFlow sourceRef="Event_1kh27c7" targetRef="Activity_0bbz9zv" id="Flow_0syo8yc"/>
+        <bpmn:sendTask xmlns:camunda="http://camunda.org/schema/1.0/bpmn" name="inform requesting driver about success" id="Activity_0bbz9zv" camunda:expression="${informDriverAboutSwapAccepted}">
+            <bpmn:extensionElements>
+                <zeebe:taskDefinition type="informDriverAboutSwapAccepted"/>
+            </bpmn:extensionElements>
+            <bpmn:incoming xmlns="">Flow_0syo8yc</bpmn:incoming>
+            <bpmn:incoming xmlns="">Flow_1hht79l</bpmn:incoming>
+            <bpmn:outgoing xmlns="">Flow_015s4op</bpmn:outgoing>
+        </bpmn:sendTask>
+        <bpmn:endEvent name="swap done" id="Event_1npiq0u">
+            <bpmn:incoming xmlns="">Flow_015s4op</bpmn:incoming>
+        </bpmn:endEvent>
+        <bpmn:sequenceFlow sourceRef="Activity_0bbz9zv" targetRef="Event_1npiq0u" id="Flow_015s4op"/>
+        <bpmn:intermediateCatchEvent name="swap rejected" id="Event_056niqv">
+            <bpmn:incoming xmlns="">Flow_1klnzvw</bpmn:incoming>
+            <bpmn:outgoing xmlns="">Flow_038yolz</bpmn:outgoing>
+            <bpmn:messageEventDefinition xmlns="" messageRef="Message_2gg8vbt" id="MessageEventDefinition_08uxj3f"/>
+        </bpmn:intermediateCatchEvent>
+        <bpmn:sequenceFlow sourceRef="Gateway_0ujmhva" targetRef="Event_056niqv" id="Flow_1klnzvw"/>
+        <bpmn:sequenceFlow sourceRef="Event_056niqv" targetRef="Activity_09l8o6p" id="Flow_038yolz"/>
+        <bpmn:endEvent name="swap not done" id="Event_159jqj0">
+            <bpmn:incoming xmlns="">Flow_12koexr</bpmn:incoming>
+        </bpmn:endEvent>
+        <bpmn:sequenceFlow sourceRef="Activity_09l8o6p" targetRef="Event_159jqj0" id="Flow_12koexr"/>
+        <bpmn:sendTask xmlns:camunda="http://camunda.org/schema/1.0/bpmn" name="inform requesting driver about rejection" id="Activity_09l8o6p" camunda:expression="${informDriverAboutSwapRejected}">
+            <bpmn:extensionElements>
+                <zeebe:taskDefinition type="informDriverAboutSwapRejected"/>
+            </bpmn:extensionElements>
+            <bpmn:incoming xmlns="">Flow_038yolz</bpmn:incoming>
+            <bpmn:incoming xmlns="">Flow_1rljg3g</bpmn:incoming>
+            <bpmn:outgoing xmlns="">Flow_12koexr</bpmn:outgoing>
+        </bpmn:sendTask>
+        <bpmn:intermediateCatchEvent name="swap cancelled" id="Event_1ays711">
+            <bpmn:incoming xmlns="">Flow_07lsdxs</bpmn:incoming>
+            <bpmn:outgoing xmlns="">Flow_0o7oxxg</bpmn:outgoing>
+            <bpmn:messageEventDefinition xmlns="" messageRef="Message_2u3ucgo" id="MessageEventDefinition_1a0wmr5"/>
+        </bpmn:intermediateCatchEvent>
+        <bpmn:sequenceFlow sourceRef="Gateway_0ujmhva" targetRef="Event_1ays711" id="Flow_07lsdxs"/>
+        <bpmn:sequenceFlow sourceRef="Event_1ays711" targetRef="Activity_1hbipsg" id="Flow_0o7oxxg"/>
+        <bpmn:endEvent name="swap not needed any more" id="Event_0r5b19s">
+            <bpmn:incoming xmlns="">Flow_1fz6tly</bpmn:incoming>
+        </bpmn:endEvent>
+        <bpmn:sequenceFlow sourceRef="Activity_1hbipsg" targetRef="Event_0r5b19s" id="Flow_1fz6tly"/>
+        <bpmn:sendTask xmlns:camunda="http://camunda.org/schema/1.0/bpmn" name="inform current driver about cancellation" id="Activity_1hbipsg" camunda:expression="${informDriverAboutCancellationOfSwap}">
+            <bpmn:extensionElements>
+                <zeebe:taskDefinition type="informDriverAboutCancellationOfSwap"/>
+            </bpmn:extensionElements>
+            <bpmn:incoming xmlns="">Flow_0o7oxxg</bpmn:incoming>
+            <bpmn:outgoing xmlns="">Flow_1fz6tly</bpmn:outgoing>
+        </bpmn:sendTask>
+        <bpmn:intermediateCatchEvent name="swap confirmed by administrator" id="Event_17kdtrq">
+            <bpmn:incoming xmlns="">Flow_1jq3lnl</bpmn:incoming>
+            <bpmn:outgoing xmlns="">Flow_0c3nhj1</bpmn:outgoing>
+            <bpmn:messageEventDefinition xmlns="" messageRef="Message_3psc8n5" id="MessageEventDefinition_1syjfqw"/>
+        </bpmn:intermediateCatchEvent>
+        <bpmn:sequenceFlow sourceRef="Gateway_0ujmhva" targetRef="Event_17kdtrq" id="Flow_1jq3lnl"/>
+        <bpmn:sequenceFlow sourceRef="Event_17kdtrq" targetRef="Activity_0e7my8l" id="Flow_0c3nhj1"/>
+        <bpmn:intermediateCatchEvent name="swap rejected by administrator" id="Event_0g264yv">
+            <bpmn:incoming xmlns="">Flow_1inppso</bpmn:incoming>
+            <bpmn:outgoing xmlns="">Flow_03zreza</bpmn:outgoing>
+            <bpmn:messageEventDefinition xmlns="" messageRef="Message_0839j2v" id="MessageEventDefinition_04iqwq7"/>
+        </bpmn:intermediateCatchEvent>
+        <bpmn:sequenceFlow sourceRef="Gateway_0ujmhva" targetRef="Event_0g264yv" id="Flow_1inppso"/>
+        <bpmn:sequenceFlow sourceRef="Event_0g264yv" targetRef="Activity_08ku67c" id="Flow_03zreza"/>
+        <bpmn:sequenceFlow sourceRef="Activity_0e7my8l" targetRef="Activity_0bbz9zv" id="Flow_1hht79l"/>
+        <bpmn:sendTask xmlns:camunda="http://camunda.org/schema/1.0/bpmn" name="inform current driver about swap confirmed by administrator" id="Activity_0e7my8l" camunda:expression="${informDriverAboutSwapAcceptedByAdministrator}">
+            <bpmn:extensionElements>
+                <zeebe:taskDefinition type="informDriverAboutSwapAcceptedByAdministrator"/>
+            </bpmn:extensionElements>
+            <bpmn:incoming xmlns="">Flow_0c3nhj1</bpmn:incoming>
+            <bpmn:outgoing xmlns="">Flow_1hht79l</bpmn:outgoing>
+        </bpmn:sendTask>
+        <bpmn:sequenceFlow sourceRef="Activity_08ku67c" targetRef="Activity_09l8o6p" id="Flow_1rljg3g"/>
+        <bpmn:sendTask xmlns:camunda="http://camunda.org/schema/1.0/bpmn" name="inform current driver about swap rejected by administrator" id="Activity_08ku67c" camunda:expression="${informDriverAboutSwapRejectedByAdministrator}">
+            <bpmn:extensionElements>
+                <zeebe:taskDefinition type="informDriverAboutSwapRejectedByAdministrator"/>
+            </bpmn:extensionElements>
+            <bpmn:incoming xmlns="">Flow_03zreza</bpmn:incoming>
+            <bpmn:outgoing xmlns="">Flow_1rljg3g</bpmn:outgoing>
+        </bpmn:sendTask>
+    </bpmn:process>
+    <bpmn:message name="SwapConfirmed" id="Message_2on357h">
+        <bpmn:extensionElements>
+            <zeebe:subscription correlationKey="AddCorrelationKey"/>
+        </bpmn:extensionElements>
+    </bpmn:message>
+    <bpmn:message name="SwapRejected" id="Message_2gg8vbt">
+        <bpmn:extensionElements>
+            <zeebe:subscription correlationKey="AddCorrelationKey"/>
+        </bpmn:extensionElements>
+    </bpmn:message>
+    <bpmn:message name="SwapCancelled" id="Message_2u3ucgo">
+        <bpmn:extensionElements>
+            <zeebe:subscription correlationKey="AddCorrelationKey"/>
+        </bpmn:extensionElements>
+    </bpmn:message>
+    <bpmn:message name="SwapConfirmedByAdministrator" id="Message_3psc8n5">
+        <bpmn:extensionElements>
+            <zeebe:subscription correlationKey="AddCorrelationKey"/>
+        </bpmn:extensionElements>
+    </bpmn:message>
+    <bpmn:message name="SwapRejectedByAdministrator" id="Message_0839j2v">
+        <bpmn:extensionElements>
+            <zeebe:subscription correlationKey="AddCorrelationKey"/>
+        </bpmn:extensionElements>
+    </bpmn:message>
+    <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+        <bpmndi:BPMNPlane xmlns="" bpmnElement="ShiftSwapOfDriverRequested" id="BPMNPlane_1">
+            <bpmndi:BPMNShape bpmnElement="Event_056niqv" id="Event_056niqv_di">
+                <dc:Bounds x="572.0" y="422.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="556.0" y="465.0" width="68.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Event_159jqj0" id="Event_159jqj0_di">
+                <dc:Bounds x="852.0" y="422.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="834.0" y="465.0" width="72.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Activity_09l8o6p" id="Activity_0azualb_di">
+                <dc:Bounds x="680.0" y="400.0" width="100.0" height="80.0"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Event_1ays711" id="Event_1ays711_di">
+                <dc:Bounds x="572.0" y="312.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="552.0" y="355.0" width="76.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Event_0r5b19s" id="Event_0r5b19s_di">
+                <dc:Bounds x="852.0" y="312.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="828.0" y="355.0" width="84.0" height="27.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Activity_1hbipsg" id="Activity_0k72i2s_di">
+                <dc:Bounds x="680.0" y="290.0" width="100.0" height="80.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Activity_08ku67c" id="Activity_0cshj7t_di">
+                <dc:Bounds x="680.0" y="510.0" width="100.0" height="80.0"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Event_0g264yv" id="Event_0g264yv_di">
+                <dc:Bounds x="572.0" y="532.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="549.0" y="575.0" width="83.0" height="27.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="StartEvent_1" id="_BPMNShape_StartEvent_2">
+                <dc:Bounds x="172.0" y="202.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="156.0" y="245.0" width="69.0" height="27.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Activity_0lya6zy" id="Activity_0ftfwg0_di">
+                <dc:Bounds x="280.0" y="180.0" width="100.0" height="80.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Gateway_0ujmhva" id="Gateway_06m1o8q_di">
+                <dc:Bounds x="455.0" y="195.0" width="50.0" height="50.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Event_1kh27c7" id="Event_1kh27c7_di">
+                <dc:Bounds x="572.0" y="202.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="551.0" y="245.0" width="78.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Activity_0bbz9zv" id="Activity_15nojr3_di">
+                <dc:Bounds x="680.0" y="180.0" width="100.0" height="80.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Event_1npiq0u" id="Event_1npiq0u_di">
+                <dc:Bounds x="852.0" y="202.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="843.0" y="245.0" width="54.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Event_17kdtrq" id="Event_17kdtrq_di">
+                <dc:Bounds x="572.0" y="92.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="551.0" y="135.0" width="79.0" height="27.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Activity_0e7my8l" id="Activity_1wzb8g5_di">
+                <dc:Bounds x="680.0" y="70.0" width="100.0" height="80.0"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="Flow_1klnzvw" id="Flow_1klnzvw_di">
+                <di:waypoint x="480.0" y="245.0"/>
+                <di:waypoint x="480.0" y="440.0"/>
+                <di:waypoint x="572.0" y="440.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_07lsdxs" id="Flow_07lsdxs_di">
+                <di:waypoint x="480.0" y="245.0"/>
+                <di:waypoint x="480.0" y="330.0"/>
+                <di:waypoint x="572.0" y="330.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_1jq3lnl" id="Flow_1jq3lnl_di">
+                <di:waypoint x="480.0" y="195.0"/>
+                <di:waypoint x="480.0" y="110.0"/>
+                <di:waypoint x="572.0" y="110.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_038yolz" id="Flow_038yolz_di">
+                <di:waypoint x="608.0" y="440.0"/>
+                <di:waypoint x="680.0" y="440.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_12koexr" id="Flow_12koexr_di">
+                <di:waypoint x="780.0" y="440.0"/>
+                <di:waypoint x="852.0" y="440.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_0o7oxxg" id="Flow_0o7oxxg_di">
+                <di:waypoint x="608.0" y="330.0"/>
+                <di:waypoint x="680.0" y="330.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_1fz6tly" id="Flow_1fz6tly_di">
+                <di:waypoint x="780.0" y="330.0"/>
+                <di:waypoint x="852.0" y="330.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_1inppso" id="Flow_1inppso_di">
+                <di:waypoint x="480.0" y="245.0"/>
+                <di:waypoint x="480.0" y="550.0"/>
+                <di:waypoint x="572.0" y="550.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_03zreza" id="Flow_03zreza_di">
+                <di:waypoint x="608.0" y="550.0"/>
+                <di:waypoint x="680.0" y="550.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_1hht79l" id="Flow_1hht79l_di">
+                <di:waypoint x="730.0" y="150.0"/>
+                <di:waypoint x="730.0" y="180.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_1rljg3g" id="Flow_1rljg3g_di">
+                <di:waypoint x="730.0" y="510.0"/>
+                <di:waypoint x="730.0" y="480.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_0ccz3lb" id="Flow_0ccz3lb_di">
+                <di:waypoint x="208.0" y="220.0"/>
+                <di:waypoint x="280.0" y="220.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_1l7q3pk" id="Flow_1l7q3pk_di">
+                <di:waypoint x="380.0" y="220.0"/>
+                <di:waypoint x="455.0" y="220.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_1ea8cbq" id="Flow_1ea8cbq_di">
+                <di:waypoint x="505.0" y="220.0"/>
+                <di:waypoint x="572.0" y="220.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_0syo8yc" id="Flow_0syo8yc_di">
+                <di:waypoint x="608.0" y="220.0"/>
+                <di:waypoint x="680.0" y="220.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_015s4op" id="Flow_015s4op_di">
+                <di:waypoint x="780.0" y="220.0"/>
+                <di:waypoint x="852.0" y="220.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_0c3nhj1" id="Flow_0c3nhj1_di">
+                <di:waypoint x="608.0" y="110.0"/>
+                <di:waypoint x="680.0" y="110.0"/>
+            </bpmndi:BPMNEdge>
+        </bpmndi:BPMNPlane>
+    </bpmndi:BPMNDiagram>
+</bpmn:definitions>

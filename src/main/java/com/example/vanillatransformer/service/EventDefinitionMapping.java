@@ -20,6 +20,8 @@ public class EventDefinitionMapping implements Mapping<TEventDefinition,TEventDe
 
     @Autowired
     private NoMapping noMapping;
+    @Autowired
+    private ExpressionMapping expressionMapping;
 
     @Override
     public TEventDefinition map(TEventDefinition tEventDefinition) {
@@ -34,14 +36,31 @@ public class EventDefinitionMapping implements Mapping<TEventDefinition,TEventDe
         if(tEventDefinition instanceof TTimerEventDefinition){
             TTimerEventDefinition timerEventDefinition = (TTimerEventDefinition) tEventDefinition;
             String expression = null;
-            if(timerEventDefinition.getTimeCycle() != null)
+            //Cycle
+            if(timerEventDefinition.getTimeCycle() != null) {
                 expression = (String) timerEventDefinition.getTimeCycle().getValue().getContent().get(0);
-            if(timerEventDefinition.getTimeDate() != null)
+                if (expression != null && expression.startsWith("${")) {
+                    timerEventDefinition.getTimeCycle().getValue().getContent().set(0, "=" + expressionMapping.map(expression));
+                }
+            }
+
+            //Date
+            if(timerEventDefinition.getTimeDate() != null) {
                 expression = (String) timerEventDefinition.getTimeDate().getValue().getContent().get(0);
-            if(timerEventDefinition.getTimeDuration() != null)
+                if (expression != null && expression.startsWith("${")) {
+                    timerEventDefinition.getTimeDate().getValue().getContent().set(0, "=" + expressionMapping.map(expression));
+                }
+            }
+
+            //Duration
+            if(timerEventDefinition.getTimeDuration() != null) {
                 expression = (String) timerEventDefinition.getTimeDuration().getValue().getContent().get(0);
+                if (expression != null && expression.startsWith("${")) {
+                    timerEventDefinition.getTimeDuration().getValue().getContent().set(0,"=" +  expressionMapping.map(expression));
+                }
+            }
             if(expression != null && expression.startsWith("${")) {
-                LOG.info("TODO: for TimerEventDefinition with id {}: set output of expression '{}' as a variable in ISO8601 format and set variable as this timer events value", timerEventDefinition.getId(), expression);
+                LOG.info("OPTIONAL TODO: for TimerEventDefinition with id {}: set output of expression '{}' as a variable in ISO8601 format and set variable as this timer events value", timerEventDefinition.getId(), expression);
             }
             return tEventDefinition;
         }

@@ -43,4 +43,21 @@
         <xs:attribute name="inputCollection" type="xs:string" use="required"/>
         <xs:attribute name="inputElement" type="xs:string" use="required"/>
     </xs:complexType>
+
+    <xs:element name="calledElement" type="zeebe:CalledElement"/>
+
+    <xs:complexType name="CalledElement">
+        <xs:attribute name="processId" type="xs:string" use="required"/>
+        <xs:attribute name="propagateAllChildVariables" type="xs:boolean" use="required"/>
+        <xs:attribute name="propagateAllParentVariables" type="xs:boolean" use="required"/>
+        <xs:attribute name="bindingType" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="deployment"/>
+                    <xs:enumeration value="latest"/>
+                    <xs:enumeration value="version"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
 </xs:schema>

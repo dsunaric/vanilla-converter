@@ -1,33 +1,29 @@
 <configuration>
 
-    <!-- Appender just for your service logs -->
-    <appender name="SERVICE_LOG_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>logs/service.log</file>
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <!-- Actual filename pattern with timestamp -->
-            <fileNamePattern>logs/service-%d{yyyy-MM-dd_HH-mm}.log</fileNamePattern>
-            <maxHistory>30</maxHistory> <!-- Keep last 30 log files -->
-        </rollingPolicy>
-        <append>true</append>
+    <!-- File appender with dynamic name -->
+    <appender name="SERVICE_LOG_FILE" class="ch.qos.logback.core.FileAppender">
+        <file>logs/transformation.log</file>
+        <append>false</append> <!-- Overwrite on every run -->
         <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
 
-    <!-- Logger scoped to your package -->
+    <!-- Logger for your package -->
     <logger name="com.example" level="DEBUG" additivity="false">
-        <appender-ref ref="SERVICE_LOG_FILE" />
+        <appender-ref ref="SERVICE_LOG_FILE"/>
     </logger>
 
-    <!-- Optional: Root logger still logs everything else to console or main file -->
+    <!-- Console appender (optional) -->
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
 
+    <!-- Root logger -->
     <root level="INFO">
-        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="CONSOLE"/>
     </root>
 
 </configuration>

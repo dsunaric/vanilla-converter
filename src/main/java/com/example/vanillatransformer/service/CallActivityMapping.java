@@ -2,14 +2,24 @@ package com.example.vanillatransformer.service;
 
 import com.example.vanillatransformer.service.abstractmappings.Mapping;
 import com.example.vanillatransformer.service.abstractmappings.NoMapping;
+import com.example.vanillatransformer.util.Camunda7Constants;
+import com.example.vanillatransformer.util.CustomNamespacePrefixMapper;
+import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBElement;
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.Marshaller;
 import lombok.Getter;
 import lombok.Setter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 import xml.*;
+
+import javax.xml.namespace.QName;
+import javax.xml.transform.dom.DOMResult;
 
 @Setter
 @Getter
@@ -19,18 +29,28 @@ public class CallActivityMapping implements Mapping<TCallActivity,TCallActivity>
     private static Logger LOG = LoggerFactory.getLogger(CallActivityMapping.class);
 
 
+    @Autowired
+    private CalledElementMapping calledElementMapping;
+
     @Override
     public TCallActivity map(TCallActivity tcallActivity) {
-        LOG.info("MAPPING MISSING: <bpmn:callActivity> with id={}",tcallActivity.getId());
-        LOG.info("TODO: map <bpmn:callActivity> with id={}",tcallActivity.getId());
+        LOG.info("MAPPING : <bpmn:callActivity> with id={}",tcallActivity.getId());
 
+        ExtensionElements extensionElements = tcallActivity.getExtensionElements();
+        var elements = extensionElements.getAnies();
 
-        boolean inputPropagation =
-                tcallActivity.getExtensionElements().getAnies().stream()
-                        .anyMatch(element -> element.getLocalName().equals("in") );
-        boolean outputPropagation =
-                tcallActivity.getExtensionElements().getAnies().stream()
-                        .anyMatch(element -> element.getLocalName().equals("out") );
+        try {
+            JAXBContext context = JAXBContext.newInstance(CalledElement.class);
+            DOMResult res = new DOMResult();
+            Marshaller marshaller = context.createMarshaller();
+            marshaller.setProperty("org.glassfish.jaxb.namespacePrefixMapper", new CustomNamespacePrefixMapper());
+            marshaller.marshal(calledElementMapping.map(tcallActivity), res);
+            Element elt = ((Document)res.getNode()).getDocumentElement();
+            elements.add(elt);
+        } catch (JAXBException e) {
+            throw new RuntimeException(e);
+        }
+        tcallActivity.setExtensionElements(extensionElements);
 
         return tcallActivity;
     }

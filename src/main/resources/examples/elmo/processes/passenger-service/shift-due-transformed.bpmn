@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" id="Definitions_13m8ofp" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.7.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.6.0">
+    <bpmn:process isExecutable="true" name="Passenger Service Shift Due" id="ShiftDue">
+        <bpmn:sendTask xmlns:camunda="http://camunda.org/schema/1.0/bpmn" name="inform passengers about unclaimed shift" id="Activity_04dk5bt" camunda:expression="${informPassengerAboutShiftNotClaimedYet}">
+            <bpmn:extensionElements>
+                <zeebe:taskDefinition type="informPassengerAboutShiftNotClaimedYet"/>
+            </bpmn:extensionElements>
+            <bpmn:incoming xmlns="">Flow_1vxwq1q</bpmn:incoming>
+            <bpmn:outgoing xmlns="">Flow_1tj780o</bpmn:outgoing>
+            <bpmn:multiInstanceLoopCharacteristics camunda:elementVariable="ride" camunda:collection="${rides}">
+                <bpmn:extensionElements>
+                    <zeebe:loopCharacteristics inputCollection="= rides"/>
+                </bpmn:extensionElements>
+            </bpmn:multiInstanceLoopCharacteristics>
+        </bpmn:sendTask>
+        <bpmn:eventBasedGateway id="Gateway_0fp1pqt">
+            <bpmn:incoming xmlns="">Flow_1tj780o</bpmn:incoming>
+            <bpmn:outgoing xmlns="">Flow_0bwf83n</bpmn:outgoing>
+            <bpmn:outgoing xmlns="">Flow_067zb5u</bpmn:outgoing>
+        </bpmn:eventBasedGateway>
+        <bpmn:intermediateCatchEvent name="end of shift" id="ShiftDue_EndOfShift">
+            <bpmn:incoming xmlns="">Flow_0bwf83n</bpmn:incoming>
+            <bpmn:outgoing xmlns="">Flow_0d47tyx</bpmn:outgoing>
+            <bpmn:timerEventDefinition id="TimerEventDefinition_11f7fmq">
+                <bpmn:timeDate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="bpmn:tFormalExpression">=endsAtDate</bpmn:timeDate>
+            </bpmn:timerEventDefinition>
+        </bpmn:intermediateCatchEvent>
+        <bpmn:intermediateCatchEvent name="shift claimed" id="Event_0qefsal">
+            <bpmn:incoming xmlns="">Flow_067zb5u</bpmn:incoming>
+            <bpmn:outgoing xmlns="">Flow_1y8ubqu</bpmn:outgoing>
+            <bpmn:messageEventDefinition xmlns="" messageRef="Message_1p05uj9" id="MessageEventDefinition_0q45hk7"/>
+        </bpmn:intermediateCatchEvent>
+        <bpmn:endEvent name="shift ended without doing passenger service" id="Event_0tn7er7">
+            <bpmn:incoming xmlns="">Flow_0d47tyx</bpmn:incoming>
+        </bpmn:endEvent>
+        <bpmn:startEvent name="shift due but not claimed yet" id="Event_024swto">
+            <bpmn:outgoing xmlns="">Flow_1vxwq1q</bpmn:outgoing>
+        </bpmn:startEvent>
+        <bpmn:sequenceFlow sourceRef="Event_024swto" targetRef="Activity_04dk5bt" id="Flow_1vxwq1q"/>
+        <bpmn:sequenceFlow sourceRef="Activity_04dk5bt" targetRef="Gateway_0fp1pqt" id="Flow_1tj780o"/>
+        <bpmn:sequenceFlow sourceRef="Gateway_0fp1pqt" targetRef="ShiftDue_EndOfShift" id="Flow_0bwf83n"/>
+        <bpmn:sequenceFlow sourceRef="Gateway_0fp1pqt" targetRef="Event_0qefsal" id="Flow_067zb5u"/>
+        <bpmn:sequenceFlow sourceRef="ShiftDue_EndOfShift" targetRef="Event_0tn7er7" id="Flow_0d47tyx"/>
+        <bpmn:endEvent name="passenger service about to start" id="Event_0wzghbs">
+            <bpmn:incoming xmlns="">Flow_1y8ubqu</bpmn:incoming>
+        </bpmn:endEvent>
+        <bpmn:sequenceFlow sourceRef="Event_0qefsal" targetRef="Event_0wzghbs" id="Flow_1y8ubqu"/>
+    </bpmn:process>
+    <bpmn:message name="ShiftClaimed" id="Message_1p05uj9">
+        <bpmn:extensionElements>
+            <zeebe:subscription correlationKey="AddCorrelationKey"/>
+        </bpmn:extensionElements>
+    </bpmn:message>
+    <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+        <bpmndi:BPMNPlane xmlns="" bpmnElement="ShiftDue" id="BPMNPlane_1">
+            <bpmndi:BPMNShape bpmnElement="Activity_04dk5bt" id="Activity_031ws1m_di">
+                <dc:Bounds x="300.0" y="80.0" width="100.0" height="80.0"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Gateway_0fp1pqt" id="Gateway_0tyu70r_di">
+                <dc:Bounds x="475.0" y="95.0" width="50.0" height="50.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="ShiftDue_EndOfShift" id="Event_0pxmyza_di">
+                <dc:Bounds x="602.0" y="192.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="593.0" y="235.0" width="54.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Event_0qefsal" id="Event_0qefsal_di">
+                <dc:Bounds x="602.0" y="102.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="589.0" y="145.0" width="62.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Event_0tn7er7" id="Event_0tn7er7_di">
+                <dc:Bounds x="722.0" y="192.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="695.0" y="235.0" width="90.0" height="40.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Event_024swto" id="Event_024swto_di">
+                <dc:Bounds x="182.0" y="102.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="161.0" y="145.0" width="79.0" height="27.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Event_0wzghbs" id="Event_0wzghbs_di">
+                <dc:Bounds x="722.0" y="102.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="695.0" y="145.0" width="90.0" height="27.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="Flow_1vxwq1q" id="Flow_1vxwq1q_di">
+                <di:waypoint x="218.0" y="120.0"/>
+                <di:waypoint x="300.0" y="120.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_1tj780o" id="Flow_1tj780o_di">
+                <di:waypoint x="400.0" y="120.0"/>
+                <di:waypoint x="475.0" y="120.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_0bwf83n" id="Flow_0bwf83n_di">
+                <di:waypoint x="500.0" y="145.0"/>
+                <di:waypoint x="500.0" y="210.0"/>
+                <di:waypoint x="602.0" y="210.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_067zb5u" id="Flow_067zb5u_di">
+                <di:waypoint x="525.0" y="120.0"/>
+                <di:waypoint x="602.0" y="120.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_0d47tyx" id="Flow_0d47tyx_di">
+                <di:waypoint x="638.0" y="210.0"/>
+                <di:waypoint x="722.0" y="210.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_1y8ubqu" id="Flow_1y8ubqu_di">
+                <di:waypoint x="638.0" y="120.0"/>
+                <di:waypoint x="722.0" y="120.0"/>
+            </bpmndi:BPMNEdge>
+        </bpmndi:BPMNPlane>
+    </bpmndi:BPMNDiagram>
+</bpmn:definitions>

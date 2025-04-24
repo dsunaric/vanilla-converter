@@ -1,0 +1,694 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" id="Definitions_0qsyc2l" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.14.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.6.0">
+    <bpmn:process isExecutable="true" name="Passenger Service Wait for Beginning of Shift" id="WaitForStartOfShift">
+        <bpmn:startEvent name="passenger service planned" id="Event_1uqxv6v">
+            <bpmn:outgoing xmlns="">Flow_041300i</bpmn:outgoing>
+        </bpmn:startEvent>
+        <bpmn:intermediateCatchEvent name="wait for the start of the shift" id="WaitForBeginningOfShift_StartOfShift">
+            <bpmn:incoming xmlns="">Flow_1l1pbpn</bpmn:incoming>
+            <bpmn:outgoing xmlns="">Flow_0p19yj0</bpmn:outgoing>
+            <bpmn:timerEventDefinition id="TimerEventDefinition_079dyzs">
+                <bpmn:timeDate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="bpmn:tFormalExpression">=startsAtDate</bpmn:timeDate>
+            </bpmn:timerEventDefinition>
+        </bpmn:intermediateCatchEvent>
+        <bpmn:subProcess triggeredByEvent="true" name="inform passengers about shift not claimed yet" id="Activity_111dnh8">
+            <bpmn:exclusiveGateway default="Flow_1nubeep" name="shift claimed?" id="Gateway_004ceth">
+                <bpmn:incoming xmlns="">Flow_14fztyj</bpmn:incoming>
+                <bpmn:outgoing xmlns="">Flow_1nubeep</bpmn:outgoing>
+                <bpmn:outgoing xmlns="">Flow_151ugci</bpmn:outgoing>
+            </bpmn:exclusiveGateway>
+            <bpmn:endEvent name="ready for passenger service" id="Event_11eruqd">
+                <bpmn:incoming xmlns="">Flow_1nubeep</bpmn:incoming>
+            </bpmn:endEvent>
+            <bpmn:sendTask xmlns:camunda="http://camunda.org/schema/1.0/bpmn" name="inform passengers about shift not claimed yet" id="Activity_1jpd785" camunda:expression="${informPassengerAboutShiftNotClaimedYet}">
+                <bpmn:extensionElements>
+                    <zeebe:taskDefinition type="informPassengerAboutShiftNotClaimedYet"/>
+                </bpmn:extensionElements>
+                <bpmn:incoming xmlns="">Flow_151ugci</bpmn:incoming>
+                <bpmn:outgoing xmlns="">Flow_0znztfp</bpmn:outgoing>
+                <bpmn:multiInstanceLoopCharacteristics camunda:elementVariable="ride" camunda:collection="${rides}">
+                    <bpmn:extensionElements>
+                        <zeebe:loopCharacteristics inputCollection="= rides"/>
+                    </bpmn:extensionElements>
+                </bpmn:multiInstanceLoopCharacteristics>
+            </bpmn:sendTask>
+            <bpmn:endEvent name="passengers informed" id="Event_075qt6o">
+                <bpmn:incoming xmlns="">Flow_1fbaaob</bpmn:incoming>
+            </bpmn:endEvent>
+            <bpmn:startEvent isInterrupting="false" name="24 hours before start of shift" id="WaitForBeginningOfShift_oneDayBeforeStartOfShift">
+                <bpmn:outgoing xmlns="">Flow_14fztyj</bpmn:outgoing>
+                <bpmn:timerEventDefinition id="TimerEventDefinition_1ljhq34">
+                    <bpmn:timeDate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="bpmn:tFormalExpression">=oneDayBeforeStart</bpmn:timeDate>
+                </bpmn:timerEventDefinition>
+            </bpmn:startEvent>
+            <bpmn:sequenceFlow sourceRef="WaitForBeginningOfShift_oneDayBeforeStartOfShift" targetRef="Gateway_004ceth" id="Flow_14fztyj"/>
+            <bpmn:sequenceFlow sourceRef="Gateway_004ceth" targetRef="Event_11eruqd" name="yes" id="Flow_1nubeep"/>
+            <bpmn:sequenceFlow sourceRef="Gateway_004ceth" targetRef="Activity_1jpd785" name="no" id="Flow_151ugci">
+                <bpmn:conditionExpression xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="bpmn:tFormalExpression">empty driver</bpmn:conditionExpression>
+            </bpmn:sequenceFlow>
+            <bpmn:sequenceFlow sourceRef="Activity_1jpd785" targetRef="Activity_1jy6rli" id="Flow_0znztfp"/>
+            <bpmn:sequenceFlow sourceRef="Activity_1jy6rli" targetRef="Event_075qt6o" id="Flow_1fbaaob"/>
+            <bpmn:sendTask xmlns:camunda="http://camunda.org/schema/1.0/bpmn" name="ask drivers to claim this shift" id="Activity_1jy6rli" camunda:expression="${askDriversToClaimShift}">
+                <bpmn:extensionElements>
+                    <zeebe:taskDefinition type="askDriversToClaimShift"/>
+                </bpmn:extensionElements>
+                <bpmn:incoming xmlns="">Flow_0znztfp</bpmn:incoming>
+                <bpmn:outgoing xmlns="">Flow_1fbaaob</bpmn:outgoing>
+            </bpmn:sendTask>
+        </bpmn:subProcess>
+        <bpmn:sequenceFlow sourceRef="WaitForBeginningOfShift_StartOfShift" targetRef="Event_1u136pf" id="Flow_0p19yj0"/>
+        <bpmn:subProcess triggeredByEvent="true" name="shift unclaimed" id="Activity_0vvbr97">
+            <bpmn:endEvent name="unclaim tasks completed" id="Event_0vu8d74">
+                <bpmn:incoming xmlns="">Flow_0l1cm9x</bpmn:incoming>
+            </bpmn:endEvent>
+            <bpmn:startEvent isInterrupting="false" name="shift unclaimed" id="Event_1v78enm">
+                <bpmn:outgoing xmlns="">Flow_1k1q4gy</bpmn:outgoing>
+                <bpmn:messageEventDefinition xmlns="" messageRef="Message_395da9l" id="MessageEventDefinition_1918pxy"/>
+            </bpmn:startEvent>
+            <bpmn:exclusiveGateway default="Flow_0yrfp61" name="has reservations?" id="Gateway_1b4f9ib">
+                <bpmn:incoming xmlns="">Flow_1k1q4gy</bpmn:incoming>
+                <bpmn:outgoing xmlns="">Flow_00rqg4k</bpmn:outgoing>
+                <bpmn:outgoing xmlns="">Flow_0yrfp61</bpmn:outgoing>
+            </bpmn:exclusiveGateway>
+            <bpmn:sequenceFlow sourceRef="Gateway_1b4f9ib" targetRef="Activity_01o20aj" name="yes" id="Flow_00rqg4k">
+                <bpmn:conditionExpression xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="bpmn:tFormalExpression">not empty rides</bpmn:conditionExpression>
+            </bpmn:sequenceFlow>
+            <bpmn:callActivity xmlns="" calledElement="ShiftSwapOfDriverNeeded" name="swap of driver needed" id="Activity_01o20aj">
+                <bpmn:extensionElements>
+                    <camunda:in xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" businessKey="#{execution.processBusinessKey}"/>
+                    <zeebe:calledElement processId="ShiftSwapOfDriverNeeded" propagateAllChildVariables="false" propagateAllParentVariables="false"/>
+                </bpmn:extensionElements>
+                <bpmn:incoming>Flow_00rqg4k</bpmn:incoming>
+                <bpmn:incoming>Flow_1hfol3e</bpmn:incoming>
+                <bpmn:outgoing>Flow_16zq2ym</bpmn:outgoing>
+            </bpmn:callActivity>
+            <bpmn:sequenceFlow sourceRef="Activity_01o20aj" targetRef="Event_1au8m5l" id="Flow_16zq2ym"/>
+            <bpmn:sequenceFlow sourceRef="Gateway_1b4f9ib" targetRef="Gateway_03ksv2m" name="no" id="Flow_0yrfp61"/>
+            <bpmn:endEvent name="swap of drivers processed" id="Event_1au8m5l">
+                <bpmn:incoming xmlns="">Flow_16zq2ym</bpmn:incoming>
+            </bpmn:endEvent>
+            <bpmn:exclusiveGateway default="Flow_0l1cm9x" name="within 2 days before start of shift?" id="Gateway_03ksv2m">
+                <bpmn:incoming xmlns="">Flow_0yrfp61</bpmn:incoming>
+                <bpmn:outgoing xmlns="">Flow_0l1cm9x</bpmn:outgoing>
+                <bpmn:outgoing xmlns="">Flow_1hfol3e</bpmn:outgoing>
+            </bpmn:exclusiveGateway>
+            <bpmn:sequenceFlow sourceRef="Gateway_03ksv2m" targetRef="Event_0vu8d74" name="no" id="Flow_0l1cm9x"/>
+            <bpmn:sequenceFlow sourceRef="Gateway_03ksv2m" targetRef="Activity_01o20aj" name="yes" id="Flow_1hfol3e">
+                <bpmn:conditionExpression xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="bpmn:tFormalExpression">withinTwoDaysBeforeStart</bpmn:conditionExpression>
+            </bpmn:sequenceFlow>
+            <bpmn:sequenceFlow sourceRef="Event_1v78enm" targetRef="Gateway_1b4f9ib" id="Flow_1k1q4gy"/>
+        </bpmn:subProcess>
+        <bpmn:subProcess triggeredByEvent="true" name="shift claimed" id="Activity_0g7fiec">
+            <bpmn:endEvent name="claim tasks completed" id="Event_03ayf1o">
+                <bpmn:incoming xmlns="">Flow_0r4u8re</bpmn:incoming>
+            </bpmn:endEvent>
+            <bpmn:startEvent isInterrupting="false" name="shift claimed" id="Event_01xwhca">
+                <bpmn:outgoing xmlns="">Flow_0rauoag</bpmn:outgoing>
+                <bpmn:messageEventDefinition xmlns="" messageRef="Message_0h8i2td" id="MessageEventDefinition_1lp5ugp"/>
+            </bpmn:startEvent>
+            <bpmn:subProcess name="process conditionally reservations" id="Activity_0owhpjx">
+                <bpmn:incoming xmlns="">Flow_0rauoag</bpmn:incoming>
+                <bpmn:outgoing xmlns="">Flow_0r4u8re</bpmn:outgoing>
+                <bpmn:multiInstanceLoopCharacteristics xmlns:camunda="http://camunda.org/schema/1.0/bpmn" camunda:elementVariable="ride" camunda:collection="${rides}">
+                    <bpmn:extensionElements>
+                        <zeebe:loopCharacteristics inputCollection="= rides"/>
+                    </bpmn:extensionElements>
+                </bpmn:multiInstanceLoopCharacteristics>
+                <bpmn:startEvent name="change of conditionally reservation needed" id="Event_06nw0zy">
+                    <bpmn:outgoing xmlns="">Flow_0437121</bpmn:outgoing>
+                </bpmn:startEvent>
+                <bpmn:sendTask xmlns:camunda="http://camunda.org/schema/1.0/bpmn" name="inform passenger about steady reservation" id="Activity_1uv1eq6" camunda:expression="${informPassengerAboutTurnedIntoSteadyReservation}">
+                    <bpmn:extensionElements>
+                        <zeebe:taskDefinition type="informPassengerAboutTurnedIntoSteadyReservation"/>
+                    </bpmn:extensionElements>
+                    <bpmn:incoming xmlns="">Flow_0437121</bpmn:incoming>
+                    <bpmn:outgoing xmlns="">Flow_1acv7hp</bpmn:outgoing>
+                </bpmn:sendTask>
+                <bpmn:endEvent name="conditionally reservation changed into steady" id="Event_1beyije">
+                    <bpmn:incoming xmlns="">Flow_1acv7hp</bpmn:incoming>
+                </bpmn:endEvent>
+                <bpmn:sequenceFlow sourceRef="Event_06nw0zy" targetRef="Activity_1uv1eq6" id="Flow_0437121"/>
+                <bpmn:sequenceFlow sourceRef="Activity_1uv1eq6" targetRef="Event_1beyije" id="Flow_1acv7hp"/>
+            </bpmn:subProcess>
+            <bpmn:sequenceFlow sourceRef="Activity_0owhpjx" targetRef="Event_03ayf1o" id="Flow_0r4u8re"/>
+            <bpmn:sequenceFlow sourceRef="Event_01xwhca" targetRef="Activity_0owhpjx" id="Flow_0rauoag"/>
+        </bpmn:subProcess>
+        <bpmn:subProcess triggeredByEvent="true" name="try to find a driver to claim the shift" id="Activity_1dv67tc">
+            <bpmn:endEvent name="ready for passenger service" id="Event_1dogkeo">
+                <bpmn:incoming xmlns="">Flow_01uk06t</bpmn:incoming>
+            </bpmn:endEvent>
+            <bpmn:endEvent name="passengers informed" id="Event_0rvepov">
+                <bpmn:incoming xmlns="">Flow_176raa6</bpmn:incoming>
+            </bpmn:endEvent>
+            <bpmn:sendTask xmlns:camunda="http://camunda.org/schema/1.0/bpmn" name="ask drivers to claim this shift" id="Activity_1hi0nt3" camunda:expression="${askDriversToClaimShift}">
+                <bpmn:extensionElements>
+                    <zeebe:taskDefinition type="askDriversToClaimShift"/>
+                </bpmn:extensionElements>
+                <bpmn:incoming xmlns="">Flow_0w3mcm9</bpmn:incoming>
+                <bpmn:outgoing xmlns="">Flow_176raa6</bpmn:outgoing>
+            </bpmn:sendTask>
+            <bpmn:exclusiveGateway default="Flow_01uk06t" name="shift claimed?" id="Gateway_1ppr42h">
+                <bpmn:incoming xmlns="">Flow_0ixgn0p</bpmn:incoming>
+                <bpmn:outgoing xmlns="">Flow_01uk06t</bpmn:outgoing>
+                <bpmn:outgoing xmlns="">Flow_0w3mcm9</bpmn:outgoing>
+            </bpmn:exclusiveGateway>
+            <bpmn:startEvent isInterrupting="false" name="3 hours before start of shift" id="WaitForBeginningOfShift_threeHourBeforeStartOfShift">
+                <bpmn:outgoing xmlns="">Flow_0ixgn0p</bpmn:outgoing>
+                <bpmn:timerEventDefinition id="TimerEventDefinition_0jh0hge">
+                    <bpmn:timeDate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="bpmn:tFormalExpression">=threeHoursBeforeStart</bpmn:timeDate>
+                </bpmn:timerEventDefinition>
+            </bpmn:startEvent>
+            <bpmn:sequenceFlow sourceRef="Gateway_1ppr42h" targetRef="Event_1dogkeo" name="yes" id="Flow_01uk06t"/>
+            <bpmn:sequenceFlow sourceRef="Activity_1hi0nt3" targetRef="Event_0rvepov" id="Flow_176raa6"/>
+            <bpmn:sequenceFlow sourceRef="WaitForBeginningOfShift_threeHourBeforeStartOfShift" targetRef="Gateway_1ppr42h" id="Flow_0ixgn0p"/>
+            <bpmn:sequenceFlow sourceRef="Gateway_1ppr42h" targetRef="Activity_1hi0nt3" name="no" id="Flow_0w3mcm9">
+                <bpmn:conditionExpression xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="bpmn:tFormalExpression">empty driver</bpmn:conditionExpression>
+            </bpmn:sequenceFlow>
+        </bpmn:subProcess>
+        <bpmn:endEvent name="passenger service about to start" id="Event_1u136pf">
+            <bpmn:incoming xmlns="">Flow_0p19yj0</bpmn:incoming>
+            <bpmn:terminateEventDefinition id="TerminateEventDefinition_1kqynh2"/>
+        </bpmn:endEvent>
+        <bpmn:intermediateThrowEvent name="request for swap of driver processed" id="Event_0xt71u7">
+            <bpmn:incoming xmlns="">Flow_0rlpjf2</bpmn:incoming>
+            <bpmn:outgoing xmlns="">Flow_0tfgdxc</bpmn:outgoing>
+        </bpmn:intermediateThrowEvent>
+        <bpmn:sequenceFlow sourceRef="Event_0xt71u7" targetRef="Event_0uye6fs" name="wait for next request for swap of driver" id="Flow_0tfgdxc"/>
+        <bpmn:callActivity xmlns="" calledElement="ShiftSwapOfDriverRequested" name="process request" id="Activity_15vuuiw">
+            <bpmn:extensionElements>
+                <camunda:in xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" businessKey="#{execution.processBusinessKey}"/>
+                <zeebe:calledElement processId="ShiftSwapOfDriverRequested" propagateAllChildVariables="false" propagateAllParentVariables="false"/>
+            </bpmn:extensionElements>
+            <bpmn:incoming>Flow_1etfx4d</bpmn:incoming>
+            <bpmn:outgoing>Flow_0rlpjf2</bpmn:outgoing>
+        </bpmn:callActivity>
+        <bpmn:sequenceFlow sourceRef="Activity_15vuuiw" targetRef="Event_0xt71u7" id="Flow_0rlpjf2"/>
+        <bpmn:intermediateCatchEvent name="swap of driver requested" id="Event_0uye6fs">
+            <bpmn:incoming xmlns="">Flow_0tfgdxc</bpmn:incoming>
+            <bpmn:incoming xmlns="">Flow_0u4tyeu</bpmn:incoming>
+            <bpmn:outgoing xmlns="">Flow_1etfx4d</bpmn:outgoing>
+            <bpmn:messageEventDefinition xmlns="" messageRef="Message_15lr0tu" id="MessageEventDefinition_0k8xi8h"/>
+        </bpmn:intermediateCatchEvent>
+        <bpmn:sequenceFlow sourceRef="Event_0uye6fs" targetRef="Activity_15vuuiw" id="Flow_1etfx4d"/>
+        <bpmn:parallelGateway id="Gateway_0wo4419">
+            <bpmn:incoming xmlns="">Flow_041300i</bpmn:incoming>
+            <bpmn:outgoing xmlns="">Flow_0u4tyeu</bpmn:outgoing>
+            <bpmn:outgoing xmlns="">Flow_1l1pbpn</bpmn:outgoing>
+        </bpmn:parallelGateway>
+        <bpmn:sequenceFlow sourceRef="Gateway_0wo4419" targetRef="Event_0uye6fs" id="Flow_0u4tyeu"/>
+        <bpmn:sequenceFlow sourceRef="Gateway_0wo4419" targetRef="WaitForBeginningOfShift_StartOfShift" id="Flow_1l1pbpn"/>
+        <bpmn:sequenceFlow sourceRef="Event_1uqxv6v" targetRef="Gateway_0wo4419" id="Flow_041300i"/>
+        <bpmn:subProcess triggeredByEvent="true" name="shift unclaimed by administrator" id="Activity_1dk41i2">
+            <bpmn:endEvent name="unclaim tasks completed" id="Event_1r1z39w">
+                <bpmn:incoming xmlns="">Flow_0l6gzzm</bpmn:incoming>
+            </bpmn:endEvent>
+            <bpmn:exclusiveGateway default="Flow_1ho0ega" name="has reservations?" id="Gateway_0a6nb9e">
+                <bpmn:incoming xmlns="">Flow_1loceqd</bpmn:incoming>
+                <bpmn:outgoing xmlns="">Flow_0kb1u57</bpmn:outgoing>
+                <bpmn:outgoing xmlns="">Flow_1ho0ega</bpmn:outgoing>
+            </bpmn:exclusiveGateway>
+            <bpmn:callActivity xmlns="" calledElement="ShiftSwapOfDriverNeeded" name="swap of driver needed" id="Activity_00rlu8b">
+                <bpmn:extensionElements>
+                    <camunda:in xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" businessKey="#{execution.processBusinessKey}"/>
+                    <zeebe:calledElement processId="ShiftSwapOfDriverNeeded" propagateAllChildVariables="false" propagateAllParentVariables="false"/>
+                </bpmn:extensionElements>
+                <bpmn:incoming>Flow_0kb1u57</bpmn:incoming>
+                <bpmn:incoming>Flow_131eakq</bpmn:incoming>
+                <bpmn:outgoing>Flow_1f7wt6n</bpmn:outgoing>
+            </bpmn:callActivity>
+            <bpmn:endEvent name="swap of drivers processed" id="Event_0uwawjr">
+                <bpmn:incoming xmlns="">Flow_1f7wt6n</bpmn:incoming>
+            </bpmn:endEvent>
+            <bpmn:exclusiveGateway default="Flow_0l6gzzm" name="within 2 days before start of shift?" id="Gateway_10i9pn4">
+                <bpmn:incoming xmlns="">Flow_1ho0ega</bpmn:incoming>
+                <bpmn:outgoing xmlns="">Flow_0l6gzzm</bpmn:outgoing>
+                <bpmn:outgoing xmlns="">Flow_131eakq</bpmn:outgoing>
+            </bpmn:exclusiveGateway>
+            <bpmn:startEvent isInterrupting="false" name="shift unclaimed by administrator" id="Event_135gqsm">
+                <bpmn:outgoing xmlns="">Flow_0g449sg</bpmn:outgoing>
+                <bpmn:messageEventDefinition xmlns="" messageRef="Message_3t1psi9" id="MessageEventDefinition_0ck1geh"/>
+            </bpmn:startEvent>
+            <bpmn:sendTask xmlns:camunda="http://camunda.org/schema/1.0/bpmn" name="inform driver about unclaimed by administrator" id="Activity_0nulxdo" camunda:expression="${informDriverAboutUnclaimByAdministrator}">
+                <bpmn:extensionElements>
+                    <zeebe:taskDefinition type="informDriverAboutUnclaimByAdministrator"/>
+                </bpmn:extensionElements>
+                <bpmn:incoming xmlns="">Flow_0g449sg</bpmn:incoming>
+                <bpmn:outgoing xmlns="">Flow_1loceqd</bpmn:outgoing>
+            </bpmn:sendTask>
+            <bpmn:sequenceFlow sourceRef="Gateway_10i9pn4" targetRef="Event_1r1z39w" name="no" id="Flow_0l6gzzm"/>
+            <bpmn:sequenceFlow sourceRef="Gateway_0a6nb9e" targetRef="Activity_00rlu8b" name="yes" id="Flow_0kb1u57">
+                <bpmn:conditionExpression xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="bpmn:tFormalExpression">not empty rides</bpmn:conditionExpression>
+            </bpmn:sequenceFlow>
+            <bpmn:sequenceFlow sourceRef="Gateway_0a6nb9e" targetRef="Gateway_10i9pn4" name="no" id="Flow_1ho0ega"/>
+            <bpmn:sequenceFlow sourceRef="Gateway_10i9pn4" targetRef="Activity_00rlu8b" name="yes" id="Flow_131eakq">
+                <bpmn:conditionExpression xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="bpmn:tFormalExpression">withinTwoDaysBeforeStart</bpmn:conditionExpression>
+            </bpmn:sequenceFlow>
+            <bpmn:sequenceFlow sourceRef="Activity_00rlu8b" targetRef="Event_0uwawjr" id="Flow_1f7wt6n"/>
+            <bpmn:sequenceFlow sourceRef="Event_135gqsm" targetRef="Activity_0nulxdo" id="Flow_0g449sg"/>
+            <bpmn:sequenceFlow sourceRef="Activity_0nulxdo" targetRef="Gateway_0a6nb9e" id="Flow_1loceqd"/>
+        </bpmn:subProcess>
+        <bpmn:group xmlns="" categoryValueRef="CategoryValue_1l766pc" id="Group_15fde96"/>
+    </bpmn:process>
+    <bpmn:message name="ShiftCancelled" id="Message_0tm4seo">
+        <bpmn:extensionElements>
+            <zeebe:subscription correlationKey="AddCorrelationKey"/>
+        </bpmn:extensionElements>
+    </bpmn:message>
+    <bpmn:error name="ShiftCancelled" errorCode="ShiftCancelled" id="Error_1dqjcwb"/>
+    <bpmn:message name="ShiftUnclaimed" id="Message_395da9l">
+        <bpmn:extensionElements>
+            <zeebe:subscription correlationKey="AddCorrelationKey"/>
+        </bpmn:extensionElements>
+    </bpmn:message>
+    <bpmn:message name="ShiftClaimed" id="Message_0h8i2td">
+        <bpmn:extensionElements>
+            <zeebe:subscription correlationKey="AddCorrelationKey"/>
+        </bpmn:extensionElements>
+    </bpmn:message>
+    <bpmn:message name="SwapNeeded" id="Message_13iev4n">
+        <bpmn:extensionElements>
+            <zeebe:subscription correlationKey="AddCorrelationKey"/>
+        </bpmn:extensionElements>
+    </bpmn:message>
+    <bpmn:message name="SwapRequested" id="Message_15lr0tu">
+        <bpmn:extensionElements>
+            <zeebe:subscription correlationKey="AddCorrelationKey"/>
+        </bpmn:extensionElements>
+    </bpmn:message>
+    <bpmn:category id="Category_1g5owyd">
+        <bpmn:categoryValue value="swap of driver requested by other driver" id="CategoryValue_1l766pc"/>
+    </bpmn:category>
+    <bpmn:message name="ShiftUnclaimedByAdministrator" id="Message_3t1psi9">
+        <bpmn:extensionElements>
+            <zeebe:subscription correlationKey="AddCorrelationKey"/>
+        </bpmn:extensionElements>
+    </bpmn:message>
+    <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+        <bpmndi:BPMNPlane xmlns="" bpmnElement="WaitForStartOfShift" id="BPMNPlane_1">
+            <bpmndi:BPMNShape bpmnElement="Event_1uqxv6v" id="Event_1uqxv6v_di">
+                <dc:Bounds x="182.0" y="352.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="156.0" y="395.0" width="90.0" height="27.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="WaitForBeginningOfShift_StartOfShift" id="Event_11u0iz0_di">
+                <dc:Bounds x="482.0" y="352.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="461.0" y="395.0" width="79.0" height="27.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Activity_111dnh8" isExpanded="true" id="Activity_071msi5_di">
+                <dc:Bounds x="940.0" y="480.0" width="740.0" height="270.0"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Gateway_004ceth" isMarkerVisible="true" id="Gateway_004ceth_di">
+                <dc:Bounds x="1105.0" y="545.0" width="50.0" height="50.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="1096.0" y="523.0" width="68.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Event_11eruqd" id="Event_11eruqd_di">
+                <dc:Bounds x="1592.0" y="552.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="1565.0" y="595.0" width="90.0" height="27.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Activity_1jpd785" id="Activity_01rz2xc_di">
+                <dc:Bounds x="1220.0" y="640.0" width="100.0" height="80.0"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Event_075qt6o" id="Event_075qt6o_di">
+                <dc:Bounds x="1592.0" y="662.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="1582.0" y="705.0" width="57.0" height="27.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="WaitForBeginningOfShift_oneDayBeforeStartOfShift" id="Event_1l5o419_di">
+                <dc:Bounds x="992.0" y="552.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="972.0" y="595.0" width="78.0" height="27.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Activity_1jy6rli" id="Activity_0h75lz3_di">
+                <dc:Bounds x="1410.0" y="640.0" width="100.0" height="80.0"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="Flow_14fztyj" id="Flow_14fztyj_di">
+                <di:waypoint x="1028.0" y="570.0"/>
+                <di:waypoint x="1105.0" y="570.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_1nubeep" id="Flow_1nubeep_di">
+                <di:waypoint x="1155.0" y="570.0"/>
+                <di:waypoint x="1592.0" y="570.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="1211.0" y="552.0" width="18.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_151ugci" id="Flow_151ugci_di">
+                <di:waypoint x="1130.0" y="595.0"/>
+                <di:waypoint x="1130.0" y="680.0"/>
+                <di:waypoint x="1220.0" y="680.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="1139.0" y="635.0" width="13.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_0znztfp" id="Flow_0znztfp_di">
+                <di:waypoint x="1320.0" y="680.0"/>
+                <di:waypoint x="1410.0" y="680.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_1fbaaob" id="Flow_1fbaaob_di">
+                <di:waypoint x="1510.0" y="680.0"/>
+                <di:waypoint x="1592.0" y="680.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNShape bpmnElement="Activity_0vvbr97" isExpanded="true" id="BPMNShape_09tl4h5">
+                <dc:Bounds x="210.0" y="800.0" width="770.0" height="270.0"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Event_0vu8d74" id="BPMNShape_1y5nrz6">
+                <dc:Bounds x="882.0" y="872.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="868.0" y="915.0" width="67.0" height="27.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Gateway_1b4f9ib" isMarkerVisible="true" id="Gateway_1b4f9ib_di">
+                <dc:Bounds x="515.0" y="865.0" width="50.0" height="50.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="496.0" y="841.0" width="87.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Activity_01o20aj" id="BPMNShape_19bbqd0">
+                <dc:Bounds x="660.0" y="950.0" width="100.0" height="80.0"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Event_1au8m5l" id="Event_1au8m5l_di">
+                <dc:Bounds x="882.0" y="972.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="864.0" y="1015.0" width="74.0" height="27.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Gateway_03ksv2m" isMarkerVisible="true" id="Gateway_03ksv2m_di">
+                <dc:Bounds x="685.0" y="865.0" width="50.0" height="50.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="676.0" y="824.0" width="69.0" height="40.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Event_1v78enm" id="Event_1kret8f_di">
+                <dc:Bounds x="252.0" y="872.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="233.0" y="915.0" width="74.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="Flow_0l1cm9x" id="Flow_0l1cm9x_di">
+                <di:waypoint x="735.0" y="890.0"/>
+                <di:waypoint x="882.0" y="890.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="763.0" y="873.0" width="13.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_00rqg4k" id="Flow_00rqg4k_di">
+                <di:waypoint x="540.0" y="915.0"/>
+                <di:waypoint x="540.0" y="990.0"/>
+                <di:waypoint x="660.0" y="990.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="559.0" y="972.0" width="18.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_0yrfp61" id="Flow_0yrfp61_di">
+                <di:waypoint x="565.0" y="890.0"/>
+                <di:waypoint x="685.0" y="890.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="593.0" y="873.0" width="13.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_1hfol3e" id="Flow_1hfol3e_di">
+                <di:waypoint x="710.0" y="915.0"/>
+                <di:waypoint x="710.0" y="950.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="716.0" y="922.0" width="18.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_16zq2ym" id="Flow_16zq2ym_di">
+                <di:waypoint x="760.0" y="990.0"/>
+                <di:waypoint x="882.0" y="990.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_1k1q4gy" id="Flow_1k1q4gy_di">
+                <di:waypoint x="288.0" y="890.0"/>
+                <di:waypoint x="515.0" y="890.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNShape bpmnElement="Activity_0g7fiec" isExpanded="true" id="Activity_1ng9a0f_di">
+                <dc:Bounds x="210.0" y="480.0" width="660.0" height="270.0"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Event_03ayf1o" id="Event_03ayf1o_di">
+                <dc:Bounds x="802.0" y="602.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="793.0" y="645.0" width="55.0" height="27.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Event_01xwhca" id="Event_1pzdupj_di">
+                <dc:Bounds x="250.0" y="602.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="237.0" y="645.0" width="62.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Activity_0owhpjx" isExpanded="true" id="Activity_0owhpjx_di">
+                <dc:Bounds x="350.0" y="520.0" width="380.0" height="200.0"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Event_06nw0zy" id="Event_06nw0zy_di">
+                <dc:Bounds x="390.0" y="602.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="378.0" y="645.0" width="61.0" height="53.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Activity_1uv1eq6" id="Activity_0z1q9hk_di">
+                <dc:Bounds x="490.0" y="580.0" width="100.0" height="80.0"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Event_1beyije" id="Event_1beyije_di">
+                <dc:Bounds x="652.0" y="602.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="639.0" y="645.0" width="63.0" height="53.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="Flow_0437121" id="Flow_0437121_di">
+                <di:waypoint x="426.0" y="620.0"/>
+                <di:waypoint x="490.0" y="620.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_1acv7hp" id="Flow_1acv7hp_di">
+                <di:waypoint x="590.0" y="620.0"/>
+                <di:waypoint x="652.0" y="620.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_0r4u8re" id="Flow_0r4u8re_di">
+                <di:waypoint x="730.0" y="620.0"/>
+                <di:waypoint x="802.0" y="620.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_0rauoag" id="Flow_0rauoag_di">
+                <di:waypoint x="286.0" y="620.0"/>
+                <di:waypoint x="350.0" y="620.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNShape bpmnElement="Activity_1dv67tc" isExpanded="true" id="BPMNShape_1pzsis9">
+                <dc:Bounds x="1050.0" y="800.0" width="630.0" height="270.0"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Event_1dogkeo" id="BPMNShape_170woi7">
+                <dc:Bounds x="1592.0" y="872.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="1565.0" y="915.0" width="90.0" height="27.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Event_0rvepov" id="BPMNShape_0e6moe9">
+                <dc:Bounds x="1592.0" y="982.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="1582.0" y="1025.0" width="57.0" height="27.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Activity_1hi0nt3" id="BPMNShape_06atf3y">
+                <dc:Bounds x="1410.0" y="960.0" width="100.0" height="80.0"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Gateway_1ppr42h" isMarkerVisible="true" id="BPMNShape_1dajac2">
+                <dc:Bounds x="1245.0" y="865.0" width="50.0" height="50.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="1236.0" y="843.0" width="68.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="WaitForBeginningOfShift_threeHourBeforeStartOfShift" id="BPMNShape_1xst6xe">
+                <dc:Bounds x="1112.0" y="872.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="1095.0" y="915.0" width="71.0" height="27.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="Flow_01uk06t" id="BPMNEdge_17vxkyf">
+                <di:waypoint x="1295.0" y="890.0"/>
+                <di:waypoint x="1592.0" y="890.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="1337.0" y="873.0" width="18.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_176raa6" id="BPMNEdge_1ggsueu">
+                <di:waypoint x="1510.0" y="1000.0"/>
+                <di:waypoint x="1592.0" y="1000.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_0ixgn0p" id="BPMNEdge_1iqprn1">
+                <di:waypoint x="1148.0" y="890.0"/>
+                <di:waypoint x="1245.0" y="890.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_0w3mcm9" id="BPMNEdge_0mqjaub">
+                <di:waypoint x="1270.0" y="915.0"/>
+                <di:waypoint x="1270.0" y="1000.0"/>
+                <di:waypoint x="1410.0" y="1000.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="1279.0" y="955.0" width="13.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNShape bpmnElement="Event_1u136pf" id="Event_1bm2ln0_di">
+                <dc:Bounds x="652.0" y="352.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="625.0" y="395.0" width="90.0" height="27.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Event_0xt71u7" id="Event_0xt71u7_di">
+                <dc:Bounds x="652.0" y="202.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="629.0" y="245.0" width="82.0" height="40.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Activity_15vuuiw" id="Activity_1uxulci_di">
+                <dc:Bounds x="450.0" y="180.0" width="100.0" height="80.0"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Event_0uye6fs" id="Event_0ryzpnk_di">
+                <dc:Bounds x="302.0" y="202.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="223.0" y="206.0" width="69.0" height="27.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Gateway_0wo4419" id="Gateway_1rh7jig_di">
+                <dc:Bounds x="295.0" y="345.0" width="50.0" height="50.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Activity_1dk41i2" isExpanded="true" id="BPMNShape_07a6jmz">
+                <dc:Bounds x="210.0" y="1120.0" width="770.0" height="270.0"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Event_1r1z39w" id="BPMNShape_0vtsfdh">
+                <dc:Bounds x="882.0" y="1192.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="868.0" y="1235.0" width="67.0" height="27.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Activity_00rlu8b" id="BPMNShape_1qdj8lg">
+                <dc:Bounds x="660.0" y="1270.0" width="100.0" height="80.0"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Event_0uwawjr" id="BPMNShape_0i5g028">
+                <dc:Bounds x="882.0" y="1292.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="864.0" y="1335.0" width="74.0" height="27.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Gateway_10i9pn4" isMarkerVisible="true" id="BPMNShape_1rntvej">
+                <dc:Bounds x="685.0" y="1185.0" width="50.0" height="50.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="676.0" y="1144.0" width="69.0" height="40.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Activity_0nulxdo" id="BPMNShape_1q4pbay">
+                <dc:Bounds x="360.0" y="1170.0" width="100.0" height="80.0"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Event_135gqsm" id="BPMNShape_00bch0g">
+                <dc:Bounds x="252.0" y="1192.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="226.0" y="1235.0" width="89.0" height="27.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Gateway_0a6nb9e" isMarkerVisible="true" id="BPMNShape_12pfzz4">
+                <dc:Bounds x="545.0" y="1185.0" width="50.0" height="50.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="526.0" y="1161.0" width="87.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="Flow_0l6gzzm" id="BPMNEdge_0hi31ch">
+                <di:waypoint x="735.0" y="1210.0"/>
+                <di:waypoint x="882.0" y="1210.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="763.0" y="1193.0" width="13.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_0kb1u57" id="BPMNEdge_0r15b5q">
+                <di:waypoint x="570.0" y="1235.0"/>
+                <di:waypoint x="570.0" y="1310.0"/>
+                <di:waypoint x="660.0" y="1310.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="582.0" y="1292.0" width="18.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_1ho0ega" id="BPMNEdge_1fbsss0">
+                <di:waypoint x="595.0" y="1210.0"/>
+                <di:waypoint x="685.0" y="1210.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="614.0" y="1193.0" width="13.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_131eakq" id="BPMNEdge_0ebyp93">
+                <di:waypoint x="710.0" y="1235.0"/>
+                <di:waypoint x="710.0" y="1270.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="716.0" y="1242.0" width="18.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_1f7wt6n" id="BPMNEdge_1vlkryt">
+                <di:waypoint x="760.0" y="1310.0"/>
+                <di:waypoint x="882.0" y="1310.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_0g449sg" id="BPMNEdge_061ome1">
+                <di:waypoint x="288.0" y="1210.0"/>
+                <di:waypoint x="360.0" y="1210.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_1loceqd" id="Flow_1loceqd_di">
+                <di:waypoint x="460.0" y="1210.0"/>
+                <di:waypoint x="545.0" y="1210.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNShape bpmnElement="Group_15fde96" id="Group_15fde96_di">
+                <dc:Bounds x="200.0" y="50.0" width="560.0" height="250.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="446.0" y="57.0" width="69.0" height="40.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="Flow_0p19yj0" id="Flow_0p19yj0_di">
+                <di:waypoint x="518.0" y="370.0"/>
+                <di:waypoint x="652.0" y="370.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_0tfgdxc" id="Flow_0tfgdxc_di">
+                <di:waypoint x="670.0" y="202.0"/>
+                <di:waypoint x="670.0" y="120.0"/>
+                <di:waypoint x="320.0" y="120.0"/>
+                <di:waypoint x="320.0" y="202.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="659.0" y="90.0" width="82.0" height="40.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_0rlpjf2" id="Flow_0rlpjf2_di">
+                <di:waypoint x="550.0" y="220.0"/>
+                <di:waypoint x="652.0" y="220.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_1etfx4d" id="Flow_1etfx4d_di">
+                <di:waypoint x="338.0" y="220.0"/>
+                <di:waypoint x="450.0" y="220.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_0u4tyeu" id="Flow_0u4tyeu_di">
+                <di:waypoint x="320.0" y="345.0"/>
+                <di:waypoint x="320.0" y="238.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_1l1pbpn" id="Flow_1l1pbpn_di">
+                <di:waypoint x="345.0" y="370.0"/>
+                <di:waypoint x="482.0" y="370.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_041300i" id="Flow_041300i_di">
+                <di:waypoint x="218.0" y="370.0"/>
+                <di:waypoint x="295.0" y="370.0"/>
+            </bpmndi:BPMNEdge>
+        </bpmndi:BPMNPlane>
+    </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" id="Definitions_02335wb" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.14.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.6.0">
+    <bpmn:process isExecutable="true" name="Passenger Service Shift Lifecycle" id="ShiftLifecycle">
+        <bpmn:endEvent name="shift ended" id="Event_09q5f5a">
+            <bpmn:incoming xmlns="">Flow_1ale8yv</bpmn:incoming>
+        </bpmn:endEvent>
+        <bpmn:exclusiveGateway default="Flow_07majy9" name="shift claimed?" id="Gateway_1kku4vu">
+            <bpmn:incoming xmlns="">Flow_0hxb6pb</bpmn:incoming>
+            <bpmn:outgoing xmlns="">Flow_0x6ats6</bpmn:outgoing>
+            <bpmn:outgoing xmlns="">Flow_07majy9</bpmn:outgoing>
+        </bpmn:exclusiveGateway>
+        <bpmn:callActivity xmlns="" calledElement="ShiftDue" name="treat shift due" id="Activity_1gxniqj">
+            <bpmn:extensionElements>
+                <camunda:in xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" businessKey="#{execution.processBusinessKey}"/>
+                <zeebe:calledElement processId="ShiftDue" propagateAllChildVariables="false" propagateAllParentVariables="false"/>
+            </bpmn:extensionElements>
+            <bpmn:incoming>Flow_1o04ajj</bpmn:incoming>
+            <bpmn:outgoing>Flow_0hxb6pb</bpmn:outgoing>
+        </bpmn:callActivity>
+        <bpmn:callActivity xmlns="" calledElement="PassengerService" name="do passenger service" id="Activity_0yk5yjp">
+            <bpmn:extensionElements>
+                <camunda:in xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" businessKey="#{execution.processBusinessKey}"/>
+                <zeebe:calledElement processId="PassengerService" propagateAllChildVariables="false" propagateAllParentVariables="false"/>
+            </bpmn:extensionElements>
+            <bpmn:incoming>Flow_07majy9</bpmn:incoming>
+            <bpmn:incoming>Flow_0fjzfn6</bpmn:incoming>
+            <bpmn:outgoing>Flow_1ale8yv</bpmn:outgoing>
+        </bpmn:callActivity>
+        <bpmn:callActivity xmlns="" calledElement="WaitForStartOfShift" name="wait for the start of the shift" id="Activity_1gcii0o">
+            <bpmn:extensionElements>
+                <camunda:in xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" businessKey="#{execution.processBusinessKey}"/>
+                <zeebe:calledElement processId="WaitForStartOfShift" propagateAllChildVariables="false" propagateAllParentVariables="false"/>
+            </bpmn:extensionElements>
+            <bpmn:incoming>Flow_0dffhyi</bpmn:incoming>
+            <bpmn:incoming>Flow_1tubgtp</bpmn:incoming>
+            <bpmn:outgoing>Flow_19vy58y</bpmn:outgoing>
+        </bpmn:callActivity>
+        <bpmn:exclusiveGateway default="Flow_0fjzfn6" name="shift claimed?" id="Gateway_1qq7bok">
+            <bpmn:incoming xmlns="">Flow_19vy58y</bpmn:incoming>
+            <bpmn:outgoing xmlns="">Flow_1o04ajj</bpmn:outgoing>
+            <bpmn:outgoing xmlns="">Flow_0fjzfn6</bpmn:outgoing>
+        </bpmn:exclusiveGateway>
+        <bpmn:startEvent name="shift created" id="Event_0yatdx0">
+            <bpmn:outgoing xmlns="">Flow_0dffhyi</bpmn:outgoing>
+        </bpmn:startEvent>
+        <bpmn:sequenceFlow sourceRef="Gateway_1kku4vu" targetRef="Event_0v2l5bj" name="no" id="Flow_0x6ats6">
+            <bpmn:conditionExpression xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="bpmn:tFormalExpression">empty driver</bpmn:conditionExpression>
+        </bpmn:sequenceFlow>
+        <bpmn:sequenceFlow sourceRef="Activity_0yk5yjp" targetRef="Event_09q5f5a" id="Flow_1ale8yv"/>
+        <bpmn:sequenceFlow sourceRef="Activity_1gxniqj" targetRef="Gateway_1kku4vu" id="Flow_0hxb6pb"/>
+        <bpmn:sequenceFlow sourceRef="Gateway_1kku4vu" targetRef="Activity_0yk5yjp" name="yes" id="Flow_07majy9"/>
+        <bpmn:sequenceFlow sourceRef="Gateway_1qq7bok" targetRef="Activity_1gxniqj" name="no" id="Flow_1o04ajj">
+            <bpmn:conditionExpression xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="bpmn:tFormalExpression">empty driver</bpmn:conditionExpression>
+        </bpmn:sequenceFlow>
+        <bpmn:sequenceFlow sourceRef="Gateway_1qq7bok" targetRef="Activity_0yk5yjp" name="yes" id="Flow_0fjzfn6"/>
+        <bpmn:sequenceFlow sourceRef="Event_0yatdx0" targetRef="Activity_1gcii0o" id="Flow_0dffhyi"/>
+        <bpmn:sequenceFlow sourceRef="Activity_1gcii0o" targetRef="Gateway_1qq7bok" id="Flow_19vy58y"/>
+        <bpmn:subProcess triggeredByEvent="true" name="cancellation of shift" id="Activity_191bl29">
+            <bpmn:sendTask xmlns:camunda="http://camunda.org/schema/1.0/bpmn" name="inform passengers about cancellation" id="Activity_1lt70v5" camunda:expression="${informPassengerAboutShiftCancellation}">
+                <bpmn:extensionElements>
+                    <zeebe:taskDefinition type="informPassengerAboutShiftCancellation"/>
+                </bpmn:extensionElements>
+                <bpmn:incoming xmlns="">Flow_04gy8t5</bpmn:incoming>
+                <bpmn:outgoing xmlns="">Flow_1qov989</bpmn:outgoing>
+                <bpmn:multiInstanceLoopCharacteristics camunda:elementVariable="ride" camunda:collection="${rides}">
+                    <bpmn:extensionElements>
+                        <zeebe:loopCharacteristics inputCollection="= rides"/>
+                    </bpmn:extensionElements>
+                </bpmn:multiInstanceLoopCharacteristics>
+            </bpmn:sendTask>
+            <bpmn:endEvent name="shift cancelled" id="Event_0vxdsao">
+                <bpmn:incoming xmlns="">Flow_0xzlybv</bpmn:incoming>
+            </bpmn:endEvent>
+            <bpmn:sequenceFlow sourceRef="Event_0iryg2w" targetRef="Activity_1lt70v5" id="Flow_04gy8t5"/>
+            <bpmn:sequenceFlow sourceRef="Activity_1lt70v5" targetRef="Activity_02o5fvl" id="Flow_1qov989"/>
+            <bpmn:startEvent name="shift cancelled" id="Event_0iryg2w">
+                <bpmn:outgoing xmlns="">Flow_04gy8t5</bpmn:outgoing>
+                <bpmn:messageEventDefinition xmlns="" messageRef="Message_0ljdvdq" id="MessageEventDefinition_03sstkw"/>
+            </bpmn:startEvent>
+            <bpmn:serviceTask xmlns:camunda="http://camunda.org/schema/1.0/bpmn" name="undo data changed" id="Activity_02o5fvl" camunda:expression="${fixDataAfterCancelling}">
+                <bpmn:extensionElements>
+                    <zeebe:taskDefinition type="fixDataAfterCancelling"/>
+                </bpmn:extensionElements>
+                <bpmn:incoming xmlns="">Flow_1qov989</bpmn:incoming>
+                <bpmn:outgoing xmlns="">Flow_0xzlybv</bpmn:outgoing>
+            </bpmn:serviceTask>
+            <bpmn:sequenceFlow sourceRef="Activity_02o5fvl" targetRef="Event_0vxdsao" id="Flow_0xzlybv"/>
+        </bpmn:subProcess>
+        <bpmn:endEvent name="shift ended without passenger service" id="Event_0v2l5bj">
+            <bpmn:incoming xmlns="">Flow_0x6ats6</bpmn:incoming>
+        </bpmn:endEvent>
+        <bpmn:boundaryEvent xmlns="" attachedToRef="Activity_1gcii0o" name="timebox of shift changed by administrator" id="Event_0mtn8zp">
+            <bpmn:outgoing>Flow_1tubgtp</bpmn:outgoing>
+            <bpmn:messageEventDefinition messageRef="Message_3vbm2e7" id="MessageEventDefinition_06tfv6e"/>
+        </bpmn:boundaryEvent>
+        <bpmn:sequenceFlow sourceRef="Event_0mtn8zp" targetRef="Activity_1gcii0o" id="Flow_1tubgtp"/>
+    </bpmn:process>
+    <bpmn:error name="ShiftUnclaimed" errorCode="ShiftUnclaimed" id="Error_1i3gsxv"/>
+    <bpmn:error name="ShiftCancelled" errorCode="ShiftCancelled" id="Error_0zks8on"/>
+    <bpmn:message name="ShiftCancelled" id="Message_0ljdvdq">
+        <bpmn:extensionElements>
+            <zeebe:subscription correlationKey="AddCorrelationKey"/>
+        </bpmn:extensionElements>
+    </bpmn:message>
+    <bpmn:message name="SwapNeeded" id="Message_13iev4n">
+        <bpmn:extensionElements>
+            <zeebe:subscription correlationKey="AddCorrelationKey"/>
+        </bpmn:extensionElements>
+    </bpmn:message>
+    <bpmn:message name="SwapRequested" id="Message_15lr0tu">
+        <bpmn:extensionElements>
+            <zeebe:subscription correlationKey="AddCorrelationKey"/>
+        </bpmn:extensionElements>
+    </bpmn:message>
+    <bpmn:message name="ShiftResized" id="Message_3vbm2e7">
+        <bpmn:extensionElements>
+            <zeebe:subscription correlationKey="AddCorrelationKey"/>
+        </bpmn:extensionElements>
+    </bpmn:message>
+    <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+        <bpmndi:BPMNPlane xmlns="" bpmnElement="ShiftLifecycle" id="BPMNPlane_1">
+            <bpmndi:BPMNShape bpmnElement="Event_09q5f5a" id="Event_09q5f5a_di">
+                <dc:Bounds x="832.0" y="112.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="824.0" y="155.0" width="54.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Gateway_1kku4vu" isMarkerVisible="true" id="Gateway_1kku4vu_di">
+                <dc:Bounds x="685.0" y="235.0" width="50.0" height="50.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="676.0" y="292.0" width="68.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Activity_1gxniqj" id="Activity_0lc6sf1_di">
+                <dc:Bounds x="510.0" y="220.0" width="100.0" height="80.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Activity_0yk5yjp" id="Activity_0kwxcvm_di">
+                <dc:Bounds x="660.0" y="90.0" width="100.0" height="80.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Activity_1gcii0o" id="Activity_1rm7h29_di">
+                <dc:Bounds x="370.0" y="90.0" width="100.0" height="80.0"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Gateway_1qq7bok" isMarkerVisible="true" id="Gateway_1qq7bok_di">
+                <dc:Bounds x="535.0" y="105.0" width="50.0" height="50.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="526.0" y="81.0" width="68.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Event_0yatdx0" id="Event_0yatdx0_di">
+                <dc:Bounds x="172.0" y="112.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="160.0" y="155.0" width="60.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Activity_191bl29" isExpanded="true" id="Activity_0b3yc3h_di">
+                <dc:Bounds x="950.0" y="90.0" width="560.0" height="200.0"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Activity_1lt70v5" id="BPMNShape_086opcy">
+                <dc:Bounds x="1090.0" y="150.0" width="100.0" height="80.0"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Event_0vxdsao" id="BPMNShape_1bf0svb">
+                <dc:Bounds x="1412.0" y="172.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="1396.0" y="215.0" width="70.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Event_0iryg2w" id="Event_09orr4u_di">
+                <dc:Bounds x="990.0" y="172.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="973.0" y="215.0" width="70.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Activity_02o5fvl" id="Activity_15n898o_di">
+                <dc:Bounds x="1250.0" y="150.0" width="100.0" height="80.0"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="Flow_04gy8t5" id="Flow_04gy8t5_di">
+                <di:waypoint x="1026.0" y="190.0"/>
+                <di:waypoint x="1090.0" y="190.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_1qov989" id="Flow_1qov989_di">
+                <di:waypoint x="1190.0" y="190.0"/>
+                <di:waypoint x="1250.0" y="190.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_0xzlybv" id="Flow_0xzlybv_di">
+                <di:waypoint x="1350.0" y="190.0"/>
+                <di:waypoint x="1412.0" y="190.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNShape bpmnElement="Event_0v2l5bj" id="Event_1rsvmj1_di">
+                <dc:Bounds x="832.0" y="242.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="806.0" y="285.0" width="90.0" height="40.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Event_0mtn8zp" id="Event_0kyei1p_di">
+                <dc:Bounds x="452.0" y="152.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="383.0" y="187.0" width="74.0" height="40.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="Flow_0x6ats6" id="Flow_0x6ats6_di">
+                <di:waypoint x="735.0" y="260.0"/>
+                <di:waypoint x="832.0" y="260.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="763.0" y="242.0" width="13.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_1ale8yv" id="Flow_1ale8yv_di">
+                <di:waypoint x="760.0" y="130.0"/>
+                <di:waypoint x="832.0" y="130.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_0hxb6pb" id="Flow_0hxb6pb_di">
+                <di:waypoint x="610.0" y="260.0"/>
+                <di:waypoint x="685.0" y="260.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_07majy9" id="Flow_07majy9_di">
+                <di:waypoint x="710.0" y="235.0"/>
+                <di:waypoint x="710.0" y="170.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="716.0" y="200.0" width="18.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_1o04ajj" id="Flow_1o04ajj_di">
+                <di:waypoint x="560.0" y="155.0"/>
+                <di:waypoint x="560.0" y="220.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="538.0" y="163.0" width="13.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_0fjzfn6" id="Flow_0fjzfn6_di">
+                <di:waypoint x="585.0" y="130.0"/>
+                <di:waypoint x="660.0" y="130.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="596.0" y="112.0" width="18.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_0dffhyi" id="Flow_0dffhyi_di">
+                <di:waypoint x="208.0" y="130.0"/>
+                <di:waypoint x="370.0" y="130.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_19vy58y" id="Flow_19vy58y_di">
+                <di:waypoint x="470.0" y="130.0"/>
+                <di:waypoint x="535.0" y="130.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_1tubgtp" id="Flow_1tubgtp_di">
+                <di:waypoint x="470.0" y="188.0"/>
+                <di:waypoint x="470.0" y="260.0"/>
+                <di:waypoint x="280.0" y="260.0"/>
+                <di:waypoint x="280.0" y="150.0"/>
+                <di:waypoint x="370.0" y="150.0"/>
+            </bpmndi:BPMNEdge>
+        </bpmndi:BPMNPlane>
+    </bpmndi:BPMNDiagram>
+</bpmn:definitions>

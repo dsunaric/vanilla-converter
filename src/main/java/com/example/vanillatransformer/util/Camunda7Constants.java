@@ -30,6 +30,10 @@ public class Camunda7Constants {
     public static QName CAMUNDA_CLASS = new QName("http://camunda.org/schema/1.0/bpmn",
             "class","camunda");
 
+    public static QName CAMUNDA_CALLED_ELEMENT_BINDING = new QName("http://camunda.org/schema/1.0/bpmn",
+            "calledElementBinding","camunda");
+
+
 
     public static QName CAMUNDA_ERROR_MESSAGE = new QName("http://camunda.org/schema/1.0/bpmn",
             "errorMessage","camunda");

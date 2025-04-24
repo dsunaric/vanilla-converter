@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" id="Definitions_0kj97uu" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.7.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.6.0">
+    <bpmn:process isExecutable="true" id="ShiftClaimReminder">
+        <bpmn:startEvent name="once a week remind drivers to claim shifts of the next week" id="StartEvent_1">
+            <bpmn:outgoing xmlns="">Flow_1x4fgai</bpmn:outgoing>
+            <bpmn:timerEventDefinition id="TimerEventDefinition_0dt804z">
+                <bpmn:timeCycle xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="bpmn:tFormalExpression">R/2023-03-26T05:30:00Z/P1W</bpmn:timeCycle>
+            </bpmn:timerEventDefinition>
+        </bpmn:startEvent>
+        <bpmn:sequenceFlow sourceRef="StartEvent_1" targetRef="Activity_1d7glet" id="Flow_1x4fgai"/>
+        <bpmn:sendTask xmlns:camunda="http://camunda.org/schema/1.0/bpmn" name="ask drivers to claim any free shift" id="Activity_1d7glet" camunda:expression="${askDriversToClaimAnyFreeShiftOfNextWeek}">
+            <bpmn:extensionElements>
+                <zeebe:taskDefinition type="askDriversToClaimAnyFreeShiftOfNextWeek"/>
+            </bpmn:extensionElements>
+            <bpmn:incoming xmlns="">Flow_1x4fgai</bpmn:incoming>
+            <bpmn:outgoing xmlns="">Flow_1k3cbbq</bpmn:outgoing>
+        </bpmn:sendTask>
+        <bpmn:endEvent name="drivers reminded" id="Event_0kx3d5b">
+            <bpmn:incoming xmlns="">Flow_1k3cbbq</bpmn:incoming>
+        </bpmn:endEvent>
+        <bpmn:sequenceFlow sourceRef="Activity_1d7glet" targetRef="Event_0kx3d5b" id="Flow_1k3cbbq"/>
+    </bpmn:process>
+    <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+        <bpmndi:BPMNPlane xmlns="" bpmnElement="ShiftClaimReminder" id="BPMNPlane_1">
+            <bpmndi:BPMNShape bpmnElement="StartEvent_1" id="Event_1xjikel_di">
+                <dc:Bounds x="179.0" y="77.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="156.0" y="120.0" width="82.0" height="53.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Activity_1d7glet" id="Activity_0twx4bc_di">
+                <dc:Bounds x="290.0" y="55.0" width="100.0" height="80.0"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Event_0kx3d5b" id="Event_0kx3d5b_di">
+                <dc:Bounds x="472.0" y="77.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="449.0" y="120.0" width="82.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="Flow_1x4fgai" id="Flow_1x4fgai_di">
+                <di:waypoint x="215.0" y="95.0"/>
+                <di:waypoint x="290.0" y="95.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_1k3cbbq" id="Flow_1k3cbbq_di">
+                <di:waypoint x="390.0" y="95.0"/>
+                <di:waypoint x="472.0" y="95.0"/>
+            </bpmndi:BPMNEdge>
+        </bpmndi:BPMNPlane>
+    </bpmndi:BPMNDiagram>
+</bpmn:definitions>
