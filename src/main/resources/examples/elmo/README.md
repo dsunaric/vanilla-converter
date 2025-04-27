@@ -48,8 +48,7 @@ The combined processes include the following BPMN elements:
 
 The [Vanilla Converter](https://github.com/dsunaric/vanilla-converter) was used to transform the Camunda 7 BPMN models into a format compatible with Camunda 8.
 
-Transformation logs for each domain are available below:
-
+Below are the transformation logs for each domain linked:
 - [Passenger Service](/src/main/resources/examples/elmo/processes/passenger-service/transformation.log)
 - [Car Sharing](/src/main/resources/examples/elmo/processes/car-sharing/transformation.log)
 - [Members](/src/main/resources/examples/elmo/processes/members/transformation.log)
@@ -74,10 +73,10 @@ Transformation logs for each domain are available below:
 ### ⚠️ Limitations
 
 #### Message Subscription Correlation Key
-When using Camunda 8 Message Receive Events the correlation Key for the Specified Message needs to be set. 
-Since the BPMN models used in this Case study often times have Messages defined that are not used in the model itself, the tranformation also suggests that those messages should have a correlation key.
-In practice it would suffice to only define the correlaiton key for  the message which are acutally used 
-
+When using Camunda 8 Message Receive Events, a correlation key must be set for the specified message. 
+In this case study, the BPMN models often define messages that are not actually used within the process.
+As a result, the transformation suggests setting a correlation key for all defined messages.
+However, in practice, it is sufficient to set the correlation key only for the messages that are actually used.
 
 ---
 

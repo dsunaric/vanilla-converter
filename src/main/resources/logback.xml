@@ -2,7 +2,7 @@
 <configuration>
 
     <!-- Define a property, with a default value if not set -->
-    <property name="LOG_FILE" value="${LOG_FILE:-logs/Transformation.log}" />
+    <property name="LOG_FILE" value="${LOG_FILE:-logs/transformation.log}" />
 
     <!-- Console Appender -->
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
