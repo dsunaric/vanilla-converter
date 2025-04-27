@@ -1,7 +1,11 @@
 package com.example.vanillatransformer.service;
 
 import com.example.vanillatransformer.service.abstractmappings.Mapping;
-import com.example.vanillatransformer.service.abstractmappings.NoMapping;
+import com.example.vanillatransformer.service.event.mappings.EventMapping;
+import com.example.vanillatransformer.service.task.mappings.BusinessRuleTaskMapping;
+import com.example.vanillatransformer.service.task.mappings.CallActivityMapping;
+import com.example.vanillatransformer.service.task.mappings.ServiceTaskLikeMapping;
+import com.example.vanillatransformer.service.task.mappings.UserTaskMapping;
 import lombok.Getter;
 import lombok.Setter;
 import org.slf4j.Logger;
@@ -34,6 +38,9 @@ public class RootProcessMapping implements Mapping<TProcess,TProcess> {
     private CallActivityMapping callActivityMapping;
 
     @Autowired
+    private UserTaskMapping userTaskMapping;
+
+    @Autowired
     private SubProcessMapping subProcessMapping;
 
     @Autowired
@@ -53,6 +60,11 @@ public class RootProcessMapping implements Mapping<TProcess,TProcess> {
         List<TServiceTask> serviceTasks = extractElementsWithType(tProcess, TServiceTask.class);
         for(var task : serviceTasks) {
             serviceTaskLikeMapping.map(task);
+        }
+
+        List<TUserTask> userTasks = extractElementsWithType(tProcess, TUserTask.class);
+        for(var task : userTasks) {
+            userTaskMapping.map(task);
         }
 
         List<TSendTask> sendTasks = extractElementsWithType(tProcess, TSendTask.class);

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" id="Definitions_12pqdrr" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.31.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.6.0">
+    <bpmn:process isExecutable="true" id="Process_1vp0xfq">
+        <bpmn:startEvent id="StartEvent_1">
+            <bpmn:outgoing xmlns="">Flow_1484j1m</bpmn:outgoing>
+        </bpmn:startEvent>
+        <bpmn:sequenceFlow sourceRef="StartEvent_1" targetRef="Activity_08uz7wh" id="Flow_1484j1m"/>
+        <bpmn:userTask name="Camunda Forms" id="Activity_08uz7wh">
+            <bpmn:extensionElements>
+                <zeebe:formDefinition bindingType="latest" formId="FORM-ID"/>
+                <zeebe:userTask/>
+            </bpmn:extensionElements>
+            <bpmn:incoming xmlns="">Flow_1484j1m</bpmn:incoming>
+            <bpmn:outgoing xmlns="">Flow_1mubqug</bpmn:outgoing>
+        </bpmn:userTask>
+        <bpmn:sequenceFlow sourceRef="Activity_08uz7wh" targetRef="Activity_0lz3mn5" id="Flow_1mubqug"/>
+        <bpmn:sequenceFlow sourceRef="Activity_0lz3mn5" targetRef="Activity_01mdtvn" id="Flow_08g11iz"/>
+        <bpmn:userTask name="Embedded or external task form" id="Activity_0lz3mn5">
+            <bpmn:extensionElements>
+                <zeebe:formDefinition formId="FORMKEY"/>
+                <zeebe:userTask/>
+            </bpmn:extensionElements>
+            <bpmn:incoming xmlns="">Flow_1mubqug</bpmn:incoming>
+            <bpmn:outgoing xmlns="">Flow_08g11iz</bpmn:outgoing>
+        </bpmn:userTask>
+        <bpmn:userTask name="Generated Task Form" id="Activity_01mdtvn">
+            <bpmn:extensionElements>
+                <zeebe:formDefinition formId="AddFormId"/>
+                <zeebe:userTask/>
+            </bpmn:extensionElements>
+            <bpmn:incoming xmlns="">Flow_08g11iz</bpmn:incoming>
+            <bpmn:outgoing xmlns="">Flow_0gaeg63</bpmn:outgoing>
+        </bpmn:userTask>
+        <bpmn:endEvent id="Event_1lj5nd1">
+            <bpmn:incoming xmlns="">Flow_0gaeg63</bpmn:incoming>
+        </bpmn:endEvent>
+        <bpmn:sequenceFlow sourceRef="Activity_01mdtvn" targetRef="Event_1lj5nd1" id="Flow_0gaeg63"/>
+    </bpmn:process>
+    <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+        <bpmndi:BPMNPlane xmlns="" bpmnElement="Process_1vp0xfq" id="BPMNPlane_1">
+            <bpmndi:BPMNShape bpmnElement="StartEvent_1" id="StartEvent_1_di">
+                <dc:Bounds x="182.0" y="102.0" width="36.0" height="36.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Activity_08uz7wh" id="Activity_0vfm6h5_di">
+                <dc:Bounds x="270.0" y="80.0" width="100.0" height="80.0"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Activity_0lz3mn5" id="Activity_0n82csi_di">
+                <dc:Bounds x="430.0" y="80.0" width="100.0" height="80.0"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Activity_01mdtvn" id="Activity_1tqt6hc_di">
+                <dc:Bounds x="590.0" y="80.0" width="100.0" height="80.0"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Event_1lj5nd1" id="Event_1lj5nd1_di">
+                <dc:Bounds x="752.0" y="102.0" width="36.0" height="36.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="Flow_1484j1m" id="Flow_1484j1m_di">
+                <di:waypoint x="218.0" y="120.0"/>
+                <di:waypoint x="270.0" y="120.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_1mubqug" id="Flow_1mubqug_di">
+                <di:waypoint x="370.0" y="120.0"/>
+                <di:waypoint x="430.0" y="120.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_08g11iz" id="Flow_08g11iz_di">
+                <di:waypoint x="530.0" y="120.0"/>
+                <di:waypoint x="590.0" y="120.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_0gaeg63" id="Flow_0gaeg63_di">
+                <di:waypoint x="690.0" y="120.0"/>
+                <di:waypoint x="752.0" y="120.0"/>
+            </bpmndi:BPMNEdge>
+        </bpmndi:BPMNPlane>
+    </bpmndi:BPMNDiagram>
+</bpmn:definitions>

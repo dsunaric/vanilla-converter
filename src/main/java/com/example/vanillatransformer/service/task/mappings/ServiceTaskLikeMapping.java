@@ -1,10 +1,11 @@
-package com.example.vanillatransformer.service;
+package com.example.vanillatransformer.service.task.mappings;
 
-import com.example.vanillatransformer.exception.BPMNParseException;
+import com.example.vanillatransformer.service.TaskDefinitionMapping;
 import com.example.vanillatransformer.service.abstractmappings.Mapping;
 import com.example.vanillatransformer.service.abstractmappings.RemoveAttributeMapping;
 import com.example.vanillatransformer.util.Camunda7Constants;
 import com.example.vanillatransformer.util.CustomNamespacePrefixMapper;
+import com.example.vanillatransformer.util.ProcessUtil;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
@@ -47,7 +48,7 @@ public class ServiceTaskLikeMapping implements Mapping<TTask,TTask> {
             loopCharacteristicsMapping.map(((TActivity)tServiceTaskLike).getLoopCharacteristics().getValue());
         }
 
-        QName serviceTaskDefinitionType = getServiceTaskDefinitionType(tServiceTaskLike);
+        QName serviceTaskDefinitionType = ProcessUtil.getServiceTaskDefinitionType(tServiceTaskLike);
         if(serviceTaskDefinitionType == null){
             LOG.info("TODO: no task definition found for ServiceTaskLike Task with id={} - No mapping performed",tServiceTaskLike.getId());
             return tServiceTaskLike;
@@ -70,30 +71,6 @@ public class ServiceTaskLikeMapping implements Mapping<TTask,TTask> {
         LOG.info("TODO (OPTIONAL): adapt zeebe:taskDefinition type for Task with id={} to select correct JobWorker",tServiceTaskLike.getId());
         return tServiceTaskLike;
     }
-
-    public QName getServiceTaskDefinitionType(TTask tServiceTaskLike){
-        if(tServiceTaskLike.getOtherAttributes().containsKey(Camunda7Constants.CAMUNDA_DELEGATE_EXPRESSION)){
-            return Camunda7Constants.CAMUNDA_DELEGATE_EXPRESSION;
-        }
-
-        if(tServiceTaskLike.getOtherAttributes().containsKey(Camunda7Constants.CAMUNDA_CLASS)){
-            return Camunda7Constants.CAMUNDA_CLASS;
-        }
-
-        if(tServiceTaskLike.getOtherAttributes().containsKey(Camunda7Constants.CAMUNDA_EXPRESSION)){
-            return Camunda7Constants.CAMUNDA_EXPRESSION;
-        }
-
-        if(tServiceTaskLike.getOtherAttributes().containsKey(Camunda7Constants.CAMUNDA_TOPIC)){
-            return Camunda7Constants.CAMUNDA_TOPIC;
-        }
-
-        if(tServiceTaskLike.getOtherAttributes().containsKey(Camunda7Constants.CAMUNDA_DECISION_REF)){
-            return Camunda7Constants.CAMUNDA_DECISION_REF;
-        }
-        return null;
-    }
-
 
 
 }

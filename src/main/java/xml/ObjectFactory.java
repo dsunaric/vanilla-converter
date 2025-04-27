@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der Eclipse Implementation of JAXB, v3.0.0 generiert 
 // Siehe https://eclipse-ee4j.github.io/jaxb-ri 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2025.04.22 um 12:53:52 PM CEST 
+// Generiert: 2025.04.27 um 09:40:55 AM CEST 
 //
 
 
@@ -1365,6 +1365,22 @@ public class ObjectFactory {
      */
     public CalledElement createCalledElement() {
         return new CalledElement();
+    }
+
+    /**
+     * Create an instance of {@link FormDefinition }
+     * 
+     */
+    public FormDefinition createFormDefinition() {
+        return new FormDefinition();
+    }
+
+    /**
+     * Create an instance of {@link UserTask }
+     * 
+     */
+    public UserTask createUserTask() {
+        return new UserTask();
     }
 
     /**

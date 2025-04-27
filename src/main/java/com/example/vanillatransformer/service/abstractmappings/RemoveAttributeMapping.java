@@ -1,6 +1,5 @@
 package com.example.vanillatransformer.service.abstractmappings;
 
-import com.example.vanillatransformer.util.Camunda7Constants;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.stereotype.Component;

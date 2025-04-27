@@ -1,6 +1,5 @@
 package com.example.vanillatransformer.service.abstractmappings;
 
-import com.example.vanillatransformer.service.CalledDecisionMapping;
 import lombok.Getter;
 import lombok.Setter;
 import org.slf4j.Logger;

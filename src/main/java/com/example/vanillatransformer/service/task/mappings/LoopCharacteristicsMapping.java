@@ -1,6 +1,6 @@
-package com.example.vanillatransformer.service;
+package com.example.vanillatransformer.service.task.mappings;
 
-import com.example.vanillatransformer.exception.BPMNParseException;
+import com.example.vanillatransformer.service.ExpressionMapping;
 import com.example.vanillatransformer.service.abstractmappings.Mapping;
 import com.example.vanillatransformer.util.Camunda7Constants;
 import com.example.vanillatransformer.util.CustomNamespacePrefixMapper;
@@ -17,7 +17,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import xml.*;
 
-import javax.xml.namespace.QName;
 import javax.xml.transform.dom.DOMResult;
 
 @Setter
@@ -40,16 +39,20 @@ public class LoopCharacteristicsMapping implements Mapping<TLoopCharacteristics,
 
             LoopCharacteristics zeebeLoopCharacteristics = new LoopCharacteristics();
 
-            if(loopCharacteristics.getOtherAttributes().get(Camunda7Constants.CAMUNDA_LOOP_COLLECTION) != null) {
+            if(loopCharacteristics.getOtherAttributes().containsKey(Camunda7Constants.CAMUNDA_LOOP_COLLECTION)) {
                 zeebeLoopCharacteristics.setInputCollection("= " +
                         expressionMapping.map(loopCharacteristics.getOtherAttributes().get(Camunda7Constants.CAMUNDA_LOOP_COLLECTION)));
             }
+
+            if(loopCharacteristics.getOtherAttributes().containsKey(Camunda7Constants.CAMUNDA_LOOP_ELEMENT_VARIABLE)) {
+                zeebeLoopCharacteristics.setInputElement(loopCharacteristics.getOtherAttributes().get(Camunda7Constants.CAMUNDA_LOOP_ELEMENT_VARIABLE));
+            }
+
             if(((TMultiInstanceLoopCharacteristics) loopCharacteristics).getLoopCardinality() != null){
                 zeebeLoopCharacteristics.setInputCollection("= for i in 1.." +
                         expressionMapping.map(((TMultiInstanceLoopCharacteristics) loopCharacteristics).getLoopCardinality().getValue().getContent().get(0).toString()) + " return i");
             }
 
-            LOG.info("TODO: set InputElement=?? for zeebe:LoopCharacteristics in element with id={}", loopCharacteristics.getId());
             try {
                 JAXBContext context = JAXBContext.newInstance(LoopCharacteristics.class);
                 DOMResult res = new DOMResult();

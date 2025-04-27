@@ -2,6 +2,8 @@ package com.example.vanillatransformer.service;
 
 import com.example.vanillatransformer.service.abstractmappings.Mapping;
 import com.example.vanillatransformer.service.abstractmappings.NoMapping;
+import com.example.vanillatransformer.service.event.mappings.EventMapping;
+import com.example.vanillatransformer.service.task.mappings.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.slf4j.Logger;
@@ -38,6 +40,9 @@ public class SubProcessMapping implements Mapping<TSubProcess,TSubProcess> {
 
     @Autowired
     private GatewayMapping gatewayMapping;
+
+    @Autowired
+    private UserTaskMapping userTaskMapping;
 
 
     @Autowired
@@ -92,13 +97,15 @@ public class SubProcessMapping implements Mapping<TSubProcess,TSubProcess> {
             loopCharacteristicsMapping.map(loopCharacteristic);
         }
 
+        List<TUserTask> userTasks = extractElementsWithType(tSubProcess, TUserTask.class);
+        for(var task : userTasks) {
+            userTaskMapping.map(task);
+        }
 
         List<TSubProcess> subProcesses = extractElementsWithType(tSubProcess, TSubProcess.class);
         for(var subProcess : subProcesses) {
             map(subProcess);
         }
-
-
 
         return tSubProcess;
     }

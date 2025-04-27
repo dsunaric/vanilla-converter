@@ -28,7 +28,7 @@
                 <bpmn:outgoing xmlns="">Flow_0znztfp</bpmn:outgoing>
                 <bpmn:multiInstanceLoopCharacteristics camunda:elementVariable="ride" camunda:collection="${rides}">
                     <bpmn:extensionElements>
-                        <zeebe:loopCharacteristics inputCollection="= rides"/>
+                        <zeebe:loopCharacteristics inputCollection="= rides" inputElement="ride"/>
                     </bpmn:extensionElements>
                 </bpmn:multiInstanceLoopCharacteristics>
             </bpmn:sendTask>
@@ -111,7 +111,7 @@
                 <bpmn:outgoing xmlns="">Flow_0r4u8re</bpmn:outgoing>
                 <bpmn:multiInstanceLoopCharacteristics xmlns:camunda="http://camunda.org/schema/1.0/bpmn" camunda:elementVariable="ride" camunda:collection="${rides}">
                     <bpmn:extensionElements>
-                        <zeebe:loopCharacteristics inputCollection="= rides"/>
+                        <zeebe:loopCharacteristics inputCollection="= rides" inputElement="ride"/>
                     </bpmn:extensionElements>
                 </bpmn:multiInstanceLoopCharacteristics>
                 <bpmn:startEvent name="change of conditionally reservation needed" id="Event_06nw0zy">

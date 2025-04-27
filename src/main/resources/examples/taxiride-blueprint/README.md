@@ -36,11 +36,11 @@ Using the [Vanilla Converter](https://github.com/dsunaric/vanilla-converter), th
 
 ### Mapping
 
-| Element ID        | Element Name                | Element Type        | Screenshot                                        | Camunda 7 XML | Camunda 8 XML (expected) | Camunda 8 Conversion | Evaluation |
-|-------------------|-----------------------------|---------------------|---------------------------------------------------|----------------|--------------------------|----------------------|------------|
-| Event_0jpj0lo     | Ride booked                 | Message Start Event | ![Event_0jpj0lo](img/Event_0jpj0lo.png)           | ```xml ```     | ```xml ```               |                      |            |
-| Activity_16rijgh  | Determine potential drivers | Service Task        | ![Activity_16rijgh](img/Activity_16rijgh.png)     | ```xml ```     | ```xml ```               |                      |            |
-|                   |                             | ![]()               | ```xml ```                                        | ```xml ```     |                          |                      |            |
+| Element ID        | Element Name                | Element Type        | Screenshot                                        | Camunda 7 XML | Camunda 8 XML (expected) | Camunda 8 Conversion | Evaluation & Open TODOs after conversion |
+|-------------------|-----------------------------|---------------------|---------------------------------------------------|----------------|--------------------------|----------------------|------------------------------------------|
+| Event_0jpj0lo     | Ride booked                 | Message Start Event | ![Event_0jpj0lo](img/Event_0jpj0lo.png)           | ```xml ```     | ```xml ```               |                      |                                          |
+| Activity_16rijgh  | Determine potential drivers | Service Task        | ![Activity_16rijgh](img/Activity_16rijgh.png)     | ```xml ```     | ```xml ```               |                      |                                          |
+|                   |                             | ![]()               | ```xml ```                                        | ```xml ```     |                          |                      |                                          |
 
 
 ### ⚠️ Not Yet Mapped / Limitations

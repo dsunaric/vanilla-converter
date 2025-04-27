@@ -2,6 +2,8 @@ package com.example.vanillatransformer.service;
 
 import com.example.vanillatransformer.exception.BPMNParseException;
 import com.example.vanillatransformer.service.abstractmappings.Mapping;
+import com.example.vanillatransformer.service.event.mappings.MessageMapping;
+import com.example.vanillatransformer.service.event.mappings.SignalMapping;
 import com.example.vanillatransformer.util.Camunda8Constants;
 import lombok.Getter;
 import lombok.Setter;

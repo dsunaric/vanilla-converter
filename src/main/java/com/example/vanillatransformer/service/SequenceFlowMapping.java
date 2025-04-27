@@ -2,7 +2,6 @@ package com.example.vanillatransformer.service;
 
 import com.example.vanillatransformer.service.abstractmappings.Mapping;
 import jakarta.servlet.MultipartConfigElement;
-import jakarta.xml.bind.JAXBElement;
 import lombok.Getter;
 import lombok.Setter;
 import org.slf4j.Logger;
@@ -11,9 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import xml.*;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Setter
 @Getter

@@ -37,46 +37,39 @@ public class VanillaTransformerApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-
         if (args.length == 0) {
-            LOG.error("No folder path provided. Please pass a folder path as an argument.");
+            LOG.error("No path provided. Please pass a file or folder path as an argument.");
             return;
         }
 
-        String folderPath = args[0];
-        Path dirPath = Paths.get(folderPath);
+        String inputPathStr = args[0];
+        Path inputPath = Paths.get(inputPathStr);
 
-        if (!Files.exists(dirPath) || !Files.isDirectory(dirPath)) {
-            LOG.error("Provided path is not a valid directory: {}", folderPath);
-            return;
+        if (!Files.exists(inputPath)) {
+            LOG.error("Provided path does not exist: {}", inputPathStr);
+            System.exit(1);
         }
 
         try {
             JAXBContext context = JAXBContext.newInstance(Definitions.class);
-            Marshaller mar = context.createMarshaller();
-            mar.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-            mar.setProperty("org.glassfish.jaxb.namespacePrefixMapper", new CustomNamespacePrefixMapper());
+            Marshaller marshaller = context.createMarshaller();
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+            marshaller.setProperty("org.glassfish.jaxb.namespacePrefixMapper", new CustomNamespacePrefixMapper());
 
-            try (Stream<Path> fileStream = Files.list(dirPath)) {
-                fileStream
-                        .filter(path -> path.toString().endsWith(".bpmn")
-                                && !path.toString().endsWith("transformed.bpmn")
-                                && !path.toString().endsWith("expected.bpmn"))
-                        .forEach(path -> {
-                            LOG.info("PROCESSING FILE: {}", path);
-                            try {
-                                Definitions d = (Definitions) context.createUnmarshaller()
-                                        .unmarshal(new FileReader(path.toFile()));
-                                Definitions c8 = definitionMapping.map(d); // still used?
-
-                                String outputFileName = path.toString().replaceFirst("(\\.bpmn)$", "-transformed$1");
-                                mar.marshal(d, new File(outputFileName));
-                                LOG.info("FINISHED PROCESSING FILE: {}", path);
-                                LOG.info("TRANSFORMED FILE WROTTEN TO: {}", outputFileName);
-                            } catch (IOException | JAXBException e) {
-                                LOG.error("Failed to process file: {}", path, e);
-                            }
-                        });
+            if (Files.isDirectory(inputPath)) {
+                // Handle folder
+                try (Stream<Path> fileStream = Files.list(inputPath)) {
+                    fileStream
+                            .filter(path -> path.toString().endsWith(".bpmn")
+                                    && !path.toString().endsWith("transformed.bpmn")
+                                    && !path.toString().endsWith("expected.bpmn"))
+                            .forEach(path -> processFile(context, marshaller, path));
+                }
+            } else if (Files.isRegularFile(inputPath) && inputPath.toString().endsWith(".bpmn")) {
+                // Handle single file
+                processFile(context, marshaller, inputPath);
+            } else {
+                LOG.error("Provided path is neither a BPMN file nor a directory: {}", inputPathStr);
             }
         } catch (JAXBException | IOException e) {
             LOG.error("Error during processing", e);
@@ -85,40 +78,20 @@ public class VanillaTransformerApplication implements CommandLineRunner {
         System.exit(0);
     }
 
-    public void run1(String... args) {
-        LOG.info("EXECUTING : command line runner");
-
-        if (args.length == 0) {
-            LOG.error("No BPMN file provided. Please pass a file path as an argument.");
-            return;
-        }
-
-        String filePath = args[0];
-        Path path = Paths.get(filePath);
-
-        if (!Files.exists(path)) {
-            LOG.error("File not found: {}", filePath);
-            return;
-        }
-
+    private void processFile(JAXBContext context, Marshaller marshaller, Path path) {
+        LOG.info("PROCESSING FILE: {}", path);
         try {
-            JAXBContext context = JAXBContext.newInstance(Definitions.class);
-            Definitions d =
-                    (Definitions) context.createUnmarshaller()
-                           .unmarshal(new FileReader(filePath));
-            Definitions c8 = definitionMapping.map(d);
+            Definitions d = (Definitions) context.createUnmarshaller()
+                    .unmarshal(new FileReader(path.toFile()));
+            Definitions c8 = definitionMapping.map(d); // still used?
 
-            Marshaller mar = context.createMarshaller();
-            mar.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-            mar.setProperty("org.glassfish.jaxb.namespacePrefixMapper", new CustomNamespacePrefixMapper());
-            mar.marshal(d, new File(filePath.replaceFirst("(\\.bpmn)$", "-transformed$1")));
-        } catch (IOException e) {
-            LOG.error("Error reading file: {}", filePath, e);
-        } catch (JAXBException e) {
-            throw new RuntimeException(e);
+            String outputFileName = path.toString().replaceFirst("(\\.bpmn)$", "-transformed$1");
+            marshaller.marshal(d, new File(outputFileName));
+            LOG.info("FINISHED PROCESSING FILE: {}", path);
+            LOG.info("TRANSFORMED FILE WRITTEN TO: {}", outputFileName);
+        } catch (IOException | JAXBException e) {
+            LOG.error("Failed to process file: {}", path, e);
         }
-        System.exit(0);
-
     }
 
 

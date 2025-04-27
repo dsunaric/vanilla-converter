@@ -1,6 +1,8 @@
-package com.example.vanillatransformer.service;
+package com.example.vanillatransformer.service.task.mappings;
 
 import com.example.vanillatransformer.exception.BPMNParseException;
+import com.example.vanillatransformer.service.CalledDecisionMapping;
+import com.example.vanillatransformer.service.TaskDefinitionMapping;
 import com.example.vanillatransformer.service.abstractmappings.Mapping;
 import com.example.vanillatransformer.service.abstractmappings.RemoveAttributeMapping;
 import com.example.vanillatransformer.util.Camunda7Constants;
@@ -19,7 +21,6 @@ import org.w3c.dom.Element;
 import xml.CalledDecision;
 import xml.ExtensionElements;
 import xml.TTask;
-import xml.TaskDefinition;
 
 import javax.xml.namespace.QName;
 import javax.xml.transform.dom.DOMResult;

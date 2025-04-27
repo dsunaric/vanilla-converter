@@ -18,11 +18,17 @@
         <bpmn:sequenceFlow sourceRef="PassenderService_EndOfShift" targetRef="Event_0x9mhmg" id="Flow_0p19yj0"/>
         <bpmn:sequenceFlow sourceRef="Event_10nx96x" targetRef="PassenderService_EndOfShift" id="Flow_0rxm3ia"/>
         <bpmn:intermediateThrowEvent name="shift in progress" id="Event_10nx96x">
+            <bpmn:extensionElements>
+                <zeebe:taskDefinition type="shiftInProgress"/>
+            </bpmn:extensionElements>
             <bpmn:incoming xmlns="">Flow_14rqne4</bpmn:incoming>
             <bpmn:outgoing xmlns="">Flow_0rxm3ia</bpmn:outgoing>
             <bpmn:messageEventDefinition xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="MessageEventDefinition_0n84upo" camunda:expression="${shiftInProgress}"/>
         </bpmn:intermediateThrowEvent>
         <bpmn:intermediateThrowEvent name="shift done" id="Event_0x9mhmg">
+            <bpmn:extensionElements>
+                <zeebe:taskDefinition type="shiftDone"/>
+            </bpmn:extensionElements>
             <bpmn:incoming xmlns="">Flow_0p19yj0</bpmn:incoming>
             <bpmn:outgoing xmlns="">Flow_0qj9mm6</bpmn:outgoing>
             <bpmn:messageEventDefinition xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="MessageEventDefinition_0jl72h2" camunda:expression="${shiftDone}"/>

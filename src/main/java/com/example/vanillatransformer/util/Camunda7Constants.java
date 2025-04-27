@@ -33,7 +33,14 @@ public class Camunda7Constants {
     public static QName CAMUNDA_CALLED_ELEMENT_BINDING = new QName("http://camunda.org/schema/1.0/bpmn",
             "calledElementBinding","camunda");
 
+    public static QName CAMUNDA_FORM_KEY = new QName("http://camunda.org/schema/1.0/bpmn",
+            "formKey","camunda");
 
+    public static QName CAMUNDA_FORM_REF = new QName("http://camunda.org/schema/1.0/bpmn",
+            "formRef","camunda");
+
+    public static QName CAMUNDA_FORM_REFBINDING = new QName("http://camunda.org/schema/1.0/bpmn",
+            "formRefBinding","camunda");
 
     public static QName CAMUNDA_ERROR_MESSAGE = new QName("http://camunda.org/schema/1.0/bpmn",
             "errorMessage","camunda");

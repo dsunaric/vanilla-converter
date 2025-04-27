@@ -1,4 +1,4 @@
-package com.example.vanillatransformer.service;
+package com.example.vanillatransformer.service.event.mappings;
 
 import com.example.vanillatransformer.service.abstractmappings.Mapping;
 import com.example.vanillatransformer.service.abstractmappings.NoMapping;
@@ -25,6 +25,9 @@ public class EventMapping implements Mapping<TEvent,TEvent> {
     @Autowired
     private EventDefinitionMapping eventDefinitionMapping;
 
+    @Autowired
+    private ThrowEventMapping throwEventMapping;
+
     @Override
     public TEvent map(TEvent tEvent) {
         LOG.info("MAPPING: bpmn:event with id={}",tEvent.getId());
@@ -42,14 +45,8 @@ public class EventMapping implements Mapping<TEvent,TEvent> {
 
         if(tEvent instanceof TThrowEvent){
             TThrowEvent throwEvent = (TThrowEvent) tEvent;
-            if(throwEvent.getEventDefinitions().isEmpty()) {
-                return (TEvent) noMapping.map(throwEvent);
-            }
-            for (JAXBElement<? extends TEventDefinition> jaxbElement : throwEvent.getEventDefinitions()) {
-                TEventDefinition eventDefinition = jaxbElement.getValue();
-                eventDefinition = eventDefinitionMapping.map( eventDefinition);
-            }
-            return tEvent;
+
+            return throwEventMapping.map(throwEvent);
         }
         return (TEvent) noMapping.map(tEvent);
     }

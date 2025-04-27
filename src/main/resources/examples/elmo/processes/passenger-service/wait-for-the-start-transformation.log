@@ -1,0 +1,195 @@
+2025-04-27 19:10:03 INFO  c.e.v.VanillaTransformerApplication - Starting VanillaTransformerApplication using Java 17.0.12 with PID 16572 (C:\Users\sunaridr\Documents\STUDIUM\project\vanilla-transformer\target\classes started by sunaridr in C:\Users\sunaridr\Documents\STUDIUM\project\vanilla-transformer)
+2025-04-27 19:10:03 INFO  c.e.v.VanillaTransformerApplication - No active profile set, falling back to 1 default profile: "default"
+2025-04-27 19:10:04 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-04-27 19:10:04 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-04-27 19:10:04 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-04-27 19:10:04 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-04-27 19:10:04 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-04-27 19:10:04 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 692 ms
+2025-04-27 19:10:04 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-04-27 19:10:04 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-04-27 19:10:04 INFO  c.e.v.VanillaTransformerApplication - Started VanillaTransformerApplication in 1.4 seconds (process running for 2.071)
+2025-04-27 19:10:05 INFO  c.e.v.VanillaTransformerApplication - PROCESSING FILE: src\main\resources\examples\elmo\processes\passenger-service\wait-for-the-start.bpmn
+2025-04-27 19:10:05 INFO  c.e.v.service.DefinitionMapping - MAPPING: <bpmn:definitions>
+2025-04-27 19:10:05 INFO  c.e.v.service.DefinitionMapping - MAPPING: Execution Plattform Camunda Platform -> Camunda Cloud
+2025-04-27 19:10:05 INFO  c.e.v.service.DefinitionMapping - MAPPING: Execution Plattform Version 7.18.0 -> 8.6.0
+2025-04-27 19:10:05 INFO  c.e.v.service.RootProcessMapping - MAPPING: <bpmn:process>
+2025-04-27 19:10:05 INFO  c.e.v.service.GatewayMapping - MAPPING: bpmn:gateway with id=Gateway_0wo4419
+2025-04-27 19:10:05 INFO  c.e.v.s.abstractmappings.NoMapping - NO MAPPING NEEDED: for element with id=Gateway_0wo4419
+2025-04-27 19:10:05 INFO  c.e.v.service.SequenceFlowMapping - MAPPING: bpmn:sequenceFlow with id=Flow_0p19yj0
+2025-04-27 19:10:05 INFO  c.e.v.service.SequenceFlowMapping - MAPPING: bpmn:sequenceFlow with id=Flow_0tfgdxc
+2025-04-27 19:10:05 INFO  c.e.v.service.SequenceFlowMapping - MAPPING: bpmn:sequenceFlow with id=Flow_0rlpjf2
+2025-04-27 19:10:05 INFO  c.e.v.service.SequenceFlowMapping - MAPPING: bpmn:sequenceFlow with id=Flow_1etfx4d
+2025-04-27 19:10:05 INFO  c.e.v.service.SequenceFlowMapping - MAPPING: bpmn:sequenceFlow with id=Flow_0u4tyeu
+2025-04-27 19:10:05 INFO  c.e.v.service.SequenceFlowMapping - MAPPING: bpmn:sequenceFlow with id=Flow_1l1pbpn
+2025-04-27 19:10:05 INFO  c.e.v.service.SequenceFlowMapping - MAPPING: bpmn:sequenceFlow with id=Flow_041300i
+2025-04-27 19:10:05 INFO  c.e.v.s.event.mappings.EventMapping - MAPPING: bpmn:event with id=Event_1uqxv6v
+2025-04-27 19:10:05 INFO  c.e.v.s.abstractmappings.NoMapping - NO MAPPING NEEDED: for element with id=Event_1uqxv6v
+2025-04-27 19:10:05 INFO  c.e.v.s.event.mappings.EventMapping - MAPPING: bpmn:event with id=WaitForBeginningOfShift_StartOfShift
+2025-04-27 19:10:05 INFO  c.e.v.s.e.m.EventDefinitionMapping - MAPPING: bpmn:eventDefinition with id=TimerEventDefinition_079dyzs
+2025-04-27 19:10:05 INFO  c.e.v.service.ExpressionMapping - MAPPING: camunda:expression ${startsAtDate} into FEEL Expression Language
+2025-04-27 19:10:05 INFO  c.e.v.s.e.m.EventDefinitionMapping - TODO (OPTIONAL): for TimerEventDefinition with id TimerEventDefinition_079dyzs: set output of expression '${startsAtDate}' as a variable in ISO8601 format and set variable as this timer events value
+2025-04-27 19:10:05 INFO  c.e.v.s.event.mappings.EventMapping - MAPPING: bpmn:event with id=Event_1u136pf
+2025-04-27 19:10:05 INFO  c.e.v.s.e.mappings.ThrowEventMapping - MAPPING: bpmn:throwEvent with id=Event_1u136pf 
+2025-04-27 19:10:05 INFO  c.e.v.s.abstractmappings.NoMapping - NO MAPPING NEEDED: for element with id=Event_1u136pf
+2025-04-27 19:10:05 INFO  c.e.v.s.event.mappings.EventMapping - MAPPING: bpmn:event with id=Event_0xt71u7
+2025-04-27 19:10:05 INFO  c.e.v.s.e.mappings.ThrowEventMapping - MAPPING: bpmn:throwEvent with id=Event_0xt71u7 
+2025-04-27 19:10:05 INFO  c.e.v.s.abstractmappings.NoMapping - NO MAPPING NEEDED: for element with id=Event_0xt71u7
+2025-04-27 19:10:05 INFO  c.e.v.s.event.mappings.EventMapping - MAPPING: bpmn:event with id=Event_0uye6fs
+2025-04-27 19:10:05 INFO  c.e.v.s.e.m.EventDefinitionMapping - MAPPING: bpmn:eventDefinition with id=MessageEventDefinition_0k8xi8h
+2025-04-27 19:10:05 INFO  c.e.v.s.t.m.CallActivityMapping - MAPPING : <bpmn:callActivity> with id=Activity_15vuuiw
+2025-04-27 19:10:05 INFO  c.e.v.service.CalledElementMapping - MAPPING : properties of <bpmn:callActivity> with id=Activity_15vuuiw to <zeebe:CalledElement>
+2025-04-27 19:10:05 INFO  c.e.v.service.SubProcessMapping - MAPPING: <bpmn:subProcess> with id Activity_111dnh8
+2025-04-27 19:10:05 INFO  c.e.v.service.GatewayMapping - MAPPING: bpmn:gateway with id=Gateway_004ceth
+2025-04-27 19:10:05 INFO  c.e.v.s.abstractmappings.NoMapping - NO MAPPING NEEDED: for element with id=Gateway_004ceth
+2025-04-27 19:10:05 INFO  c.e.v.s.t.m.ServiceTaskLikeMapping - MAPPING: Task with id=Activity_1jpd785
+2025-04-27 19:10:05 INFO  c.e.v.s.t.m.LoopCharacteristicsMapping - MAPPING: LoopCharacteristics with id=null
+2025-04-27 19:10:05 INFO  c.e.v.service.ExpressionMapping - MAPPING: camunda:expression ${rides} into FEEL Expression Language
+2025-04-27 19:10:05 INFO  c.e.v.service.TaskDefinitionMapping - MAPPING: camunda:expression ${informPassengerAboutShiftNotClaimedYet} into zeebe:taskDefinition
+2025-04-27 19:10:05 INFO  c.e.v.service.ExpressionMapping - MAPPING: camunda:expression ${informPassengerAboutShiftNotClaimedYet} into FEEL Expression Language
+2025-04-27 19:10:05 INFO  c.e.v.service.TaskDefinitionMapping - TODO (OPTIONAL): set retries=?? in zeebe:taskDefinition Element
+2025-04-27 19:10:05 INFO  c.e.v.s.t.m.ServiceTaskLikeMapping - TODO (OPTIONAL): adapt zeebe:taskDefinition type for Task with id=Activity_1jpd785 to select correct JobWorker
+2025-04-27 19:10:05 INFO  c.e.v.s.t.m.ServiceTaskLikeMapping - MAPPING: Task with id=Activity_1jy6rli
+2025-04-27 19:10:05 INFO  c.e.v.service.TaskDefinitionMapping - MAPPING: camunda:expression ${askDriversToClaimShift} into zeebe:taskDefinition
+2025-04-27 19:10:05 INFO  c.e.v.service.ExpressionMapping - MAPPING: camunda:expression ${askDriversToClaimShift} into FEEL Expression Language
+2025-04-27 19:10:05 INFO  c.e.v.service.TaskDefinitionMapping - TODO (OPTIONAL): set retries=?? in zeebe:taskDefinition Element
+2025-04-27 19:10:05 INFO  c.e.v.s.t.m.ServiceTaskLikeMapping - TODO (OPTIONAL): adapt zeebe:taskDefinition type for Task with id=Activity_1jy6rli to select correct JobWorker
+2025-04-27 19:10:05 INFO  c.e.v.service.SequenceFlowMapping - MAPPING: bpmn:sequenceFlow with id=Flow_14fztyj
+2025-04-27 19:10:05 INFO  c.e.v.service.SequenceFlowMapping - MAPPING: bpmn:sequenceFlow with id=Flow_1nubeep
+2025-04-27 19:10:05 INFO  c.e.v.service.SequenceFlowMapping - MAPPING: bpmn:sequenceFlow with id=Flow_151ugci
+2025-04-27 19:10:05 INFO  c.e.v.service.ExpressionMapping - MAPPING: camunda:expression ${empty driver} into FEEL Expression Language
+2025-04-27 19:10:05 INFO  c.e.v.service.SequenceFlowMapping - MAPPING: bpmn:sequenceFlow with id=Flow_0znztfp
+2025-04-27 19:10:05 INFO  c.e.v.service.SequenceFlowMapping - MAPPING: bpmn:sequenceFlow with id=Flow_1fbaaob
+2025-04-27 19:10:05 INFO  c.e.v.s.event.mappings.EventMapping - MAPPING: bpmn:event with id=Event_11eruqd
+2025-04-27 19:10:05 INFO  c.e.v.s.e.mappings.ThrowEventMapping - MAPPING: bpmn:throwEvent with id=Event_11eruqd 
+2025-04-27 19:10:05 INFO  c.e.v.s.abstractmappings.NoMapping - NO MAPPING NEEDED: for element with id=Event_11eruqd
+2025-04-27 19:10:05 INFO  c.e.v.s.event.mappings.EventMapping - MAPPING: bpmn:event with id=Event_075qt6o
+2025-04-27 19:10:05 INFO  c.e.v.s.e.mappings.ThrowEventMapping - MAPPING: bpmn:throwEvent with id=Event_075qt6o 
+2025-04-27 19:10:05 INFO  c.e.v.s.abstractmappings.NoMapping - NO MAPPING NEEDED: for element with id=Event_075qt6o
+2025-04-27 19:10:05 INFO  c.e.v.s.event.mappings.EventMapping - MAPPING: bpmn:event with id=WaitForBeginningOfShift_oneDayBeforeStartOfShift
+2025-04-27 19:10:05 INFO  c.e.v.s.e.m.EventDefinitionMapping - MAPPING: bpmn:eventDefinition with id=TimerEventDefinition_1ljhq34
+2025-04-27 19:10:05 INFO  c.e.v.service.ExpressionMapping - MAPPING: camunda:expression ${oneDayBeforeStart} into FEEL Expression Language
+2025-04-27 19:10:05 INFO  c.e.v.s.e.m.EventDefinitionMapping - TODO (OPTIONAL): for TimerEventDefinition with id TimerEventDefinition_1ljhq34: set output of expression '${oneDayBeforeStart}' as a variable in ISO8601 format and set variable as this timer events value
+2025-04-27 19:10:05 INFO  c.e.v.service.SubProcessMapping - MAPPING: <bpmn:subProcess> with id Activity_0vvbr97
+2025-04-27 19:10:05 INFO  c.e.v.service.GatewayMapping - MAPPING: bpmn:gateway with id=Gateway_1b4f9ib
+2025-04-27 19:10:05 INFO  c.e.v.s.abstractmappings.NoMapping - NO MAPPING NEEDED: for element with id=Gateway_1b4f9ib
+2025-04-27 19:10:05 INFO  c.e.v.service.GatewayMapping - MAPPING: bpmn:gateway with id=Gateway_03ksv2m
+2025-04-27 19:10:05 INFO  c.e.v.s.abstractmappings.NoMapping - NO MAPPING NEEDED: for element with id=Gateway_03ksv2m
+2025-04-27 19:10:05 INFO  c.e.v.service.SequenceFlowMapping - MAPPING: bpmn:sequenceFlow with id=Flow_00rqg4k
+2025-04-27 19:10:05 INFO  c.e.v.service.ExpressionMapping - MAPPING: camunda:expression ${not empty rides} into FEEL Expression Language
+2025-04-27 19:10:05 INFO  c.e.v.service.SequenceFlowMapping - MAPPING: bpmn:sequenceFlow with id=Flow_16zq2ym
+2025-04-27 19:10:05 INFO  c.e.v.service.SequenceFlowMapping - MAPPING: bpmn:sequenceFlow with id=Flow_0yrfp61
+2025-04-27 19:10:05 INFO  c.e.v.service.SequenceFlowMapping - MAPPING: bpmn:sequenceFlow with id=Flow_0l1cm9x
+2025-04-27 19:10:05 INFO  c.e.v.service.SequenceFlowMapping - MAPPING: bpmn:sequenceFlow with id=Flow_1hfol3e
+2025-04-27 19:10:05 INFO  c.e.v.service.ExpressionMapping - MAPPING: camunda:expression ${withinTwoDaysBeforeStart} into FEEL Expression Language
+2025-04-27 19:10:05 INFO  c.e.v.service.SequenceFlowMapping - MAPPING: bpmn:sequenceFlow with id=Flow_1k1q4gy
+2025-04-27 19:10:05 INFO  c.e.v.s.event.mappings.EventMapping - MAPPING: bpmn:event with id=Event_0vu8d74
+2025-04-27 19:10:05 INFO  c.e.v.s.e.mappings.ThrowEventMapping - MAPPING: bpmn:throwEvent with id=Event_0vu8d74 
+2025-04-27 19:10:05 INFO  c.e.v.s.abstractmappings.NoMapping - NO MAPPING NEEDED: for element with id=Event_0vu8d74
+2025-04-27 19:10:05 INFO  c.e.v.s.event.mappings.EventMapping - MAPPING: bpmn:event with id=Event_1v78enm
+2025-04-27 19:10:05 INFO  c.e.v.s.e.m.EventDefinitionMapping - MAPPING: bpmn:eventDefinition with id=MessageEventDefinition_1918pxy
+2025-04-27 19:10:05 INFO  c.e.v.s.event.mappings.EventMapping - MAPPING: bpmn:event with id=Event_1au8m5l
+2025-04-27 19:10:05 INFO  c.e.v.s.e.mappings.ThrowEventMapping - MAPPING: bpmn:throwEvent with id=Event_1au8m5l 
+2025-04-27 19:10:05 INFO  c.e.v.s.abstractmappings.NoMapping - NO MAPPING NEEDED: for element with id=Event_1au8m5l
+2025-04-27 19:10:05 INFO  c.e.v.s.t.m.CallActivityMapping - MAPPING : <bpmn:callActivity> with id=Activity_01o20aj
+2025-04-27 19:10:05 INFO  c.e.v.service.CalledElementMapping - MAPPING : properties of <bpmn:callActivity> with id=Activity_01o20aj to <zeebe:CalledElement>
+2025-04-27 19:10:05 INFO  c.e.v.service.SubProcessMapping - MAPPING: <bpmn:subProcess> with id Activity_0g7fiec
+2025-04-27 19:10:05 INFO  c.e.v.service.SequenceFlowMapping - MAPPING: bpmn:sequenceFlow with id=Flow_0r4u8re
+2025-04-27 19:10:05 INFO  c.e.v.service.SequenceFlowMapping - MAPPING: bpmn:sequenceFlow with id=Flow_0rauoag
+2025-04-27 19:10:05 INFO  c.e.v.s.event.mappings.EventMapping - MAPPING: bpmn:event with id=Event_03ayf1o
+2025-04-27 19:10:05 INFO  c.e.v.s.e.mappings.ThrowEventMapping - MAPPING: bpmn:throwEvent with id=Event_03ayf1o 
+2025-04-27 19:10:05 INFO  c.e.v.s.abstractmappings.NoMapping - NO MAPPING NEEDED: for element with id=Event_03ayf1o
+2025-04-27 19:10:05 INFO  c.e.v.s.event.mappings.EventMapping - MAPPING: bpmn:event with id=Event_01xwhca
+2025-04-27 19:10:05 INFO  c.e.v.s.e.m.EventDefinitionMapping - MAPPING: bpmn:eventDefinition with id=MessageEventDefinition_1lp5ugp
+2025-04-27 19:10:05 INFO  c.e.v.service.SubProcessMapping - MAPPING: <bpmn:subProcess> with id Activity_0owhpjx
+2025-04-27 19:10:05 INFO  c.e.v.s.t.m.ServiceTaskLikeMapping - MAPPING: Task with id=Activity_1uv1eq6
+2025-04-27 19:10:05 INFO  c.e.v.service.TaskDefinitionMapping - MAPPING: camunda:expression ${informPassengerAboutTurnedIntoSteadyReservation} into zeebe:taskDefinition
+2025-04-27 19:10:05 INFO  c.e.v.service.ExpressionMapping - MAPPING: camunda:expression ${informPassengerAboutTurnedIntoSteadyReservation} into FEEL Expression Language
+2025-04-27 19:10:05 INFO  c.e.v.service.TaskDefinitionMapping - TODO (OPTIONAL): set retries=?? in zeebe:taskDefinition Element
+2025-04-27 19:10:05 INFO  c.e.v.s.t.m.ServiceTaskLikeMapping - TODO (OPTIONAL): adapt zeebe:taskDefinition type for Task with id=Activity_1uv1eq6 to select correct JobWorker
+2025-04-27 19:10:05 INFO  c.e.v.service.SequenceFlowMapping - MAPPING: bpmn:sequenceFlow with id=Flow_0437121
+2025-04-27 19:10:05 INFO  c.e.v.service.SequenceFlowMapping - MAPPING: bpmn:sequenceFlow with id=Flow_1acv7hp
+2025-04-27 19:10:05 INFO  c.e.v.s.event.mappings.EventMapping - MAPPING: bpmn:event with id=Event_06nw0zy
+2025-04-27 19:10:05 INFO  c.e.v.s.abstractmappings.NoMapping - NO MAPPING NEEDED: for element with id=Event_06nw0zy
+2025-04-27 19:10:05 INFO  c.e.v.s.event.mappings.EventMapping - MAPPING: bpmn:event with id=Event_1beyije
+2025-04-27 19:10:05 INFO  c.e.v.s.e.mappings.ThrowEventMapping - MAPPING: bpmn:throwEvent with id=Event_1beyije 
+2025-04-27 19:10:05 INFO  c.e.v.s.abstractmappings.NoMapping - NO MAPPING NEEDED: for element with id=Event_1beyije
+2025-04-27 19:10:05 INFO  c.e.v.s.t.m.LoopCharacteristicsMapping - MAPPING: LoopCharacteristics with id=null
+2025-04-27 19:10:05 INFO  c.e.v.service.ExpressionMapping - MAPPING: camunda:expression ${rides} into FEEL Expression Language
+2025-04-27 19:10:05 INFO  c.e.v.service.SubProcessMapping - MAPPING: <bpmn:subProcess> with id Activity_1dv67tc
+2025-04-27 19:10:05 INFO  c.e.v.service.GatewayMapping - MAPPING: bpmn:gateway with id=Gateway_1ppr42h
+2025-04-27 19:10:05 INFO  c.e.v.s.abstractmappings.NoMapping - NO MAPPING NEEDED: for element with id=Gateway_1ppr42h
+2025-04-27 19:10:05 INFO  c.e.v.s.t.m.ServiceTaskLikeMapping - MAPPING: Task with id=Activity_1hi0nt3
+2025-04-27 19:10:05 INFO  c.e.v.service.TaskDefinitionMapping - MAPPING: camunda:expression ${askDriversToClaimShift} into zeebe:taskDefinition
+2025-04-27 19:10:05 INFO  c.e.v.service.ExpressionMapping - MAPPING: camunda:expression ${askDriversToClaimShift} into FEEL Expression Language
+2025-04-27 19:10:05 INFO  c.e.v.service.TaskDefinitionMapping - TODO (OPTIONAL): set retries=?? in zeebe:taskDefinition Element
+2025-04-27 19:10:05 INFO  c.e.v.s.t.m.ServiceTaskLikeMapping - TODO (OPTIONAL): adapt zeebe:taskDefinition type for Task with id=Activity_1hi0nt3 to select correct JobWorker
+2025-04-27 19:10:05 INFO  c.e.v.service.SequenceFlowMapping - MAPPING: bpmn:sequenceFlow with id=Flow_01uk06t
+2025-04-27 19:10:05 INFO  c.e.v.service.SequenceFlowMapping - MAPPING: bpmn:sequenceFlow with id=Flow_176raa6
+2025-04-27 19:10:05 INFO  c.e.v.service.SequenceFlowMapping - MAPPING: bpmn:sequenceFlow with id=Flow_0ixgn0p
+2025-04-27 19:10:05 INFO  c.e.v.service.SequenceFlowMapping - MAPPING: bpmn:sequenceFlow with id=Flow_0w3mcm9
+2025-04-27 19:10:05 INFO  c.e.v.service.ExpressionMapping - MAPPING: camunda:expression ${empty driver} into FEEL Expression Language
+2025-04-27 19:10:05 INFO  c.e.v.s.event.mappings.EventMapping - MAPPING: bpmn:event with id=Event_1dogkeo
+2025-04-27 19:10:05 INFO  c.e.v.s.e.mappings.ThrowEventMapping - MAPPING: bpmn:throwEvent with id=Event_1dogkeo 
+2025-04-27 19:10:05 INFO  c.e.v.s.abstractmappings.NoMapping - NO MAPPING NEEDED: for element with id=Event_1dogkeo
+2025-04-27 19:10:05 INFO  c.e.v.s.event.mappings.EventMapping - MAPPING: bpmn:event with id=Event_0rvepov
+2025-04-27 19:10:05 INFO  c.e.v.s.e.mappings.ThrowEventMapping - MAPPING: bpmn:throwEvent with id=Event_0rvepov 
+2025-04-27 19:10:05 INFO  c.e.v.s.abstractmappings.NoMapping - NO MAPPING NEEDED: for element with id=Event_0rvepov
+2025-04-27 19:10:05 INFO  c.e.v.s.event.mappings.EventMapping - MAPPING: bpmn:event with id=WaitForBeginningOfShift_threeHourBeforeStartOfShift
+2025-04-27 19:10:05 INFO  c.e.v.s.e.m.EventDefinitionMapping - MAPPING: bpmn:eventDefinition with id=TimerEventDefinition_0jh0hge
+2025-04-27 19:10:05 INFO  c.e.v.service.ExpressionMapping - MAPPING: camunda:expression ${threeHoursBeforeStart} into FEEL Expression Language
+2025-04-27 19:10:05 INFO  c.e.v.s.e.m.EventDefinitionMapping - TODO (OPTIONAL): for TimerEventDefinition with id TimerEventDefinition_0jh0hge: set output of expression '${threeHoursBeforeStart}' as a variable in ISO8601 format and set variable as this timer events value
+2025-04-27 19:10:05 INFO  c.e.v.service.SubProcessMapping - MAPPING: <bpmn:subProcess> with id Activity_1dk41i2
+2025-04-27 19:10:05 INFO  c.e.v.service.GatewayMapping - MAPPING: bpmn:gateway with id=Gateway_0a6nb9e
+2025-04-27 19:10:05 INFO  c.e.v.s.abstractmappings.NoMapping - NO MAPPING NEEDED: for element with id=Gateway_0a6nb9e
+2025-04-27 19:10:05 INFO  c.e.v.service.GatewayMapping - MAPPING: bpmn:gateway with id=Gateway_10i9pn4
+2025-04-27 19:10:05 INFO  c.e.v.s.abstractmappings.NoMapping - NO MAPPING NEEDED: for element with id=Gateway_10i9pn4
+2025-04-27 19:10:05 INFO  c.e.v.s.t.m.ServiceTaskLikeMapping - MAPPING: Task with id=Activity_0nulxdo
+2025-04-27 19:10:05 INFO  c.e.v.service.TaskDefinitionMapping - MAPPING: camunda:expression ${informDriverAboutUnclaimByAdministrator} into zeebe:taskDefinition
+2025-04-27 19:10:05 INFO  c.e.v.service.ExpressionMapping - MAPPING: camunda:expression ${informDriverAboutUnclaimByAdministrator} into FEEL Expression Language
+2025-04-27 19:10:05 INFO  c.e.v.service.TaskDefinitionMapping - TODO (OPTIONAL): set retries=?? in zeebe:taskDefinition Element
+2025-04-27 19:10:05 INFO  c.e.v.s.t.m.ServiceTaskLikeMapping - TODO (OPTIONAL): adapt zeebe:taskDefinition type for Task with id=Activity_0nulxdo to select correct JobWorker
+2025-04-27 19:10:05 INFO  c.e.v.service.SequenceFlowMapping - MAPPING: bpmn:sequenceFlow with id=Flow_0l6gzzm
+2025-04-27 19:10:05 INFO  c.e.v.service.SequenceFlowMapping - MAPPING: bpmn:sequenceFlow with id=Flow_0kb1u57
+2025-04-27 19:10:05 INFO  c.e.v.service.ExpressionMapping - MAPPING: camunda:expression ${not empty rides} into FEEL Expression Language
+2025-04-27 19:10:05 INFO  c.e.v.service.SequenceFlowMapping - MAPPING: bpmn:sequenceFlow with id=Flow_1ho0ega
+2025-04-27 19:10:05 INFO  c.e.v.service.SequenceFlowMapping - MAPPING: bpmn:sequenceFlow with id=Flow_131eakq
+2025-04-27 19:10:05 INFO  c.e.v.service.ExpressionMapping - MAPPING: camunda:expression ${withinTwoDaysBeforeStart} into FEEL Expression Language
+2025-04-27 19:10:05 INFO  c.e.v.service.SequenceFlowMapping - MAPPING: bpmn:sequenceFlow with id=Flow_1f7wt6n
+2025-04-27 19:10:05 INFO  c.e.v.service.SequenceFlowMapping - MAPPING: bpmn:sequenceFlow with id=Flow_0g449sg
+2025-04-27 19:10:05 INFO  c.e.v.service.SequenceFlowMapping - MAPPING: bpmn:sequenceFlow with id=Flow_1loceqd
+2025-04-27 19:10:05 INFO  c.e.v.s.event.mappings.EventMapping - MAPPING: bpmn:event with id=Event_1r1z39w
+2025-04-27 19:10:05 INFO  c.e.v.s.e.mappings.ThrowEventMapping - MAPPING: bpmn:throwEvent with id=Event_1r1z39w 
+2025-04-27 19:10:05 INFO  c.e.v.s.abstractmappings.NoMapping - NO MAPPING NEEDED: for element with id=Event_1r1z39w
+2025-04-27 19:10:05 INFO  c.e.v.s.event.mappings.EventMapping - MAPPING: bpmn:event with id=Event_0uwawjr
+2025-04-27 19:10:05 INFO  c.e.v.s.e.mappings.ThrowEventMapping - MAPPING: bpmn:throwEvent with id=Event_0uwawjr 
+2025-04-27 19:10:05 INFO  c.e.v.s.abstractmappings.NoMapping - NO MAPPING NEEDED: for element with id=Event_0uwawjr
+2025-04-27 19:10:05 INFO  c.e.v.s.event.mappings.EventMapping - MAPPING: bpmn:event with id=Event_135gqsm
+2025-04-27 19:10:05 INFO  c.e.v.s.e.m.EventDefinitionMapping - MAPPING: bpmn:eventDefinition with id=MessageEventDefinition_0ck1geh
+2025-04-27 19:10:05 INFO  c.e.v.s.t.m.CallActivityMapping - MAPPING : <bpmn:callActivity> with id=Activity_00rlu8b
+2025-04-27 19:10:05 INFO  c.e.v.service.CalledElementMapping - MAPPING : properties of <bpmn:callActivity> with id=Activity_00rlu8b to <zeebe:CalledElement>
+2025-04-27 19:10:05 INFO  c.e.v.s.e.mappings.MessageMapping - MAPPING: bpmn:message with id=Message_0tm4seo
+2025-04-27 19:10:05 INFO  c.e.v.service.SubscriptionMapping - MAPPING: zeebe:subscription with correlationKey=AddCorrelationKey 
+2025-04-27 19:10:05 INFO  c.e.v.service.SubscriptionMapping - TODO: set correlationKey=?? in zeebe:subscription Element
+2025-04-27 19:10:05 INFO  c.e.v.s.e.mappings.MessageMapping - MAPPING: bpmn:message with id=Message_395da9l
+2025-04-27 19:10:05 INFO  c.e.v.service.SubscriptionMapping - MAPPING: zeebe:subscription with correlationKey=AddCorrelationKey 
+2025-04-27 19:10:05 INFO  c.e.v.service.SubscriptionMapping - TODO: set correlationKey=?? in zeebe:subscription Element
+2025-04-27 19:10:05 INFO  c.e.v.s.e.mappings.MessageMapping - MAPPING: bpmn:message with id=Message_0h8i2td
+2025-04-27 19:10:05 INFO  c.e.v.service.SubscriptionMapping - MAPPING: zeebe:subscription with correlationKey=AddCorrelationKey 
+2025-04-27 19:10:05 INFO  c.e.v.service.SubscriptionMapping - TODO: set correlationKey=?? in zeebe:subscription Element
+2025-04-27 19:10:05 INFO  c.e.v.s.e.mappings.MessageMapping - MAPPING: bpmn:message with id=Message_13iev4n
+2025-04-27 19:10:05 INFO  c.e.v.service.SubscriptionMapping - MAPPING: zeebe:subscription with correlationKey=AddCorrelationKey 
+2025-04-27 19:10:05 INFO  c.e.v.service.SubscriptionMapping - TODO: set correlationKey=?? in zeebe:subscription Element
+2025-04-27 19:10:05 INFO  c.e.v.s.e.mappings.MessageMapping - MAPPING: bpmn:message with id=Message_15lr0tu
+2025-04-27 19:10:05 INFO  c.e.v.service.SubscriptionMapping - MAPPING: zeebe:subscription with correlationKey=AddCorrelationKey 
+2025-04-27 19:10:05 INFO  c.e.v.service.SubscriptionMapping - TODO: set correlationKey=?? in zeebe:subscription Element
+2025-04-27 19:10:05 INFO  c.e.v.s.e.mappings.MessageMapping - MAPPING: bpmn:message with id=Message_3t1psi9
+2025-04-27 19:10:05 INFO  c.e.v.service.SubscriptionMapping - MAPPING: zeebe:subscription with correlationKey=AddCorrelationKey 
+2025-04-27 19:10:05 INFO  c.e.v.service.SubscriptionMapping - TODO: set correlationKey=?? in zeebe:subscription Element
+2025-04-27 19:10:05 INFO  c.e.v.service.ErrorMapping - MAPPING: bpmn:error with id=Error_1dqjcwb
+2025-04-27 19:10:05 INFO  c.e.v.service.ErrorMapping - WARNING: Cannot map camunda:errorMessage=null in element bpmn:error with id=Error_1dqjcwb
+2025-04-27 19:10:05 INFO  c.e.v.s.abstractmappings.NoMapping - NO MAPPING NEEDED: for element with id=Error_1dqjcwb
+2025-04-27 19:10:05 INFO  c.e.v.VanillaTransformerApplication - FINISHED PROCESSING FILE: src\main\resources\examples\elmo\processes\passenger-service\wait-for-the-start.bpmn
+2025-04-27 19:10:05 INFO  c.e.v.VanillaTransformerApplication - TRANSFORMED FILE WRITTEN TO: src\main\resources\examples\elmo\processes\passenger-service\wait-for-the-start-transformed.bpmn
+2025-04-27 19:10:05 INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-04-27 19:10:05 INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete

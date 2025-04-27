@@ -48,7 +48,11 @@
                 <bpmn:startEvent name="confirmation expected" id="Event_02j2yvs">
                     <bpmn:outgoing xmlns="">Flow_1wdsos7</bpmn:outgoing>
                 </bpmn:startEvent>
-                <bpmn:userTask xmlns:camunda="http://camunda.org/schema/1.0/bpmn" name="confirm start of car usage" id="Activity_0g28igi" camunda:formKey="confirmStartOfUsage">
+                <bpmn:userTask name="confirm start of car usage" id="Activity_0g28igi">
+                    <bpmn:extensionElements>
+                        <zeebe:formDefinition formId="confirmStartOfUsage"/>
+                        <zeebe:userTask/>
+                    </bpmn:extensionElements>
                     <bpmn:incoming xmlns="">Flow_1wdsos7</bpmn:incoming>
                     <bpmn:outgoing xmlns="">Flow_1xpj5qy</bpmn:outgoing>
                 </bpmn:userTask>
@@ -128,7 +132,11 @@
             <bpmn:incoming xmlns="">Flow_1spxycx</bpmn:incoming>
             <bpmn:outgoing xmlns="">Flow_0a542fp</bpmn:outgoing>
         </bpmn:sendTask>
-        <bpmn:userTask xmlns:camunda="http://camunda.org/schema/1.0/bpmn" name="set km values" id="Activity_0kd01d7" camunda:formKey="setKmValues">
+        <bpmn:userTask name="set km values" id="Activity_0kd01d7">
+            <bpmn:extensionElements>
+                <zeebe:formDefinition formId="setKmValues"/>
+                <zeebe:userTask/>
+            </bpmn:extensionElements>
             <bpmn:incoming xmlns="">Flow_1uhhnvn</bpmn:incoming>
             <bpmn:outgoing xmlns="">Flow_182bfos</bpmn:outgoing>
         </bpmn:userTask>

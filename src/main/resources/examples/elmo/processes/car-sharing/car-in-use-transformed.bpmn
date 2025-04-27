@@ -160,7 +160,11 @@
             <bpmn:sequenceFlow sourceRef="Event_10a087q" targetRef="Activity_0ohkfvp" id="Flow_1ksisk6"/>
             <bpmn:sequenceFlow sourceRef="Event_0o3crji" targetRef="Activity_0ohkfvp" id="Flow_0i754j1"/>
         </bpmn:subProcess>
-        <bpmn:userTask xmlns:camunda="http://camunda.org/schema/1.0/bpmn" name="confirm end of car usage" id="Activity_0p14fad" camunda:formKey="confirmEndOfUsage">
+        <bpmn:userTask name="confirm end of car usage" id="Activity_0p14fad">
+            <bpmn:extensionElements>
+                <zeebe:formDefinition formId="confirmEndOfUsage"/>
+                <zeebe:userTask/>
+            </bpmn:extensionElements>
             <bpmn:incoming xmlns="">Flow_0ccque5</bpmn:incoming>
             <bpmn:outgoing xmlns="">Flow_0rbzla9</bpmn:outgoing>
         </bpmn:userTask>

@@ -55,7 +55,11 @@
         <bpmn:sequenceFlow sourceRef="Event_1a7eymy" targetRef="Activity_13gxu9k" id="Flow_158spom"/>
         <bpmn:sequenceFlow sourceRef="Activity_13gxu9k" targetRef="Activity_1ol1end" id="Flow_104rab7"/>
         <bpmn:sequenceFlow sourceRef="StartEvent_1" targetRef="Activity_0fdcnuy" id="Flow_0d1k5ji"/>
-        <bpmn:userTask xmlns:camunda="http://camunda.org/schema/1.0/bpmn" name="collect user information" id="Activity_0fdcnuy" camunda:formKey="userRegistrationForm">
+        <bpmn:userTask name="collect user information" id="Activity_0fdcnuy">
+            <bpmn:extensionElements>
+                <zeebe:formDefinition formId="userRegistrationForm"/>
+                <zeebe:userTask/>
+            </bpmn:extensionElements>
             <bpmn:incoming xmlns="">Flow_1oxl5al</bpmn:incoming>
             <bpmn:incoming xmlns="">Flow_0d1k5ji</bpmn:incoming>
             <bpmn:outgoing xmlns="">Flow_1gn81iw</bpmn:outgoing>
@@ -87,7 +91,11 @@
             <bpmn:incoming xmlns="">Flow_01b1q70</bpmn:incoming>
             <bpmn:linkEventDefinition name="abort onboarding" id="LinkEventDefinition_14lan9u"/>
         </bpmn:intermediateThrowEvent>
-        <bpmn:userTask xmlns:camunda="http://camunda.org/schema/1.0/bpmn" name="validate user information" id="Activity_1xsbd59" camunda:formKey="userValidationForm">
+        <bpmn:userTask name="validate user information" id="Activity_1xsbd59">
+            <bpmn:extensionElements>
+                <zeebe:formDefinition formId="userValidationForm"/>
+                <zeebe:userTask/>
+            </bpmn:extensionElements>
             <bpmn:incoming xmlns="">Flow_0dl88pw</bpmn:incoming>
             <bpmn:outgoing xmlns="">Flow_16r1pcp</bpmn:outgoing>
         </bpmn:userTask>
@@ -197,6 +205,9 @@
             <bpmn:messageEventDefinition messageRef="Message_0pngawu" id="MessageEventDefinition_0fcf1g1"/>
         </bpmn:boundaryEvent>
         <bpmn:endEvent name="notify applicant" id="Event_1i2j3tq">
+            <bpmn:extensionElements>
+                <zeebe:taskDefinition type="notifyApplicant"/>
+            </bpmn:extensionElements>
             <bpmn:incoming xmlns="">Flow_0hd50id</bpmn:incoming>
             <bpmn:messageEventDefinition xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="MessageEventDefinition_1l44ku2" camunda:expression="${notifyApplicant}"/>
         </bpmn:endEvent>

@@ -60,4 +60,17 @@
             </xs:simpleType>
         </xs:attribute>
     </xs:complexType>
+
+    <xs:element name="formDefinition" type="zeebe:FormDefinition"/>
+    <xs:complexType name="FormDefinition">
+        <xs:attribute name="formKey" type="xs:string" use="required"/>
+        <xs:attribute name="formId" type="xs:string" use="required"/>
+        <xs:attribute name="bindingType" type="xs:string" use="required"/>
+    </xs:complexType>
+
+
+    <xs:element name="userTask" type="zeebe:UserTask"/>
+    <xs:complexType name="UserTask">
+    </xs:complexType>
+
 </xs:schema>

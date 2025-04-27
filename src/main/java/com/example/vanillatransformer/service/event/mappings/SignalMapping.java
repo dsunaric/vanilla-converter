@@ -1,16 +1,13 @@
-package com.example.vanillatransformer.service;
+package com.example.vanillatransformer.service.event.mappings;
 
 import com.example.vanillatransformer.service.abstractmappings.Mapping;
 import com.example.vanillatransformer.service.abstractmappings.NoMapping;
-import com.example.vanillatransformer.util.Camunda7Constants;
 import lombok.Getter;
 import lombok.Setter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.servlet.View;
-import xml.TError;
 import xml.TSignal;
 
 @Setter

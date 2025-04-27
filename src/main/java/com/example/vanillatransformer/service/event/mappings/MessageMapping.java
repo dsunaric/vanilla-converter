@@ -1,9 +1,8 @@
-package com.example.vanillatransformer.service;
+package com.example.vanillatransformer.service.event.mappings;
 
-import com.example.vanillatransformer.exception.BPMNParseException;
+import com.example.vanillatransformer.service.SubscriptionMapping;
 import com.example.vanillatransformer.service.abstractmappings.Mapping;
 import com.example.vanillatransformer.service.abstractmappings.RemoveAttributeMapping;
-import com.example.vanillatransformer.util.Camunda7Constants;
 import com.example.vanillatransformer.util.CustomNamespacePrefixMapper;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
@@ -18,7 +17,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import xml.*;
 
-import javax.xml.namespace.QName;
 import javax.xml.transform.dom.DOMResult;
 
 @Setter

@@ -64,7 +64,7 @@
                 <bpmn:outgoing xmlns="">Flow_1qov989</bpmn:outgoing>
                 <bpmn:multiInstanceLoopCharacteristics camunda:elementVariable="ride" camunda:collection="${rides}">
                     <bpmn:extensionElements>
-                        <zeebe:loopCharacteristics inputCollection="= rides"/>
+                        <zeebe:loopCharacteristics inputCollection="= rides" inputElement="ride"/>
                     </bpmn:extensionElements>
                 </bpmn:multiInstanceLoopCharacteristics>
             </bpmn:sendTask>
