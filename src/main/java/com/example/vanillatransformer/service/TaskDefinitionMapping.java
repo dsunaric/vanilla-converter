@@ -36,6 +36,11 @@ public class TaskDefinitionMapping implements Mapping<String,TaskDefinition> {
     }
 
     public TaskDefinition map(String expression, QName type) {
+
+        if(type == null){
+
+        }
+
         if(type.equals(Camunda7Constants.CAMUNDA_DELEGATE_EXPRESSION)){
             LOG.info("MAPPING: camunda:delegateExpression {} into zeebe:taskDefinition",expression);
             return map(expression);
@@ -64,6 +69,6 @@ public class TaskDefinitionMapping implements Mapping<String,TaskDefinition> {
             return taskDefinition;
         }
 
-        throw new BPMNParseException("Expression " + type.toString()+ " Not Supported for Mapping TaskDefinition");
+        return map(expression);
     }
 }

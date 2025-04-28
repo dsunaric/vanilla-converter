@@ -5,14 +5,9 @@
       <bpmn:outgoing>Flow_0srd7ke</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_0srd7ke" sourceRef="Start-Event" targetRef="Service-Task-1" />
-    <bpmn:serviceTask id="Service-Task-1" name="Expression" camunda:expression="${SomeExpression}">
-      <bpmn:incoming>Flow_0srd7ke</bpmn:incoming>
-      <bpmn:outgoing>Flow_1yhnoz9</bpmn:outgoing>
-    </bpmn:serviceTask>
-    <bpmn:sequenceFlow id="Flow_1yhnoz9" sourceRef="Service-Task-1" targetRef="Service-Task-2" />
     <bpmn:sequenceFlow id="Flow_1iflsk5" sourceRef="Service-Task-2" targetRef="Service-Task-3" />
     <bpmn:endEvent id="End-Event" name="end">
-      <bpmn:incoming>Flow_06jacvd</bpmn:incoming>
+      <bpmn:incoming>Flow_1aagldp</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:serviceTask id="Service-Task-2" name="Delegate Expression" camunda:delegateExpression="${SomeDelegateExpression}">
       <bpmn:incoming>Flow_1yhnoz9</bpmn:incoming>
@@ -22,7 +17,27 @@
       <bpmn:incoming>Flow_1iflsk5</bpmn:incoming>
       <bpmn:outgoing>Flow_06jacvd</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:sequenceFlow id="Flow_06jacvd" sourceRef="Service-Task-3" targetRef="End-Event" />
+    <bpmn:sequenceFlow id="Flow_06jacvd" sourceRef="Service-Task-3" targetRef="Activity_0m72821" />
+    <bpmn:serviceTask id="Service-Task-1" name="Expression" camunda:expression="${SomeExpression}">
+      <bpmn:incoming>Flow_0srd7ke</bpmn:incoming>
+      <bpmn:outgoing>Flow_1yhnoz9</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_1yhnoz9" sourceRef="Service-Task-1" targetRef="Service-Task-2" />
+    <bpmn:sequenceFlow id="Flow_1bhj1dd" sourceRef="Activity_0m72821" targetRef="Activity_1d57ud7" />
+    <bpmn:serviceTask id="Activity_0m72821" name="Connector">
+      <bpmn:extensionElements>
+        <camunda:connector>
+          <camunda:connectorId>ConnectorId</camunda:connectorId>
+        </camunda:connector>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_06jacvd</bpmn:incoming>
+      <bpmn:outgoing>Flow_1bhj1dd</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_1aagldp" sourceRef="Activity_1d57ud7" targetRef="End-Event" />
+    <bpmn:serviceTask id="Activity_1d57ud7" name="External" camunda:type="external" camunda:topic="MyTopic">
+      <bpmn:incoming>Flow_1bhj1dd</bpmn:incoming>
+      <bpmn:outgoing>Flow_1aagldp</bpmn:outgoing>
+    </bpmn:serviceTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_0n1rndr">
@@ -36,17 +51,25 @@
         <dc:Bounds x="270" y="80" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_0a8da9g_di" bpmnElement="End-Event">
-        <dc:Bounds x="852" y="102" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="861" y="145" width="19" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1acg472_di" bpmnElement="Service-Task-2">
         <dc:Bounds x="460" y="80" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1s9afyd_di" bpmnElement="Service-Task-3">
         <dc:Bounds x="650" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0a8da9g_di" bpmnElement="End-Event">
+        <dc:Bounds x="1162" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1171" y="145" width="19" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0xh70lj_di" bpmnElement="Activity_1d57ud7">
+        <dc:Bounds x="990" y="80" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0lsseo2_di" bpmnElement="Activity_0m72821">
+        <dc:Bounds x="820" y="80" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_0srd7ke_di" bpmnElement="Flow_0srd7ke">
         <di:waypoint x="188" y="120" />
@@ -62,7 +85,15 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_06jacvd_di" bpmnElement="Flow_06jacvd">
         <di:waypoint x="750" y="120" />
-        <di:waypoint x="852" y="120" />
+        <di:waypoint x="820" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1bhj1dd_di" bpmnElement="Flow_1bhj1dd">
+        <di:waypoint x="920" y="120" />
+        <di:waypoint x="990" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1aagldp_di" bpmnElement="Flow_1aagldp">
+        <di:waypoint x="1090" y="120" />
+        <di:waypoint x="1162" y="120" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

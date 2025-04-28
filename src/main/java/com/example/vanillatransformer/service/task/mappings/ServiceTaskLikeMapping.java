@@ -47,19 +47,22 @@ public class ServiceTaskLikeMapping implements Mapping<TTask,TTask> {
         if(((TActivity)tServiceTaskLike).getLoopCharacteristics() != null){
             loopCharacteristicsMapping.map(((TActivity)tServiceTaskLike).getLoopCharacteristics().getValue());
         }
-
+        TaskDefinition taskDefinition = new TaskDefinition();
         QName serviceTaskDefinitionType = ProcessUtil.getServiceTaskDefinitionType(tServiceTaskLike);
-        if(serviceTaskDefinitionType == null){
-            LOG.info("TODO: no task definition found for ServiceTaskLike Task with id={} - No mapping performed",tServiceTaskLike.getId());
-            return tServiceTaskLike;
+        if(serviceTaskDefinitionType != null){
+            String serviceTaskDefinition = tServiceTaskLike.getOtherAttributes().get(serviceTaskDefinitionType);
+            taskDefinition = taskDefinitionMapping.map(serviceTaskDefinition);
+        } else {
+            LOG.info("TODO: no task definition found for ServiceTaskLike Task with id={} probably Type 'Connector' was being used - manuall mapping needed",tServiceTaskLike.getId());
+            taskDefinition.setType("AddJobWorker");
         }
-        String serviceTaskDefinition = tServiceTaskLike.getOtherAttributes().get(serviceTaskDefinitionType);
+
         try {
             JAXBContext context = JAXBContext.newInstance(TaskDefinition.class);
             DOMResult res = new DOMResult();
             Marshaller marshaller = context.createMarshaller();
             marshaller.setProperty("org.glassfish.jaxb.namespacePrefixMapper", new CustomNamespacePrefixMapper());
-            marshaller.marshal(taskDefinitionMapping.map(serviceTaskDefinition, serviceTaskDefinitionType), res);
+            marshaller.marshal(taskDefinition, res);
             Element elt = ((Document)res.getNode()).getDocumentElement();
             elements.add(elt);
         } catch (JAXBException e) {
