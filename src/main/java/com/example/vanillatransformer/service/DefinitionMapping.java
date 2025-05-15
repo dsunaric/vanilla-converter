@@ -1,9 +1,12 @@
 package com.example.vanillatransformer.service;
 
 import com.example.vanillatransformer.exception.BPMNParseException;
-import com.example.vanillatransformer.service.abstractmappings.Mapping;
-import com.example.vanillatransformer.service.event.mappings.MessageMapping;
-import com.example.vanillatransformer.service.event.mappings.SignalMapping;
+import com.example.vanillatransformer.service.mappings.ErrorMapping;
+import com.example.vanillatransformer.service.mappings.EscalationMapping;
+import com.example.vanillatransformer.service.mappings.process.RootProcessMapping;
+import com.example.vanillatransformer.service.mappings.util.Mapping;
+import com.example.vanillatransformer.service.mappings.MessageMapping;
+import com.example.vanillatransformer.service.mappings.SignalMapping;
 import com.example.vanillatransformer.util.Camunda8Constants;
 import lombok.Getter;
 import lombok.Setter;
@@ -33,6 +36,9 @@ public class DefinitionMapping implements Mapping<Definitions,Definitions> {
     @Autowired
     private SignalMapping signalMapping;
 
+    @Autowired
+    private EscalationMapping escalationMapping;
+
     private static Logger LOG = LoggerFactory.getLogger(DefinitionMapping.class);
     @Override
     public Definitions map(Definitions definitions) {
@@ -61,6 +67,11 @@ public class DefinitionMapping implements Mapping<Definitions,Definitions> {
         List<TSignal> signals = extractElementsWithType(definitions, TSignal.class);
         for(var signal : signals) {
             signalMapping.map(signal);
+        }
+
+        List<TEscalation> escalations = extractElementsWithType(definitions, TEscalation.class);
+        for(var escalation : escalations) {
+            escalationMapping.map(escalation);
         }
 
         return definitions;

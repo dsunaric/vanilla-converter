@@ -205,7 +205,7 @@ customer process for understanding</bpmn:text>
                 <bpmn:outgoing xmlns="">Flow_1yjc09p</bpmn:outgoing>
                 <bpmn:multiInstanceLoopCharacteristics xmlns:camunda="http://camunda.org/schema/1.0/bpmn" camunda:elementVariable="${offer}" camunda:collection="${allOffers}">
                     <bpmn:extensionElements>
-                        <zeebe:loopCharacteristics inputCollection="= allOffers"/>
+                        <zeebe:loopCharacteristics inputCollection="= allOffers" inputElement="${offer}"/>
                     </bpmn:extensionElements>
                 </bpmn:multiInstanceLoopCharacteristics>
             </bpmn:serviceTask>
@@ -224,7 +224,7 @@ customer process for understanding</bpmn:text>
             <bpmn:outgoing xmlns="">Flow_1c2kiye</bpmn:outgoing>
             <bpmn:multiInstanceLoopCharacteristics camunda:asyncBefore="true" camunda:elementVariable="${unselectedOffer}" camunda:collection="${unselectedOffers}">
                 <bpmn:extensionElements>
-                    <zeebe:loopCharacteristics inputCollection="= unselectedOffers"/>
+                    <zeebe:loopCharacteristics inputCollection="= unselectedOffers" inputElement="${unselectedOffer}"/>
                 </bpmn:extensionElements>
             </bpmn:multiInstanceLoopCharacteristics>
         </bpmn:serviceTask>
@@ -270,7 +270,7 @@ customer process for understanding</bpmn:text>
             <bpmn:boundaryEvent xmlns="" attachedToRef="Activity_19miyyw" name="Deadline&#10;expired" id="Event_01ckd5n">
                 <bpmn:outgoing>Flow_1yrnd67</bpmn:outgoing>
                 <bpmn:timerEventDefinition id="TimerEventDefinition_0cuzrxd">
-                    <bpmn:timeDate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="bpmn:tFormalExpression">${offeringDeadline}</bpmn:timeDate>
+                    <bpmn:timeDate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="bpmn:tFormalExpression">=offeringDeadline</bpmn:timeDate>
                 </bpmn:timerEventDefinition>
             </bpmn:boundaryEvent>
             <bpmn:sequenceFlow sourceRef="Activity_1vse2bh" targetRef="Activity_19miyyw" id="Flow_0sgzbt9"/>
@@ -278,6 +278,9 @@ customer process for understanding</bpmn:text>
             <bpmn:sequenceFlow sourceRef="Activity_19miyyw" targetRef="Activity_0avhaum" id="Flow_1rr9oqp"/>
             <bpmn:sequenceFlow sourceRef="Event_01ckd5n" targetRef="Event_0qn3ukk" id="Flow_1yrnd67"/>
             <bpmn:endEvent name="Ride request cancelled" id="Event_0qn3ukk" camunda:asyncBefore="true">
+                <bpmn:extensionElements>
+                    <zeebe:taskDefinition type="cancelRideOfferOfDriver"/>
+                </bpmn:extensionElements>
                 <bpmn:incoming xmlns="">Flow_1yrnd67</bpmn:incoming>
                 <bpmn:messageEventDefinition id="MessageEventDefinition_034zqie" camunda:delegateExpression="${cancelRideOfferOfDriver}"/>
             </bpmn:endEvent>
@@ -334,7 +337,11 @@ customer process for understanding</bpmn:text>
             <bpmn:incoming xmlns="">Flow_1jwfi8y</bpmn:incoming>
             <bpmn:outgoing xmlns="">Flow_1vbjv8l</bpmn:outgoing>
         </bpmn:serviceTask>
-        <bpmn:userTask xmlns:camunda="http://camunda.org/schema/1.0/bpmn" name="Retrieve payment" id="Activity_126a4jc" camunda:formKey="retrievePayment">
+        <bpmn:userTask name="Retrieve payment" id="Activity_126a4jc">
+            <bpmn:extensionElements>
+                <zeebe:formDefinition formId="retrievePayment"/>
+                <zeebe:userTask/>
+            </bpmn:extensionElements>
             <bpmn:incoming xmlns="">Flow_0yru6nl</bpmn:incoming>
             <bpmn:outgoing xmlns="">Flow_0evuzug</bpmn:outgoing>
         </bpmn:userTask>
