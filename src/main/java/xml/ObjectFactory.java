@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der Eclipse Implementation of JAXB, v3.0.0 generiert 
 // Siehe https://eclipse-ee4j.github.io/jaxb-ri 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2025.04.27 um 09:40:55 AM CEST 
+// Generiert: 2025.05.15 um 07:06:23 PM CEST 
 //
 
 
@@ -170,19 +170,17 @@ public class ObjectFactory {
     private final static QName _DiagramElementExtension_QNAME = new QName("http://www.omg.org/spec/DD/20100524/DI", "extension");
     private final static QName _ModelerExecutionPlatform_QNAME = new QName("http://camunda.org/schema/modeler/1.0", "executionPlatform");
     private final static QName _ModelerExecutionPlatformVersion_QNAME = new QName("http://camunda.org/schema/modeler/1.0", "executionPlatformVersion");
-    private final static QName _ModelerProperties_QNAME = new QName("http://camunda.org/schema/modeler/1.0", "properties");
-    private final static QName _ModelerListeners_QNAME = new QName("http://camunda.org/schema/modeler/1.0", "listeners");
-    private final static QName _ModelerInputOutput_QNAME = new QName("http://camunda.org/schema/modeler/1.0", "inputOutput");
     private final static QName _ZeebeTaskDefinition_QNAME = new QName("http://camunda.org/schema/zeebe/1.0", "taskDefinition");
     private final static QName _ZeebeInput_QNAME = new QName("http://camunda.org/schema/zeebe/1.0", "input");
     private final static QName _ZeebeOutput_QNAME = new QName("http://camunda.org/schema/zeebe/1.0", "output");
     private final static QName _ZeebeSubscription_QNAME = new QName("http://camunda.org/schema/zeebe/1.0", "subscription");
     private final static QName _ZeebeCalledDecision_QNAME = new QName("http://camunda.org/schema/zeebe/1.0", "calledDecision");
-    private final static QName _InputOutputTypeInputParameter_QNAME = new QName("http://camunda.org/schema/modeler/1.0", "inputParameter");
-    private final static QName _InputOutputTypeOutputParameter_QNAME = new QName("http://camunda.org/schema/modeler/1.0", "outputParameter");
-    private final static QName _ListenersTypeExecutionListener_QNAME = new QName("http://camunda.org/schema/modeler/1.0", "executionListener");
-    private final static QName _ListenersTypeTaskListener_QNAME = new QName("http://camunda.org/schema/modeler/1.0", "taskListener");
-    private final static QName _PropertiesTypeProperty_QNAME = new QName("http://camunda.org/schema/modeler/1.0", "property");
+    private final static QName _FieldTypeExpression_QNAME = new QName("http://camunda.org/schema/1.0/bpmn", "expression");
+    private final static QName _FieldTypeString_QNAME = new QName("http://camunda.org/schema/1.0/bpmn", "string");
+    private final static QName _PropertiesTypeProperty_QNAME = new QName("http://camunda.org/schema/1.0/bpmn", "property");
+    private final static QName _TaskListenerTypeField_QNAME = new QName("http://camunda.org/schema/1.0/bpmn", "field");
+    private final static QName _InputOutputTypeInputParameter_QNAME = new QName("http://camunda.org/schema/1.0/bpmn", "inputParameter");
+    private final static QName _InputOutputTypeOutputParameter_QNAME = new QName("http://camunda.org/schema/1.0/bpmn", "outputParameter");
     private final static QName _EdgeWaypoint_QNAME = new QName("http://www.omg.org/spec/DD/20100524/DI", "waypoint");
     private final static QName _TFlowElementCategoryValueRef_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "categoryValueRef");
     private final static QName _TFlowNodeIncoming_QNAME = new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", "incoming");
@@ -1272,54 +1270,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link PropertiesType }
-     * 
-     */
-    public PropertiesType createPropertiesType() {
-        return new PropertiesType();
-    }
-
-    /**
-     * Create an instance of {@link ListenersType }
-     * 
-     */
-    public ListenersType createListenersType() {
-        return new ListenersType();
-    }
-
-    /**
-     * Create an instance of {@link InputOutputType }
-     * 
-     */
-    public InputOutputType createInputOutputType() {
-        return new InputOutputType();
-    }
-
-    /**
-     * Create an instance of {@link PropertyType }
-     * 
-     */
-    public PropertyType createPropertyType() {
-        return new PropertyType();
-    }
-
-    /**
-     * Create an instance of {@link ListenerType }
-     * 
-     */
-    public ListenerType createListenerType() {
-        return new ListenerType();
-    }
-
-    /**
-     * Create an instance of {@link ParameterType }
-     * 
-     */
-    public ParameterType createParameterType() {
-        return new ParameterType();
-    }
-
-    /**
      * Create an instance of {@link Zeebe }
      * 
      */
@@ -1381,6 +1331,70 @@ public class ObjectFactory {
      */
     public UserTask createUserTask() {
         return new UserTask();
+    }
+
+    /**
+     * Create an instance of {@link InputOutputType }
+     * 
+     */
+    public InputOutputType createInputOutputType() {
+        return new InputOutputType();
+    }
+
+    /**
+     * Create an instance of {@link InputParameterType }
+     * 
+     */
+    public InputParameterType createInputParameterType() {
+        return new InputParameterType();
+    }
+
+    /**
+     * Create an instance of {@link OutputParameterType }
+     * 
+     */
+    public OutputParameterType createOutputParameterType() {
+        return new OutputParameterType();
+    }
+
+    /**
+     * Create an instance of {@link ExecutionListenerType }
+     * 
+     */
+    public ExecutionListenerType createExecutionListenerType() {
+        return new ExecutionListenerType();
+    }
+
+    /**
+     * Create an instance of {@link TaskListenerType }
+     * 
+     */
+    public TaskListenerType createTaskListenerType() {
+        return new TaskListenerType();
+    }
+
+    /**
+     * Create an instance of {@link PropertiesType }
+     * 
+     */
+    public PropertiesType createPropertiesType() {
+        return new PropertiesType();
+    }
+
+    /**
+     * Create an instance of {@link PropertyType }
+     * 
+     */
+    public PropertyType createPropertyType() {
+        return new PropertyType();
+    }
+
+    /**
+     * Create an instance of {@link FieldType }
+     * 
+     */
+    public FieldType createFieldType() {
+        return new FieldType();
     }
 
     /**
@@ -3202,45 +3216,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link PropertiesType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link PropertiesType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://camunda.org/schema/modeler/1.0", name = "properties", scope = Modeler.class)
-    public JAXBElement<PropertiesType> createModelerProperties(PropertiesType value) {
-        return new JAXBElement<PropertiesType>(_ModelerProperties_QNAME, PropertiesType.class, Modeler.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ListenersType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ListenersType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://camunda.org/schema/modeler/1.0", name = "listeners", scope = Modeler.class)
-    public JAXBElement<ListenersType> createModelerListeners(ListenersType value) {
-        return new JAXBElement<ListenersType>(_ModelerListeners_QNAME, ListenersType.class, Modeler.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link InputOutputType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link InputOutputType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://camunda.org/schema/modeler/1.0", name = "inputOutput", scope = Modeler.class)
-    public JAXBElement<InputOutputType> createModelerInputOutput(InputOutputType value) {
-        return new JAXBElement<InputOutputType>(_ModelerInputOutput_QNAME, InputOutputType.class, Modeler.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link TaskDefinition }{@code >}
      * 
      * @param value
@@ -3306,55 +3281,29 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ParameterType }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ParameterType }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link String }{@code >}
      */
-    @XmlElementDecl(namespace = "http://camunda.org/schema/modeler/1.0", name = "inputParameter", scope = InputOutputType.class)
-    public JAXBElement<ParameterType> createInputOutputTypeInputParameter(ParameterType value) {
-        return new JAXBElement<ParameterType>(_InputOutputTypeInputParameter_QNAME, ParameterType.class, InputOutputType.class, value);
+    @XmlElementDecl(namespace = "http://camunda.org/schema/1.0/bpmn", name = "expression", scope = FieldType.class)
+    public JAXBElement<String> createFieldTypeExpression(String value) {
+        return new JAXBElement<String>(_FieldTypeExpression_QNAME, String.class, FieldType.class, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ParameterType }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ParameterType }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link String }{@code >}
      */
-    @XmlElementDecl(namespace = "http://camunda.org/schema/modeler/1.0", name = "outputParameter", scope = InputOutputType.class)
-    public JAXBElement<ParameterType> createInputOutputTypeOutputParameter(ParameterType value) {
-        return new JAXBElement<ParameterType>(_InputOutputTypeOutputParameter_QNAME, ParameterType.class, InputOutputType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ListenerType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ListenerType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://camunda.org/schema/modeler/1.0", name = "executionListener", scope = ListenersType.class)
-    public JAXBElement<ListenerType> createListenersTypeExecutionListener(ListenerType value) {
-        return new JAXBElement<ListenerType>(_ListenersTypeExecutionListener_QNAME, ListenerType.class, ListenersType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ListenerType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ListenerType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://camunda.org/schema/modeler/1.0", name = "taskListener", scope = ListenersType.class)
-    public JAXBElement<ListenerType> createListenersTypeTaskListener(ListenerType value) {
-        return new JAXBElement<ListenerType>(_ListenersTypeTaskListener_QNAME, ListenerType.class, ListenersType.class, value);
+    @XmlElementDecl(namespace = "http://camunda.org/schema/1.0/bpmn", name = "string", scope = FieldType.class)
+    public JAXBElement<String> createFieldTypeString(String value) {
+        return new JAXBElement<String>(_FieldTypeString_QNAME, String.class, FieldType.class, value);
     }
 
     /**
@@ -3365,9 +3314,61 @@ public class ObjectFactory {
      * @return
      *     the new instance of {@link JAXBElement }{@code <}{@link PropertyType }{@code >}
      */
-    @XmlElementDecl(namespace = "http://camunda.org/schema/modeler/1.0", name = "property", scope = PropertiesType.class)
+    @XmlElementDecl(namespace = "http://camunda.org/schema/1.0/bpmn", name = "property", scope = PropertiesType.class)
     public JAXBElement<PropertyType> createPropertiesTypeProperty(PropertyType value) {
         return new JAXBElement<PropertyType>(_PropertiesTypeProperty_QNAME, PropertyType.class, PropertiesType.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link FieldType }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link FieldType }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://camunda.org/schema/1.0/bpmn", name = "field", scope = TaskListenerType.class)
+    public JAXBElement<FieldType> createTaskListenerTypeField(FieldType value) {
+        return new JAXBElement<FieldType>(_TaskListenerTypeField_QNAME, FieldType.class, TaskListenerType.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link FieldType }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link FieldType }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://camunda.org/schema/1.0/bpmn", name = "field", scope = ExecutionListenerType.class)
+    public JAXBElement<FieldType> createExecutionListenerTypeField(FieldType value) {
+        return new JAXBElement<FieldType>(_TaskListenerTypeField_QNAME, FieldType.class, ExecutionListenerType.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link InputParameterType }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link InputParameterType }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://camunda.org/schema/1.0/bpmn", name = "inputParameter", scope = InputOutputType.class)
+    public JAXBElement<InputParameterType> createInputOutputTypeInputParameter(InputParameterType value) {
+        return new JAXBElement<InputParameterType>(_InputOutputTypeInputParameter_QNAME, InputParameterType.class, InputOutputType.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link OutputParameterType }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link OutputParameterType }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://camunda.org/schema/1.0/bpmn", name = "outputParameter", scope = InputOutputType.class)
+    public JAXBElement<OutputParameterType> createInputOutputTypeOutputParameter(OutputParameterType value) {
+        return new JAXBElement<OutputParameterType>(_InputOutputTypeOutputParameter_QNAME, OutputParameterType.class, InputOutputType.class, value);
     }
 
     /**

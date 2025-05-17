@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der Eclipse Implementation of JAXB, v3.0.0 generiert 
 // Siehe https://eclipse-ee4j.github.io/jaxb-ri 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2025.04.27 um 09:40:55 AM CEST 
+// Generiert: 2025.05.15 um 07:06:23 PM CEST 
 //
 
 
@@ -28,7 +28,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="property" type="{http://camunda.org/schema/modeler/1.0}PropertyType" maxOccurs="unbounded"/&gt;
+ *         &lt;element name="property" type="{http://camunda.org/schema/1.0/bpmn}PropertyType" maxOccurs="unbounded"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "PropertiesType", namespace = "http://camunda.org/schema/modeler/1.0", propOrder = {
+@XmlType(name = "PropertiesType", namespace = "http://camunda.org/schema/1.0/bpmn", propOrder = {
     "properties"
 })
 public class PropertiesType
@@ -46,7 +46,7 @@ public class PropertiesType
 {
 
     private final static long serialVersionUID = -1L;
-    @XmlElementRef(name = "property", namespace = "http://camunda.org/schema/modeler/1.0", type = JAXBElement.class)
+    @XmlElementRef(name = "property", namespace = "http://camunda.org/schema/1.0/bpmn", type = JAXBElement.class)
     protected List<JAXBElement<PropertyType>> properties;
 
     /**

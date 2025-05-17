@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der Eclipse Implementation of JAXB, v3.0.0 generiert 
 // Siehe https://eclipse-ee4j.github.io/jaxb-ri 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2025.04.27 um 09:40:55 AM CEST 
+// Generiert: 2025.05.15 um 07:06:23 PM CEST 
 //
 
 
@@ -28,8 +28,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="inputParameter" type="{http://camunda.org/schema/modeler/1.0}ParameterType" maxOccurs="unbounded"/&gt;
- *         &lt;element name="outputParameter" type="{http://camunda.org/schema/modeler/1.0}ParameterType" maxOccurs="unbounded"/&gt;
+ *         &lt;element name="inputParameter" type="{http://camunda.org/schema/1.0/bpmn}InputParameterType" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *         &lt;element name="outputParameter" type="{http://camunda.org/schema/1.0/bpmn}OutputParameterType" maxOccurs="unbounded" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -39,7 +39,7 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "InputOutputType", namespace = "http://camunda.org/schema/modeler/1.0", propOrder = {
+@XmlType(name = "InputOutputType", namespace = "http://camunda.org/schema/1.0/bpmn", propOrder = {
     "inputParameters",
     "outputParameters"
 })
@@ -48,10 +48,10 @@ public class InputOutputType
 {
 
     private final static long serialVersionUID = -1L;
-    @XmlElementRef(name = "inputParameter", namespace = "http://camunda.org/schema/modeler/1.0", type = JAXBElement.class)
-    protected List<JAXBElement<ParameterType>> inputParameters;
-    @XmlElementRef(name = "outputParameter", namespace = "http://camunda.org/schema/modeler/1.0", type = JAXBElement.class)
-    protected List<JAXBElement<ParameterType>> outputParameters;
+    @XmlElementRef(name = "inputParameter", namespace = "http://camunda.org/schema/1.0/bpmn", type = JAXBElement.class, required = false)
+    protected List<JAXBElement<InputParameterType>> inputParameters;
+    @XmlElementRef(name = "outputParameter", namespace = "http://camunda.org/schema/1.0/bpmn", type = JAXBElement.class, required = false)
+    protected List<JAXBElement<OutputParameterType>> outputParameters;
 
     /**
      * Gets the value of the inputParameters property.
@@ -71,13 +71,13 @@ public class InputOutputType
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link ParameterType }{@code >}
+     * {@link JAXBElement }{@code <}{@link InputParameterType }{@code >}
      * 
      * 
      */
-    public List<JAXBElement<ParameterType>> getInputParameters() {
+    public List<JAXBElement<InputParameterType>> getInputParameters() {
         if (inputParameters == null) {
-            inputParameters = new ArrayList<JAXBElement<ParameterType>>();
+            inputParameters = new ArrayList<JAXBElement<InputParameterType>>();
         }
         return this.inputParameters;
     }
@@ -100,13 +100,13 @@ public class InputOutputType
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link ParameterType }{@code >}
+     * {@link JAXBElement }{@code <}{@link OutputParameterType }{@code >}
      * 
      * 
      */
-    public List<JAXBElement<ParameterType>> getOutputParameters() {
+    public List<JAXBElement<OutputParameterType>> getOutputParameters() {
         if (outputParameters == null) {
-            outputParameters = new ArrayList<JAXBElement<ParameterType>>();
+            outputParameters = new ArrayList<JAXBElement<OutputParameterType>>();
         }
         return this.outputParameters;
     }
