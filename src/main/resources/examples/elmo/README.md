@@ -70,7 +70,7 @@ Below are the transformation logs for each domain linked:
 
 * provided in the transformation.log files
 
-### ⚠️ Limitations
+### ⚠️ Mapping Limitations
 
 #### Message Subscription Correlation Key
 When using Camunda 8 Message Receive Events, a correlation key must be set for the specified message. 
