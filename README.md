@@ -26,6 +26,13 @@ The source code will be made available as an open-source project on GitHub.
 - [ELMO](src/main/resources/examples/elmo): A quantitive performance analysis using the converter on the [ELMO Project](https://github.com/stephanpelikan/elmo)
 - [BPMN Examples](src/main/resources/examples/bpmn-examples): Some BPMN example Mappings 
 
+## XML Schemas
+As part of this project, XML Schemas were created to support both Camunda 7 and Camunda 8 BPMN models (including Zeebe-specific extensions).  
+These schemas are available in the repository under:  
+[vanilla-converter/src/main/resources/schema](https://github.com/dsunaric/vanilla-converter/tree/main/src/main/resources/schema)
+
+They can be used for validation, tooling support, or integration into custom editors and IDEs.
+
 ## Supported Elements
 
 ### Tasks
