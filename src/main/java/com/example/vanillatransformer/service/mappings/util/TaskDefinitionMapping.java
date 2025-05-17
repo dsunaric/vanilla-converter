@@ -36,7 +36,7 @@ public class TaskDefinitionMapping implements Mapping<String,TaskDefinition> {
     public TaskDefinition map(String expression, QName type) {
 
         if(type == null){
-
+            return map(expression);
         }
 
         if(type.equals(Camunda7Constants.CAMUNDA_DELEGATE_EXPRESSION)){

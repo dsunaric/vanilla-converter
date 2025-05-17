@@ -48,6 +48,7 @@ public class CallActivityMapping implements Mapping<TCallActivity,TCallActivity>
         }
         tcallActivity.setExtensionElements(extensionElements);
 
+        LOG.info("FINISHED MAPPING : <bpmn:callActivity> with id={}",tcallActivity.getId());
         return tcallActivity;
     }
 

@@ -52,6 +52,7 @@ public class MessageMapping implements Mapping<TMessage,TMessage> {
             throw new RuntimeException(e);
         }
         tMessage.setExtensionElements(extensionElements);
+        LOG.info("FINISHED MAPPING: bpmn:message with id={}",tMessage.getId());
         return tMessage;
     }
 

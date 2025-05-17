@@ -24,6 +24,8 @@ public class SubscriptionMapping implements Mapping<String, Subscription> {
         subscription.setCorrelationKey(correlationKey);
 
         LOG.info("TODO: set correlationKey=?? in zeebe:subscription Element");
+
+        LOG.info("FINISHED MAPPING: zeebe:subscription with correlationKey={} ",correlationKey);
         return subscription;
     }
 

@@ -36,7 +36,9 @@ public class ScriptTaskMapping implements Mapping<TScriptTask,TScriptTask> {
     @Override
     public TScriptTask map(TScriptTask tScriptTask) {
         LOG.info("MAPPING: ScriptTask with id={}",tScriptTask.getId());
-        return (TScriptTask) noMappingImplemented.map(tScriptTask);
+        TScriptTask scriptTask =  (TScriptTask) noMappingImplemented.map(tScriptTask);
+        LOG.info("FINISHED MAPPING: ScriptTask with id={}",tScriptTask.getId());
+        return scriptTask;
     }
 
 }

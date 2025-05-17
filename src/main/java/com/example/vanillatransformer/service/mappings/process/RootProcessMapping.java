@@ -1,6 +1,7 @@
 package com.example.vanillatransformer.service.mappings.process;
 
 import com.example.vanillatransformer.service.mappings.process.events.EventMapping;
+import com.example.vanillatransformer.service.mappings.process.tasks.ReceiveTaskMapping;
 import com.example.vanillatransformer.service.mappings.util.Mapping;
 import com.example.vanillatransformer.service.mappings.process.tasks.businessrule.BusinessRuleTaskMapping;
 import com.example.vanillatransformer.service.mappings.process.tasks.callactivity.CallActivityMapping;
@@ -38,6 +39,9 @@ public class RootProcessMapping implements Mapping<TProcess,TProcess> {
     private CallActivityMapping callActivityMapping;
 
     @Autowired
+    private ReceiveTaskMapping receiveTaskMapping;
+
+    @Autowired
     private UserTaskMapping userTaskMapping;
 
     @Autowired
@@ -50,7 +54,7 @@ public class RootProcessMapping implements Mapping<TProcess,TProcess> {
 
     @Override
     public TProcess map(TProcess tProcess) {
-        LOG.info("MAPPING: <bpmn:process>");
+        LOG.info("MAPPING: <bpmn:process> with id={}", tProcess.getId());
 
         List<TGateway> gateways = extractElementsWithType(tProcess, TGateway.class);
         for(var gateway : gateways) {
@@ -70,6 +74,11 @@ public class RootProcessMapping implements Mapping<TProcess,TProcess> {
         List<TSendTask> sendTasks = extractElementsWithType(tProcess, TSendTask.class);
         for(var task : sendTasks) {
             serviceTaskLikeMapping.map(task);
+        }
+
+        List<TReceiveTask> receiveTasks = extractElementsWithType(tProcess, TReceiveTask.class);
+        for(var task : receiveTasks) {
+            receiveTaskMapping.map(task);
         }
 
         List<TBusinessRuleTask> businessRuleTasks = extractElementsWithType(tProcess, TBusinessRuleTask.class);
@@ -97,6 +106,7 @@ public class RootProcessMapping implements Mapping<TProcess,TProcess> {
             subProcessMapping.map(subProcess);
         }
 
+        LOG.info("FINISHED MAPPING: <bpmn:process> with id={}", tProcess.getId());
         return tProcess;
     }
 

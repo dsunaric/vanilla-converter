@@ -25,9 +25,9 @@ import javax.xml.transform.dom.DOMResult;
 @Setter
 @Getter
 @Component
-public class EventDefinitionMapping implements Mapping<TEventDefinition,TEventDefinition> {
+public class CatchEventDefinitionMapping implements Mapping<TEventDefinition,TEventDefinition> {
 
-    private static Logger LOG = LoggerFactory.getLogger(EventDefinitionMapping.class);
+    private static Logger LOG = LoggerFactory.getLogger(CatchEventDefinitionMapping.class);
 
 
     @Autowired
@@ -41,35 +41,6 @@ public class EventDefinitionMapping implements Mapping<TEventDefinition,TEventDe
     @Override
     public TEventDefinition map(TEventDefinition tEventDefinition) {
         LOG.info("MAPPING: bpmn:eventDefinition with id={}",tEventDefinition.getId());
-        if(tEventDefinition instanceof TMessageEventDefinition){
-            TMessageEventDefinition messageEventDefinition = (TMessageEventDefinition) tEventDefinition;
-
-            ExtensionElements extensionElements = new ExtensionElements();
-            var elements = extensionElements.getAnies();
-
-
-            QName messageEventDefinitionType =  ProcessUtil.getServiceTaskDefinitionType(messageEventDefinition);
-            String messageEventDefinitionData = tEventDefinition.getOtherAttributes().get(messageEventDefinitionType);
-            if(messageEventDefinitionData == null){
-                LOG.info("TODO: manually configure Jobworker for Message Throw Event with id {} ", tEventDefinition.getId());
-                messageEventDefinitionData = "configureJobType";
-            }
-            try {
-                JAXBContext context = JAXBContext.newInstance(TaskDefinition.class);
-                DOMResult res = new DOMResult();
-                Marshaller marshaller = context.createMarshaller();
-                marshaller.setProperty("org.glassfish.jaxb.namespacePrefixMapper", new CustomNamespacePrefixMapper());
-                marshaller.marshal(taskDefinitionMapping.map(messageEventDefinitionData, messageEventDefinitionType), res);
-                Element elt = ((Document)res.getNode()).getDocumentElement();
-                elements.add(elt);
-            } catch (JAXBException e) {
-                throw new RuntimeException(e);
-            }
-            tEventDefinition.setExtensionElements(extensionElements);
-
-            LOG.info("TODO (OPTIONAL): adapt zeebe:taskDefinition type for Message Event with id={} to select correct JobWorker",tEventDefinition.getId());
-            return tEventDefinition;
-        }
 
         if(tEventDefinition instanceof TTimerEventDefinition){
             TTimerEventDefinition timerEventDefinition = (TTimerEventDefinition) tEventDefinition;
@@ -102,7 +73,10 @@ public class EventDefinitionMapping implements Mapping<TEventDefinition,TEventDe
             }
             return tEventDefinition;
         }
-        return (TEventDefinition) noMapping.map(tEventDefinition);
+        TEventDefinition eventDefinition = (TEventDefinition) noMapping.map(tEventDefinition);
+
+        LOG.info("FINISHED MAPPING: bpmn:eventDefinition with id={}",tEventDefinition.getId());
+        return eventDefinition;
     }
 
 }

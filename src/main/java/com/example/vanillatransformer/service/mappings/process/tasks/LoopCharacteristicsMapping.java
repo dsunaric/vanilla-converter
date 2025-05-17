@@ -32,7 +32,6 @@ public class LoopCharacteristicsMapping implements Mapping<TLoopCharacteristics,
 
     @Override
     public TLoopCharacteristics map(TLoopCharacteristics loopCharacteristics) {
-        LOG.info("MAPPING: LoopCharacteristics with id={}",loopCharacteristics.getId());
         if(loopCharacteristics instanceof TMultiInstanceLoopCharacteristics){
             ExtensionElements extensionElements = new ExtensionElements();
             var elements = extensionElements.getAnies();
@@ -45,7 +44,7 @@ public class LoopCharacteristicsMapping implements Mapping<TLoopCharacteristics,
             }
 
             if(loopCharacteristics.getOtherAttributes().containsKey(Camunda7Constants.CAMUNDA_LOOP_ELEMENT_VARIABLE)) {
-                zeebeLoopCharacteristics.setInputElement(loopCharacteristics.getOtherAttributes().get(Camunda7Constants.CAMUNDA_LOOP_ELEMENT_VARIABLE));
+                zeebeLoopCharacteristics.setInputElement(expressionMapping.map(loopCharacteristics.getOtherAttributes().get(Camunda7Constants.CAMUNDA_LOOP_ELEMENT_VARIABLE)));
             }
 
             if(((TMultiInstanceLoopCharacteristics) loopCharacteristics).getLoopCardinality() != null){

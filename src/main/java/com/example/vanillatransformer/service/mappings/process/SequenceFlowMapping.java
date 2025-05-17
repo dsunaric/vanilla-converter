@@ -30,6 +30,7 @@ public class SequenceFlowMapping implements Mapping<TSequenceFlow,TSequenceFlow>
         LOG.info("MAPPING: bpmn:sequenceFlow with id={}",tSequenceFlow.getId());
 
         if(tSequenceFlow.getConditionExpression() == null){
+            LOG.info("FINISHED MAPPING: bpmn:sequenceFlow with id={}",tSequenceFlow.getId());
             return tSequenceFlow;
         }
         TExpression conditionalExpression = tSequenceFlow.getConditionExpression().getValue();
@@ -42,7 +43,7 @@ public class SequenceFlowMapping implements Mapping<TSequenceFlow,TSequenceFlow>
 
         content.clear();
         content.addAll(newContent);
-
+        LOG.info("FINISHED MAPPING: bpmn:sequenceFlow with id={}",tSequenceFlow.getId());
         return tSequenceFlow;
     }
 

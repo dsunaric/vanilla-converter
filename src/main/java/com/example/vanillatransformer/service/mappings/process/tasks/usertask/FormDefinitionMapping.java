@@ -47,7 +47,6 @@ public class FormDefinitionMapping implements Mapping<TUserTask,FormDefinition> 
             formDefinition.setFormId("AddFormId");
             LOG.info("TODO: bpmn:userTask with id={} need to be manually mapped to zeebe:formDefinition",tUserTask.getId());
         }
-
         return formDefinition;
     }
 

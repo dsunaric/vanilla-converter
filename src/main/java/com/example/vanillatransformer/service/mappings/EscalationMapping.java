@@ -25,7 +25,9 @@ public class EscalationMapping implements Mapping<TEscalation,TEscalation> {
     @Override
     public TEscalation map(TEscalation tEscalation) {
         LOG.info("MAPPING: bpmn:escalation with id={}",tEscalation.getId());
-        return (TEscalation) noMapping.map(tEscalation);
+        TEscalation escalation = (TEscalation) noMapping.map(tEscalation);
+        LOG.info("FINISHED MAPPING: bpmn:escalation with id={}",tEscalation.getId());
+        return escalation;
     }
 
 }

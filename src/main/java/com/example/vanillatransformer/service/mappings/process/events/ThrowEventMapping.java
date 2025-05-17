@@ -38,6 +38,9 @@ public class ThrowEventMapping implements Mapping<TThrowEvent,TThrowEvent> {
     @Autowired
     private TaskDefinitionMapping taskDefinitionMapping;
 
+    @Autowired
+    private ThrowEventDefinitionMapping throwEventDefinitionMapping;
+
     @Override
     public TThrowEvent map(TThrowEvent tThrowEvent) {
         LOG.info("MAPPING: bpmn:throwEvent with id={} ",tThrowEvent.getId());
@@ -50,7 +53,8 @@ public class ThrowEventMapping implements Mapping<TThrowEvent,TThrowEvent> {
         }
 
         TEventDefinition eventDefinition =  tThrowEvent.getEventDefinitions().get(0).getValue();
-        //only mapping for messages is needed
+        eventDefinition = throwEventDefinitionMapping.map(eventDefinition);
+
         if(eventDefinition instanceof TMessageEventDefinition){
             TMessageEventDefinition messageEventDefinition = (TMessageEventDefinition) eventDefinition;
 
@@ -59,10 +63,10 @@ public class ThrowEventMapping implements Mapping<TThrowEvent,TThrowEvent> {
 
 
             QName messageEventDefinitionType =  ProcessUtil.getServiceTaskDefinitionType(messageEventDefinition);
-            String messageEventDefinitionData = messageEventDefinition.getOtherAttributes().get(messageEventDefinitionType);
+            String messageEventDefinitionData = eventDefinition.getOtherAttributes().get(messageEventDefinitionType);
             if(messageEventDefinitionData == null){
-                LOG.info("TODO (OPTIONAL): manually map throw Event with id={}",tThrowEvent.getId());
-                return tThrowEvent;
+                LOG.info("TODO: manually configure Jobworker for Message Throw Event with id {} ", eventDefinition.getId());
+                messageEventDefinitionData = "configureJobType";
             }
             try {
                 JAXBContext context = JAXBContext.newInstance(TaskDefinition.class);
@@ -78,10 +82,11 @@ public class ThrowEventMapping implements Mapping<TThrowEvent,TThrowEvent> {
             tThrowEvent.setExtensionElements(extensionElements);
 
             LOG.info("TODO (OPTIONAL): adapt zeebe:taskDefinition type for Message Event with id={} to select correct JobWorker",tThrowEvent.getId());
-            return tThrowEvent;
         }
 
-        return (TThrowEvent) noMapping.map(tThrowEvent);
+        LOG.info("FINISHED MAPPING: bpmn:throwEvent with id={} ",tThrowEvent.getId());
+
+        return tThrowEvent;
     }
 
 }

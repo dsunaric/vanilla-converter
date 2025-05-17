@@ -24,7 +24,9 @@ public class SignalMapping implements Mapping<TSignal,TSignal> {
     @Override
     public TSignal map(TSignal tSignal) {
         LOG.info("MAPPING: bpmn:signal with id={}",tSignal.getId());
-        return (TSignal) noMapping.map(tSignal);
+        tSignal = (TSignal) noMapping.map(tSignal);
+        LOG.info("FINISHED MAPPING: bpmn:signal with id={}",tSignal.getId());
+        return tSignal;
     }
 
 }

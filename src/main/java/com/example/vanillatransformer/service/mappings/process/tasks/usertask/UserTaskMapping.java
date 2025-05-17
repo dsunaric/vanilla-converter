@@ -41,7 +41,7 @@ public class UserTaskMapping implements Mapping<TUserTask,TUserTask> {
     private static Logger LOG = LoggerFactory.getLogger(UserTaskMapping.class);
     @Override
     public TUserTask map(TUserTask tUserTask) {
-        LOG.info("MAPPING: Task with id={}",tUserTask.getId());
+        LOG.info("MAPPING: UserTask with id={}",tUserTask.getId());
 
         ExtensionElements extensionElements = new ExtensionElements();
         var elements = extensionElements.getAnies();
@@ -64,6 +64,7 @@ public class UserTaskMapping implements Mapping<TUserTask,TUserTask> {
         removeAttributeMapping.map(tUserTask, Camunda7Constants.CAMUNDA_FORM_REFBINDING);
 
         LOG.info("TODO (OPTIONAL): adapt zeebe:formDefinition type for Task with id={} to select correct Form for Usertask",tUserTask.getId());
+        LOG.info("FINISHED MAPPING: UserTask with id={}",tUserTask.getId());
         return tUserTask;
     }
 

@@ -44,7 +44,12 @@ public class ServiceTaskLikeMapping implements Mapping<TTask,TTask> {
         ExtensionElements extensionElements = new ExtensionElements();
         var elements = extensionElements.getAnies();
 
+        if(!elements.isEmpty()){
+            LOG.info("TODO: Manually map bpmn:extensionElements for Task with id={} ",tServiceTaskLike.getId());
+        }
+
         if(((TActivity)tServiceTaskLike).getLoopCharacteristics() != null){
+            LOG.info("MAPPING: LoopCharacteristics for element with id={}", tServiceTaskLike.getId());
             loopCharacteristicsMapping.map(((TActivity)tServiceTaskLike).getLoopCharacteristics().getValue());
         }
         TaskDefinition taskDefinition = new TaskDefinition();
@@ -53,7 +58,7 @@ public class ServiceTaskLikeMapping implements Mapping<TTask,TTask> {
             String serviceTaskDefinition = tServiceTaskLike.getOtherAttributes().get(serviceTaskDefinitionType);
             taskDefinition = taskDefinitionMapping.map(serviceTaskDefinition);
         } else {
-            LOG.info("TODO: no task definition found for ServiceTaskLike Task with id={} probably Type 'Connector' was being used - manuall mapping needed",tServiceTaskLike.getId());
+            LOG.info("TODO (OPTIONAL): no task definition found for ServiceTaskLike Task with id={} -  manuall mapping might be needed",tServiceTaskLike.getId());
             taskDefinition.setType("AddJobWorker");
         }
 
@@ -72,6 +77,8 @@ public class ServiceTaskLikeMapping implements Mapping<TTask,TTask> {
         tServiceTaskLike.setExtensionElements(extensionElements);
 
         LOG.info("TODO (OPTIONAL): adapt zeebe:taskDefinition type for Task with id={} to select correct JobWorker",tServiceTaskLike.getId());
+
+        LOG.info("FINISHED MAPPING: Task with id={}",tServiceTaskLike.getId());
         return tServiceTaskLike;
     }
 

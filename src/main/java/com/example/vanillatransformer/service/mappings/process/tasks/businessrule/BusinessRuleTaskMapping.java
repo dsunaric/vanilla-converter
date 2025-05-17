@@ -74,6 +74,8 @@ public class BusinessRuleTaskMapping implements Mapping<TTask,TTask> {
         businessRuleTask.setExtensionElements(extensionElements);
 
         LOG.info("TODO (OPTIONAL): adapt zeebe:taskDefinition type for Task with id={} to select correct JobWorker",businessRuleTask.getId());
+
+        LOG.info("FINISHED MAPPING: Task with id={}",businessRuleTask.getId());
         return businessRuleTask;
     }
 

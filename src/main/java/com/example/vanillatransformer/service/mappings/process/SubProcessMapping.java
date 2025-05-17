@@ -2,6 +2,7 @@ package com.example.vanillatransformer.service.mappings.process;
 
 import com.example.vanillatransformer.service.mappings.process.events.EventMapping;
 import com.example.vanillatransformer.service.mappings.process.tasks.LoopCharacteristicsMapping;
+import com.example.vanillatransformer.service.mappings.process.tasks.ReceiveTaskMapping;
 import com.example.vanillatransformer.service.mappings.process.tasks.ServiceTaskLikeMapping;
 import com.example.vanillatransformer.service.mappings.process.tasks.businessrule.BusinessRuleTaskMapping;
 import com.example.vanillatransformer.service.mappings.process.tasks.callactivity.CallActivityMapping;
@@ -37,6 +38,9 @@ public class SubProcessMapping implements Mapping<TSubProcess,TSubProcess> {
     private LoopCharacteristicsMapping loopCharacteristicsMapping;
 
     @Autowired
+    private ReceiveTaskMapping receiveTaskMapping;
+
+    @Autowired
     private EventMapping eventMapping;
 
     @Autowired
@@ -59,7 +63,13 @@ public class SubProcessMapping implements Mapping<TSubProcess,TSubProcess> {
 
     @Override
     public TSubProcess map(TSubProcess tSubProcess) {
-        LOG.info("MAPPING: <bpmn:subProcess> with id {}", tSubProcess.getId());
+        LOG.info("MAPPING: <bpmn:subProcess> with id={}", tSubProcess.getId());
+
+
+        ExtensionElements extensionElements = tSubProcess.getExtensionElements();
+        if(extensionElements != null && !extensionElements.getAnies().isEmpty()){
+            LOG.info("TODO: Manually Map Extension Elements of Subprocess with id={}", tSubProcess.getId());
+        }
 
         if(tSubProcess instanceof TAdHocSubProcess){
             LOG.info("TODO: Manually Map Ad-Hoc Subprocess with id {} - Ad-Hoc Subprocess is not supported by Camunda8", tSubProcess.getId());
@@ -78,6 +88,11 @@ public class SubProcessMapping implements Mapping<TSubProcess,TSubProcess> {
         List<TSendTask> sendTasks = extractElementsWithType(tSubProcess, TSendTask.class);
         for(var task : sendTasks) {
             serviceTaskLikeMapping.map(task);
+        }
+
+        List<TReceiveTask> receiveTasks = extractElementsWithType(tSubProcess, TReceiveTask.class);
+        for(var task : receiveTasks) {
+            receiveTaskMapping.map(task);
         }
 
         List<TBusinessRuleTask> businessRuleTasks = extractElementsWithType(tSubProcess, TBusinessRuleTask.class);
@@ -110,6 +125,7 @@ public class SubProcessMapping implements Mapping<TSubProcess,TSubProcess> {
             loopCharacteristics.add(tSubProcess.getLoopCharacteristics().getValue());
         }
         for(var loopCharacteristic : loopCharacteristics) {
+            LOG.info("MAPPING: LoopCharacteristics for element with id={}", tSubProcess.getId());
             loopCharacteristicsMapping.map(loopCharacteristic);
         }
 
@@ -123,6 +139,7 @@ public class SubProcessMapping implements Mapping<TSubProcess,TSubProcess> {
             map(subProcess);
         }
 
+        LOG.info("FINISHED MAPPING: <bpmn:subProcess> with id {}", tSubProcess.getId());
         return tSubProcess;
     }
 

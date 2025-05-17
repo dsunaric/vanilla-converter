@@ -74,6 +74,7 @@ public class DefinitionMapping implements Mapping<Definitions,Definitions> {
             escalationMapping.map(escalation);
         }
 
+        LOG.info("FINISHED MAPPING: <bpmn:definitions>");
         return definitions;
     }
 

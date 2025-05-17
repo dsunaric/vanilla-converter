@@ -23,7 +23,7 @@ public class EventMapping implements Mapping<TEvent,TEvent> {
     private NoMapping noMapping;
 
     @Autowired
-    private EventDefinitionMapping eventDefinitionMapping;
+    private CatchEventDefinitionMapping catchEventDefinitionMapping;
 
     @Autowired
     private ThrowEventMapping throwEventMapping;
@@ -34,21 +34,26 @@ public class EventMapping implements Mapping<TEvent,TEvent> {
         if(tEvent instanceof TCatchEvent){
             TCatchEvent catchEvent = (TCatchEvent) tEvent;
             if(catchEvent.getEventDefinitions().isEmpty()) {
-                return (TEvent) noMapping.map(catchEvent);
+                tEvent = (TEvent) noMapping.map(catchEvent);
+                LOG.info("FINISHED MAPPING: bpmn:event with id={}",tEvent.getId());
+                return tEvent;
             }
             for (JAXBElement<? extends TEventDefinition> jaxbElement : catchEvent.getEventDefinitions()) {
                 TEventDefinition eventDefinition = jaxbElement.getValue();
-                eventDefinition = eventDefinitionMapping.map(eventDefinition);
+                eventDefinition = catchEventDefinitionMapping.map(eventDefinition);
             }
+            LOG.info("FINISHED MAPPING: bpmn:event with id={}",tEvent.getId());
             return tEvent;
         }
 
         if(tEvent instanceof TThrowEvent){
-            TThrowEvent throwEvent = (TThrowEvent) tEvent;
-
-            return throwEventMapping.map(throwEvent);
+            TThrowEvent throwEvent = throwEventMapping.map((TThrowEvent) tEvent );
+            LOG.info("FINISHED MAPPING: bpmn:event with id={}",tEvent.getId());
+            return throwEvent;
         }
-        return (TEvent) noMapping.map(tEvent);
+        TEvent event = (TEvent) noMapping.map(tEvent);
+        LOG.info("FINISHED MAPPING: bpmn:event with id={}",tEvent.getId());
+        return event;
     }
 
 }

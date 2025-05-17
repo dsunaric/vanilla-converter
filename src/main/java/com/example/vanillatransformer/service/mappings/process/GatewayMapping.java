@@ -22,8 +22,9 @@ public class GatewayMapping implements Mapping<TGateway,TGateway> {
     @Override
     public TGateway map(TGateway tGateway) {
         LOG.info("MAPPING: bpmn:gateway with id={}",tGateway.getId());
-
-        return (TGateway) noMapping.map(tGateway);
+        TGateway gateway = (TGateway) noMapping.map(tGateway);
+        LOG.info("FINISHED MAPPING: bpmn:gateway with id={}",tGateway.getId());
+        return gateway;
     }
 
 }
