@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:camunda="http://camunda.org/schema/1.0/bpmn"
+           targetNamespace="http://camunda.org/schema/1.0/bpmn"
+           elementFormDefault="qualified">
+
+    <!-- Input/Output -->
+    <xs:complexType name="InputOutputType">
+        <xs:sequence>
+            <xs:element name="inputParameter" type="camunda:InputParameterType" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="outputParameter" type="camunda:OutputParameterType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="InputParameterType" mixed="true">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:any processContents="lax"/>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="OutputParameterType" mixed="true">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:any processContents="lax"/>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <!-- Execution and Task Listeners -->
+    <xs:complexType name="ExecutionListenerType">
+        <xs:sequence>
+            <xs:element name="field" type="camunda:FieldType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="event" type="xs:string" use="required"/>
+        <xs:attribute name="class" type="xs:string"/>
+        <xs:attribute name="expression" type="xs:string"/>
+        <xs:attribute name="delegateExpression" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="TaskListenerType">
+        <xs:sequence>
+            <xs:element name="field" type="camunda:FieldType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="event" type="xs:string" use="required"/>
+        <xs:attribute name="class" type="xs:string"/>
+        <xs:attribute name="expression" type="xs:string"/>
+        <xs:attribute name="delegateExpression" type="xs:string"/>
+    </xs:complexType>
+
+    <!-- Properties -->
+    <xs:complexType name="PropertiesType">
+        <xs:sequence>
+            <xs:element name="property" type="camunda:PropertyType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PropertyType">
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="value" type="xs:string"/>
+    </xs:complexType>
+
+    <!-- Fields -->
+    <xs:complexType name="FieldType">
+        <xs:choice minOccurs="0" maxOccurs="1">
+            <xs:element name="string" type="xs:string"/>
+            <xs:element name="expression" type="xs:string"/>
+        </xs:choice>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+    </xs:complexType>
+
+</xs:schema>

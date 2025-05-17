@@ -51,7 +51,8 @@ public class EventDefinitionMapping implements Mapping<TEventDefinition,TEventDe
             QName messageEventDefinitionType =  ProcessUtil.getServiceTaskDefinitionType(messageEventDefinition);
             String messageEventDefinitionData = tEventDefinition.getOtherAttributes().get(messageEventDefinitionType);
             if(messageEventDefinitionData == null){
-                return messageEventDefinition;
+                LOG.info("TODO: manually configure Jobworker for Message Throw Event with id {} ", tEventDefinition.getId());
+                messageEventDefinitionData = "configureJobType";
             }
             try {
                 JAXBContext context = JAXBContext.newInstance(TaskDefinition.class);
