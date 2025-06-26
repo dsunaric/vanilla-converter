@@ -15,7 +15,7 @@ The objective of this project is to develop a CLI application that automates the
 - **Project Completion:** June 2025
 
 ## Expected Outcome
-The result of this project will be a CLI application that converts Camunda 7 models into Camunda 8 models. After project completion, the software will be integrated into VanillaBP to enhance it as a comprehensive tool for migrating from Camunda 7 to Camunda 8.
+The result of this project is a CLI application that converts Camunda 7 models into Camunda 8 models. After project completion, the software will be integrated into VanillaBP to enhance it as a comprehensive tool for migrating from Camunda 7 to Camunda 8.
 
 The source code will be made available as an open-source project on GitHub.
 
