@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" id="__j9rMHV1EeSPmO9OU3zXbw" targetNamespace="http://camunda.org/examples" exporter="camunda modeler" exporterVersion="2.6.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.6.0">
+    <bpmn:process isExecutable="true" id="process-history-full" camunda:historyTimeToLive="P180D">
+        <bpmn:extensionElements>
+            <camunda:properties xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <camunda:property name="history" value="full"/>
+      </camunda:properties>
+        </bpmn:extensionElements>
+        <bpmn:startEvent id="StartEvent_1">
+            <bpmn:outgoing xmlns="">SequenceFlow_1</bpmn:outgoing>
+        </bpmn:startEvent>
+        <bpmn:serviceTask name="Create Variables" id="ServiceTask_1" camunda:class="org.camunda.bpm.example.CreateVariablesDelegate">
+            <bpmn:extensionElements>
+                <zeebe:taskDefinition type="org.camunda.bpm.example.CreateVariablesDelegate"/>
+            </bpmn:extensionElements>
+            <bpmn:incoming xmlns="">SequenceFlow_1</bpmn:incoming>
+            <bpmn:outgoing xmlns="">SequenceFlow_2</bpmn:outgoing>
+        </bpmn:serviceTask>
+        <bpmn:sequenceFlow sourceRef="StartEvent_1" targetRef="ServiceTask_1" name="" id="SequenceFlow_1"/>
+        <bpmn:endEvent id="EndEvent_1">
+            <bpmn:incoming xmlns="">SequenceFlow_2</bpmn:incoming>
+        </bpmn:endEvent>
+        <bpmn:sequenceFlow sourceRef="ServiceTask_1" targetRef="EndEvent_1" name="" id="SequenceFlow_2"/>
+    </bpmn:process>
+    <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+        <bpmndi:BPMNPlane xmlns="" bpmnElement="process-history-full" id="BPMNPlane_1">
+            <bpmndi:BPMNShape bpmnElement="StartEvent_1" id="_BPMNShape_StartEvent_3">
+                <dc:Bounds x="300.0" y="261.0" width="36.0" height="36.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="ServiceTask_1" id="_BPMNShape_ServiceTask_3">
+                <dc:Bounds x="386.0" y="239.0" width="100.0" height="80.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="SequenceFlow_1" sourceElement="_BPMNShape_StartEvent_3" targetElement="_BPMNShape_ServiceTask_3" id="BPMNEdge_SequenceFlow_1">
+                <di:waypoint x="336.0" y="279.0"/>
+                <di:waypoint x="386.0" y="279.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNShape bpmnElement="EndEvent_1" id="_BPMNShape_EndEvent_3">
+                <dc:Bounds x="536.0" y="261.0" width="36.0" height="36.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="SequenceFlow_2" sourceElement="_BPMNShape_ServiceTask_3" targetElement="_BPMNShape_EndEvent_3" id="BPMNEdge_SequenceFlow_2">
+                <di:waypoint x="486.0" y="279.0"/>
+                <di:waypoint x="536.0" y="279.0"/>
+            </bpmndi:BPMNEdge>
+        </bpmndi:BPMNPlane>
+    </bpmndi:BPMNDiagram>
+</bpmn:definitions>

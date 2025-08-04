@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" id="_ersGAHYXEeSiaf32_fRHjA" targetNamespace="http://camunda.org/examples" exporter="Camunda Modeler" exporterVersion="4.7.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.6.0">
+    <bpmn:process isExecutable="true" id="Message_Start_Process" camunda:historyTimeToLive="P180D">
+        <bpmn:startEvent id="StartEvent_1">
+            <bpmn:outgoing xmlns="">SequenceFlow_1</bpmn:outgoing>
+            <bpmn:messageEventDefinition xmlns="" messageRef="Message_1" id="MessageEventDefinition_1"/>
+        </bpmn:startEvent>
+        <bpmn:userTask name="Wait in Message Process" id="UserTask_1">
+            <bpmn:extensionElements>
+                <zeebe:formDefinition formId="AddFormId"/>
+                <zeebe:userTask/>
+            </bpmn:extensionElements>
+            <bpmn:incoming xmlns="">SequenceFlow_1</bpmn:incoming>
+            <bpmn:outgoing xmlns="">SequenceFlow_2</bpmn:outgoing>
+        </bpmn:userTask>
+        <bpmn:sequenceFlow sourceRef="StartEvent_1" targetRef="UserTask_1" name="" id="SequenceFlow_1"/>
+        <bpmn:endEvent id="EndEvent_1">
+            <bpmn:incoming xmlns="">SequenceFlow_2</bpmn:incoming>
+        </bpmn:endEvent>
+        <bpmn:sequenceFlow sourceRef="UserTask_1" targetRef="EndEvent_1" name="" id="SequenceFlow_2"/>
+    </bpmn:process>
+    <bpmn:message name="instantiationMessage" id="Message_1">
+        <bpmn:extensionElements>
+            <zeebe:subscription correlationKey="AddCorrelationKey"/>
+        </bpmn:extensionElements>
+    </bpmn:message>
+    <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+        <bpmndi:BPMNPlane xmlns="" bpmnElement="Message_Start_Process" id="BPMNPlane_1">
+            <bpmndi:BPMNEdge bpmnElement="SequenceFlow_2" sourceElement="_BPMNShape_UserTask_3" targetElement="_BPMNShape_EndEvent_50" id="BPMNEdge_SequenceFlow_2">
+                <di:waypoint x="386.0" y="126.0"/>
+                <di:waypoint x="436.0" y="126.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="SequenceFlow_1" sourceElement="_BPMNShape_StartEvent_14" targetElement="_BPMNShape_UserTask_3" id="BPMNEdge_SequenceFlow_1">
+                <di:waypoint x="236.0" y="126.0"/>
+                <di:waypoint x="286.0" y="126.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNShape bpmnElement="StartEvent_1" id="_BPMNShape_StartEvent_14">
+                <dc:Bounds x="200.0" y="108.0" width="36.0" height="36.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="UserTask_1" id="_BPMNShape_UserTask_3">
+                <dc:Bounds x="286.0" y="86.0" width="100.0" height="80.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="EndEvent_1" id="_BPMNShape_EndEvent_50">
+                <dc:Bounds x="436.0" y="108.0" width="36.0" height="36.0"/>
+            </bpmndi:BPMNShape>
+        </bpmndi:BPMNPlane>
+    </bpmndi:BPMNDiagram>
+</bpmn:definitions>

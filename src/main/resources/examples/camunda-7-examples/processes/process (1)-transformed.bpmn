@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" id="Definitions_1ajzwxk" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.9.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.6.0">
+    <bpmn:process isExecutable="true" id="approval-process" camunda:historyTimeToLive="P180D">
+        <bpmn:startEvent id="StartEvent_1">
+            <bpmn:outgoing xmlns="">Flow_06liqrk</bpmn:outgoing>
+        </bpmn:startEvent>
+        <bpmn:sequenceFlow sourceRef="StartEvent_1" targetRef="Activity_148bip1" id="Flow_06liqrk"/>
+        <bpmn:endEvent id="Event_0gixpme">
+            <bpmn:incoming xmlns="">Flow_1websng</bpmn:incoming>
+        </bpmn:endEvent>
+        <bpmn:sequenceFlow sourceRef="Activity_148bip1" targetRef="Event_0gixpme" id="Flow_1websng"/>
+        <bpmn:serviceTask name="Approval Service" id="Activity_148bip1">
+            <bpmn:extensionElements>
+                <zeebe:taskDefinition type="approvalServiceDelegate"/>
+            </bpmn:extensionElements>
+            <bpmn:incoming xmlns="">Flow_06liqrk</bpmn:incoming>
+            <bpmn:outgoing xmlns="">Flow_1websng</bpmn:outgoing>
+        </bpmn:serviceTask>
+    </bpmn:process>
+    <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+        <bpmndi:BPMNPlane xmlns="" bpmnElement="approval-process" id="BPMNPlane_1">
+            <bpmndi:BPMNEdge bpmnElement="Flow_06liqrk" id="Flow_06liqrk_di">
+                <di:waypoint x="215.0" y="117.0"/>
+                <di:waypoint x="270.0" y="117.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Flow_1websng" id="Flow_1websng_di">
+                <di:waypoint x="370.0" y="117.0"/>
+                <di:waypoint x="432.0" y="117.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNShape bpmnElement="StartEvent_1" id="_BPMNShape_StartEvent_2">
+                <dc:Bounds x="179.0" y="99.0" width="36.0" height="36.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Event_0gixpme" id="Event_0gixpme_di">
+                <dc:Bounds x="432.0" y="99.0" width="36.0" height="36.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Activity_148bip1" id="Activity_1rgkff6_di">
+                <dc:Bounds x="270.0" y="77.0" width="100.0" height="80.0"/>
+            </bpmndi:BPMNShape>
+        </bpmndi:BPMNPlane>
+    </bpmndi:BPMNDiagram>
+</bpmn:definitions>

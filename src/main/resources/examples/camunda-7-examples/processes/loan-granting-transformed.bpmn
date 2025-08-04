@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.6.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.6.0">
+    <bpmn:process isExecutable="true" name="Granting Loans" id="loan_process" camunda:historyTimeToLive="P180D">
+        <bpmn:sequenceFlow sourceRef="StartEvent_1" targetRef="Task_1lvjtd4" id="SequenceFlow_0nww3wx"/>
+        <bpmn:serviceTask name="Check credit score" id="Task_1lvjtd4" camunda:type="external" camunda:topic="creditScoreChecker">
+            <bpmn:extensionElements>
+                <zeebe:taskDefinition type="creditScoreChecker"/>
+            </bpmn:extensionElements>
+            <bpmn:incoming xmlns="">SequenceFlow_0nww3wx</bpmn:incoming>
+            <bpmn:outgoing xmlns="">SequenceFlow_12biatx</bpmn:outgoing>
+        </bpmn:serviceTask>
+        <bpmn:subProcess name="Decide if a loan is granted" id="SubProcess_16kr5xn">
+            <bpmn:incoming xmlns="">SequenceFlow_12biatx</bpmn:incoming>
+            <bpmn:outgoing xmlns="">SequenceFlow_1pbe3dr</bpmn:outgoing>
+            <bpmn:multiInstanceLoopCharacteristics camunda:elementVariable="score" camunda:collection="${creditScores}">
+                <bpmn:extensionElements>
+                    <zeebe:loopCharacteristics inputCollection="= creditScores" inputElement="score"/>
+                </bpmn:extensionElements>
+            </bpmn:multiInstanceLoopCharacteristics>
+            <bpmn:exclusiveGateway id="ExclusiveGateway_12xhuxz">
+                <bpmn:incoming xmlns="">SequenceFlow_04c54bl</bpmn:incoming>
+                <bpmn:outgoing xmlns="">SequenceFlow_17zmvol</bpmn:outgoing>
+                <bpmn:outgoing xmlns="">SequenceFlow_0vpum3q</bpmn:outgoing>
+            </bpmn:exclusiveGateway>
+            <bpmn:endEvent id="EndEvent_1alwvtl">
+                <bpmn:incoming xmlns="">SequenceFlow_0crpu1y</bpmn:incoming>
+            </bpmn:endEvent>
+            <bpmn:endEvent id="EndEvent_0zj88y0">
+                <bpmn:incoming xmlns="">SequenceFlow_1p8qb0a</bpmn:incoming>
+            </bpmn:endEvent>
+            <bpmn:sequenceFlow sourceRef="ExclusiveGateway_12xhuxz" targetRef="Task_0v4gadf" name="good score" id="SequenceFlow_17zmvol">
+                <bpmn:conditionExpression xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="bpmn:tFormalExpression">score &gt; 5</bpmn:conditionExpression>
+            </bpmn:sequenceFlow>
+            <bpmn:sequenceFlow sourceRef="ExclusiveGateway_12xhuxz" targetRef="Task_0j0sjlk" name="bad score" id="SequenceFlow_0vpum3q">
+                <bpmn:conditionExpression xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="bpmn:tFormalExpression">score &lt;= 5</bpmn:conditionExpression>
+            </bpmn:sequenceFlow>
+            <bpmn:sequenceFlow sourceRef="Task_0v4gadf" targetRef="EndEvent_1alwvtl" id="SequenceFlow_0crpu1y"/>
+            <bpmn:sequenceFlow sourceRef="Task_0j0sjlk" targetRef="EndEvent_0zj88y0" id="SequenceFlow_1p8qb0a"/>
+            <bpmn:startEvent id="StartEvent_01840xx">
+                <bpmn:outgoing xmlns="">SequenceFlow_04c54bl</bpmn:outgoing>
+            </bpmn:startEvent>
+            <bpmn:sequenceFlow sourceRef="StartEvent_01840xx" targetRef="ExclusiveGateway_12xhuxz" id="SequenceFlow_04c54bl"/>
+            <bpmn:serviceTask name="Grant loan" id="Task_0v4gadf" camunda:type="external" camunda:topic="loanGranter">
+                <bpmn:extensionElements>
+                    <zeebe:taskDefinition type="loanGranter"/>
+                </bpmn:extensionElements>
+                <bpmn:incoming xmlns="">SequenceFlow_17zmvol</bpmn:incoming>
+                <bpmn:outgoing xmlns="">SequenceFlow_0crpu1y</bpmn:outgoing>
+            </bpmn:serviceTask>
+            <bpmn:serviceTask name="Reject loan request" id="Task_0j0sjlk" camunda:type="external" camunda:topic="requestRejecter">
+                <bpmn:extensionElements>
+                    <zeebe:taskDefinition type="requestRejecter"/>
+                </bpmn:extensionElements>
+                <bpmn:incoming xmlns="">SequenceFlow_0vpum3q</bpmn:incoming>
+                <bpmn:outgoing xmlns="">SequenceFlow_1p8qb0a</bpmn:outgoing>
+            </bpmn:serviceTask>
+            <bpmn:textAnnotation id="TextAnnotation_0u1nkri">
+                <bpmn:text>Topic name: loanGranter</bpmn:text>
+            </bpmn:textAnnotation>
+            <bpmn:association xmlns="" sourceRef="Task_0v4gadf" targetRef="TextAnnotation_0u1nkri" id="Association_1v9v6fl"/>
+            <bpmn:textAnnotation id="TextAnnotation_0qjs0yj">
+                <bpmn:text>Topic name: requestRejecter</bpmn:text>
+            </bpmn:textAnnotation>
+            <bpmn:association xmlns="" sourceRef="Task_0j0sjlk" targetRef="TextAnnotation_0qjs0yj" id="Association_1gskhvh"/>
+        </bpmn:subProcess>
+        <bpmn:endEvent id="EndEvent_0q9wl5o">
+            <bpmn:incoming xmlns="">SequenceFlow_1pbe3dr</bpmn:incoming>
+        </bpmn:endEvent>
+        <bpmn:sequenceFlow sourceRef="SubProcess_16kr5xn" targetRef="EndEvent_0q9wl5o" id="SequenceFlow_1pbe3dr"/>
+        <bpmn:sequenceFlow sourceRef="Task_1lvjtd4" targetRef="SubProcess_16kr5xn" id="SequenceFlow_12biatx"/>
+        <bpmn:startEvent id="StartEvent_1">
+            <bpmn:outgoing xmlns="">SequenceFlow_0nww3wx</bpmn:outgoing>
+            <bpmn:timerEventDefinition>
+                <bpmn:timeCycle xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="bpmn:tFormalExpression">* * * * * *</bpmn:timeCycle>
+            </bpmn:timerEventDefinition>
+        </bpmn:startEvent>
+        <bpmn:textAnnotation id="TextAnnotation_0k1pblj">
+            <bpmn:text>Topic name: creditScoreChecker</bpmn:text>
+        </bpmn:textAnnotation>
+        <bpmn:association xmlns="" sourceRef="Task_1lvjtd4" targetRef="TextAnnotation_0k1pblj" id="Association_0rosxy5"/>
+    </bpmn:process>
+    <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+        <bpmndi:BPMNPlane xmlns="" bpmnElement="loan_process" id="BPMNPlane_1">
+            <bpmndi:BPMNEdge bpmnElement="SequenceFlow_12biatx" id="SequenceFlow_12biatx_di">
+                <di:waypoint x="334.0" y="276.0"/>
+                <di:waypoint x="384.0" y="276.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="494.0" y="254.5" width="90.0" height="13.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="SequenceFlow_1pbe3dr" id="SequenceFlow_1pbe3dr_di">
+                <di:waypoint x="914.0" y="279.0"/>
+                <di:waypoint x="968.0" y="279.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="1076.0" y="257.5" width="90.0" height="13.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="SequenceFlow_0nww3wx" id="SequenceFlow_0nww3wx_di">
+                <di:waypoint x="188.0" y="280.0"/>
+                <di:waypoint x="234.0" y="279.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="346.0" y="258.0" width="90.0" height="13.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNShape bpmnElement="Task_1lvjtd4" id="ServiceTask_0xcwm5l_di">
+                <dc:Bounds x="234.0" y="239.0" width="100.0" height="80.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="SubProcess_16kr5xn" isExpanded="true" id="SubProcess_16kr5xn_di">
+                <dc:Bounds x="384.0" y="81.0" width="530.0" height="384.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="SequenceFlow_04c54bl" id="SequenceFlow_04c54bl_di">
+                <di:waypoint x="457.0" y="276.0"/>
+                <di:waypoint x="498.0" y="276.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="612.5" y="254.5" width="90.0" height="13.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="SequenceFlow_1p8qb0a" id="SequenceFlow_1p8qb0a_di">
+                <di:waypoint x="749.0" y="342.0"/>
+                <di:waypoint x="830.0" y="342.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="925.0" y="321.0" width="90.0" height="13.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="SequenceFlow_0crpu1y" id="SequenceFlow_0crpu1y_di">
+                <di:waypoint x="749.0" y="207.0"/>
+                <di:waypoint x="830.0" y="207.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="925.0" y="186.0" width="90.0" height="13.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="SequenceFlow_0vpum3q" id="SequenceFlow_0vpum3q_di">
+                <di:waypoint x="523.0" y="301.0"/>
+                <di:waypoint x="523.0" y="342.0"/>
+                <di:waypoint x="649.0" y="342.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="553.0" y="346.0" width="49.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="SequenceFlow_17zmvol" id="SequenceFlow_17zmvol_di">
+                <di:waypoint x="523.0" y="251.0"/>
+                <di:waypoint x="523.0" y="207.0"/>
+                <di:waypoint x="649.0" y="207.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="545.0" y="186.0" width="55.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNShape bpmnElement="ExclusiveGateway_12xhuxz" isMarkerVisible="true" id="ExclusiveGateway_12xhuxz_di">
+                <dc:Bounds x="498.0" y="251.0" width="50.0" height="50.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="738.0" y="269.0" width="90.0" height="13.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="EndEvent_1alwvtl" id="EndEvent_1alwvtl_di">
+                <dc:Bounds x="830.0" y="189.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="983.0" y="228.0" width="90.0" height="13.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="EndEvent_0zj88y0" id="EndEvent_0zj88y0_di">
+                <dc:Bounds x="830.0" y="324.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="983.0" y="363.0" width="90.0" height="13.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="StartEvent_01840xx" id="StartEvent_01840xx_di">
+                <dc:Bounds x="421.0" y="258.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="574.0" y="297.0" width="90.0" height="13.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Task_0v4gadf" id="ServiceTask_06na61t_di">
+                <dc:Bounds x="649.0" y="167.0" width="100.0" height="80.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Task_0j0sjlk" id="ServiceTask_0i8ohao_di">
+                <dc:Bounds x="649.0" y="302.0" width="100.0" height="80.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="TextAnnotation_0u1nkri" id="TextAnnotation_0u1nkri_di">
+                <dc:Bounds x="618.0" y="119.0" width="161.0" height="28.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="TextAnnotation_0qjs0yj" id="TextAnnotation_0qjs0yj_di">
+                <dc:Bounds x="631.0" y="400.0" width="171.0" height="30.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="Association_1v9v6fl" id="Association_1v9v6fl_di">
+                <di:waypoint x="699.0" y="167.0"/>
+                <di:waypoint x="699.0" y="147.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNShape bpmnElement="EndEvent_0q9wl5o" id="EndEvent_0q9wl5o_di">
+                <dc:Bounds x="968.0" y="261.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="1121.0" y="308.0" width="90.0" height="13.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="StartEvent_1" id="StartEvent_0s4wasg_di">
+                <dc:Bounds x="152.0" y="262.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="260.0" y="306.0" width="90.0" height="13.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="TextAnnotation_0k1pblj" id="TextAnnotation_0k1pblj_di">
+                <dc:Bounds x="190.0" y="180.0" width="187.0" height="28.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="Association_0rosxy5" id="Association_0rosxy5_di">
+                <di:waypoint x="284.0" y="239.0"/>
+                <di:waypoint x="284.0" y="208.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="Association_1gskhvh" id="Association_1gskhvh_di">
+                <di:waypoint x="699.0" y="382.0"/>
+                <di:waypoint x="699.0" y="400.0"/>
+            </bpmndi:BPMNEdge>
+        </bpmndi:BPMNPlane>
+    </bpmndi:BPMNDiagram>
+</bpmn:definitions>

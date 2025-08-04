@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" id="Definitions_1wablrp" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.7.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.6.0">
+    <bpmn:process isExecutable="true" name="Embedded Forms BPMN Events" id="embeddedFormsBpmnEvents" camunda:historyTimeToLive="P180D">
+        <bpmn:startEvent name="Invoice Receipt" id="StartEvent_1" camunda:formKey="embedded:app:start-form.html">
+            <bpmn:outgoing xmlns="">SequenceFlow_1wlqrri</bpmn:outgoing>
+        </bpmn:startEvent>
+        <bpmn:sequenceFlow sourceRef="StartEvent_1" targetRef="Task_16y91ka" id="SequenceFlow_1wlqrri"/>
+        <bpmn:userTask name="Pay Invoice" id="Task_16y91ka">
+            <bpmn:extensionElements>
+                <zeebe:formDefinition formId="embedded:app:task-form.html"/>
+                <zeebe:userTask/>
+            </bpmn:extensionElements>
+            <bpmn:incoming xmlns="">SequenceFlow_1wlqrri</bpmn:incoming>
+            <bpmn:outgoing xmlns="">SequenceFlow_10f4avc</bpmn:outgoing>
+        </bpmn:userTask>
+        <bpmn:endEvent name="Invoice Paid" id="EndEvent_1ug8ljt">
+            <bpmn:incoming xmlns="">SequenceFlow_10f4avc</bpmn:incoming>
+        </bpmn:endEvent>
+        <bpmn:sequenceFlow sourceRef="Task_16y91ka" targetRef="EndEvent_1ug8ljt" id="SequenceFlow_10f4avc"/>
+        <bpmn:boundaryEvent xmlns="" attachedToRef="Task_16y91ka" name="Unspecified Amount" id="BoundaryEvent_18unjdv">
+            <bpmn:outgoing>SequenceFlow_09b9w06</bpmn:outgoing>
+            <bpmn:errorEventDefinition errorRef="Error_17q5tnm"/>
+        </bpmn:boundaryEvent>
+        <bpmn:endEvent name="Invoice Archived" id="EndEvent_1ga7c7t">
+            <bpmn:incoming xmlns="">SequenceFlow_0z6tv4c</bpmn:incoming>
+        </bpmn:endEvent>
+        <bpmn:sequenceFlow sourceRef="BoundaryEvent_18unjdv" targetRef="Task_1a2twqz" id="SequenceFlow_09b9w06"/>
+        <bpmn:userTask name="Archive Invoice" id="Task_1a2twqz">
+            <bpmn:extensionElements>
+                <zeebe:formDefinition formId="AddFormId"/>
+                <zeebe:userTask/>
+            </bpmn:extensionElements>
+            <bpmn:incoming xmlns="">SequenceFlow_09b9w06</bpmn:incoming>
+            <bpmn:outgoing xmlns="">SequenceFlow_0z6tv4c</bpmn:outgoing>
+        </bpmn:userTask>
+        <bpmn:sequenceFlow sourceRef="BoundaryEvent_1uy9o9h" targetRef="Task_0q869n2" id="SequenceFlow_04ter3h"/>
+        <bpmn:userTask name="Inform Supervisor" id="Task_0q869n2">
+            <bpmn:extensionElements>
+                <zeebe:formDefinition formId="AddFormId"/>
+                <zeebe:userTask/>
+            </bpmn:extensionElements>
+            <bpmn:incoming xmlns="">SequenceFlow_04ter3h</bpmn:incoming>
+            <bpmn:outgoing xmlns="">SequenceFlow_1591lol</bpmn:outgoing>
+        </bpmn:userTask>
+        <bpmn:endEvent name="Invoice Escalated" id="EndEvent_1irlotk">
+            <bpmn:incoming xmlns="">SequenceFlow_1591lol</bpmn:incoming>
+        </bpmn:endEvent>
+        <bpmn:sequenceFlow sourceRef="Task_0q869n2" targetRef="EndEvent_1irlotk" id="SequenceFlow_1591lol"/>
+        <bpmn:sequenceFlow sourceRef="Task_1a2twqz" targetRef="EndEvent_1ga7c7t" id="SequenceFlow_0z6tv4c"/>
+        <bpmn:boundaryEvent xmlns="" attachedToRef="Task_16y91ka" name="Suspicous&#10;sender" id="BoundaryEvent_1uy9o9h">
+            <bpmn:outgoing>SequenceFlow_04ter3h</bpmn:outgoing>
+            <bpmn:escalationEventDefinition escalationRef="Escalation_0ubslwx"/>
+        </bpmn:boundaryEvent>
+    </bpmn:process>
+    <bpmn:error name="Unspecified Amount" errorCode="invoice-error" id="Error_17q5tnm"/>
+    <bpmn:escalation name="Escalation" escalationCode="invoice-escalate" id="Escalation_0ubslwx"/>
+    <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+        <bpmndi:BPMNPlane xmlns="" bpmnElement="embeddedFormsBpmnEvents" id="BPMNPlane_1">
+            <bpmndi:BPMNEdge bpmnElement="SequenceFlow_0z6tv4c" id="SequenceFlow_0z6tv4c_di">
+                <di:waypoint x="473.0" y="370.0"/>
+                <di:waypoint x="502.0" y="370.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="SequenceFlow_1591lol" id="SequenceFlow_1591lol_di">
+                <di:waypoint x="473.0" y="250.0"/>
+                <di:waypoint x="502.0" y="250.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="SequenceFlow_04ter3h" id="SequenceFlow_04ter3h_di">
+                <di:waypoint x="350.0" y="175.0"/>
+                <di:waypoint x="350.0" y="250.0"/>
+                <di:waypoint x="373.0" y="250.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="SequenceFlow_09b9w06" id="SequenceFlow_09b9w06_di">
+                <di:waypoint x="290.0" y="175.0"/>
+                <di:waypoint x="290.0" y="370.0"/>
+                <di:waypoint x="373.0" y="370.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="SequenceFlow_10f4avc" id="SequenceFlow_10f4avc_di">
+                <di:waypoint x="370.0" y="117.0"/>
+                <di:waypoint x="495.0" y="117.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="SequenceFlow_1wlqrri" id="SequenceFlow_1wlqrri_di">
+                <di:waypoint x="215.0" y="117.0"/>
+                <di:waypoint x="270.0" y="117.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNShape bpmnElement="StartEvent_1" id="_BPMNShape_StartEvent_2">
+                <dc:Bounds x="179.0" y="99.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="159.0" y="142.0" width="77.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Task_16y91ka" id="UserTask_06eourf_di">
+                <dc:Bounds x="270.0" y="77.0" width="100.0" height="80.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="EndEvent_1ug8ljt" id="EndEvent_1ug8ljt_di">
+                <dc:Bounds x="495.0" y="99.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="483.0" y="142.0" width="61.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Task_1a2twqz" id="UserTask_1hyt382_di">
+                <dc:Bounds x="373.0" y="330.0" width="100.0" height="80.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Task_0q869n2" id="UserTask_1grqdcl_di">
+                <dc:Bounds x="373.0" y="210.0" width="100.0" height="80.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="EndEvent_1irlotk" id="EndEvent_1irlotk_di">
+                <dc:Bounds x="502.0" y="232.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="476.0" y="275.0" width="88.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="EndEvent_1ga7c7t" id="EndEvent_1ga7c7t_di">
+                <dc:Bounds x="502.0" y="352.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="480.0" y="395.0" width="81.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="BoundaryEvent_1uy9o9h" id="BoundaryEvent_0uxmz98_di">
+                <dc:Bounds x="332.0" y="139.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="364.0" y="171.0" width="52.0" height="27.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="BoundaryEvent_18unjdv" id="BoundaryEvent_1e4nznk_di">
+                <dc:Bounds x="272.0" y="139.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="221.0" y="173.0" width="58.0" height="27.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+        </bpmndi:BPMNPlane>
+    </bpmndi:BPMNDiagram>
+</bpmn:definitions>

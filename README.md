@@ -20,11 +20,11 @@ The result of this project is a CLI application that converts Camunda 7 models i
 The source code will be made available as an open-source project on GitHub.
 
 
-## Examples 
+## Examples
 
-- [Taxiride Blueprint](src/main/resources/examples/taxiride-blueprint): A qualitative Analysis using the the converter on the [TaxiRide Blueprint Project](https://github.com/phactum/taxiride-blueprint) 
+- [Taxiride Blueprint](src/main/resources/examples/taxiride-blueprint): A qualitative Analysis using the the converter on the [TaxiRide Blueprint Project](https://github.com/phactum/taxiride-blueprint)
 - [ELMO](src/main/resources/examples/elmo): A quantitive performance analysis using the converter on the [ELMO Project](https://github.com/stephanpelikan/elmo)
-- [BPMN Examples](src/main/resources/examples/bpmn-examples): Some BPMN example Mappings 
+- [BPMN Examples](src/main/resources/examples/bpmn-examples): Some BPMN example Mappings
 
 ## XML Schemas
 As part of this project, XML Schemas were created to support both Camunda 7 and Camunda 8 BPMN models (including Zeebe-specific extensions).  
@@ -96,9 +96,9 @@ They can be used for validation, tooling support, or integration into custom edi
 | **Multiple**       | ❎          | ❎               | ❎                          | ❎    | ❎      | ❎               | ❎    | ❎    |  
 | **Multiple Parallel** | ❎        | ❎               | ❎                          | ❎    | ❎      | ❎              | ❎    | ❎    |  
 
-✅ → Done 
+✅ → Done
 
-❌ → To Do 
+❌ → To Do
 
 ❎ →  Not Supported Yet by Camunda 8 - see [BPMN Coverage](https://docs.camunda.io/docs/8.7/components/modeler/bpmn/bpmn-coverage/)
 
@@ -106,8 +106,15 @@ They can be used for validation, tooling support, or integration into custom edi
 
 This application transforms BPMN files by mapping their contents using custom logic. To use the application, follow these steps:
 
-### Requirements
-TODO
+## Requirements
+
+To run or build the Vanilla Converter CLI application, ensure the following dependencies are installed:
+- Runtime: **Java 17 or higher**  
+  The application requires Java 17+ to run.
+
+- Build Tool: **Apache Maven 3.6 or higher**  
+  Maven is used for building the project and managing dependencies.
+
 
 ### Running the Application
 To run the application, pass the path to a BPMN file as a command-line argument.
@@ -115,7 +122,7 @@ To run the application, pass the path to a BPMN file as a command-line argument.
 #### Example Usage:
 
 1. **From the command line:**
-To transform a single Camunda 7 *.bpmn* file:
+   To transform a single Camunda 7 *.bpmn* file:
 ```
 java -jar vanilla-transfomer.jar /path/to/your/file.bpmn
 ```
@@ -128,7 +135,7 @@ java -jar vanilla-transfomer.jar /path/to/your/files
 This will read the BPMN file(s) from the specified path, transform it, and save the transformed file in the same location with a `-transformed` suffix.
 
 2. **If the file path is missing or invalid:**
-The application will log an error message and exit.
+   The application will log an error message and exit.
 
 #### Parameters:
 
@@ -139,7 +146,7 @@ The transformed file(s) will be saved with the same name as the original BPMN fi
 ### Example Output:
 
 For an input file `process.bpmn`, the transformed file will be saved as `process-transformed.bpmn`.
-See [examples](https://github.com/dsunaric/vanilla-converter/tree/main/src/main/resources/bpmn-examples) for mapping examples
+See [examples](https://github.com/dsunaric/vanilla-converter/tree/main/src/main/resources/examples) for mapping examples
 
 ### Logging
 
@@ -188,7 +195,7 @@ Logs are generated to track the process. Look out for any error messages or tran
 | Inclusive Gateway                         | No Mapping                                                                                                | `<bpmn:inclusiveGateway default="Flow_07zt34w" id="Gateway_1ad2mvj">...</bpmn:inclusiveGateway>`                                                                                                                       | `<bpmn:inclusiveGateway default="Flow_07zt34w" id="Gateway_1ad2mvj">...</bpmn:inclusiveGateway>`                                                                                                                     |
 | Sequence Flows after an Inclusive Gateway | *not implemented*: Sequence flows with no expression after an exclusive Gateway need to be mapped to TRUE | `<bpmn:sequenceFlow id="Flow_0c1f5x0"sourceRef="Gateway_025xtrc"targetRef="Event_0dezcp0"></bpmn:sequenceFlow>`                                                                                                        | `<bpmn:sequenceFlow id="Flow_0c1f5x0"sourceRef="Gateway_025xtrc"targetRef="Event_0dezcp0">`<br>`<bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=true</bpmn:conditionExpression>`<br>`</bpmn:sequenceFlow>`  |
 
-### Events 
+### Events
 
 | BPMN Element      | Camunda 7 Element                | Description                | Camunda 7 XML Representation                                                                                                                                                                |  Mapped to Camunda 8 Element                                                                                                                                                                                                                                                                                   |
 |-------------------|----------------------------------|----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -267,7 +274,7 @@ Given a service task in Camunda 7, the transformer makes assumptions about how t
 
 The type *Connector* requires manual mapping; during the transformation a placeholder is set as the Camunda 8 JobType.
 
-### Timer Events 
+### Timer Events
 Timer events in Camunda 7 and 8 can be one of three types: Cycle, Date, or Duration.  
 In both Camunda 7 and 8, Cycle, Date, and Duration must be defined in ISO 8601 format, either directly in the BPMN file or by using an expression that points to a variable containing the value.
 
@@ -279,6 +286,6 @@ This is no longer allowed in Camunda 8. In such cases, the output of the bean mu
 
 ### Task Markers
 Camunda 8 does not support Ad-Hoc and Loop Task Markers, and therefore no transformation is applied for these elements.
-The converter supports the transformation of Multi-Instance Task Markers, provided that the Camunda 7 model includes a defined input 
-collection and element variable. However, in practical Camunda 8 modeling, these values are typically provided via input parameters. 
+The converter supports the transformation of Multi-Instance Task Markers, provided that the Camunda 7 model includes a defined input
+collection and element variable. However, in practical Camunda 8 modeling, these values are typically provided via input parameters.
 As such, manual adjustments may be necessary to align with best practices in Camunda 8.

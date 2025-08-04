@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" id="_EZiHIDT4EeSMavNKGr9kvw" targetNamespace="http://camunda.org/examples" exporter="Camunda Modeler" exporterVersion="5.31.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.6.0">
+    <bpmn:process isExecutable="true" name="XSLT Example" id="xslt-example" camunda:historyTimeToLive="P180D">
+        <bpmn:startEvent name="give input" id="StartEvent_1">
+            <bpmn:extensionElements>
+                <camunda:executionListener xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" event="end">
+                    <camunda:script resource="org/camunda/bpm/example/xsltexample/readXmlFile.groovy" scriptFormat="groovy"/>
+        </camunda:executionListener>
+            </bpmn:extensionElements>
+            <bpmn:outgoing xmlns="">SequenceFlow_1</bpmn:outgoing>
+        </bpmn:startEvent>
+        <bpmn:sequenceFlow sourceRef="StartEvent_1" targetRef="ScriptTask_1" name="" id="SequenceFlow_1"/>
+        <bpmn:endEvent name="show output" id="EndEvent_1">
+            <bpmn:extensionElements>
+                <camunda:executionListener xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" event="start">
+                    <camunda:script resource="org/camunda/bpm/example/xsltexample/printResult.groovy" scriptFormat="groovy"/>
+        </camunda:executionListener>
+            </bpmn:extensionElements>
+            <bpmn:incoming xmlns="">SequenceFlow_2</bpmn:incoming>
+        </bpmn:endEvent>
+        <bpmn:sequenceFlow sourceRef="ScriptTask_1" targetRef="EndEvent_1" name="" id="SequenceFlow_2"/>
+        <bpmn:task name="convert input" id="ScriptTask_1">
+            <bpmn:extensionElements>
+                <camunda:inputOutput xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                    <camunda:inputParameter name="camunda_source">${customers}</camunda:inputParameter>
+        </camunda:inputOutput>
+            </bpmn:extensionElements>
+            <bpmn:incoming xmlns="">SequenceFlow_1</bpmn:incoming>
+            <bpmn:outgoing xmlns="">SequenceFlow_2</bpmn:outgoing>
+        </bpmn:task>
+    </bpmn:process>
+    <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+        <bpmndi:BPMNPlane xmlns="" bpmnElement="xslt-example" id="BPMNPlane_1">
+            <bpmndi:BPMNShape bpmnElement="StartEvent_1" id="_BPMNShape_StartEvent_2">
+                <dc:Bounds x="158.0" y="99.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="152.0" y="140.0" width="49.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="EndEvent_1" id="_BPMNShape_EndEvent_2">
+                <dc:Bounds x="394.0" y="99.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="382.0" y="135.0" width="61.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="ScriptTask_1" id="Activity_1kaxrxm_di">
+                <dc:Bounds x="244.0" y="77.0" width="100.0" height="80.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="SequenceFlow_1" sourceElement="_BPMNShape_StartEvent_2" targetElement="Activity_1kaxrxm_di" id="BPMNEdge_SequenceFlow_1">
+                <di:waypoint x="194.0" y="117.0"/>
+                <di:waypoint x="244.0" y="117.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="SequenceFlow_2" sourceElement="Activity_1kaxrxm_di" targetElement="_BPMNShape_EndEvent_2" id="BPMNEdge_SequenceFlow_2">
+                <di:waypoint x="344.0" y="117.0"/>
+                <di:waypoint x="394.0" y="117.0"/>
+            </bpmndi:BPMNEdge>
+        </bpmndi:BPMNPlane>
+    </bpmndi:BPMNDiagram>
+</bpmn:definitions>

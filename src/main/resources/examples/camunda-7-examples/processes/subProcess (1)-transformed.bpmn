@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.6.0">
+    <bpmn:process isExecutable="true" name="Sub-Process (tenant-specific)" id="subProcess" camunda:historyTimeToLive="P180D">
+        <bpmn:documentation>overridde default subprocess with a tenant specific one</bpmn:documentation>
+        <bpmn:startEvent id="StartEvent_1">
+            <bpmn:outgoing xmlns="">SequenceFlow_1ecel5i</bpmn:outgoing>
+        </bpmn:startEvent>
+        <bpmn:sequenceFlow sourceRef="StartEvent_1" targetRef="UserTask_17fr4ij" id="SequenceFlow_1ecel5i"/>
+        <bpmn:userTask name="task in tenant specific subprocess" id="UserTask_17fr4ij">
+            <bpmn:extensionElements>
+                <zeebe:formDefinition formId="AddFormId"/>
+                <zeebe:userTask/>
+            </bpmn:extensionElements>
+            <bpmn:incoming xmlns="">SequenceFlow_1ecel5i</bpmn:incoming>
+            <bpmn:outgoing xmlns="">SequenceFlow_1407apq</bpmn:outgoing>
+        </bpmn:userTask>
+        <bpmn:sequenceFlow sourceRef="UserTask_17fr4ij" targetRef="UserTask_0wbry7k" id="SequenceFlow_1407apq"/>
+        <bpmn:userTask name="another task" id="UserTask_0wbry7k">
+            <bpmn:extensionElements>
+                <zeebe:formDefinition formId="AddFormId"/>
+                <zeebe:userTask/>
+            </bpmn:extensionElements>
+            <bpmn:incoming xmlns="">SequenceFlow_1407apq</bpmn:incoming>
+            <bpmn:outgoing xmlns="">SequenceFlow_1l3e1vk</bpmn:outgoing>
+        </bpmn:userTask>
+        <bpmn:endEvent id="EndEvent_001dp5e">
+            <bpmn:incoming xmlns="">SequenceFlow_1l3e1vk</bpmn:incoming>
+        </bpmn:endEvent>
+        <bpmn:sequenceFlow sourceRef="UserTask_0wbry7k" targetRef="EndEvent_001dp5e" id="SequenceFlow_1l3e1vk"/>
+    </bpmn:process>
+    <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+        <bpmndi:BPMNPlane xmlns="" bpmnElement="subProcess" id="BPMNPlane_1">
+            <bpmndi:BPMNShape bpmnElement="StartEvent_1" id="_BPMNShape_StartEvent_2">
+                <dc:Bounds x="173.0" y="102.0" width="36.0" height="36.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="SequenceFlow_1ecel5i" id="SequenceFlow_1ecel5i_di">
+                <di:waypoint x="209.0" y="120.0"/>
+                <di:waypoint x="276.0" y="120.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="197.5" y="110.0" width="90.0" height="20.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNShape bpmnElement="UserTask_17fr4ij" id="UserTask_17fr4ij_di">
+                <dc:Bounds x="276.0" y="80.0" width="100.0" height="80.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="SequenceFlow_1407apq" id="SequenceFlow_1407apq_di">
+                <di:waypoint x="376.0" y="120.0"/>
+                <di:waypoint x="445.0" y="120.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="365.5" y="110.0" width="90.0" height="20.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNShape bpmnElement="UserTask_0wbry7k" id="UserTask_0wbry7k_di">
+                <dc:Bounds x="445.0" y="80.0" width="100.0" height="80.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="EndEvent_001dp5e" id="EndEvent_001dp5e_di">
+                <dc:Bounds x="623.0" y="102.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="596.0" y="138.0" width="90.0" height="20.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="SequenceFlow_1l3e1vk" id="SequenceFlow_1l3e1vk_di">
+                <di:waypoint x="545.0" y="120.0"/>
+                <di:waypoint x="623.0" y="120.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="539.0" y="110.0" width="90.0" height="20.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+        </bpmndi:BPMNPlane>
+    </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" id="_1bTwQUkWEeO-QfaFiKQ6Gw" targetNamespace="http://camunda.org/examples" exporter="Camunda Modeler" exporterVersion="4.7.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.6.0">
+    <bpmn:process isExecutable="true" name="Asynchronous Service Invocation" id="asynchronousServiceInvocation" camunda:historyTimeToLive="P180D">
+        <bpmn:startEvent name="Start" id="StartEvent_1">
+            <bpmn:outgoing xmlns="">SequenceFlow_3</bpmn:outgoing>
+        </bpmn:startEvent>
+        <bpmn:userTask name="Wait State Before" id="waitStateBefore">
+            <bpmn:extensionElements>
+                <zeebe:formDefinition formId="AddFormId"/>
+                <zeebe:userTask/>
+            </bpmn:extensionElements>
+            <bpmn:incoming xmlns="">SequenceFlow_3</bpmn:incoming>
+            <bpmn:outgoing xmlns="">SequenceFlow_4</bpmn:outgoing>
+        </bpmn:userTask>
+        <bpmn:sequenceFlow sourceRef="StartEvent_1" targetRef="waitStateBefore" name="" id="SequenceFlow_3"/>
+        <bpmn:sequenceFlow sourceRef="waitStateBefore" targetRef="serviceTaskActivity" name="" id="SequenceFlow_4"/>
+        <bpmn:serviceTask name="Asynchronous Service Task" id="serviceTaskActivity" camunda:class="org.camunda.quickstart.servicetask.invocation.AsynchronousServiceTask">
+            <bpmn:extensionElements>
+                <zeebe:taskDefinition type="org.camunda.quickstart.servicetask.invocation.AsynchronousServiceTask"/>
+            </bpmn:extensionElements>
+            <bpmn:incoming xmlns="">SequenceFlow_4</bpmn:incoming>
+            <bpmn:outgoing xmlns="">SequenceFlow_2</bpmn:outgoing>
+        </bpmn:serviceTask>
+        <bpmn:sequenceFlow sourceRef="serviceTaskActivity" targetRef="waitStateAfter" name="" id="SequenceFlow_2"/>
+        <bpmn:userTask name="Wait State&#10;After" id="waitStateAfter">
+            <bpmn:extensionElements>
+                <zeebe:formDefinition formId="AddFormId"/>
+                <zeebe:userTask/>
+            </bpmn:extensionElements>
+            <bpmn:incoming xmlns="">SequenceFlow_2</bpmn:incoming>
+            <bpmn:outgoing xmlns="">SequenceFlow_5</bpmn:outgoing>
+        </bpmn:userTask>
+        <bpmn:sequenceFlow sourceRef="waitStateAfter" targetRef="EndEvent_1" name="" id="SequenceFlow_5"/>
+        <bpmn:endEvent name="End" id="EndEvent_1">
+            <bpmn:incoming xmlns="">SequenceFlow_5</bpmn:incoming>
+        </bpmn:endEvent>
+    </bpmn:process>
+    <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+        <bpmndi:BPMNPlane xmlns="" bpmnElement="asynchronousServiceInvocation" id="BPMNPlane_1">
+            <bpmndi:BPMNEdge bpmnElement="SequenceFlow_5" sourceElement="_BPMNShape_UserTask_3" targetElement="_BPMNShape_EndEvent_2" id="BPMNEdge_SequenceFlow_5">
+                <di:waypoint x="656.0" y="125.0"/>
+                <di:waypoint x="700.0" y="125.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="754.0" y="205.0" width="6.0" height="6.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="SequenceFlow_2" sourceElement="_BPMNShape_ServiceTask_2" targetElement="_BPMNShape_UserTask_3" id="BPMNEdge_SequenceFlow_2">
+                <di:waypoint x="509.0" y="125.0"/>
+                <di:waypoint x="556.0" y="125.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="608.0" y="205.0" width="6.0" height="6.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="SequenceFlow_4" sourceElement="_BPMNShape_UserTask_2" targetElement="_BPMNShape_ServiceTask_2" id="BPMNEdge_SequenceFlow_4">
+                <di:waypoint x="356.0" y="125.0"/>
+                <di:waypoint x="409.0" y="125.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="485.0" y="205.0" width="6.0" height="6.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="SequenceFlow_3" sourceElement="_BPMNShape_StartEvent_2" targetElement="_BPMNShape_UserTask_2" id="BPMNEdge_SequenceFlow_3">
+                <di:waypoint x="190.0" y="125.0"/>
+                <di:waypoint x="256.0" y="125.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNShape bpmnElement="StartEvent_1" id="_BPMNShape_StartEvent_2">
+                <dc:Bounds x="154.0" y="107.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="160.0" y="143.0" width="24.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="waitStateBefore" id="_BPMNShape_UserTask_2">
+                <dc:Bounds x="256.0" y="85.0" width="100.0" height="80.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="serviceTaskActivity" id="_BPMNShape_ServiceTask_2">
+                <dc:Bounds x="409.0" y="85.0" width="100.0" height="80.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="waitStateAfter" id="_BPMNShape_UserTask_3">
+                <dc:Bounds x="556.0" y="85.0" width="100.0" height="80.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="EndEvent_1" id="_BPMNShape_EndEvent_2">
+                <dc:Bounds x="700.0" y="107.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="709.0" y="148.0" width="20.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+        </bpmndi:BPMNPlane>
+    </bpmndi:BPMNDiagram>
+</bpmn:definitions>

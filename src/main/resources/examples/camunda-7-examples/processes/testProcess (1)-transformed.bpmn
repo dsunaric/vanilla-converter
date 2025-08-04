@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" id="_VtQR8L0REeSNuv6S7H6XsA" targetNamespace="http://camunda.org/examples" exporter="camunda modeler" exporterVersion="2.7.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.6.0">
+    <bpmn:process isExecutable="true" id="testProcess" camunda:historyTimeToLive="P180D">
+        <bpmn:startEvent id="StartEvent_1">
+            <bpmn:outgoing xmlns="">SequenceFlow_1</bpmn:outgoing>
+        </bpmn:startEvent>
+        <bpmn:scriptTask scriptFormat="javascript" name="Extract Price" id="ScriptTask_1">
+            <bpmn:incoming xmlns="">SequenceFlow_1</bpmn:incoming>
+            <bpmn:outgoing xmlns="">SequenceFlow_2</bpmn:outgoing>
+            <bpmn:script>var carJson = execution.getVariableTyped("car").getValueSerialized();
+var price = S(carJson ).prop("price").numberValue();
+execution.setVariable("price", price);</bpmn:script>
+        </bpmn:scriptTask>
+        <bpmn:sequenceFlow sourceRef="StartEvent_1" targetRef="ScriptTask_1" name="" id="SequenceFlow_1"/>
+        <bpmn:userTask name="Examine Price" id="UserTask_1">
+            <bpmn:extensionElements>
+                <zeebe:formDefinition formId="AddFormId"/>
+                <zeebe:userTask/>
+            </bpmn:extensionElements>
+            <bpmn:incoming xmlns="">SequenceFlow_2</bpmn:incoming>
+            <bpmn:outgoing xmlns="">SequenceFlow_3</bpmn:outgoing>
+        </bpmn:userTask>
+        <bpmn:sequenceFlow sourceRef="ScriptTask_1" targetRef="UserTask_1" name="" id="SequenceFlow_2"/>
+        <bpmn:endEvent id="EndEvent_1">
+            <bpmn:incoming xmlns="">SequenceFlow_3</bpmn:incoming>
+        </bpmn:endEvent>
+        <bpmn:sequenceFlow sourceRef="UserTask_1" targetRef="EndEvent_1" name="" id="SequenceFlow_3"/>
+    </bpmn:process>
+    <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+        <bpmndi:BPMNPlane xmlns="" bpmnElement="testProcess" id="BPMNPlane_1">
+            <bpmndi:BPMNShape bpmnElement="StartEvent_1" id="_BPMNShape_StartEvent_39">
+                <dc:Bounds x="120.0" y="217.0" width="36.0" height="36.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="ScriptTask_1" id="_BPMNShape_ScriptTask_2">
+                <dc:Bounds x="206.0" y="195.0" width="100.0" height="80.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="SequenceFlow_1" sourceElement="_BPMNShape_StartEvent_39" targetElement="_BPMNShape_ScriptTask_2" id="BPMNEdge_SequenceFlow_1">
+                <di:waypoint x="156.0" y="235.0"/>
+                <di:waypoint x="206.0" y="235.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNShape bpmnElement="UserTask_1" id="_BPMNShape_UserTask_2">
+                <dc:Bounds x="356.0" y="195.0" width="100.0" height="80.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="SequenceFlow_2" sourceElement="_BPMNShape_ScriptTask_2" targetElement="_BPMNShape_UserTask_2" id="BPMNEdge_SequenceFlow_2">
+                <di:waypoint x="306.0" y="235.0"/>
+                <di:waypoint x="356.0" y="235.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNShape bpmnElement="EndEvent_1" id="_BPMNShape_EndEvent_102">
+                <dc:Bounds x="506.0" y="217.0" width="36.0" height="36.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="SequenceFlow_3" sourceElement="_BPMNShape_UserTask_2" targetElement="_BPMNShape_EndEvent_102" id="BPMNEdge_SequenceFlow_3">
+                <di:waypoint x="456.0" y="235.0"/>
+                <di:waypoint x="506.0" y="235.0"/>
+            </bpmndi:BPMNEdge>
+        </bpmndi:BPMNPlane>
+    </bpmndi:BPMNDiagram>
+</bpmn:definitions>

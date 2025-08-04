@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.7.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.6.0">
+    <bpmn:process isExecutable="true" id="process" camunda:historyTimeToLive="P180D">
+        <bpmn:startEvent name="Start" id="StartEvent_1">
+            <bpmn:outgoing xmlns="">SequenceFlow_0pewutp</bpmn:outgoing>
+        </bpmn:startEvent>
+        <bpmn:sequenceFlow sourceRef="StartEvent_1" targetRef="check-variables" id="SequenceFlow_0pewutp"/>
+        <bpmn:sequenceFlow sourceRef="check-variables" targetRef="EndEvent_1wq706h" id="SequenceFlow_1nm31xl"/>
+        <bpmn:endEvent name="End" id="EndEvent_1wq706h">
+            <bpmn:incoming xmlns="">SequenceFlow_1nm31xl</bpmn:incoming>
+        </bpmn:endEvent>
+        <bpmn:userTask name="Check variables" id="check-variables">
+            <bpmn:extensionElements>
+                <zeebe:formDefinition formId="AddFormId"/>
+                <zeebe:userTask/>
+            </bpmn:extensionElements>
+            <bpmn:incoming xmlns="">SequenceFlow_0pewutp</bpmn:incoming>
+            <bpmn:outgoing xmlns="">SequenceFlow_1nm31xl</bpmn:outgoing>
+        </bpmn:userTask>
+    </bpmn:process>
+    <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+        <bpmndi:BPMNPlane xmlns="" bpmnElement="process" id="BPMNPlane_1">
+            <bpmndi:BPMNShape bpmnElement="StartEvent_1" id="_BPMNShape_StartEvent_2">
+                <dc:Bounds x="173.0" y="102.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="180.0" y="138.0" width="23.0" height="12.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="EndEvent_1wq706h" id="EndEvent_1wq706h_di">
+                <dc:Bounds x="462.0" y="102.0" width="36.0" height="36.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="471.0" y="142.0" width="20.0" height="14.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="check-variables" id="Activity_0zn1v0s_di">
+                <dc:Bounds x="280.0" y="80.0" width="100.0" height="80.0"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="SequenceFlow_0pewutp" id="SequenceFlow_0pewutp_di">
+                <di:waypoint x="209.0" y="120.0"/>
+                <di:waypoint x="280.0" y="120.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="242.0" y="99.0" width="0.0" height="12.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="SequenceFlow_1nm31xl" id="SequenceFlow_1nm31xl_di">
+                <di:waypoint x="380.0" y="120.0"/>
+                <di:waypoint x="462.0" y="120.0"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="410.0" y="99.0" width="0.0" height="12.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+        </bpmndi:BPMNPlane>
+    </bpmndi:BPMNDiagram>
+</bpmn:definitions>
