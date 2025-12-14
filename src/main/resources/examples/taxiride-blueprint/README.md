@@ -11,9 +11,7 @@ In this case study, the Camunda 7 Model is converted into a Camunda 8 Model and 
 
 ## 2. BPMN Process Description
 
-The process consists of two swimlanes: one representing the implemented Taxi Service and the other illustrating the Customer perspective.
-The Customer view is not connected to any implementation and serves purely as a descriptive element to help understand the end-to-end process.
-Even tho both Swimlanes remain in the converted Process, this case study will only focus in the Taxi Service.  
+The original [TaxiRide Blueprint](https://github.com/phactum/taxiride-blueprint) process consists of two swimlanes: one representing the implemented Taxi Service and the other illustrating the Customer perspective.The Customer view is not connected to any implementation and serves purely as a descriptive element to help understand the end-to-end process. In this case study we only focus on the executable part of the process. 
 
 The original [Camunda 7 Ride process](https://github.com/Phactum/taxiride-blueprint/blob/main/ride/src/main/resources/processes/camunda7/ride/TaxiRide.bpmn) contains the following BPMN elements:
 
@@ -27,6 +25,19 @@ The original [Camunda 7 Ride process](https://github.com/Phactum/taxiride-bluepr
 - **Multi Instance Task Marker:** 3
 
 ![TaxiRide Process](TaxiRide-c7-img.png)
+
+The relevant executable part contains the following BPMN elements:
+
+- **Start Events:** 1
+- **End Events:** 6 - 4 None End Events, 2 Message End Events
+- **Service Tasks:** 6
+- **User Tasks:** 1
+- **Boundary Events:** 2 - both interrupting
+- **Intermediate Events:** 1
+- **Subprocesses:** 1
+- **Multi Instance Task Marker:** 3
+
+![TaxiRide Process](TaxiRide-c7-img-relevant.png)
 
 ---
 
