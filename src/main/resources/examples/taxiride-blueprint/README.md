@@ -37,7 +37,7 @@ The relevant executable part contains the following BPMN elements:
 - **Subprocesses:** 1
 - **Multi Instance Task Marker:** 3
 
-![TaxiRide Process](TaxiRide-c7-img-relevant.png)
+![TaxiRide Process](TaxiRide-c7.png)
 
 ---
 
